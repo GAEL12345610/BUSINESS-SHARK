@@ -1,0 +1,183 @@
+# CLAUDE-CLIENTES.md — Posibles clientes (pintores) de Business Shark
+
+Complemento del `CLAUDE.md` principal. Aquí vive el **pipeline de pintores prospecto**:
+quién es, cómo contactarlo, qué sabemos y en qué etapa va. Claude debe leer este
+archivo junto con `CLAUDE.md` en cualquier conversación sobre clientes, entrevistas
+o pruebas piloto.
+
+**Última actualización:** 2 oct 2026
+
+---
+
+## Reglas de este archivo
+
+1. **Un prospecto no es un cliente.** Solo se marca "cliente" cuando acepta probar el
+   sistema con obras reales.
+2. **No inventar datos.** Lo que no se sabe queda como `?` hasta que el pintor lo diga.
+3. **Primera meta de cada contacto: entrevista de 15 min, no venta.** Validar si el
+   problema existe antes de ofrecer el sistema.
+4. **Seguridad:** el equipo son menores. Avisar a un maestro o a los papás a quién se
+   escribe y que un adulto acompañe cualquier reunión presencial. Contactar por canales
+   profesionales públicos (Instagram del artista, correo o sitio de trabajo).
+5. Después de cada conversación, actualizar la ficha del pintor (datos nuevos, etapa,
+   próxima acción).
+
+## Etapas del pipeline
+
+`Por contactar` → `Contactado` → `Entrevistado` → `Acepta piloto` → `Piloto activo`
+
+---
+
+## Preguntas de la entrevista (15 min)
+
+1. ¿Cómo vendes tus obras hoy (taller, galería, redes, encargos)?
+2. ¿Cuántas obras vendes al año, más o menos, y a qué rango de precio?
+3. ¿Sabes quién tiene tus obras ahora? ¿Puedes volver a contactar a esos compradores?
+4. ¿Alguna vez alguien dudó si una obra tuya era original, o vio una copia?
+5. ¿Qué le entregas hoy al comprador (certificado, firma, factura, nada)?
+6. Si cada obra pudiera contar su historia al acercar el celular y tú supieras quién la
+   tiene, ¿te serviría? ¿Cuánto pagarías por obra y por mes, aunque sea una idea?
+7. ¿Aceptarías probarlo gratis con 2–3 obras?
+
+---
+
+## 1. José Luis Malo — PRIMER PROSPECTO
+
+- **Etapa:** Por contactar
+- **Quién es:** pintor contactado vía el papá de un integrante del equipo (**confirmar que
+  es el pintor amigo del proyecto**). Es el caso de uso base del prototipo.
+- **Por qué va primero:** ya hay una puerta de entrada directa y de confianza. Es el
+  candidato natural para el piloto de 3–5 obras en la Expo.
+- **Contacto:** a través del papá del integrante (completar teléfono, Instagram o
+  correo cuando se tenga).
+- **Datos por confirmar (no asumir):**
+  - Obras vendidas al año: ?
+  - Rango de precios: ?
+  - Cómo vende hoy: ?
+  - Estilo y técnica: ?
+  - ¿Sabe quién compró sus obras?: ?
+  - ¿Ha tenido problemas de copias o dudas de autenticidad?: ?
+  - ¿Cuántas obras reales aportaría al piloto?: ?
+- **Próxima acción:** agendar la entrevista de 15 min con las preguntas de arriba, con un
+  adulto presente.
+- **Notas:**
+
+---
+
+## 2. Majo Ralem
+
+- **Etapa:** Por contactar
+- **Quién es:** artista visual de Guadalajara con ~43K seguidores en Instagram. Vende obra
+  original mediante el link de su perfil.
+- **Por qué encaja:** ya vende directo y tiene audiencia. Sus compradores son un activo
+  que probablemente no puede aprovechar después de la venta.
+- **Contacto:** Instagram @__lemart (mensaje directo).
+- **Datos por confirmar:** obras al año ?, precios ?, si sabe quién tiene sus obras ?
+- **Próxima acción:** mensaje corto pidiendo 15 min para una entrevista.
+- **Notas:**
+
+## 3. René Cheng
+
+- **Etapa:** Por contactar
+- **Quién es:** pintor al óleo (abstracto con veladuras y espátula, e hiperrealista).
+  Aparece en el directorio de artistas de artac.
+- **Por qué encaja:** obra de óleo físico y de valor, buen candidato para historia por obra.
+- **Contacto:** Instagram @reneartemex / Facebook renepintura.
+- **Datos por confirmar:** **si vive en Guadalajara (no confirmado)**, obras al año ?,
+  precios ?
+- **Próxima acción:** confirmar ciudad antes de planear cualquier visita.
+- **Notas:**
+
+## 4. Jaguar X Espiritu
+
+- **Etapa:** Por contactar
+- **Quién es:** artista nacido en Guadalajara, con temas místicos y del México ancestral.
+- **Por qué encaja:** su obra tiene mucha narrativa. Es el mejor caso para demostrar la
+  capa de "historia de la obra" y los niveles del álbum.
+- **Contacto:** perfil en Artmajeur (mensaje interno).
+- **Datos por confirmar:** si vende fuera de Artmajeur ?, obras al año ?, precios ?
+- **Próxima acción:** mensaje por Artmajeur pidiendo 15 min.
+- **Notas:**
+
+## 5. Pintor de retratos al óleo por encargo (Guadalajara)
+
+- **Etapa:** Por contactar
+- **Quién es:** pintor que convierte fotografías de clientes en retratos al óleo.
+  Nombre pendiente de confirmar en su sitio.
+- **Por qué encaja:** cada obra nace de un encargo, así que el comprador ya está
+  identificado. Es fácil entregar la tarjeta de activación en la entrega de la obra.
+- **Contacto:** sitio retratosypinturasporencargo.com (formulario y redes sociales).
+- **Datos por confirmar:** nombre, encargos por año ?, precios ?
+- **Próxima acción:** escribir por el formulario del sitio.
+- **Notas:**
+
+## 6. Marco Aguirre ("Pulse UNF")
+
+- **Etapa:** Por contactar
+- **Quién es:** artista plástico nacido en 1984 en Guadalajara, estudió Artes Plásticas
+  en la UdeG. El más establecido de la lista.
+- **Por qué encaja:** prestigio local. Si acepta, da credibilidad al proyecto. Es el más
+  difícil de convencer.
+- **Contacto:** no encontrado. Buscar su Instagram oficial.
+- **Datos por confirmar:** todo.
+- **Próxima acción:** encontrar canal de contacto. Prioridad baja.
+- **Notas:**
+
+---
+
+## Resumen del pipeline
+
+| # | Pintor | Etapa | Contacto | Próxima acción |
+|---|---|---|---|---|
+| 1 | José Luis Malo | Por contactar | vía papá del integrante | Agendar entrevista |
+| 2 | Majo Ralem | Por contactar | IG @__lemart | Mensaje directo |
+| 3 | René Cheng | Por contactar | IG @reneartemex | Confirmar ciudad |
+| 4 | Jaguar X Espiritu | Por contactar | Artmajeur | Mensaje interno |
+| 5 | Retratista por encargo | Por contactar | sitio web | Formulario |
+| 6 | Marco Aguirre | Por contactar | por encontrar | Buscar contacto |
+
+**Meta antes del 26 de noviembre:** 1 piloto firme (José Luis Malo) + al menos 2
+entrevistas hechas con otros pintores + 3–5 compradores entrevistados.
+
+---
+
+# Otros negocios y clientes posibles (a futuro)
+
+**Aviso:** esta sección es hipótesis del equipo y de Claude, **no está validada con nadie**.
+Ningún segmento de aquí cuenta como cliente hasta que alguien real lo confirme en
+una entrevista. Para la Expo el foco sigue siendo **solo pintores**. Los demás segmentos
+entran al pitch como "visión de crecimiento" (apoya el criterio de Viabilidad:
+tamaño de mercado y escalabilidad), no como algo que se construya ahora.
+
+## Cómo priorizar un segmento nuevo
+
+Un segmento sirve si cumple las tres:
+1. **Vende piezas físicas únicas o en edición limitada** (el NFC tiene sentido).
+2. **Tiene el dolor:** copias, dudas de autenticidad, o no saber quién compró.
+3. **El mismo sistema le funciona** casi sin cambios (mismo tag, misma tarjeta de activación,
+   misma app).
+
+## Segmentos, ordenados por cercanía al proyecto actual
+
+| # | Segmento | Por qué podría encajar | Riesgo / duda | Plazo |
+|---|---|---|---|---|
+| A | **Escultores y ceramistas independientes** | Es casi el mismo cliente que el pintor: obra única, venta directa, mismo modelo de cobro. | Hay que ver dónde pegar el tag (base, interior). | Próximos meses |
+| B | **Artesanos de alta gama de Tonalá y Tlaquepaque** (cerámica, vidrio soplado, piezas de autor) | Las imitaciones son una queja plausible en artesanía, y cada pieza tiene historia y origen por contar. | El dolor de imitación no está validado. Precios por pieza más bajos, el cobro de 25–40 MXN puede pesar más. | Mediano plazo |
+| C | **Fotógrafos y grabadores con ediciones numeradas** | El NFC puede probar que "esta es la copia 7 de 30". SmartLinks ya maneja ediciones limitadas como función. | Mercado local pequeño. Muchos venden en digital. | Mediano plazo |
+| D | **Galerías pequeñas, cafés y espacios que exhiben arte local** | **Son un canal:** una sola galería te abre a muchos pintores a la vez, y es la ruta hacia la plataforma multi-pintor. | Probable que no paguen, buscan más ventas, no certificados. Hay que ofrecerles algo propio (ej. mapa de obras exhibidas). | Mediano plazo |
+| E | **Escuelas y talleres de arte, estudiantes de Artes Plásticas** | Artistas emergentes con poca obra, aceptan pilotos gratis y dan casos de estudio. | Poco dinero, no sostienen el modelo de ingresos. | Para pilotos |
+| F | **Diseñadores independientes, joyería de autor, ediciones limitadas** (ropa, joyas, mezcal/tequila de autor) | Es el modelo Arianee (Breitling, Cartier) en versión accesible. Mercado más grande. | **Es justo el mercado "demasiado grande" que ya se descartó (CLAUDE.md, sección 4.3).** Otro tipo de comprador y de logística. | Largo plazo |
+
+## Quién NO es cliente
+
+- **El comprador de arte** es el *usuario* de la app, no quien paga. Hoy el pintor paga
+  (modelo B2B). Si algún día el comprador paga algo (ej. nivel premium), eso es otra decisión.
+- **Los competidores** (Verisart, Arianee, FAL, SmartLinks) no son clientes. Si alguno
+  ofreciera una alianza, sería otro tema, no del pipeline.
+
+## Qué hacer con esto antes del 26 de noviembre
+
+1. Mencionar los segmentos A–F en **una sola diapositiva o párrafo** de visión de crecimiento.
+2. No construir nada para ellos todavía.
+3. Si hay oportunidad natural (ej. el pintor conoce a un ceramista), hacer **una** entrevista
+   corta con el mismo guion de la sección de preguntas, para ver si el dolor existe.
