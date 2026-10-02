@@ -1,1 +1,1 @@
-Buenas tardes
+Buenas tardes/días
