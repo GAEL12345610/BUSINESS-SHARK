@@ -1,0 +1,146 @@
+<!--
+  TEMPLATE: Comparison table
+  Para "nosotros vs alternativa(s)", "feature matrix", "tier breakdown".
+  Density alta: el cuadro hace el trabajo, el texto alrededor es mínimo.
+
+  Variables:
+    - EYEBROW
+    - TITLE
+    - COLUMNS: array de headers (la primera es la fila de etiquetas)
+    - ROWS: array de filas, cada una con N celdas
+    - HIGHLIGHT_COL: índice (1-based) de la columna a destacar (nosotros)
+-->
+
+<section class="slide" data-slide="XX">
+  <div class="slide-inner slide-compare">
+    <header class="slide-header rv">
+      <span class="eyebrow">{{EYEBROW}}</span>
+      <h2 class="slide-title">{{TITLE}}</h2>
+    </header>
+
+    <div class="slide-body">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th class="dim"></th>
+            <th>Alternativa A</th>
+            <th class="hl-col">Brai</th>
+            <th>Alternativa B</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="rv rv-delay-1">
+            <td class="row-label">Setup</td>
+            <td>—</td>
+            <td class="hl-col">14 días, llave en mano</td>
+            <td>—</td>
+          </tr>
+          <tr class="rv rv-delay-2">
+            <td class="row-label">Volumen</td>
+            <td>—</td>
+            <td class="hl-col">3,000+ leads/mes</td>
+            <td>—</td>
+          </tr>
+          <tr class="rv rv-delay-3">
+            <td class="row-label">Precio</td>
+            <td>—</td>
+            <td class="hl-col">€600/mes + setup</td>
+            <td>—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <footer class="slide-footer">
+      <span class="page-number mono">XX / NN</span>
+    </footer>
+  </div>
+</section>
+
+<style>
+  .slide-compare {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: 80px 96px;
+    gap: 48px;
+  }
+
+  .slide-header { display: flex; flex-direction: column; gap: 16px; }
+  .eyebrow {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+  }
+  .slide-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-body);
+    font-size: 20px;
+  }
+
+  .compare-table th, .compare-table td {
+    text-align: left;
+    padding: 24px 28px;
+    border-bottom: 1px solid var(--hairline);
+    vertical-align: middle;
+  }
+
+  .compare-table thead th {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 20px;
+  }
+
+  .compare-table .dim { background: transparent; border-bottom-color: transparent; }
+
+  .row-label {
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--ink-2);
+    width: 28%;
+  }
+
+  .compare-table .hl-col {
+    background: var(--accent-soft);
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .compare-table thead .hl-col {
+    background: var(--accent);
+    color: #FFFFFF;
+    border-bottom-color: var(--accent-hover);
+  }
+
+  .slide-footer {
+    display: flex;
+    justify-content: flex-end;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .rv {
+    opacity: 0;
+    transform: translateX(-18px);
+    transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+  }
+  .slide.active .rv { opacity: 1; transform: none; }
+  .rv-delay-1 { transition-delay: 0.10s; }
+  .rv-delay-2 { transition-delay: 0.20s; }
+  .rv-delay-3 { transition-delay: 0.30s; }
+</style>

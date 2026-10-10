@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brai, kit de marca v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Schibsted+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --terracota:#C06E52; --terracota-btn:#A2563D; --terracota-hover:#8C4932; --terracota-active:#773E2A;
+    --tinta:#2B2622; --dorado:#C9A24B; --lienzo:#F6F1EA; --verde:#5E6C52; --linea:#E5DDCF;
+    --display:'Fraunces',Georgia,serif; --texto:'Schibsted Grotesk',system-ui,sans-serif; --registro:'IBM Plex Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:var(--texto);color:var(--tinta);background:#fff;line-height:1.5}
+  section{padding:56px 16px;max-width:1000px;margin:0 auto}
+  h1,h2{font-family:var(--display);font-weight:600;margin:0 0 20px;letter-spacing:-.3px}
+  h2{font-size:30px}
+  p.lead{max-width:640px;margin:0 0 24px}
+  .cover{background:var(--lienzo);text-align:center;padding:88px 16px;max-width:none}
+  .word{font-family:var(--display);font-weight:600;font-size:76px;letter-spacing:-1px;margin-top:20px}
+  .tag{font-family:var(--registro);font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:var(--verde);margin-top:6px}
+  .row{display:flex;gap:16px;flex-wrap:wrap}
+  .box{flex:1;min-width:220px;background:var(--lienzo);border-radius:12px;padding:28px 18px;display:flex;flex-direction:column;align-items:center;gap:12px;justify-content:center}
+  .box.dark{background:var(--tinta);color:var(--lienzo)}
+  .cap{font-size:13px;color:var(--verde)} .box.dark .cap{color:var(--lienzo)}
+  .lockup{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:600;font-size:28px}
+  .sw{flex:1;min-width:150px;border-radius:12px;padding:16px;font-size:13px}
+  .sw b{display:block;font-size:14px} .sw code{font-family:var(--registro);font-size:12px}
+  .sw em{display:block;font-style:normal;margin-top:8px;font-size:12px}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--linea);vertical-align:top}
+  th{font-size:12px;color:var(--verde);font-weight:600}
+  .t1{font-family:var(--display);font-weight:600;font-size:44px;letter-spacing:-.5px;line-height:1.1}
+  .t2{font-family:var(--display);font-weight:500;font-size:30px;letter-spacing:-.25px}
+  .t3{font-weight:600;font-size:21px}
+  .t4{font-family:var(--registro);font-size:14px}
+  .btn{font-family:var(--texto);font-size:15px;border-radius:10px;padding:12px 24px;border:none;cursor:pointer}
+  .primary{background:var(--terracota-btn);color:var(--lienzo);font-weight:600}
+  .primary:hover{background:var(--terracota-hover)} .primary:active{background:var(--terracota-active)}
+  .primary:disabled{background:var(--terracota);opacity:.4}
+  .secondary{background:transparent;border:1.5px solid var(--tinta);color:var(--tinta);font-weight:600}
+  .secondary:hover{background:rgba(43,38,34,.06)}
+  .ghost{background:transparent;color:var(--terracota-btn);font-weight:500;padding:10px 16px}
+  .ghost:hover{color:var(--terracota-hover);text-decoration:underline}
+  .note{font-size:13px;color:var(--verde);margin-top:14px}
+  /* piezas fisicas */
+  .stage{background:#E9E1D4;border-radius:16px;padding:32px 16px;display:flex;gap:32px;flex-wrap:wrap;justify-content:center;align-items:center}
+  .sello{width:170px;height:170px;border-radius:50%;background:var(--lienzo);box-shadow:0 1px 0 #d8cdbb,inset 0 0 0 1px #d8cdbb;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center}
+  .sello small{font-family:var(--registro);font-size:10px;color:var(--verde)}
+  .sello span{font-size:12px;font-weight:600}
+  .card{width:340px;max-width:100%;aspect-ratio:85/55;background:var(--lienzo);border-radius:10px;padding:18px 20px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 1px 0 #d8cdbb,inset 0 0 0 1px #d8cdbb}
+  .card .top{display:flex;justify-content:space-between;align-items:flex-start}
+  .card .obra{font-family:var(--display);font-weight:600;font-size:18px;line-height:1.15}
+  .card .meta{font-family:var(--registro);font-size:10.5px;color:var(--verde)}
+  .rasca{font-family:var(--registro);font-size:11px;background:linear-gradient(135deg,#bdb3a4,#d6ccbd 40%,#b3a998);color:var(--tinta);border-radius:6px;padding:7px 10px;text-align:center}
+  .firma{font-family:var(--display);font-style:italic;font-size:13px;border-top:1px solid var(--tinta);padding-top:2px;width:140px}
+  .phone{width:260px;border-radius:30px;background:var(--tinta);padding:10px}
+  .screen{background:#fff;border-radius:22px;overflow:hidden}
+  .pic{height:150px;background:linear-gradient(160deg,#C06E52,#8C4932 55%,#2B2622)}
+  .ced{padding:16px}
+  .ced .artista{font-size:12px;color:var(--verde);font-weight:600;text-transform:uppercase;letter-spacing:1px}
+  .ced .titulo{font-family:var(--display);font-weight:600;font-size:22px;line-height:1.15;margin:4px 0 6px}
+  .ced .ficha{font-family:var(--registro);font-size:11px;color:var(--tinta);border-top:1px solid var(--linea);padding-top:8px;display:grid;grid-template-columns:auto 1fr;gap:2px 10px}
+  .ced .ficha b{font-weight:500;color:var(--verde)}
+  .ok{display:flex;align-items:center;gap:8px;background:#F3EBD8;border-radius:8px;padding:8px 10px;font-size:12px;font-weight:600;margin-top:10px}
+  .ok i{width:10px;height:10px;border-radius:50%;background:var(--dorado);display:inline-block}
+  .linea-tiempo{font-size:12px;margin-top:10px;border-left:2px solid var(--terracota);padding-left:10px}
+  .linea-tiempo div{margin-bottom:4px}
+</style>
+</head>
+<body>
+
+<section class="cover">
+  <img src="isotipo.svg" width="120" height="120" alt="Isotipo de Brai">
+  <div class="word">Brai</div>
+  <div class="tag">Cada obra sabe de dónde viene</div>
+</section>
+
+<section>
+  <h2>Por qué no somos Verisart</h2>
+  <p class="lead">Verisart vende tecnología: certificar, acuñar, integrar con Shopify. Brai vende un ritual: el artista entrega su obra en persona, con su firma, y la obra se queda conectada a él para siempre.</p>
+  <table>
+    <tr><th></th><th>Verisart</th><th>Brai</th></tr>
+    <tr><td>Promesa</td><td>Certificado de autenticidad</td><td>Autoridad del artista y rastro de su obra</td></tr>
+    <tr><td>Se siente como</td><td>Una plataforma de software</td><td>La cédula de un museo</td></tr>
+    <tr><td>Momento clave</td><td>Generar el certificado</td><td>La entrega: tarjeta firmada a mano y el comprador raspa su código</td></tr>
+    <tr><td>Idioma y mercado</td><td>Inglés, global</td><td>Español, el artista independiente de México</td></tr>
+    <tr><td>Servicio</td><td>Hazlo tú mismo</td><td>Lo montamos contigo, obra por obra</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2>Isotipo: el enso</h2>
+  <p class="lead">Un círculo hecho de un solo trazo de pincel que casi se cierra. El punto dorado cierra el hueco: es el último gesto, el que verifica. Es redondo a propósito: el sello NFC que va detrás del cuadro también es redondo, así que el logo y el chip son la misma pieza.</p>
+  <div class="row">
+    <div class="box"><img src="isotipo.svg" width="72" height="72" alt=""><div class="cap">Isotipo, mínimo 8 mm</div></div>
+    <div class="box"><div class="lockup"><img src="isotipo.svg" width="34" height="34" alt="">Brai</div><div class="cap">Horizontal, app y landing</div></div>
+    <div class="box dark"><div class="lockup"><img src="isotipo_claro.svg" width="34" height="34" alt="">Brai</div><div class="cap">Una tinta, fondo oscuro</div></div>
+    <div class="box"><div class="lockup"><img src="isotipo_tinta.svg" width="34" height="34" alt="">Brai</div><div class="cap">Una tinta, impresión barata</div></div>
+  </div>
+  <p class="note">El hueco va siempre a las 2 en punto. Con el hueco arriba se confunde con el ícono de encender.</p>
+</section>
+
+<section>
+  <h2>Paleta</h2>
+  <div class="row">
+    <div class="sw" style="background:var(--terracota);color:var(--tinta)"><b>Terracota</b><code>#C06E52</code><em>Logo y superficies grandes. Texto encima: solo tinta.</em></div>
+    <div class="sw" style="background:var(--terracota-btn);color:var(--lienzo)"><b>Terracota botón</b><code>#A2563D</code><em>Botones, links, texto chico.</em></div>
+    <div class="sw" style="background:var(--tinta);color:var(--lienzo)"><b>Tinta carbón</b><code>#2B2622</code><em>Texto y fondos oscuros.</em></div>
+    <div class="sw" style="background:var(--dorado);color:var(--tinta)"><b>Dorado</b><code>#C9A24B</code><em>SOLO el momento "obra registrada". Nunca como texto.</em></div>
+    <div class="sw" style="background:var(--lienzo);color:var(--tinta);box-shadow:inset 0 0 0 1px var(--linea)"><b>Lienzo</b><code>#F6F1EA</code><em>Fondos.</em></div>
+    <div class="sw" style="background:var(--verde);color:var(--lienzo)"><b>Verde sabio</b><code>#5E6C52</code><em>Texto secundario y etiquetas.</em></div>
+  </div>
+  <p class="note">v2: el verde bajó de #6B7A5E (4.1:1, no pasaba AA en texto chico) a #5E6C52 (5.0:1). El botón Ghost pasó a #A2563D (5.3:1). El dorado sobre lienzo da 2.1:1: jamás texto dorado.</p>
+</section>
+
+<section>
+  <h2>Tipografía: tres voces</h2>
+  <table>
+    <tr><th>Voz</th><th>Muestra</th><th>Uso</th></tr>
+    <tr><td>Galería</td><td class="t1">Obras con historia</td><td>Fraunces 600, 40 a 48 px. Títulos.</td></tr>
+    <tr><td>Galería</td><td class="t2">Tu obra, registrada</td><td>Fraunces 500, 28 a 32 px.</td></tr>
+    <tr><td>Taller</td><td class="t3">Club de coleccionistas</td><td>Schibsted Grotesk 600, 20 a 22 px.</td></tr>
+    <tr><td>Taller</td><td>Cada obra lleva su historia, su artista y su dueño.</td><td>Schibsted Grotesk 400, 16 px. Texto.</td></tr>
+    <tr><td>Registro</td><td class="t4">BRAI-0007 · Óleo sobre tela · 2026</td><td>IBM Plex Mono 400, 11 a 14 px. Números de registro, fechas, ficha técnica.</td></tr>
+  </table>
+  <p class="note">v2: Inter salió. Fraunces + Inter es la combinación que más usan las páginas hechas con IA, y se nota. La voz "Registro" en monoespaciada es lo que hace que la obra se sienta archivada, como en un museo.</p>
+</section>
+
+<section>
+  <h2>Botones</h2>
+  <div class="row" style="align-items:center">
+    <button class="btn primary" type="button">Reclamar mi obra</button>
+    <button class="btn secondary" type="button">Ver la historia</button>
+    <button class="btn ghost" type="button">Contactar al artista</button>
+    <button class="btn primary" type="button" disabled>Reclamada</button>
+  </div>
+</section>
+
+<section>
+  <h2>Las 3 piezas que toca el jurado</h2>
+  <p class="lead">La marca vive aquí, no en la pantalla. Esto es lo que se lleva al stand.</p>
+  <div class="stage">
+    <div class="sello">
+      <img src="isotipo.svg" width="56" height="56" alt="">
+      <span>Acerca tu celular</span>
+      <small>BRAI-0007</small>
+    </div>
+    <div class="card">
+      <div class="top">
+        <div><div class="obra">Tarde en Tlaquepaque</div><div class="meta">BRAI-0007 · Óleo · 60×80 cm · 2026</div></div>
+        <img src="isotipo.svg" width="30" height="30" alt="">
+      </div>
+      <div class="rasca">RASPA AQUÍ · TU CÓDIGO DE DUEÑO</div>
+      <div class="firma">Lucía Arce</div>
+    </div>
+    <div class="phone"><div class="screen">
+      <div class="pic"></div>
+      <div class="ced">
+        <div class="artista">Lucía Arce</div>
+        <div class="titulo">Tarde en Tlaquepaque</div>
+        <div class="ficha"><b>Registro</b><span>BRAI-0007</span><b>Técnica</b><span>Óleo sobre tela</span><b>Medidas</b><span>60 × 80 cm</span><b>Año</b><span>2026</span></div>
+        <div class="ok"><i></i>Obra registrada por el artista</div>
+        <div class="linea-tiempo"><div>2026 · Pintada en el taller</div><div>2026 · Entregada a su primer dueño</div></div>
+      </div>
+    </div></div>
+  </div>
+  <p class="note">1. Sello NFC redondo detrás del cuadro, se rompe si lo despegas. 2. Tarjeta de dueño firmada a mano, con código bajo raspadita como las tarjetas de recarga: prueba que nadie lo vio antes. 3. La página de la obra es una cédula de museo. Datos de ejemplo, no reales.</p>
+</section>
+
+</body>
+</html>

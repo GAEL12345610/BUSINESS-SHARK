@@ -1,0 +1,158 @@
+<!--
+  TEMPLATE: Big number slide
+  Para slides estadística-hero: una cifra grande que ancla la narrativa.
+
+  Variables:
+    - EYEBROW: contexto corto en mayúsculas (ej. "Reclutamiento LATAM · Brai v3")
+    - BIG_NUMBER: el número (ej. "41.7%", "2,304", "€12K")
+    - NUMBER_UNIT: unidad o contexto inmediato (ej. "positivas en 98 leads")
+    - SUPPORTING: 1-3 frases que contextualizan el número (qué significa, comparativa, fuente)
+    - CITATION: fuente o periodo (mono, pequeño)
+-->
+
+<section class="slide" data-slide="XX">
+  <div class="slide-inner slide-big-number">
+    <header class="slide-header">
+      <span class="eyebrow rv">{{EYEBROW}}</span>
+    </header>
+
+    <div class="slide-body">
+      <div class="number-block">
+        <span class="big-num rv" data-value="{{BIG_NUMBER}}">{{BIG_NUMBER}}</span>
+        <span class="number-unit rv rv-delay-1">{{NUMBER_UNIT}}</span>
+      </div>
+      <p class="supporting rv rv-delay-2">{{SUPPORTING}}</p>
+    </div>
+
+    <footer class="slide-footer">
+      <span class="citation mono">{{CITATION}}</span>
+      <span class="page-number mono">XX / NN</span>
+    </footer>
+  </div>
+</section>
+
+<style>
+  .slide-big-number {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: 96px 120px;
+  }
+
+  .slide-header { margin-bottom: 0; }
+  .eyebrow {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+  }
+
+  .slide-body {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+
+  .number-block {
+    display: flex;
+    align-items: baseline;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  .big-num {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 360px;
+    line-height: 0.86;
+    letter-spacing: -0.06em;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .number-unit {
+    font-family: var(--font-body);
+    font-size: 28px;
+    line-height: 1.3;
+    color: var(--ink);
+    max-width: 560px;
+    padding-bottom: 24px;
+    border-left: 3px solid var(--accent);
+    padding-left: 32px;
+    align-self: flex-end;
+  }
+
+  .supporting {
+    font-family: var(--font-body);
+    font-size: 22px;
+    line-height: 1.55;
+    color: var(--muted);
+    max-width: 1100px;
+  }
+
+  .slide-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--hairline);
+    padding-top: 24px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  /* Reveal */
+  .rv {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 1s var(--ease-out), transform 1s var(--ease-out);
+  }
+  .slide.active .rv { opacity: 1; transform: none; }
+  .rv-delay-1 { transition-delay: 0.20s; }
+  .rv-delay-2 { transition-delay: 0.36s; }
+</style>
+
+<script>
+  /* Optional: animate the big number from 0 to its final value
+     when the slide becomes active. Reads data-value, parses, animates. */
+  (function() {
+    const animateBigNum = (el) => {
+      const raw = el.dataset.value || el.textContent.trim();
+      const match = raw.match(/^([€$£]?)([\d,.]+)(.*)$/);
+      if (!match) return;
+      const [, prefix, numStr, suffix] = match;
+      const target = parseFloat(numStr.replace(/,/g, ''));
+      if (isNaN(target)) return;
+      const decimals = (numStr.split('.')[1] || '').length;
+      const duration = 1200;
+      const start = performance.now();
+      const tick = (now) => {
+        const t = Math.min(1, (now - start) / duration);
+        const eased = 1 - Math.pow(1 - t, 3);
+        const v = target * eased;
+        const str = decimals
+          ? v.toFixed(decimals)
+          : Math.round(v).toLocaleString();
+        el.textContent = prefix + str + suffix;
+        if (t < 1) requestAnimationFrame(tick);
+      };
+      el.textContent = prefix + '0' + suffix;
+      requestAnimationFrame(tick);
+    };
+
+    const obs = new MutationObserver((muts) => {
+      muts.forEach((m) => {
+        if (m.attributeName === 'class' && m.target.classList.contains('active')) {
+          m.target.querySelectorAll('.big-num').forEach(animateBigNum);
+        }
+      });
+    });
+    document.querySelectorAll('.slide').forEach((s) => {
+      obs.observe(s, { attributes: true });
+      if (s.classList.contains('active')) {
+        s.querySelectorAll('.big-num').forEach(animateBigNum);
+      }
+    });
+  })();
+</script>

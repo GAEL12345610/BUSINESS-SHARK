@@ -1,0 +1,98 @@
+<!--
+  TEMPLATE: Statement slide
+  Una afirmación grande que ancla el deck. Mínimo texto, máximo peso visual.
+  Útil para: tesis del deck, momento "aquí está la idea", transición de sección.
+
+  Variables:
+    - EYEBROW: contexto en caps (ej. "La tesis · Sección 2")
+    - STATEMENT: la afirmación (8-18 palabras, estilo manifest)
+    - ATTRIBUTION: opcional — quién lo dice, fuente, fecha (mono)
+-->
+
+<section class="slide" data-slide="XX">
+  <div class="slide-inner slide-statement">
+    <header class="slide-header">
+      <span class="eyebrow rv">{{EYEBROW}}</span>
+    </header>
+
+    <div class="slide-body">
+      <h1 class="statement rv rv-delay-1">{{STATEMENT}}</h1>
+      <div class="rule rv rv-delay-2"></div>
+      <span class="attribution mono rv rv-delay-2">{{ATTRIBUTION}}</span>
+    </div>
+
+    <footer class="slide-footer">
+      <span class="page-number mono">XX / NN</span>
+    </footer>
+  </div>
+</section>
+
+<style>
+  .slide-statement {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: 96px 160px;
+  }
+
+  .slide-body {
+    align-self: center;
+    max-width: 1500px;
+  }
+
+  .statement {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 88px;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin-bottom: 48px;
+  }
+
+  /* Resaltar la palabra clave: envolver en <em class="hl"> en el HTML */
+  .statement .hl {
+    color: var(--accent);
+    font-style: normal;
+    position: relative;
+  }
+  .statement .hl::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: -4px;
+    height: 3px;
+    background: var(--accent);
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 1.2s var(--ease-out) 0.6s;
+  }
+  .slide.active .statement .hl::after { transform: scaleX(1); }
+
+  .rule {
+    width: 80px;
+    height: 2px;
+    background: var(--ink);
+    margin-bottom: 16px;
+  }
+
+  .attribution {
+    font-size: 14px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+
+  .slide-footer {
+    display: flex;
+    justify-content: flex-end;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .rv {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 1s var(--ease-out), transform 1s var(--ease-out);
+  }
+  .slide.active .rv { opacity: 1; transform: none; }
+  .rv-delay-1 { transition-delay: 0.14s; }
+  .rv-delay-2 { transition-delay: 0.32s; }
+</style>

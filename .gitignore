@@ -1,0 +1,18 @@
+# Secretos: nunca a git
+.env
+.env.*
+!.env.example
+
+# Dependencias y builds
+node_modules/
+dist/
+.vercel/
+*.log
+
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Claude Code local (permisos de cada máquina)
+.claude/settings.local.json

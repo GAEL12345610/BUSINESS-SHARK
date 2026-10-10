@@ -1,11 +1,10 @@
-# CLAUDE-CLIENTES.md — Posibles clientes (pintores) de Business Shark
+# Pipeline de artistas de Brai
 
-Complemento del `CLAUDE.md` principal. Aquí vive el **pipeline de pintores prospecto**:
-quién es, cómo contactarlo, qué sabemos y en qué etapa va. Claude debe leer este
-archivo junto con `CLAUDE.md` en cualquier conversación sobre clientes, entrevistas
-o pruebas piloto.
+Aquí vive el **pipeline de artistas prospecto**: quién es, cómo contactarlo, qué sabemos
+y en qué etapa va. Claude lo lee en cualquier conversación sobre clientes, entrevistas
+o pilotos. El perfil de cliente ideal y el precio están en `OFERTA.md`.
 
-**Última actualización:** 2 oct 2026
+**Última actualización:** 10 oct 2026
 
 ---
 
@@ -24,20 +23,9 @@ o pruebas piloto.
 
 ## Etapas del pipeline
 
-`Por contactar` → `Contactado` → `Entrevistado` → `Acepta piloto` → `Piloto activo`
+`Por contactar` → `Contactado` → `Entrevistado` → `Acepta fundador` → `Fundador activo` → `Cliente que paga`
 
----
-
-## Preguntas de la entrevista (15 min)
-
-1. ¿Cómo vendes tus obras hoy (taller, galería, redes, encargos)?
-2. ¿Cuántas obras vendes al año, más o menos, y a qué rango de precio?
-3. ¿Sabes quién tiene tus obras ahora? ¿Puedes volver a contactar a esos compradores?
-4. ¿Alguna vez alguien dudó si una obra tuya era original, o vio una copia?
-5. ¿Qué le entregas hoy al comprador (certificado, firma, factura, nada)?
-6. Si cada obra pudiera contar su historia al acercar el celular y tú supieras quién la
-   tiene, ¿te serviría? ¿Cuánto pagarías por obra y por mes, aunque sea una idea?
-7. ¿Aceptarías probarlo gratis con 2–3 obras?
+**Guiones de entrevista:** `ENTREVISTAS.md` (artista y comprador).
 
 ---
 
@@ -58,8 +46,9 @@ o pruebas piloto.
   - ¿Sabe quién compró sus obras?: ?
   - ¿Ha tenido problemas de copias o dudas de autenticidad?: ?
   - ¿Cuántas obras reales aportaría al piloto?: ?
-- **Próxima acción:** agendar la entrevista de 15 min con las preguntas de arriba, con un
-  adulto presente.
+- **Próxima acción:** ESTA SEMANA, entrevista de 15 min con el guion de `ENTREVISTAS.md`,
+  con un adulto presente. Si el dolor existe, ofrecerle ser **cliente fundador**
+  (condiciones en `OFERTA.md`).
 - **Notas:**
 
 ---

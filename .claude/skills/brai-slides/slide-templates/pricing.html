@@ -1,0 +1,214 @@
+<!--
+  TEMPLATE: Pricing / oferta slide
+  Para propuestas comerciales — desglose claro del precio, qué incluye, qué no.
+  Una sola tarjeta con jerarquía fuerte. No "3 columnas SaaS" — eso es genérico.
+
+  Variables:
+    - EYEBROW: "Inversión" / "Propuesta" / "Oferta para {{cliente}}"
+    - PRICE_LABEL: "Precio mensual" / "One-time setup"
+    - PRICE_AMOUNT: "€600" / "€500"
+    - PRICE_PERIOD: "/mes" / " · pago único"
+    - INCLUDES: array de bullets de lo que incluye
+    - EXTRA: línea opcional (ej. "+ €50 por reunión positiva")
+    - START_DATE: cuándo empieza
+-->
+
+<section class="slide" data-slide="XX">
+  <div class="slide-inner slide-pricing">
+    <header class="slide-header rv">
+      <span class="eyebrow">{{EYEBROW}}</span>
+      <h2 class="slide-title">Inversión y alcance</h2>
+    </header>
+
+    <div class="slide-body">
+      <div class="price-card rv rv-delay-1">
+        <div class="price-row">
+          <div class="price-label">{{PRICE_LABEL}}</div>
+          <div class="price-display">
+            <span class="price-amount mono">{{PRICE_AMOUNT}}</span>
+            <span class="price-period">{{PRICE_PERIOD}}</span>
+          </div>
+        </div>
+
+        <div class="price-divider"></div>
+
+        <div class="price-includes">
+          <div class="includes-label">Incluye</div>
+          <ul class="includes-list">
+            <li>{{INCLUDES_1}}</li>
+            <li>{{INCLUDES_2}}</li>
+            <li>{{INCLUDES_3}}</li>
+            <li>{{INCLUDES_4}}</li>
+          </ul>
+        </div>
+
+        <div class="price-extra mono">{{EXTRA}}</div>
+      </div>
+
+      <aside class="price-meta rv rv-delay-2">
+        <div class="meta-item">
+          <div class="meta-label">Inicio</div>
+          <div class="meta-value">{{START_DATE}}</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-label">Duración mínima</div>
+          <div class="meta-value">3 meses</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-label">Facturación</div>
+          <div class="meta-value">Mensual · SEPA / transferencia</div>
+        </div>
+      </aside>
+    </div>
+
+    <footer class="slide-footer">
+      <span class="page-number mono">XX / NN</span>
+    </footer>
+  </div>
+</section>
+
+<style>
+  .slide-pricing {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: 80px 96px;
+    gap: 48px;
+  }
+
+  .slide-header { display: flex; flex-direction: column; gap: 16px; }
+  .eyebrow {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+  }
+  .slide-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+
+  .slide-body {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+
+  .price-card {
+    background: var(--deep);
+    border: 1px solid var(--hairline);
+    padding: 48px 56px;
+    border-radius: 4px;
+  }
+
+  .price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+  }
+  .price-label {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--ink-2);
+  }
+  .price-display { display: flex; align-items: baseline; gap: 10px; }
+  .price-amount {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 88px;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+  .price-period {
+    font-family: var(--font-body);
+    font-size: 22px;
+    color: var(--muted);
+  }
+
+  .price-divider {
+    height: 1px;
+    background: var(--hairline);
+    margin: 32px 0;
+  }
+
+  .includes-label {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    margin-bottom: 18px;
+  }
+  .includes-list {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .includes-list li {
+    font-family: var(--font-body);
+    font-size: 19px;
+    color: var(--ink);
+    padding-left: 28px;
+    position: relative;
+  }
+  .includes-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0; top: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .price-extra {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px dashed var(--hairline);
+    font-size: 14px;
+    color: var(--muted);
+  }
+
+  .price-meta {
+    display: flex; flex-direction: column;
+    gap: 28px;
+    padding-top: 16px;
+  }
+  .meta-item {
+    border-left: 2px solid var(--accent);
+    padding-left: 20px;
+  }
+  .meta-label {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 6px;
+  }
+  .meta-value {
+    font-family: var(--font-body);
+    font-size: 18px;
+    color: var(--ink);
+  }
+
+  .slide-footer { display: flex; justify-content: flex-end; color: var(--muted); font-size: 13px; }
+
+  .rv {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+  }
+  .slide.active .rv { opacity: 1; transform: none; }
+  .rv-delay-1 { transition-delay: 0.14s; }
+  .rv-delay-2 { transition-delay: 0.30s; }
+</style>

@@ -1,0 +1,148 @@
+<!--
+  TEMPLATE: Two-column slide
+  Usos: problema/solución, antes/después, sin nosotros/con nosotros.
+  Genera tensión narrativa con dos lados claros.
+
+  Variables:
+    - EYEBROW
+    - TITLE: headline del slide
+    - LEFT_LABEL / LEFT_BULLETS: 3-5 bullets de la columna izquierda (el "antes")
+    - RIGHT_LABEL / RIGHT_BULLETS: 3-5 bullets de la columna derecha (el "después")
+-->
+
+<section class="slide" data-slide="XX">
+  <div class="slide-inner slide-two-col">
+    <header class="slide-header rv">
+      <span class="eyebrow">{{EYEBROW}}</span>
+      <h2 class="slide-title">{{TITLE}}</h2>
+    </header>
+
+    <div class="slide-body">
+      <div class="col col-left rv rv-delay-1">
+        <div class="col-label">{{LEFT_LABEL}}</div>
+        <ul class="bullets">
+          <li>{{LEFT_BULLET_1}}</li>
+          <li>{{LEFT_BULLET_2}}</li>
+          <li>{{LEFT_BULLET_3}}</li>
+        </ul>
+      </div>
+
+      <div class="col-divider rv rv-delay-2"></div>
+
+      <div class="col col-right rv rv-delay-3">
+        <div class="col-label col-label-accent">{{RIGHT_LABEL}}</div>
+        <ul class="bullets bullets-accent">
+          <li>{{RIGHT_BULLET_1}}</li>
+          <li>{{RIGHT_BULLET_2}}</li>
+          <li>{{RIGHT_BULLET_3}}</li>
+        </ul>
+      </div>
+    </div>
+
+    <footer class="slide-footer">
+      <span class="page-number mono">XX / NN</span>
+    </footer>
+  </div>
+</section>
+
+<style>
+  .slide-two-col {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: 80px 96px;
+    gap: 56px;
+  }
+
+  .slide-header { display: flex; flex-direction: column; gap: 16px; }
+  .eyebrow {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+  }
+  .slide-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 56px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    max-width: 1400px;
+  }
+
+  .slide-body {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .col { padding-top: 8px; }
+  .col-label {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--hairline);
+  }
+  .col-label-accent {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  .col-divider {
+    width: 1px;
+    background: var(--hairline);
+    align-self: stretch;
+  }
+
+  .bullets {
+    list-style: none;
+    padding: 0; margin: 0;
+    display: flex; flex-direction: column;
+    gap: 20px;
+  }
+  .bullets li {
+    font-family: var(--font-body);
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--ink-2);
+    padding-left: 28px;
+    position: relative;
+  }
+  .bullets li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0.68em;
+    width: 12px; height: 1px;
+    background: var(--muted);
+  }
+  .bullets-accent li::before {
+    background: var(--accent);
+    height: 2px;
+  }
+  .bullets-accent li { color: var(--ink); }
+
+  .slide-footer {
+    display: flex;
+    justify-content: flex-end;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .rv {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+  }
+  .slide.active .rv { opacity: 1; transform: none; }
+  .rv-delay-1 { transition-delay: 0.12s; }
+  .rv-delay-2 { transition-delay: 0.22s; }
+  .rv-delay-3 { transition-delay: 0.32s; }
+</style>

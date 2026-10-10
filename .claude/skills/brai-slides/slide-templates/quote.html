@@ -1,0 +1,91 @@
+<!--
+  TEMPLATE: Quote / testimonial slide
+  Para citas de clientes, testimonios, frases-ancla de fundadores.
+  Pull-quote estilo editorial — gran tipografía, mucho aire.
+
+  Variables:
+    - QUOTE: la cita (15-40 palabras, sin comillas — las añade el CSS)
+    - AUTHOR_NAME
+    - AUTHOR_ROLE
+    - AUTHOR_COMPANY
+-->
+
+<section class="slide" data-slide="XX">
+  <div class="slide-inner slide-quote">
+    <div class="slide-body">
+      <div class="quote-mark rv">"</div>
+      <blockquote class="quote rv rv-delay-1">{{QUOTE}}</blockquote>
+      <div class="attribution rv rv-delay-2">
+        <div class="author">{{AUTHOR_NAME}}</div>
+        <div class="author-meta">{{AUTHOR_ROLE}} · {{AUTHOR_COMPANY}}</div>
+      </div>
+    </div>
+
+    <footer class="slide-footer">
+      <span class="page-number mono">XX / NN</span>
+    </footer>
+  </div>
+</section>
+
+<style>
+  .slide-quote {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    padding: 120px 160px;
+  }
+
+  .slide-body {
+    align-self: center;
+    max-width: 1400px;
+  }
+
+  .quote-mark {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 200px;
+    line-height: 0.5;
+    color: var(--accent);
+    margin-bottom: 16px;
+    user-select: none;
+  }
+
+  .quote {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 64px;
+    line-height: 1.18;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin: 0 0 56px 0;
+    quotes: none;
+  }
+
+  .attribution { display: flex; flex-direction: column; gap: 6px; }
+  .author {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .author-meta {
+    font-family: var(--font-body);
+    font-size: 18px;
+    color: var(--muted);
+  }
+
+  .slide-footer {
+    display: flex;
+    justify-content: flex-end;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .rv {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 1s var(--ease-out), transform 1s var(--ease-out);
+  }
+  .slide.active .rv { opacity: 1; transform: none; }
+  .rv-delay-1 { transition-delay: 0.20s; }
+  .rv-delay-2 { transition-delay: 0.40s; }
+</style>
