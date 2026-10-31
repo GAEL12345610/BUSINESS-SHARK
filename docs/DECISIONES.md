@@ -2,6 +2,12 @@
 
 Una línea por decisión, con su porqué. Lo más reciente arriba. Si una decisión cambia, se tacha y se agrega la nueva con fecha: nunca se borra.
 
+## 31 oct 2026, segunda sesión (auditoría y NFT)
+
+| # | Decisión | Por qué |
+|---|---|---|
+| 25 | **No tokenizar las obras como NFT.** En su lugar, eventos encadenados por huella (hash): editar uno a escondidas rompe la cadena. Se reabre con los criterios de `TOKENIZAR.md`. | Un NFT no protege el punto débil (el sello copiable), el arte en NFT cayó más de 90% desde 2021, pide cartera al comprador y nos vuelve copia de Verisart. Detalle y fuentes en `TOKENIZAR.md`. |
+
 ## 31 oct 2026 (diseño de la web y la app, sobre los drafts del equipo)
 
 | # | Decisión | Por qué |

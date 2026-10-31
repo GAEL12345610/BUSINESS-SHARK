@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react'
-import { Link, useParams } from 'react-router'
+import { Link, useParams, useSearchParams } from 'react-router'
 import { ArrowLeft } from 'lucide-react'
 import { ARTISTA, fecha, getObra, reclamar } from '../data/demo'
 import { PaginaArtista } from './Obra'
@@ -24,7 +24,9 @@ function SelloDorado() {
 export default function Reclamar() {
   const { codigo = '' } = useParams()
   const obra = getObra(codigo)
-  const [codigoDueno, setCodigoDueno] = useState('')
+  const [params] = useSearchParams()
+  // La raspadita de la landing manda el código ya escrito
+  const [codigoDueno, setCodigoDueno] = useState(() => formatear(params.get('codigo') ?? ''))
   const [correo, setCorreo] = useState('')
   const [error, setError] = useState<string | null>(null)
   const [listo, setListo] = useState<string | null>(null)

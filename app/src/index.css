@@ -46,6 +46,30 @@
 .sello-entra { animation: sello-entra 900ms var(--ease-suave) both; }
 .halo-dorado { animation: halo 1.4s 500ms var(--ease-suave) both; }
 
+/* Ondas del sello NFC */
+@keyframes onda { 0% { opacity: .7; transform: translate(-50%, -50%) scale(1); } 100% { opacity: 0; transform: translate(-50%, -50%) scale(2.6); } }
+.onda { animation: onda 1.8s var(--ease-suave) infinite both; }
+
+/* Línea de cada paso que se dibuja al llegar */
+.paso { position: relative; }
+.paso::before { content: ''; position: absolute; left: 0; top: 0; height: 1px; width: 100%; background: var(--color-tinta); transform-origin: left; }
+.js .paso::before { transform: scaleX(0); transition: transform 900ms var(--ease-suave) 150ms; }
+.js .paso.visible::before { transform: scaleX(1); }
+
+/* Preguntas frecuentes */
+@keyframes abre { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+.pregunta[open] .pregunta-cuerpo { animation: abre 400ms var(--ease-suave); }
+
+/* Entrada de la página de la obra: escalonada, sin pantalla de carga */
+@keyframes entra { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes estampa { 0% { opacity: 0; transform: scale(1.35); } 60% { opacity: 1; transform: scale(.96); } 100% { transform: scale(1); } }
+@keyframes latido { 0% { box-shadow: 0 0 0 0 rgba(201,162,75,.55); } 100% { box-shadow: 0 0 0 12px rgba(201,162,75,0); } }
+@keyframes crece { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+.entra { animation: entra 600ms var(--ease-suave) both; }
+.estampa { animation: estampa 700ms var(--ease-suave) 450ms both; }
+.latido { animation: latido 1.2s ease-out 1.1s 2; }
+.crece { transform-origin: top; animation: crece 1.1s var(--ease-suave) 300ms both; }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 1ms !important; transition-duration: 1ms !important; scroll-behavior: auto !important; }
   .js .revela { opacity: 1; transform: none; }

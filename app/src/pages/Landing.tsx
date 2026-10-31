@@ -1,12 +1,42 @@
+import { useState } from 'react'
 import { Link } from 'react-router'
 import { ArrowRight, Check, X } from 'lucide-react'
 import { BarraProgreso, TarjetaTilt, Telefono3D } from '../components/movimiento'
 import { Isotipo, Logo, SelloNFC, TarjetaDueno } from '../components/marca'
-import { ARTISTA, OBRAS } from '../data/demo'
+import { Cifra, EscenaSello, LinkReclamarDemo, Pregunta, Raspadita } from '../components/interaccion'
+import { ARTISTA, CODIGO_DEMO, OBRAS } from '../data/demo'
 
 // Pendiente: el dominio brai.art no está comprado. El buzón lo revisa un adulto.
 const CORREO_EQUIPO = 'hola@brai.art'
+const CORREO_FUNDADOR =
+  `mailto:${CORREO_EQUIPO}?subject=${encodeURIComponent('Quiero ser artista fundador de Brai')}&body=` +
+  encodeURIComponent(
+    'Hola, soy:\nMi Instagram o página:\nObras que vendo al año, más o menos:\nRango de precio de mis obras:\nCómo vendo hoy (taller, redes, galería, encargos):\n',
+  )
 const OBRA_DEMO = OBRAS[0]
+
+// Cifras con fuente (docs/ANALISIS.md y docs/COSTOS.md). No inventar.
+const CIFRAS = [
+  {
+    valor: 69,
+    sufijo: '%',
+    texto: 'de los coleccionistas ya le compró directo a un artista, sin galería.',
+    fuente: 'Art Basel y UBS, Survey of Global Collecting 2025',
+    url: 'https://ocula.com/magazine/art-news/2025-art-basel-ubs-survey-global-collecting/',
+  },
+  {
+    valor: 8870,
+    texto: 'pintores, escultores y artistas visuales trabajan en Jalisco.',
+    fuente: 'DataMéxico, ENOE 2025',
+    url: 'https://www.economia.gob.mx/datamexico/es/profile/occupation/pintores-disenadores-y-dibujantes-artisticos-escultores-y-escenografos',
+  },
+  {
+    valor: 1,
+    texto: 'venta extra al año a quien ya te compró paga Brai desde el segundo año, si tu obra vale 12,000 MXN.',
+    fuente: 'Cálculo del equipo con nuestro precio',
+    url: null,
+  },
+]
 
 const PROBLEMAS = [
   {
@@ -38,6 +68,7 @@ function Kicker({ children }: { children: string }) {
 }
 
 export default function Landing() {
+  const [raspada, setRaspada] = useState(false)
   return (
     <>
       <header className="sticky top-0 z-30 bg-lienzo">
@@ -109,6 +140,29 @@ export default function Landing() {
           </div>
         </section>
 
+        {/* Cifras */}
+        <section className="border-t border-linea">
+          <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 md:grid-cols-3 md:py-20">
+            {CIFRAS.map((c) => (
+              <div key={c.fuente} className="revela">
+                <p className="font-display text-6xl font-semibold tracking-[-0.02em] text-terracota-btn">
+                  <Cifra valor={c.valor} sufijo={c.sufijo} />
+                </p>
+                <p className="mt-3 max-w-xs leading-relaxed">{c.texto}</p>
+                {c.url ? (
+                  <a href={c.url} target="_blank" rel="noreferrer" className="mt-3 inline-block font-mono text-[11px] text-verde underline-offset-2 hover:underline">
+                    {c.fuente}
+                  </a>
+                ) : (
+                  <p className="mt-3 font-mono text-[11px] text-verde">{c.fuente}</p>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <EscenaSello titulo={OBRA_DEMO.titulo} artista={ARTISTA.nombre} registro={OBRA_DEMO.registro} imagen={OBRA_DEMO.imagen} />
+
         {/* Cómo funciona */}
         <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 md:py-28">
           <div className="revela max-w-2xl">
@@ -119,7 +173,7 @@ export default function Landing() {
           </div>
           <ol className="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
             {PASOS.map((p, i) => (
-              <li key={p.titulo} className="revela border-t border-tinta pt-5">
+              <li key={p.titulo} className="revela paso pt-5">
                 <span className="font-mono text-xs text-verde">Paso {i + 1}</span>
                 <h3 className="mt-2 text-xl font-semibold">{p.titulo}</h3>
                 <p className="mt-2 leading-relaxed text-tinta/80">{p.texto}</p>
@@ -139,7 +193,7 @@ export default function Landing() {
             </div>
             <div className="mt-14 grid items-end gap-12 md:grid-cols-3">
               <figure className="revela flex flex-col items-center gap-5">
-                <SelloNFC registro={OBRA_DEMO.registro} />
+                <SelloNFC registro={OBRA_DEMO.registro} ondas />
                 <figcaption className="max-w-xs text-center">
                   <span className="font-semibold">El sello.</span> Va detrás del cuadro y abre la página de la obra al acercar el celular.
                 </figcaption>
@@ -149,9 +203,17 @@ export default function Landing() {
                   titulo={OBRA_DEMO.titulo}
                   artista={ARTISTA.nombre}
                   ficha={`${OBRA_DEMO.registro} · Óleo · 60×80 cm · ${OBRA_DEMO.anio}`}
-                />
+                >
+                  <Raspadita codigo={CODIGO_DEMO} alRevelar={() => setRaspada(true)} />
+                </TarjetaDueno>
                 <figcaption className="max-w-xs text-center">
-                  <span className="font-semibold">La tarjeta de dueño.</span> Firmada a mano. Si la raspadita está intacta, nadie vio el código antes.
+                  {raspada ? (
+                    <LinkReclamarDemo codigoObra={OBRA_DEMO.codigo} codigo={CODIGO_DEMO} titulo={OBRA_DEMO.titulo} />
+                  ) : (
+                    <>
+                      <span className="font-semibold">La tarjeta de dueño.</span> Firmada a mano. Ráspala: si la raspadita está intacta, nadie vio el código antes.
+                    </>
+                  )}
                 </figcaption>
               </figure>
               <figure className="revela flex flex-col items-center gap-5">
@@ -233,7 +295,7 @@ export default function Landing() {
                 tienes tu propia audiencia.
               </p>
               <a
-                href={`mailto:${CORREO_EQUIPO}?subject=Quiero%20ser%20artista%20fundador%20de%20Brai`}
+                href={CORREO_FUNDADOR}
                 className="mt-9 inline-flex items-center gap-2 rounded-[10px] bg-lienzo px-6 py-3.5 font-semibold text-tinta transition-colors hover:bg-white"
               >
                 Quiero registrar mis obras <ArrowRight size={18} />
@@ -257,6 +319,40 @@ export default function Landing() {
                 Si tu obra vale 12,000, dos ventas extra a quien ya te compró pagan el primer año.
               </p>
             </div>
+          </div>
+        </section>
+
+        {/* Preguntas */}
+        <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 md:grid md:grid-cols-[1fr_1.6fr] md:gap-14 md:py-28">
+          <div className="revela">
+            <Kicker>Preguntas</Kicker>
+            <h2 className="mt-4 font-display text-3xl font-semibold leading-tight tracking-[-0.01em] sm:text-[2.6rem]">Lo que nos preguntan.</h2>
+          </div>
+          <div className="revela mt-8 border-t border-linea md:mt-0">
+            <Pregunta pregunta="¿Y si mi comprador no tiene NFC en su celular?">
+              Cada sello lleva un QR al lado. Cualquier celular con cámara abre la misma página. En México casi 8 de cada 10 celulares son
+              Android y muchos traen el NFC apagado, por eso el QR no es opcional.
+            </Pregunta>
+            <Pregunta pregunta="¿Se puede copiar el sello?">
+              Un sello básico, sí. Por eso no te prometemos lo imposible. La verdad vive en el registro: las fotos huella para comparar el
+              cuadro, un código de dueño que solo sirve una vez y un historial donde cada evento lleva la huella del anterior. Si alguien
+              cambia uno, la cadena deja de cuadrar.
+            </Pregunta>
+            <Pregunta pregunta="¿Por qué no es un NFT?">
+              Lo evaluamos. Un NFT protege el registro, que ya está protegido, y no el sello, que es lo que se puede copiar. Además obliga a
+              tu comprador a manejar una cartera digital, y el arte en NFT cayó más de 90% desde 2021. Tomamos solo la idea buena: un
+              registro que delata cualquier cambio.
+            </Pregunta>
+            <Pregunta pregunta="¿Quién ve los datos de mi comprador?">
+              Solo tú. En la página pública el dueño aparece con sus iniciales. Su correo sirve para que sepas quién tiene tu obra y para
+              avisarle cuando tengas obra nueva, si así lo quiere.
+            </Pregunta>
+            <Pregunta pregunta="¿Y si un día me voy de Brai?">
+              Te llevas todo lo registrado: fichas, fotos, historias y dueños. Tu historial es tuyo, no de la plataforma.
+            </Pregunta>
+            <Pregunta pregunta="¿Qué gana quien compra mi obra?">
+              La historia contada por ti, una prueba de procedencia si algún día la revende o la hereda, y una línea directa contigo.
+            </Pregunta>
           </div>
         </section>
 
