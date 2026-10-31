@@ -21,9 +21,13 @@ Rutas de la demo:
 | `/o/M3RT8` | Una obra que ya tiene dueño |
 | `/a/ejemplo` | Página del artista (`/a/jose-luis-malo` con el candado abierto, ver abajo) |
 | `/imprimir/7KQ2X` | Tarjeta, sello y QR en tamaño real para imprimir |
-| `/entrar` | Panel del artista (pendiente) |
+| `/panel` | Panel del artista de ejemplo: quién tiene cada obra, avisar a coleccionistas, registrar obra |
+| `/recorrido?para=Nombre` | Recorrido de 5 pasos con calculadora de Oferta A y B. El nombre vive solo en esa pestaña |
+| `/marca` | Kit de marca vivo y la mascota Punto |
 
-Los reclamos de la demo se borran al cerrar la pestaña.
+Los reclamos y las obras registradas en la demo se borran al cerrar la pestaña.
+
+Imagen para compartir: `node scripts/og/generar.cjs` regenera `public/og.png` y `public/apple-touch-icon.png`.
 
 ## Probar la versión de producción
 

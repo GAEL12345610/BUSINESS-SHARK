@@ -1,8 +1,8 @@
-# Brai, manual de marca v2.2
+# Brai, manual de marca v2.3
 
 *Cada obra sabe de dónde viene.*
 
-Kit visual: `brand/kit.html` (ábrelo en el navegador). Logos: `brand/isotipo*.svg`.
+Kit visual: `brand/kit.html` (ábrelo en el navegador) y el kit vivo en la app, ruta `/marca`. Logos: `brand/isotipo*.svg`. Mascota: `docs/MASCOTA.md`.
 
 ## 0. Lo que Brai tiene que hacer sentir (léelo antes de diseñar cualquier cosa)
 
@@ -113,12 +113,25 @@ Brai tiene dos superficies y cada una tiene un dueño visual distinto. Confundir
 
 ## 11. Movimiento
 
-- **Una sola pieza "manipulable" por página.** En la landing es el teléfono que se inclina al arrastrarlo y muestra la página real de una obra. Todo lo demás solo aparece con fundidos de 600 ms.
+- **Una sola pieza "manipulable" por pantalla** (lo que cabe en el celular sin hacer scroll). En la landing es el teléfono que se inclina al arrastrarlo y muestra la página real de una obra. Todo lo demás solo aparece con fundidos de 600 ms.
 - **3D con CSS** (`perspective` y `rotate`), nunca una librería de 3D: pesa cientos de KB y el 100% de los escaneos pasan en celulares de gama media con datos.
 - **El único momento que brilla es el dorado** al reclamar una obra. Nada más tiene animación de celebración.
 - Siempre respetar `prefers-reduced-motion`.
 
-## 12. Historial
+## 12. Mascota: Punto
+Punto es el sello redondo con cara. Su cuerpo es el sello físico, su contorno es el isotipo real y su chapita es el punto dorado. Por qué es así y qué copiamos de otras mascotas (el principio, nunca el dibujo): `docs/MASCOTA.md`. Componente: `app/src/components/punto.tsx`.
+
+- **Nunca se redibuja el logo para hacerlo:** el contorno es `brand/isotipo.svg` tal cual.
+- **Toda la emoción va en los ojos.** Cuatro estados: tranquilo, toque, feliz, duda. No se inventan más sin pasar por aquí.
+- **Una vez por pantalla, como mucho.** Nunca interrumpe, nunca tapa contenido, nunca en ventanas emergentes.
+- **Nunca en la página de la obra ni en reclamar:** ahí manda el artista. Punto vive en la voz de Brai: landing, panel, recorrido, marca, página no encontrada.
+- **Habla como Brai:** frases cortas, tú, sin signos de admiración.
+
+## 13. Imagen para compartir
+`app/public/og.png` (1200 × 630) es lo que se ve cuando alguien pega el link en WhatsApp o en redes. Se genera desde `app/scripts/og/plantilla.html` con `node app/scripts/og/generar.cjs`. Si cambia el titular de la landing, se regenera.
+
+## 14. Historial
+- **v2.3 (31 oct 2026):** mascota Punto (sección 12), imagen para compartir (13), kit vivo en `/marca`.
 - **v2.2 (31 oct 2026):** sistema tipográfico: tamaño óptico, peso 560, cifras tabulares en el registro, fuentes autohospedadas. Ver sección 6.
 - **v2.1 (31 oct 2026):** qué tiene que sentir cada quien (sección 0), las dos caras digitales y el tema del artista (9), frases digitales (10), reglas de movimiento (11). Sale "Verificado por Brai" y "Conectando artistas con sus compradores" de los drafts.
 - **v2 (10 oct 2026):** isotipo enso (el anterior no cerraba y se leía como una "e"); Inter sale por Schibsted Grotesk; voz Registro en monoespaciada; verde `#6B7A5E` a `#5E6C52` y Ghost a `#A2563D` (no pasaban AA); tagline nuevo; piezas físicas diseñadas.

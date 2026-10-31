@@ -254,7 +254,7 @@ export default function Obra() {
 
       <footer className="mx-auto flex max-w-5xl flex-col items-start gap-5 px-4 pb-32 pt-10 sm:px-6 lg:pb-12">
         <SelloRegistroBrai registro={obra.registro} />
-        <Link to="/entrar" className="text-sm text-terracota-btn hover:underline">
+        <Link to="/panel" className="text-sm text-terracota-btn hover:underline">
           ¿Eres el artista? Entra a tu panel
         </Link>
       </footer>

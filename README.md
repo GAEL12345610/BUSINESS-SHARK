@@ -57,22 +57,17 @@ pnpm dev
 ```
 Abre `http://localhost:5173`. Rutas y código de dueño de ejemplo en `app/README.md`.
 
-## Pendientes ya
+## Qué falta
+Todo lo pendiente, con quién lo hace y dónde, vive en **[`TODO.md`](TODO.md)**. Ese es el único lugar.
 
-- [ ] Entrevista con José Luis Malo (con un adulto presente).
-- [ ] Definir roles del equipo (`docs/CONCURSO.md`).
-- [ ] Revisar el tipo de los 50 stickers NFC con NFC Tools.
-- [ ] Cotizar en MercadoLibre: stickers antidesprendibles, raspadita, tarjetas.
-- [ ] Confirmar con el profesor la fecha del infomercial.
-- [ ] Publicar en Vercel: Root Directory `app`, preset Vite, sin variables.
-- [ ] Correo normal del proyecto para "Quiero registrar mis obras" y el aviso de privacidad (hoy apunta a `hola@brai.art`, que no existe). Nunca el personal de un integrante.
-- [ ] Comprar `brai.art` (~49 MXN el primer año en Porkbun) antes de grabar y bloquear el primer sello.
-- [ ] Que un adulto lea el aviso de privacidad (`app/public/privacidad.html`).
-- [ ] Permiso por escrito de José Luis Malo antes de publicar la demo con su nombre.
-- [ ] En la entrevista, presentar Oferta A y B y anotar cuál escoge el artista.
-- [ ] Llenar los `?` de `docs/COSTOS.md` con captura de MercadoLibre: etiquetas VOID y tarjetas.
-- [ ] Cotizar el envío de 50 NTAG 424 DNA (Shop NFC o AliExpress).
-- [ ] Crear el proyecto en Supabase y correr `app/supabase/migrations/` en orden (`docs/PROTOTIPO.md`), con un adulto.
-- [ ] Grabar el infomercial (`pitch/infomercial_guion.md`) y asignar quién graba cada escena.
-- [ ] Comprar etiquetas de raspadita y papel adhesivo para imprimir `/imprimir/7KQ2X`.
-- [x] Subir los wireframes a `docs/wireframes/`.
+## Rutas de la app (mismo link de Vercel)
+| Ruta | Qué es |
+|---|---|
+| `/` | Landing |
+| `/o/7KQ2X` | Página de una obra de ejemplo (código de dueño `4K7P-9QX2`) |
+| `/a/ejemplo` | Página de la artista de ejemplo |
+| `/panel` | Panel del artista (ejemplo) |
+| `/recorrido?para=Nombre` | Recorrido de 5 minutos para enseñárselo a un artista |
+| `/marca` | Kit de marca vivo y la mascota Punto |
+| `/imprimir/7KQ2X` | Tarjeta, sello y QR en tamaño real |
+| `/privacidad` | Aviso de privacidad |

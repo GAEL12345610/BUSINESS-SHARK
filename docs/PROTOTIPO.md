@@ -18,7 +18,9 @@ Cómo correr la app, sus rutas y el código de dueño de ejemplo: `app/README.md
 | Aviso de privacidad | `/privacidad` (`app/public/privacidad.html`) | Hecho. **Falta que lo lea un adulto** y poner el correo real del equipo. |
 | Base de datos | `app/supabase/migrations/` | Hecha y probada en un Postgres que imita a Supabase. Falta crear el proyecto real. |
 | Verificar sello 424 DNA | `app/supabase/functions/sello/` | Hecha, probada con el vector oficial de NXP. Falta un chip físico y la pantalla en la app. |
-| Panel del artista | | **Falta en la app actual.** Existe una versión en el historial de git (commit `2676021`, `app/src/app/paginas/Panel.tsx`) que se puede rescatar al conectar Supabase. |
+| Panel del artista | `/panel` | Hecho **de ejemplo**: quién tiene cada obra (con correo), avisar a coleccionistas, registrar obra con foto. Falta conectarlo a Supabase con login real. |
+| Recorrido para artistas | `/recorrido?para=Nombre` | Hecho: 5 pasos y calculadora de Oferta A y B. Guion de uso: `docs/REUNION_JOSE_LUIS.md`. |
+| Kit de marca vivo | `/marca` | Hecho, con la mascota Punto. |
 
 Después del 26 nov: transferir desde el dueño, club de coleccionistas, aviso por correo al artista.
 

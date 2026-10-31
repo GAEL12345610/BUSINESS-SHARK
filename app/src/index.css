@@ -91,6 +91,17 @@
 .capa { animation: aparece 250ms ease-out; }
 .marca-huella { animation: marca 600ms var(--ease-suave) 150ms both; }
 
+/* Punto, la mascota (docs/MASCOTA.md) */
+@keyframes punto-parpadeo { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(0.1); } }
+@keyframes punto-onda { from { opacity: .8; transform: scale(.9); } to { opacity: 0; transform: scale(1.7); } }
+@keyframes punto-salto { 0%, 100% { transform: translateY(0); } 30% { transform: translateY(-14px) rotate(-4deg); } 55% { transform: translateY(0) scale(1.04, .96); } 70% { transform: translateY(-5px); } }
+@keyframes punto-flota { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+.punto-parpadea ellipse, .punto-parpadea circle { transform-box: fill-box; transform-origin: center; animation: punto-parpadeo 4.2s infinite; }
+.punto-onda { transform-box: fill-box; transform-origin: center; animation: punto-onda 1.2s var(--ease-suave) both; }
+.punto-salta { animation: punto-salto 900ms var(--ease-suave) 350ms both; }
+.punto-ladea { transform: rotate(-9deg); transition: transform 500ms var(--ease-suave); }
+.punto-flota { animation: punto-flota 3.6s ease-in-out infinite; }
+
 /* Hoja de piezas físicas: tamaño real, colores tal cual */
 @page { size: letter; margin: 12mm; }
 @media print {
@@ -102,6 +113,7 @@
   *, *::before, *::after { animation-duration: 1ms !important; transition-duration: 1ms !important; scroll-behavior: auto !important; }
   .js .revela { opacity: 1; transform: none; }
   /* las animaciones infinitas a 1 ms parpadean: se apagan */
-  .onda, .latido { animation: none !important; display: none; }
+  .onda, .latido, .punto-onda { animation: none !important; display: none; }
+  .punto-parpadea ellipse, .punto-parpadea circle, .punto-flota, .punto-salta { animation: none !important; }
   .latido { display: flex; }
 }

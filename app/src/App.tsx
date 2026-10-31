@@ -1,15 +1,17 @@
 import { lazy, Suspense } from 'react'
-import { Route, Routes } from 'react-router'
+import { Navigate, Route, Routes } from 'react-router'
 import { useRevela } from './components/movimiento'
 import Landing from './pages/Landing'
 import Obra from './pages/Obra'
 import Reclamar from './pages/Reclamar'
-import Entrar from './pages/Entrar'
 import Artista from './pages/Artista'
 
 // Solo el equipo la usa y trae el generador de QR: se carga aparte
 const Imprimir = lazy(() => import('./pages/Imprimir'))
 import NoEncontrada from './pages/NoEncontrada'
+const Marca = lazy(() => import('./pages/Marca'))
+const Panel = lazy(() => import('./pages/Panel'))
+const Recorrido = lazy(() => import('./pages/Recorrido'))
 
 export default function App() {
   useRevela()
@@ -20,12 +22,36 @@ export default function App() {
       <Route path="/o/:codigo" element={<Obra />} />
       <Route path="/o/:codigo/reclamar" element={<Reclamar />} />
       <Route path="/a/:slug" element={<Artista />} />
-      <Route path="/entrar" element={<Entrar />} />
+      <Route path="/entrar" element={<Navigate to="/panel" replace />} />
+      <Route
+        path="/panel"
+        element={
+          <Suspense fallback={null}>
+            <Panel />
+          </Suspense>
+        }
+      />
       <Route
         path="/imprimir/:codigo"
         element={
           <Suspense fallback={null}>
             <Imprimir />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/recorrido"
+        element={
+          <Suspense fallback={null}>
+            <Recorrido />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/marca"
+        element={
+          <Suspense fallback={null}>
+            <Marca />
           </Suspense>
         }
       />

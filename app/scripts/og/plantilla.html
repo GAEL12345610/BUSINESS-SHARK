@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<style>
+  @font-face { font-family: F; src: url(../../node_modules/@fontsource-variable/fraunces/files/fraunces-latin-opsz-normal.woff2); font-weight: 100 900; }
+  @font-face { font-family: S; src: url(../../node_modules/@fontsource-variable/schibsted-grotesk/files/schibsted-grotesk-latin-wght-normal.woff2); font-weight: 400 900; }
+  @font-face { font-family: M; src: url(../../node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-400-normal.woff2); }
+  * { margin: 0; box-sizing: border-box; }
+  body { width: 1200px; height: 630px; background: #F6F1EA; color: #2B2622; font-family: S; position: relative; overflow: hidden; }
+  .marco { position: absolute; inset: 0; padding: 64px 72px; display: flex; flex-direction: column; justify-content: space-between; }
+  .logo { display: flex; align-items: center; gap: 14px; font-family: F; font-weight: 600; font-size: 40px; }
+  h1 { font-family: F; font-optical-sizing: auto; font-weight: 560; font-size: 74px; line-height: 1.04; letter-spacing: -0.025em; max-width: 720px; }
+  h1 span { color: #A2563D; display: block; }
+  .pie { font-family: M; font-size: 22px; letter-spacing: .08em; color: #5E6C52; text-transform: uppercase; }
+  .sello { position: absolute; right: -90px; top: 120px; width: 470px; height: 470px; border-radius: 50%; background: #FFFDF9; box-shadow: inset 0 0 0 2px #D8CDBB; display: grid; place-items: center; }
+  .sello img { width: 300px; }
+  .onda { position: absolute; border: 2px solid #C06E52; border-radius: 50%; opacity: .25; }
+</style></head>
+<body>
+  <div class="onda" style="right:-160px;top:50px;width:610px;height:610px"></div>
+  <div class="onda" style="right:-230px;top:-20px;width:750px;height:750px;opacity:.12"></div>
+  <div class="sello"><img src="../../public/brand/isotipo.svg" alt=""></div>
+  <div class="marco">
+    <div class="logo"><img src="../../public/brand/isotipo.svg" width="46" height="46" alt="">Brai</div>
+    <h1>Vendiste tu obra.<span>¿Sabes dónde está hoy?</span></h1>
+    <p class="pie">Registro de obra · brai.art</p>
+  </div>
+</body></html>
