@@ -15,6 +15,8 @@ Varias vienen de errores reales en otros proyectos con el mismo stack (React + V
 - [revoke-anon-desde-el-dia-uno](revoke-anon-desde-el-dia-uno.md): Al crear las tablas en Supabase, revoca permisos al rol anon desde el primer día; RLS es un solo candado y conviene tener dos
 - [service-role-nunca-en-vite](service-role-nunca-en-vite.md): Nada con prefijo VITE_ salvo la URL y la anon key de Supabase; la service_role jamás en el frontend. Revisa el bundle después de publicar
 - [endpoint-que-escribe-se-defiende-solo](endpoint-que-escribe-se-defiende-solo.md): Cada función en app/api que escribe datos o gasta dinero valida auth adentro, falla cerrada y saca el usuario del token, nunca del body
+- [funcion-nueva-nace-publica](funcion-nueva-nace-publica.md): En Postgres cada función nueva nace ejecutable por PUBLIC; el revoke de funciones va al FINAL del SQL y se prueba con el rol anon
+- [huella-con-fecha-en-utc](huella-con-fecha-en-utc.md): Si una huella (hash) incluye una fecha, conviértela a texto en UTC con formato fijo, o la cadena se ve rota desde otra zona horaria
 - [supabase-config-se-verifica-por-rechazo](supabase-config-se-verifica-por-rechazo.md): Un cambio en la config de auth de Supabase tarda segundos en aplicar; se verifica viendo el rechazo, no leyendo el flag
 
 ## NFC y demo

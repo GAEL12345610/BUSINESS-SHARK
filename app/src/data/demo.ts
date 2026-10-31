@@ -163,6 +163,27 @@ export function getObra(codigo: string): Obra | null {
   }
 }
 
+/** ¿Esta obra la reclamaste tú, en este navegador? */
+export function esMia(codigo: string) {
+  if (typeof window === 'undefined') return false
+  return Boolean(leerReclamos()[codigo.toUpperCase()])
+}
+
+// Cadena de huellas (docs/TOKENIZAR.md): cada evento lleva la huella del anterior.
+// En la demo es FNV-1a para mostrarlo; en Supabase es SHA-256 (app/supabase/schema.sql).
+function fnv(texto: string) {
+  let h = 0x811c9dc5
+  for (let i = 0; i < texto.length; i++) {
+    h ^= texto.charCodeAt(i)
+    h = Math.imul(h, 0x01000193)
+  }
+  return (h >>> 0).toString(16).padStart(8, '0')
+}
+
+export function huellaRegistro(obra: Obra) {
+  return obra.eventos.reduce((anterior, e) => fnv(`${anterior}|${obra.registro}|${e.tipo}|${e.fecha}|${e.texto}`), '00000000')
+}
+
 export function iniciales(correo: string) {
   const usuario = correo.split('@')[0].replace(/[^a-zA-ZáéíóúñÁÉÍÓÚÑ._]/g, '')
   const partes = usuario.split(/[._]/).filter(Boolean)

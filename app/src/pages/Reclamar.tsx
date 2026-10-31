@@ -37,7 +37,11 @@ export default function Reclamar() {
     e.preventDefault()
     // En la versión real: una función de Supabase hace todo en un paso (docs/PROTOTIPO.md)
     const r = reclamar(obra.codigo, codigoDueno, correo.trim())
-    if (r.ok) setListo(r.iniciales)
+    if (r.ok) {
+      setListo(r.iniciales)
+      // un toque corto en el celular: la obra es tuya
+      if ('vibrate' in navigator) navigator.vibrate([25, 60, 25])
+    }
     else setError(r.error)
   }
 
