@@ -24,7 +24,7 @@ Cómo leer esto: **Para quién** dice si lo hace Ricardo, el equipo o un adulto.
 |---|---|---|---|
 | [ ] | Entrevistar a José Luis + 2 artistas más + 5 compradores | Equipo con adulto | `docs/ENTREVISTAS.md`, `docs/CLIENTES.md` |
 | [ ] | Decidir Oferta A o B con lo que digan los artistas | Equipo | `docs/OFERTA.md`, `docs/DECISIONES.md` #26 |
-| [ ] | Hacer el deck del 26 nov | Equipo | skill `brai-slides` |
+| [ ] | Hacer el deck del 26 nov | Equipo | skill `brai-slides`; las imágenes ya están en `visuales/` |
 | [ ] | Grabar el infomercial (obligatorio para pasar) y confirmar la fecha con el profe | Equipo | `pitch/infomercial_guion.md`, `pitch/clips/` |
 | [ ] | Comprar `brai.art` **antes de bloquear cualquier sello** | Adulto | ~49 MXN el primer año, `docs/COSTOS.md` |
 | [ ] | Llenar los `?` de costos con capturas de MercadoLibre (etiquetas VOID, tarjetas) | Equipo | `docs/COSTOS.md` |
@@ -62,5 +62,6 @@ Cómo leer esto: **Para quién** dice si lo hace Ricardo, el equipo o un adulto.
 - [x] Panel del artista de ejemplo y recorrido de 5 pasos con calculadora de precios.
 - [x] Mascota Punto y kit de marca vivo en `/marca`.
 - [x] Imagen para compartir (`og.png`) y clip vertical de la escena del sello.
+- [x] Todos los visuales en PNG, PDF, PPTX y GIF en `visuales/` (para la Chromebook). Se regeneran con `visuales/generar.cjs` y `visuales/deck.cjs`.
 - [x] Backend en migraciones con 21 pruebas, verificación del 424 DNA y cadena de huellas.
 - [x] Competencia, costos cotizados, Oferta B en prueba.

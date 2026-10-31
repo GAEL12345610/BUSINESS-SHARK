@@ -2,7 +2,7 @@
 
 *Cada obra sabe de dónde viene.*
 
-Kit visual: `brand/kit.html` (ábrelo en el navegador) y el kit vivo en la app, ruta `/marca`. Logos: `brand/isotipo*.svg`. Mascota: `docs/MASCOTA.md`.
+Kit visual: `brand/kit.html` (ábrelo en el navegador) y el kit vivo en la app, ruta `/marca`. Logos: `brand/isotipo*.svg`. Mascota: `docs/MASCOTA.md`. **Todo en PNG, PDF y PPTX: `visuales/`.**
 
 ## 0. Lo que Brai tiene que hacer sentir (léelo antes de diseñar cualquier cosa)
 

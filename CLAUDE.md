@@ -47,6 +47,7 @@ Eres **socio y consultor de negocio** del equipo (estilo Alex Hormozi + Euge Oll
 | Mascota Punto (por qué es así y dónde sale) | `docs/MASCOTA.md` |
 | Análisis inicial con datos y fuentes | `docs/ANALISIS.md` |
 | Marca (logo, colores, fuentes, voz) | `brand/BRAND.md` + `brand/kit.html` |
+| **Visuales en PNG, PDF, PPTX y GIF** (para la Chromebook) | **`visuales/`** (índice en `visuales/README.md`) |
 | Wireframes, estructura de cada pantalla y auditoría de diseño | `docs/wireframes/README.md`, `docs/wireframes/AUDITORIA.md` |
 | Por qué no NFT y la cadena de huellas | `docs/TOKENIZAR.md` |
 | Base de datos (tablas, RLS, reclamar, 424 DNA, cadena de huellas) y sus pruebas | `app/supabase/migrations/`, `app/supabase/pruebas/` |
