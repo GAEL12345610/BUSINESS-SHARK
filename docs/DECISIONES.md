@@ -2,6 +2,19 @@
 
 Una línea por decisión, con su porqué. Lo más reciente arriba. Si una decisión cambia, se tacha y se agrega la nueva con fecha: nunca se borra.
 
+## 31 oct 2026 (diseño de la web y la app, sobre los drafts del equipo)
+
+| # | Decisión | Por qué |
+|---|---|---|
+| 17 | **Headline de la landing: "Vendiste tu obra. ¿Sabes dónde está hoy?"** El tagline "Cada obra sabe de dónde viene" cierra la página. Sale "Conectando artistas con sus compradores". | Nombra el dolor real (#1). "Conectando" suena a marketplace y Brai no vende obra. |
+| 18 | **El botón de la página de la obra es "Reclamar mi obra"**, no "Inicia sesión". El artista entra por un link chico abajo. | El comprador nunca crea cuenta: raspa y escribe código y correo (`SEGURIDAD_OBRA.md`, paso 4). |
+| 19 | **Header de la obra: foto a sangre con marco del color del artista** (ejemplo 2 del draft) y sello dorado "Registrada por el artista". | La obra manda y el color hace el white label (#10). "Verificado por Brai" promete algo que Brai no hace. |
+| 20 | **La landing es para jurado y artistas.** Botón 1 "Ver una obra registrada" (demo real), botón 2 "Quiero registrar mis obras" (correo del equipo, revisado por un adulto). | El jurado ve la demo con un toque; el artista tiene por dónde escribir. |
+| 21 | **La página de la obra lleva lo que el draft no tenía:** ficha en monoespaciada, fotos huella, línea de tiempo de dueños con iniciales y sello "Registro Brai". El video del artista va después de la cédula, sin autoplay. | Sin esas capas es un portafolio, no un registro. El video pesa: con datos en la Expo, primero carga lo que prueba. |
+| 22 | **Teléfono 3D y tarjetas 3D con CSS, sin librería de 3D.** El teléfono muestra la página real de la obra. | Mismo efecto para el jurado, sin cientos de KB en celulares de gama media. |
+| 23 | **La app vive en `app/` dentro del repo**, que se clona en `C:\dev\brai`. | Un solo repo, un solo historial. Sigue fuera de OneDrive (#16). |
+| 24 | **El artista de la demo es José Luis Malo, con candados:** solo su nombre y "Los olvidados" (del draft); ficha, historia y dueños marcados como ejemplo con aviso visible; todo en `app/src/data/demo.ts`. **No se publica con su nombre hasta que firme el permiso de fundador.** | Lo pidió el equipo. Es persona real sin entrevistar: inventarle datos en público rompe la regla 3 y arriesga su "sí". |
+
 ## 10 oct 2026 (sesión de análisis con Claude, grill de 3 rondas)
 
 | # | Decisión | Por qué |
