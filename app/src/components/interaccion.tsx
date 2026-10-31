@@ -133,9 +133,9 @@ export function EscenaSello({ titulo, artista, registro, imagen }: { titulo: str
             <p className="font-mono text-xs uppercase tracking-[0.16em] text-verde">En la vida real</p>
             <ol className="mt-4 space-y-4 md:mt-6 md:space-y-7">
               {PASOS_ESCENA.map((s, i) => (
-                <li key={s.titulo} className={`border-l-2 pl-4 transition-all duration-500 ${i === paso ? 'border-terracota opacity-100' : 'border-linea opacity-40'}`}>
+                <li key={s.titulo} className={`border-l-2 pl-4 transition-all duration-500 ${quieta || i === paso ? 'border-terracota opacity-100' : 'border-linea opacity-40'}`}>
                   <h3 className="font-display text-xl font-semibold sm:text-2xl md:text-3xl">{s.titulo}</h3>
-                  <p className={`mt-1 leading-relaxed text-tinta/80 ${i === paso ? 'block' : 'hidden md:block'}`}>{s.texto}</p>
+                  <p className={`mt-1 leading-relaxed text-tinta/80 ${quieta || i === paso ? 'block' : 'hidden md:block'}`}>{s.texto}</p>
                 </li>
               ))}
             </ol>
