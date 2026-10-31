@@ -22,6 +22,19 @@ A quién NO: artista que todavía no vende, o que solo vende prints baratos. Par
 
 **El número que vende:** el año 1 cuesta 19,380 MXN. Si su obra vale 12,000, **con 2 ventas extra a gente que ya le compró, Brai se paga**. Desde el año 2 son 11,880: **una sola venta**.
 
+## Oferta B, en prueba (31 oct 2026)
+La competencia que da servicio en persona (Tagsmart) **cobra por obra**, no por mes. Y 990 al mes es el doble o el triple de lo que cobra el software hazlo tú mismo. Por eso en cada entrevista se presentan **las dos** y se anota cuál escoge el artista y por qué.
+
+| Concepto | Precio | Incluye |
+|---|---|---|
+| **Arranque** | **2,500 MXN** | Página del artista, sesión de registro en su taller, **5 obras** con sello, fotos huella y tarjeta. |
+| **Por obra adicional** | **450 MXN** | Sello, tarjeta firmada con raspadita, registro, reclamo y transferencias de por vida. |
+| Mensualidad | **0** | |
+
+**El número que vende B:** en una obra de 12,000 MXN, Brai cuesta menos del 4%. La galería cobra 40 a 50%.
+**El riesgo de B:** necesitas ~4 veces más clientes para ganar lo mismo que con A (cuentas en `COSTOS.md`).
+**Cómo se decide:** si 2 de 3 artistas entrevistados escogen B, B pasa a ser la oferta vigente y se anota en `DECISIONES.md`.
+
 ## Cliente fundador (solo los primeros 3)
 **Para:** José Luis Malo primero.
 - Setup **gratis** y **3 meses gratis**.
@@ -39,5 +52,5 @@ Lo que se desbloquea lo decide cada artista. **Pendiente validar con compradores
 
 ## Lo que NUNCA prometemos
 - "Imposible de falsificar" o "blockchain".
-- Montos de derecho de reventa (la ley lo da, el porcentaje lo fija INDAUTOR).
+- Montos de derecho de reventa. La ley lo da (4% en obras revendidas hasta 50,000 MXN), pero **solo en reventas por subasta, galería o comerciante**, no entre particulares, y la sociedad de gestión se queda hasta el 15%. En una obra de 12,000 son ~408 MXN. Es beneficio secundario, nunca argumento principal (`COMPETENCIA.md`, sección 3).
 - Ventas garantizadas.
