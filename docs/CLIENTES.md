@@ -46,7 +46,7 @@ o pilotos. El perfil de cliente ideal y el precio están en `OFERTA.md`.
   - ¿Sabe quién compró sus obras?: ?
   - ¿Ha tenido problemas de copias o dudas de autenticidad?: ?
   - ¿Cuántas obras reales aportaría al piloto?: ?
-- **Próxima acción:** ESTA SEMANA, entrevista de 15 min con el guion de `ENTREVISTAS.md`,
+- **Próxima acción:** reunión con el guion de `REUNION_JOSE_LUIS.md` (entrevista primero, luego el recorrido),
   con un adulto presente. Si el dolor existe, ofrecerle ser **cliente fundador**
   (condiciones en `OFERTA.md`).
 - **Notas:**

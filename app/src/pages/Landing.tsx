@@ -2,7 +2,8 @@ import { useState } from 'react'
 import { Link } from 'react-router'
 import { ArrowRight, Check, X } from 'lucide-react'
 import { BarraProgreso, TarjetaTilt, Telefono3D } from '../components/movimiento'
-import { Isotipo, Logo, SelloNFC, TarjetaDueno } from '../components/marca'
+import { Logo, SelloNFC, TarjetaDueno } from '../components/marca'
+import { Punto } from '../components/punto'
 import { Cifra, EscenaSello, LinkReclamarDemo, Pregunta, Raspadita } from '../components/interaccion'
 import { ARTISTA, CODIGO_DEMO, OBRAS } from '../data/demo'
 
@@ -74,12 +75,13 @@ export default function Landing() {
       <header className="sticky top-0 z-30 bg-lienzo">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3.5 sm:px-6">
           <Logo />
-          <Link
-            to={`/o/${OBRA_DEMO.codigo}`}
-            className="rounded-[10px] px-3 py-2 text-sm font-medium text-terracota-btn hover:text-terracota-hover hover:underline"
-          >
-            Ver una obra registrada
-          </Link>
+          <nav aria-label="Principal" className="flex items-center gap-1 text-sm sm:gap-2">
+            <a href="#como-funciona" className="hidden rounded-[10px] px-3 py-2 hover:underline sm:inline">Cómo funciona</a>
+            <a href="#para-ti" className="hidden rounded-[10px] px-3 py-2 hover:underline sm:inline">Para artistas</a>
+            <Link to="/panel" className="rounded-[10px] px-3 py-2 font-medium text-terracota-btn hover:text-terracota-hover hover:underline">
+              Entrar
+            </Link>
+          </nav>
         </div>
         <BarraProgreso />
       </header>
@@ -164,7 +166,7 @@ export default function Landing() {
         <EscenaSello titulo={OBRA_DEMO.titulo} artista={ARTISTA.nombre} registro={OBRA_DEMO.registro} imagen={OBRA_DEMO.imagen} />
 
         {/* Cómo funciona */}
-        <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 md:py-28">
+        <section id="como-funciona" className="mx-auto max-w-6xl scroll-mt-20 px-4 py-20 sm:px-6 md:py-28">
           <div className="revela max-w-2xl">
             <Kicker>Cómo funciona</Kicker>
             <h2 className="mt-4 font-display text-3xl font-semibold leading-tight tracking-[-0.01em] sm:text-[2.6rem]">
@@ -180,6 +182,53 @@ export default function Landing() {
               </li>
             ))}
           </ol>
+        </section>
+
+        {/* Lo que ve el artista: el corazón de la oferta */}
+        <section id="para-ti" className="scroll-mt-20 border-t border-linea bg-white">
+          <div className="mx-auto grid max-w-6xl items-center gap-14 px-4 py-20 sm:px-6 md:grid-cols-[1fr_1.1fr] md:py-28">
+            <div className="revela">
+              <Kicker>Lo que ves tú</Kicker>
+              <h2 className="mt-4 font-display text-3xl font-semibold leading-tight tracking-[-0.01em] sm:text-[2.6rem]">
+                Tu panel te dice quién tiene cada obra.
+              </h2>
+              <p className="mt-5 max-w-xl text-lg leading-relaxed text-tinta/85">
+                Cuando tu comprador reclama la obra, aparece en tu panel con su nombre y su correo. Cuando terminas una obra nueva, les avisas
+                primero a quienes ya te compraron. En público, el dueño solo sale con sus iniciales.
+              </p>
+              <Link
+                to="/panel"
+                className="mt-8 inline-flex items-center gap-2 rounded-[10px] border-[1.5px] border-tinta px-6 py-3.5 font-semibold transition-colors hover:bg-tinta/5"
+              >
+                Ver el panel de ejemplo <ArrowRight size={18} />
+              </Link>
+            </div>
+            <div className="revela">
+              <TarjetaTilt className="rounded-2xl border border-linea bg-lienzo p-6">
+                <div className="flex items-center justify-between [transform:translateZ(24px)]">
+                  <p className="font-semibold">Quién tiene tu obra</p>
+                  <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-verde">Ejemplo</span>
+                </div>
+                <ul className="mt-4 divide-y divide-linea border-y border-linea [transform:translateZ(16px)]">
+                  {[
+                    { nombre: 'Mariana Ruiz', correo: 'mariana.ruiz@ejemplo.com', obra: 'Sin título I', desde: '24 oct 2026' },
+                    { nombre: 'Andrés Gómez', correo: 'andres.g@ejemplo.com', obra: 'Sin título II', desde: '28 oct 2026' },
+                  ].map((d) => (
+                    <li key={d.correo} className="py-3">
+                      <p className="flex items-center gap-2 font-semibold">
+                        <i className="size-2 rounded-full bg-dorado" /> {d.nombre}
+                      </p>
+                      <p className="font-mono text-xs text-tinta/75">{d.correo}</p>
+                      <p className="text-xs text-tinta/65">{d.obra} · desde {d.desde}</p>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-4 inline-flex rounded-[10px] bg-terracota-btn px-4 py-2.5 text-sm font-semibold text-lienzo [transform:translateZ(30px)]">
+                  Avisarles de tu obra nueva
+                </div>
+              </TarjetaTilt>
+            </div>
+          </div>
         </section>
 
         {/* Las 3 piezas */}
@@ -359,7 +408,7 @@ export default function Landing() {
         {/* Cierre */}
         <section className="mx-auto max-w-6xl px-4 py-24 sm:px-6 md:py-32">
           <div className="revela flex flex-col items-start gap-8">
-            <Isotipo size={64} />
+            <Punto tam={110} mira interactivo frases={['Hola, soy Punto.', 'Vivo detrás del cuadro.', 'Acércame un celular.', 'Yo me acuerdo de todo.']} />
             <h2 className="max-w-3xl font-display text-4xl font-semibold leading-[1.08] tracking-[-0.02em] sm:text-6xl">
               Cada obra sabe de dónde viene.
             </h2>
@@ -374,9 +423,24 @@ export default function Landing() {
       </main>
 
       <footer className="border-t border-linea">
-        <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-8 text-sm text-verde sm:flex-row sm:items-center sm:justify-between sm:px-6">
-          <span>Brai es un proyecto de estudiantes para Business Shark 8°.</span>
-          <span className="font-mono text-xs">Registro de propiedad y procedencia</span>
+        <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 text-sm sm:px-6 md:grid-cols-[1.4fr_1fr_1fr]">
+          <div>
+            <Logo />
+            <p className="mt-3 text-verde">Registro de propiedad y procedencia para artistas independientes.</p>
+            <p className="mt-4 font-mono text-xs text-verde">Proyecto de estudiantes para Business Shark 8°, 2026.</p>
+          </div>
+          <nav aria-label="Brai" className="flex flex-col gap-2">
+            <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-verde">Brai</p>
+            <Link to={`/o/${OBRA_DEMO.codigo}`} className="hover:underline">Obra de ejemplo</Link>
+            <Link to={`/a/${ARTISTA.slug}`} className="hover:underline">Página de artista</Link>
+            <Link to="/panel" className="hover:underline">Panel del artista</Link>
+            <Link to="/recorrido" className="hover:underline">Recorrido en 5 minutos</Link>
+          </nav>
+          <nav aria-label="Más" className="flex flex-col gap-2">
+            <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-verde">Más</p>
+            <Link to="/marca" className="hover:underline">Marca y mascota</Link>
+            <a href="/privacidad" className="hover:underline">Aviso de privacidad</a>
+          </nav>
         </div>
       </footer>
     </>

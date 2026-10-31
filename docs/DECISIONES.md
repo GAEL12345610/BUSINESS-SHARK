@@ -2,6 +2,15 @@
 
 Una línea por decisión, con su porqué. Lo más reciente arriba. Si una decisión cambia, se tacha y se agrega la nueva con fecha: nunca se borra.
 
+## 31 oct 2026, cuarta sesión (prototipo para José Luis, mascota)
+
+| # | Decisión | Por qué |
+|---|---|---|
+| 38 | **La demo se personaliza por link:** `/recorrido?para=Nombre` pinta ese nombre solo en el navegador de quien lo abre. No se guarda en el código ni en el sitio, y se borra al cerrar la pestaña. Con nombre personalizado, la historia de la obra pasa a texto neutro. | Permite enseñarle a José Luis la demo con su nombre sin publicarlo (#24 y #36) y sin atribuirle una cita que no dijo (regla 3). |
+| 39 | **Mascota propia, Punto (el sello con cara), en lugar de copiar una existente.** Se copian los principios de Michelin, Duolingo y el anti ejemplo de Clippy, no el dibujo. | Las mascotas famosas son marcas registradas, copiarlas nos baja en Innovación y no cuentan nuestra historia. Detalle en `MASCOTA.md`. |
+| 40 | **El prototipo para la reunión es `/recorrido` + `/panel`.** El recorrido tiene 5 pasos y una calculadora con Oferta A y B. La landing pública solo enseña la Oferta A, que sigue vigente. | El artista compra por lo que ve él (el panel), no por lo que ve el comprador. Y la entrevista tiene que probar A contra B (#26). |
+| 41 | **La imagen para compartir usa la dirección de Vercel** hasta que exista `brai.art`. | WhatsApp no puede bajar una imagen de un dominio que no existe. |
+
 ## 31 oct 2026, cierre (se unen las dos ramas)
 
 | # | Decisión | Por qué |
