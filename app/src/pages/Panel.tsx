@@ -6,7 +6,7 @@ import { Link } from 'react-router'
 import { ArrowUpRight, Check, Mail, Plus, Printer } from 'lucide-react'
 import { Logo } from '../components/marca'
 import { Punto } from '../components/punto'
-import { ARTISTA, CODIGO_DEMO, fecha, panel, registrarObra, type Obra } from '../data/demo'
+import { ARTISTA, CODIGO_DEMO, MODO_JOSE_LUIS, fecha, panel, registrarObra, reiniciarDemo, type Obra } from '../data/demo'
 
 /** Achica la foto en el navegador para que quepa en la demo (máx. 900 px, JPG). */
 async function achicar(archivo: File): Promise<string> {
@@ -66,7 +66,23 @@ export default function Panel() {
         </div>
       </header>
       <p className="bg-arena px-4 py-2 text-center text-[12px] leading-snug text-tinta/80">
-        Así se ve tu panel. Los datos son de ejemplo y lo que hagas aquí vive solo en esta pestaña.
+        {MODO_JOSE_LUIS
+          ? 'Demostración para José Luis. Sus obras salen de fuentes públicas y ninguna está registrada todavía.'
+          : 'Así se ve tu panel. Los datos son de ejemplo.'}{' '}
+        Lo que hagas aquí se guarda solo en este navegador.{' '}
+        <button
+          type="button"
+          onClick={() => {
+            if (confirm('¿Borrar lo que se reclamó y registró en esta demo?')) {
+              reiniciarDemo()
+              setVersion((v) => v + 1)
+              setNueva(null)
+            }
+          }}
+          className="underline underline-offset-2"
+        >
+          Reiniciar demo
+        </button>
       </p>
 
       <main className="mx-auto max-w-5xl px-4 pb-24 pt-10 sm:px-6">

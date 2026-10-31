@@ -23,6 +23,8 @@ export default function App() {
       <Route path="/o/:codigo/reclamar" element={<Reclamar />} />
       <Route path="/a/:slug" element={<Artista />} />
       <Route path="/entrar" element={<Navigate to="/panel" replace />} />
+      {/* Demo para José Luis Malo (DECISIONES #42): activa su modo y abre el recorrido */}
+      <Route path="/jose-luis" element={<Navigate to="/recorrido" replace />} />
       <Route
         path="/panel"
         element={

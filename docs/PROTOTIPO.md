@@ -31,12 +31,8 @@ Después del 26 nov: transferir desde el dueño, club de coleccionistas, aviso p
 - Fuentes autohospedadas (`@fontsource`), nada de Google Fonts.
 - Todo vive en `C:\dev\brai\app`, **fuera de OneDrive**.
 
-## Candado de José Luis Malo (DECISIONES #24 y #36)
-Lo publicado usa una artista inventada (**Lucía Arce, marcada como ejemplo**). Para ver la demo con el nombre de José Luis **solo en tu compu**, crea `app/.env.local` con:
-```
-VITE_DEMO_JOSE_LUIS=1
-```
-Nunca pongas esa variable en Vercel hasta que él firme el permiso de fundador.
+## Demo de José Luis Malo (DECISIONES #42)
+`braiart.vercel.app/jose-luis`: sus obras públicas con fuente, sin dueños ni fotos inventadas. Detalle en `docs/DEMO_JOSE_LUIS.md`.
 
 ## Pruebas
 ```bash

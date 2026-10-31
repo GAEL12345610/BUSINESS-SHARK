@@ -5,7 +5,7 @@ Todo lo visual de Brai en formatos que abre cualquier computadora, incluida la C
 ## Para abrir rápido
 | Archivo | Qué es |
 |---|---|
-| **`Brai-visuales.pptx`** | Presentación de 12 diapositivas: logo, color, tipografía, Punto, piezas físicas y pantallas del prototipo. Ábrela con Google Slides. |
+| **`Brai-visuales.pptx`** | Presentación de 13 diapositivas: logo, color, tipografía, Punto, piezas físicas, pantallas del prototipo y la demo de José Luis. Ábrela con Google Slides. |
 | **`Brai-visuales.pdf`** | La misma presentación en PDF. Se abre directo en la Chromebook. |
 | `imprimir/piezas-BRAI-0001-carta.pdf` | Tarjeta de dueño, sello y QR en **tamaño real**, hoja carta. Para imprimir. |
 
@@ -18,11 +18,11 @@ Todo lo visual de Brai en formatos que abre cualquier computadora, incluida la C
 | `pantallas/celular/` | Cada pantalla a 390 px de ancho. `nombre.png` es lo primero que se ve; `nombre-completa.png` es la página entera. |
 | `pantallas/escritorio/` | Lo mismo a 1440 px. |
 | `imprimir/` | Piezas para imprimir en PNG y en PDF tamaño carta. |
-| `obras-ejemplo/` | Las 4 pinturas de ejemplo (inventadas, no son de ningún artista). |
+| `obras-ejemplo/` | Las 4 pinturas de ejemplo (inventadas, no son de ningún artista) y los marcos "foto pendiente" de las obras de José Luis. |
 | `compartir/` | La imagen que sale al pegar el link en WhatsApp y el ícono para celular. |
 | `clips/` | La escena del sello en GIF (se ve en cualquier lado) y un cuadro fijo. El video original en MP4 está en `pitch/clips/`. |
 
-**Pantallas:** `landing`, `obra`, `reclamar`, `artista`, `panel`, `recorrido`, `marca`. Los datos que salen son de ejemplo (Lucía Arce es una artista inventada).
+**Pantallas:** `landing`, `obra`, `reclamar`, `artista`, `panel`, `recorrido`, `marca` (con Lucía Arce, artista inventada) y `jose-luis-recorrido`, `jose-luis-obra`, `jose-luis-artista` (demo de José Luis con sus datos públicos, `docs/DEMO_JOSE_LUIS.md`).
 
 ## Volver a generar todo
 Necesita Playwright con Chromium y ffmpeg.

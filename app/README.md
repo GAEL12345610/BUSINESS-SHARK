@@ -22,6 +22,7 @@ Rutas de la demo:
 | `/a/ejemplo` | Página del artista (`/a/jose-luis-malo` con el candado abierto, ver abajo) |
 | `/imprimir/7KQ2X` | Tarjeta, sello y QR en tamaño real para imprimir |
 | `/panel` | Panel del artista de ejemplo: quién tiene cada obra, avisar a coleccionistas, registrar obra |
+| `/jose-luis` | Demo para José Luis Malo: sus obras reales con fuente (`docs/DEMO_JOSE_LUIS.md`). Salir: `/?salir-demo`. El modo vive en `localStorage` |
 | `/recorrido?para=Nombre` | Recorrido de 5 pasos con calculadora de Oferta A y B. El nombre vive solo en esa pestaña |
 | `/marca` | Kit de marca vivo y la mascota Punto |
 
@@ -61,9 +62,9 @@ pnpm test:db
 
 `pnpm test` prueba la verificación del 424 DNA con el vector oficial de NXP.
 
-## Candado de José Luis Malo
+## Demo de José Luis Malo
 
-Lo que se publica usa una artista **inventada** (Lucía Arce, marcada como ejemplo). Para ver la demo con el nombre de José Luis **solo en tu compu**, crea `.env.local` con `VITE_DEMO_JOSE_LUIS=1`. Nunca pongas esa variable en Vercel hasta que él firme el permiso de fundador (`docs/DECISIONES.md` #24 y #36).
+`/jose-luis` activa su modo (sus obras públicas con fuente). También se activa solo al abrir una de sus obras, por ejemplo al escanear el QR impreso. `/?salir-demo` regresa a la artista de ejemplo. Reglas y fuentes: `docs/DEMO_JOSE_LUIS.md`. Los marcos "foto pendiente" se regeneran con `node scripts/marcos-jose-luis.mjs`.
 
 ## Publicar en Vercel
 

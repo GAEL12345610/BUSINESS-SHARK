@@ -7,8 +7,10 @@
 
 ## Antes (el día anterior)
 - [ ] Un adulto confirmó día, hora y lugar, y va a estar presente.
-- [ ] Probar el link en un iPhone y en un Android: `https://<link-de-vercel>/recorrido?para=José%20Luis%20Malo`.
-- [ ] Imprimir las piezas en `/imprimir/7KQ2X` (tarjeta, sello y QR) y pegarlas en un cartón o en el reverso de un cuadro viejo.
+- [ ] Probar el link en un iPhone y en un Android: `https://braiart.vercel.app/jose-luis`. Qué es real y qué no en la demo: `docs/DEMO_JOSE_LUIS.md`.
+- [ ] En el panel, tocar **Reiniciar demo** para empezar limpio.
+- [ ] Imprimir las piezas de *Toricleto* en `braiart.vercel.app/imprimir/TQ4RC` (tarjeta, sello y QR) y pegarlas en un cartón. El QR abre la demo.
+- [ ] **Hacer todo el recorrido en un mismo celular:** lo que se reclama en un celular no aparece en otro hasta conectar Supabase.
 - [ ] Si quieren que el sello NFC funcione en la reunión: grabar un sticker de prueba con la URL de Vercel **sin bloquearlo**. Nunca bloquear un sello que no apunte a `brai.art` (regla 4, `memoria/tag-nfc-bloqueado-es-para-siempre.md`). El QR impreso funciona igual.
 - [ ] Celular cargado y con datos propios (no depender del wifi).
 - [ ] Llevar impreso o en el celular este guion y la tabla de "Qué anotar".
@@ -32,6 +34,9 @@ Abrir el link personalizado y seguir el recorrido:
 
 ### 3. Precio (5 min): pregunta 9 de `ENTREVISTAS.md`
 "Hay dos formas de pagarlo. ¿Cuál escogerías y por qué?" **No defender ninguna.** Anotar su frase exacta.
+
+### 3.5. Registrar una obra suya en vivo (opcional, 2 min)
+Si está en su taller: en el panel, "Registrar obra", foto con el celular, título. En un minuto tiene su página y sus piezas para imprimir. Antes, pedirle permiso de tomar la foto.
 
 ### 4. Fundador (5 min)
 Leerle el paso 5 del recorrido (lo que le damos y lo que le pedimos). Si dice que sí: **no firmar nada ese día.** El permiso por escrito lo redacta y lo revisa un adulto después.

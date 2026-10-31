@@ -96,11 +96,18 @@
 @keyframes punto-onda { from { opacity: .8; transform: scale(.9); } to { opacity: 0; transform: scale(1.7); } }
 @keyframes punto-salto { 0%, 100% { transform: translateY(0); } 30% { transform: translateY(-14px) rotate(-4deg); } 55% { transform: translateY(0) scale(1.04, .96); } 70% { transform: translateY(-5px); } }
 @keyframes punto-flota { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
-.punto-parpadea ellipse, .punto-parpadea circle { transform-box: fill-box; transform-origin: center; animation: punto-parpadeo 4.2s infinite; }
+.punto-parpadea ellipse, .punto-parpadea circle, .punto-parpadea rect { transform-box: fill-box; transform-origin: center; animation: punto-parpadeo 4.2s infinite; }
 .punto-onda { transform-box: fill-box; transform-origin: center; animation: punto-onda 1.2s var(--ease-suave) both; }
 .punto-salta { animation: punto-salto 900ms var(--ease-suave) 350ms both; }
 .punto-ladea { transform: rotate(-9deg); transition: transform 500ms var(--ease-suave); }
 .punto-flota { animation: punto-flota 3.6s ease-in-out infinite; }
+@keyframes punto-brinco { 0%, 100% { transform: translateY(0); } 35% { transform: translateY(-6px); } }
+@keyframes punto-saludo { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-70deg); } 50% { transform: rotate(-35deg); } 75% { transform: rotate(-70deg); } }
+@keyframes punto-pata { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
+.punto-brinca { animation: punto-brinco 500ms var(--ease-suave) 2; }
+.punto-saluda { animation: punto-saludo 900ms ease-in-out; }
+.punto-pata-a { animation: punto-pata 250ms ease-in-out 4; }
+.punto-pata-b { animation: punto-pata 250ms ease-in-out 125ms 4; }
 
 /* Hoja de piezas físicas: tamaño real, colores tal cual */
 @page { size: letter; margin: 12mm; }
@@ -114,6 +121,6 @@
   .js .revela { opacity: 1; transform: none; }
   /* las animaciones infinitas a 1 ms parpadean: se apagan */
   .onda, .latido, .punto-onda { animation: none !important; display: none; }
-  .punto-parpadea ellipse, .punto-parpadea circle, .punto-flota, .punto-salta { animation: none !important; }
+  .punto-parpadea ellipse, .punto-parpadea circle, .punto-parpadea rect, .punto-flota, .punto-salta, .punto-brinca, .punto-saluda, .punto-pata-a, .punto-pata-b { animation: none !important; }
   .latido { display: flex; }
 }

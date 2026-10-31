@@ -68,6 +68,7 @@ Todo lo pendiente, con quién lo hace y dónde, vive en **[`TODO.md`](TODO.md)**
 | `/o/7KQ2X` | Página de una obra de ejemplo (código de dueño `4K7P-9QX2`) |
 | `/a/ejemplo` | Página de la artista de ejemplo |
 | `/panel` | Panel del artista (ejemplo) |
+| `/jose-luis` | **Demo para José Luis Malo** con sus obras reales (`docs/DEMO_JOSE_LUIS.md`). Salir: `/?salir-demo` |
 | `/recorrido?para=Nombre` | Recorrido de 5 minutos para enseñárselo a un artista |
 | `/marca` | Kit de marca vivo y la mascota Punto |
 | `/imprimir/7KQ2X` | Tarjeta, sello y QR en tamaño real |
