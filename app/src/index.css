@@ -76,6 +76,13 @@
 .capa { animation: aparece 250ms ease-out; }
 .marca-huella { animation: marca 600ms var(--ease-suave) 150ms both; }
 
+/* Hoja de piezas físicas: tamaño real, colores tal cual */
+@page { size: letter; margin: 12mm; }
+@media print {
+  html, body { background: #fff; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 1ms !important; transition-duration: 1ms !important; scroll-behavior: auto !important; }
   .js .revela { opacity: 1; transform: none; }
