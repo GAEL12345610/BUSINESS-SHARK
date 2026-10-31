@@ -10,7 +10,7 @@ Fecha: 31 oct 2026. Fuentes al final. Lo que no se pudo confirmar dice `?`.
 
 | Quién | Qué vende | A quién | Cómo cobra | Chip |
 |---|---|---|---|---|
-| **Verisart** (EUA, Reino Unido) | Certificado digital + packs físicos (NFC, QR, holograma) | Artistas, galerías, tiendas Shopify | Gratis (1 certificado), Growth 29.99 USD al mes, Premium 49.99, Pro 99.99. En Shopify, 0.25 USD por venta certificada | NFC o QR de seguridad, se compra aparte |
+| **Verisart** (EUA, Reino Unido) | Certificado digital + packs físicos (NFC, QR, holograma) | Artistas, galerías, tiendas Shopify | Starter a 1 USD por certificado, Growth 29.99 USD al mes, Premium 49.99, Pro 99.99. En Shopify, 0.25 USD por venta certificada | **NFC Pack: 25 sellos por 50 USD más envío (2 USD por sello).** QR Pack: 25 por 25 USD. Verificado en su página el 31 oct 2026 |
 | **Tagsmart** (Reino Unido) | Servicio administrado: certificado + etiqueta con ADN sintético | Artistas e impresores | Plataforma gratis. **Cobra por obra:** de 20 a 120 libras según el soporte (papel, aluminio, lienzo) | Etiqueta con ADN, no NFC |
 | **Artwork Archive** (EUA) | Inventario de obra + contactos de coleccionistas + certificados en PDF | Artistas y coleccionistas | Suscripción de ~8 a 24 USD al mes | Ninguno |
 | **Arteïa** (Francia) | Pasaporte digital con NFC cifrado + "VIP Room" para el dueño | Casas de subasta, galerías, herederos | `?` (venta a la medida) | NFC cifrado, se destruye si lo despegas |
@@ -26,6 +26,7 @@ Fecha: 31 oct 2026. Fuentes al final. Lo que no se pudo confirmar dice `?`.
 ## 2. Lo que aprendimos de cada uno (y qué copiamos)
 
 ### Verisart: el líder, y su truco es el físico
+- **Dato verificado (31 oct 2026, verisart.com/pricing):** cobran **2 USD por sello NFC** (pack de 25 en 50 USD más envío). A nosotros un NTAG 424 DNA nos cuesta 0.92 euros (~19 MXN) en Shop NFC. El sello solo, a precio de Verisart, ya deja margen.
 - **Cómo gana dinero de verdad:** el software es casi gratis; el margen está en los **packs físicos** (NFC, QR, certificados con holograma) y en la **comisión por venta** en Shopify.
 - **El truco de producto que copiamos:** su certificado sube de nivel ("COA+") cuando ligas un chip físico a la obra. La página **enseña el nivel de confianza**. Brai hace lo mismo: la página de la obra dice qué capas tiene (sello, fotos huella, dueño reclamado).
 - **Su debilidad:** todo es "hazlo tú mismo", en inglés, con la palabra blockchain al frente. El artista mexicano promedio no va a configurar Shopify.
