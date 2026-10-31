@@ -12,7 +12,18 @@ pnpm dev
 
 Abre `http://localhost:5173`. Para verla en tu celular (misma red wifi), abre la dirección "Network" que imprime la terminal, por ejemplo `http://192.168.1.20:5173/o/7KQ2X`.
 
-Obras de la demo: `/o/7KQ2X` (Los olvidados, sin reclamar), `/o/M3RT8` (ya tiene dueño), `/o/P9WD4`, `/o/H2ZC6`. Código de dueño: `4K7P-9QX2`. Los reclamos se borran al cerrar la pestaña.
+Rutas de la demo:
+
+| Ruta | Qué es |
+|---|---|
+| `/` | Landing |
+| `/o/7KQ2X` | Los olvidados, sin reclamar. Código de dueño: `4K7P-9QX2` |
+| `/o/M3RT8` | Una obra que ya tiene dueño |
+| `/a/jose-luis-malo` | Página del artista |
+| `/imprimir/7KQ2X` | Tarjeta, sello y QR en tamaño real para imprimir |
+| `/entrar` | Panel del artista (pendiente) |
+
+Los reclamos de la demo se borran al cerrar la pestaña.
 
 ## Probar la versión de producción
 
@@ -33,6 +44,16 @@ El build prerenderiza la landing en `dist/index.html` (para que Google y los mod
 | Teléfono 3D, tarjetas 3D, barra de progreso | `src/components/movimiento.tsx` |
 | Logo, sello NFC, tarjeta de dueño, sello Registro Brai | `src/components/marca.tsx` |
 | Pinturas de ejemplo | `scripts/pinturas.mjs` genera `public/obras/*.svg` |
+
+## Base de datos (Supabase)
+
+`supabase/schema.sql` es todo el esquema. Cuando creen el proyecto en Supabase: SQL Editor, pegar el archivo completo, Run.
+
+Para probarlo sin Supabase, en un Postgres local:
+```
+psql -v ON_ERROR_STOP=1 -f supabase/prueba_base.sql -f supabase/schema.sql -f supabase/prueba.sql
+```
+Revisa que nadie sin sesión lea tablas, que un artista no toque obras ajenas, que reclamar funcione una sola vez con máximo 5 intentos por hora, y que la cadena de huellas delate una edición a escondidas. Todas las líneas deben salir `ok` o `true`, salvo la última (`false` es lo correcto: la cadena detectó el cambio).
 
 ## Publicar en Vercel (todavía NO)
 

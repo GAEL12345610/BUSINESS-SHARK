@@ -43,7 +43,10 @@ Eres **socio y consultor de negocio** del equipo (estilo Alex Hormozi + Euge Oll
 | Guiones de entrevista | `docs/ENTREVISTAS.md` |
 | Análisis inicial con datos y fuentes | `docs/ANALISIS.md` |
 | Marca (logo, colores, fuentes, voz) | `brand/BRAND.md` + `brand/kit.html` |
-| Wireframes y estructura de cada pantalla | `docs/wireframes/README.md` |
+| Wireframes, estructura de cada pantalla y auditoría de diseño | `docs/wireframes/README.md`, `docs/wireframes/AUDITORIA.md` |
+| Por qué no NFT y la cadena de huellas | `docs/TOKENIZAR.md` |
+| Base de datos (tablas, RLS, reclamar) y su prueba | `app/supabase/schema.sql`, `app/supabase/prueba.sql` |
+| Guion y subtítulos del infomercial | `pitch/infomercial_guion.md`, `pitch/infomercial.srt` |
 | La app (cómo correrla y publicarla) | `app/README.md` |
 | Lecciones aprendidas | `memoria/MEMORIA.md` |
 
@@ -80,4 +83,5 @@ Agentes: `app-security-auditor` (antes de publicar) y `app-perf-auditor` (si la 
 
 - **10 oct 2026:** análisis, decisiones, marca v2 y docs listos. Siguiente: entrevista con José Luis Malo, definir roles, cotizar materiales, arrancar el prototipo.
 - **31 oct 2026:** marca v2.1 (qué hace sentir, dos caras digitales, tema del artista). Landing, página de la obra y reclamar construidas en `app/` con datos de ejemplo de José Luis Malo (NO publicar hasta su permiso, DECISIONES #24). Siguiente: entrevista con José Luis, Supabase, comprar `brai.art`, deploy.
+- **31 oct 2026, tarde:** auditoría de diseño hecha y aplicada (escena del sello, raspadita, visor, huellas, compartir, página del artista). NFT descartado con datos (DECISIONES #25), en su lugar cadena de huellas. Esquema de Supabase escrito y probado en Postgres. Hoja de piezas para imprimir. Guion del infomercial. Siguiente: entrevista con José Luis, crear el proyecto en Supabase y conectar la app, comprar `brai.art`, grabar el infomercial.
 - **Primer hito: propuesta final, 26 nov 2026.**

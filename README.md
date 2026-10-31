@@ -37,7 +37,8 @@ brand/             marca v2: BRAND.md, kit.html, logos SVG
 memoria/           lecciones aprendidas, una por archivo
 .claude/skills/    skills de Claude Code adaptadas a Brai
 .claude/agents/    auditores de seguridad y rendimiento
-app/               la app: landing, página de la obra y reclamar (ver app/README.md)
+app/               la app: landing, obra, reclamar, artista, imprimir y la base de datos (ver app/README.md)
+pitch/             guion y subtítulos del infomercial
 ```
 
 ## Para empezar a trabajar
@@ -59,3 +60,6 @@ app/               la app: landing, página de la obra y reclamar (ver app/READM
 - [ ] Correo del equipo para "Quiero registrar mis obras" (hoy apunta a `hola@brai.art`, que no existe).
 - [ ] Aviso de privacidad antes de guardar correos reales.
 - [ ] Permiso por escrito de José Luis Malo antes de publicar la demo con su nombre.
+- [ ] Crear el proyecto en Supabase y correr `app/supabase/schema.sql`.
+- [ ] Grabar el infomercial (`pitch/infomercial_guion.md`) y asignar quién graba cada escena.
+- [ ] Comprar etiquetas de raspadita y papel adhesivo para imprimir `/imprimir/7KQ2X`.

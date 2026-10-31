@@ -48,7 +48,13 @@ Hecho en `app/` con datos de ejemplo (sin Supabase todavía):
 - Página de la obra `/o/:codigo` con tema del artista, ficha, fotos huella, video (portada), historia, línea de dueños, catálogo y sello Registro Brai.
 - Reclamar `/o/:codigo/reclamar`: código + correo, máximo 5 intentos, momento dorado.
 
-Falta: Supabase (tablas, vista pública, función de reclamar), página del artista, panel del artista. Cómo correrla: `app/README.md`.
+Después de la auditoría (`docs/wireframes/AUDITORIA.md`):
+- Página del artista `/a/:slug` con todas sus obras.
+- Visor de la obra con zoom, fotos huella que marcan dónde está el detalle, compartir, estado "esta obra es tuya", huella del registro.
+- Hoja de piezas físicas `/imprimir/:codigo` (tarjeta, sello y QR en tamaño real).
+- Esquema de Supabase en `app/supabase/schema.sql`, probado en Postgres con `app/supabase/prueba.sql`: RLS, anon sin tablas, `obra_publica`, `reclamar_obra` (5 intentos por hora), `registrar_obra`, eventos encadenados que no se editan.
+
+Falta: crear el proyecto en Supabase y conectar la app (hoy lee `src/data/demo.ts`), panel del artista, transferir. Cómo correrla: `app/README.md`.
 
 ## Wireframes
 En `docs/wireframes/` (drafts del equipo y qué cambió).
