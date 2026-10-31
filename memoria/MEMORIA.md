@@ -32,6 +32,7 @@ Varias vienen de errores reales en otros proyectos con el mismo stack (React + V
 - [animacion-de-entrada-con-barrido](animacion-de-entrada-con-barrido.md): Las animaciones de aparecer al hacer scroll se hacen con un barrido, no solo con IntersectionObserver, o hay secciones que quedan invisibles
 - [logo-animado-con-el-svg-real](logo-animado-con-el-svg-real.md): Para animar el logo se anima el SVG de brand/ (escala, giro, halo), nunca se redibuja un enso a mano en el código
 - [contenido-en-html-crudo](contenido-en-html-crudo.md): Lo que debe leer Google o un modelo de IA (landing, página del artista) tiene que estar en el HTML crudo, no solo pintado por JavaScript
+- [cabecera-vieja-en-respuesta-304](cabecera-vieja-en-respuesta-304.md): Cambiar una cabecera no basta si el HTML no cambió: el 304 no la trae y el navegador sigue con la vieja
 - [cabecera-que-rompe-tu-propio-iframe](cabecera-que-rompe-tu-propio-iframe.md): X-Frame-Options DENY bloquea también tus propios iframes; usa SAMEORIGIN y revisa lo publicado en un celular
 - [vercel-spa-rewrites](vercel-spa-rewrites.md): Toda SPA de Vite en Vercel necesita vercel.json con rewrite a index.html ANTES del primer deploy, o las subrutas dan 404
 
