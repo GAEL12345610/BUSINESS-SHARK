@@ -44,7 +44,11 @@ Eres **socio y consultor de negocio** del equipo (estilo Alex Hormozi + Euge Oll
 | Guiones de entrevista | `docs/ENTREVISTAS.md` |
 | Análisis inicial con datos y fuentes | `docs/ANALISIS.md` |
 | Marca (logo, colores, fuentes, voz) | `brand/BRAND.md` + `brand/kit.html` |
-| Wireframes | `docs/wireframes/` |
+| Wireframes, estructura de cada pantalla y auditoría de diseño | `docs/wireframes/README.md`, `docs/wireframes/AUDITORIA.md` |
+| Por qué no NFT y la cadena de huellas | `docs/TOKENIZAR.md` |
+| Base de datos (tablas, RLS, reclamar, 424 DNA, cadena de huellas) y sus pruebas | `app/supabase/migrations/`, `app/supabase/pruebas/` |
+| Guion y subtítulos del infomercial | `pitch/infomercial_guion.md`, `pitch/infomercial.srt` |
+| La app (cómo correrla y publicarla) | `app/README.md` |
 | Lecciones aprendidas | `memoria/MEMORIA.md` |
 
 **Si dos lugares se contradicen, gana el más reciente y corriges el otro.** Antes de decidir algo de negocio, lee `DECISIONES.md`.
@@ -68,7 +72,7 @@ Agentes: `app-security-auditor` (antes de publicar) y `app-perf-auditor` (si la 
 
 ## 5. Código
 
-- La app vive en `C:\dev\brai\app`, **fuera de OneDrive**. React + Vite + Tailwind + Supabase + Vercel. Sin `.env.local` corre en **modo ejemplo**.
+- La app vive en `C:\dev\brai\app`, **fuera de OneDrive**. React + Vite + Tailwind + Supabase + Vercel. Hoy corre con los datos de ejemplo de `app/src/data/demo.ts`; José Luis solo aparece en local con `VITE_DEMO_JOSE_LUIS=1`.
 - Pruebas: `pnpm test` (lógica y 424 DNA) y `pnpm test:db` (migraciones y RLS en un Postgres desechable). Toda migración nueva lleva su prueba en `app/supabase/pruebas/10_pruebas.sql`.
 - **pnpm siempre, nunca npm.** `"packageManager"` y `"pnpm": { "onlyBuiltDependencies": ["esbuild"] }` en `package.json`.
 - **Mobile first:** cada escaneo pasa en un celular.
@@ -80,5 +84,7 @@ Agentes: `app-security-auditor` (antes de publicar) y `app-perf-auditor` (si la 
 ## 6. Estado (actualízalo al cerrar cada sesión)
 
 - **10 oct 2026:** análisis, decisiones, marca v2 y docs listos. Siguiente: entrevista con José Luis Malo, definir roles, cotizar materiales, arrancar el prototipo.
-- **31 oct 2026:** app completa en modo ejemplo (landing, obra, reclamar, artista, panel, tarjeta imprimible), backend Supabase con 20 pruebas de seguridad, verificación 424 DNA, competencia, costos cotizados, Oferta B en prueba, tipografía v2.1. Siguiente: entrevistas con Oferta A y B, conectar Supabase real y publicar, comprar dominio y 424 DNA.
+- **31 oct 2026:** marca v2.1 (qué hace sentir, dos caras digitales, tema del artista). Landing, página de la obra y reclamar construidas en `app/` con datos de ejemplo de José Luis Malo (NO publicar hasta su permiso, DECISIONES #24). Siguiente: entrevista con José Luis, Supabase, comprar `brai.art`, deploy.
+- **31 oct 2026, tarde:** auditoría de diseño hecha y aplicada (escena del sello, raspadita, visor, huellas, compartir, página del artista). NFT descartado con datos (DECISIONES #25), en su lugar cadena de huellas. Esquema de Supabase escrito y probado en Postgres. Hoja de piezas para imprimir. Guion del infomercial. Siguiente: entrevista con José Luis, crear el proyecto en Supabase y conectar la app, comprar `brai.art`, grabar el infomercial.
+- **31 oct 2026, noche:** competencia (`docs/COMPETENCIA.md`), costos cotizados, Oferta B en prueba, backend de migraciones con 21 pruebas y verificación 424 DNA, tipografía v2.2. Se unieron las dos ramas: app de la sesión de la tarde, backend de migraciones, candado de José Luis en el código (DECISIONES #35 a #37). Siguiente: publicar en Vercel (Root Directory `app`), entrevista con José Luis presentando Oferta A y B, conectar Supabase, deck del 26 nov.
 - **Primer hito: propuesta final, 26 nov 2026.**

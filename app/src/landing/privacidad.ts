@@ -1,1 +1,0 @@
-import "../estilos/base.css";

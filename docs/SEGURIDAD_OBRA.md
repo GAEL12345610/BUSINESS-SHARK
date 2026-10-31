@@ -15,7 +15,7 @@
 1. **Sello NFC antidesprendible + QR.** El sello se rompe si lo despegas. El QR sirve para celulares sin NFC (en México ~78% usa Android y muchos baratos no traen NFC o lo traen apagado).
 2. **Fotos huella.** Al registrar, el artista toma 3 fotos macro de detalles únicos (una pincelada, una esquina, la firma). Quien escanee compara el cuadro con las fotos.
 3. **Código de dueño bajo raspadita.** Como las tarjetas de recarga: si está raspado, alguien ya lo vio. Es de un solo uso.
-4. **Historial de dueños.** Solo se agregan eventos, nunca se borran: registro, primer dueño, transferencias.
+4. **Historial de dueños encadenado.** Solo se agregan eventos, nunca se borran: registro, primer dueño, transferencias. Cada evento guarda la huella (hash) del anterior: si alguien edita uno viejo, la cadena deja de cuadrar y se nota. Por qué no NFT: `TOKENIZAR.md`.
 5. **Sello "Registro Brai".** La autoridad viene de un registro externo, no de la página del propio artista.
 
 **Para engañar a alguien tendrías que** clonar el tag, **y** que el cuadro coincida con las fotos macro, **y** brincarte el registro de dueños.
@@ -30,7 +30,7 @@ Fotos + 3 fotos huella + ficha (título, técnica, medidas, año) + historia. El
 
 ### 2. Grabar el NFC (app gratis NFC Tools)
 1. NFC Tools → **Leer**: confirma que el tag sea NTAG213, 215 o 216.
-2. **Escribir** → Agregar registro → URL → `https://brai.art/o/7KQ2X?v=n` → Escribir. (El `?v=n` cuenta el toque como NFC. El QR lleva `?v=q`.) **Copia la URL desde el panel** (`/panel`, Imprimir tarjeta, botón Copiar): escrita a mano se cuela un punto o un espacio, y bloqueado es para siempre.
+2. **Escribir** → Agregar registro → URL → `https://brai.art/o/7KQ2X?v=n` → Escribir. (El `?v=n` cuenta el toque como NFC. El QR lleva `?v=q`.) **Copia y pega la URL, no la escribas a mano:** se cuela un punto o un espacio, y bloqueado es para siempre.
 3. Acerca el celular otra vez y confirma que abre la página correcta.
 4. **Otras opciones → Bloquear tag.** ⚠️ **Es permanente.** Prueben primero con 1 de los 50.
 5. Pegar el sello detrás del cuadro, sobre bastidor o tela. **Nunca sobre metal** (los marcos metálicos bloquean la señal). Imprimir el QR con la misma URL al lado.
