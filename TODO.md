@@ -45,6 +45,17 @@ Cómo leer esto: **Para quién** dice si lo hace Ricardo, el equipo o un adulto.
 | [ ] | Transferir una obra desde el dueño, no solo desde el artista | `docs/SEGURIDAD_OBRA.md`, paso 5 |
 | [ ] | Aviso por correo al artista cuando su obra cambia de dueño | |
 
+## Herramientas y cuentas (revisado el 31 oct 2026)
+| Herramienta | Estado | Qué falta |
+|---|---|---|
+| Vercel | Publica `main` solo en `braiart.vercel.app` | Nada para la demo. Plan Hobby: gratis, pero no permite uso comercial (`docs/COSTOS.md`) |
+| Supabase | **Sin cuenta.** La sesión no tenía llave de Supabase | Crear el proyecto (gratis) con un adulto y correr las migraciones (`docs/PROTOTIPO.md`) |
+| GitHub | Funciona | |
+| AWS y Google Cloud | Había credenciales en la sesión, pero **no eran válidas**. Brai no las necesita | Nada |
+| Dominio `brai.art` | No comprado | ~2.60 USD el primer año en Porkbun. **Es el único gasto pendiente** |
+
+No se gastó dinero en ninguna herramienta.
+
 ## 4. Deuda conocida (no es urgente, pero que no se olvide)
 - La demo usa el mismo código de dueño (`4K7P-9QX2`) para todas las obras y cuenta los intentos en memoria. Es a propósito para la demo; la versión real ya está en Supabase.
 - No hay `Content-Security-Policy` en `app/vercel.json` porque `app/index.html` tiene un script en línea. Para ponerla, mover ese script a un archivo.
