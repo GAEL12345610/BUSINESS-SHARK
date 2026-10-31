@@ -43,7 +43,8 @@ Eres **socio y consultor de negocio** del equipo (estilo Alex Hormozi + Euge Oll
 | Guiones de entrevista | `docs/ENTREVISTAS.md` |
 | Análisis inicial con datos y fuentes | `docs/ANALISIS.md` |
 | Marca (logo, colores, fuentes, voz) | `brand/BRAND.md` + `brand/kit.html` |
-| Wireframes | `docs/wireframes/` |
+| Wireframes y estructura de cada pantalla | `docs/wireframes/README.md` |
+| La app (cómo correrla y publicarla) | `app/README.md` |
 | Lecciones aprendidas | `memoria/MEMORIA.md` |
 
 **Si dos lugares se contradicen, gana el más reciente y corriges el otro.** Antes de decidir algo de negocio, lee `DECISIONES.md`.
@@ -78,4 +79,5 @@ Agentes: `app-security-auditor` (antes de publicar) y `app-perf-auditor` (si la 
 ## 6. Estado (actualízalo al cerrar cada sesión)
 
 - **10 oct 2026:** análisis, decisiones, marca v2 y docs listos. Siguiente: entrevista con José Luis Malo, definir roles, cotizar materiales, arrancar el prototipo.
+- **31 oct 2026:** marca v2.1 (qué hace sentir, dos caras digitales, tema del artista). Landing, página de la obra y reclamar construidas en `app/` con datos de ejemplo de José Luis Malo (NO publicar hasta su permiso, DECISIONES #24). Siguiente: entrevista con José Luis, Supabase, comprar `brai.art`, deploy.
 - **Primer hito: propuesta final, 26 nov 2026.**

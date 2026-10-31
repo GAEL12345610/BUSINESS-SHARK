@@ -37,7 +37,7 @@ brand/             marca v2: BRAND.md, kit.html, logos SVG
 memoria/           lecciones aprendidas, una por archivo
 .claude/skills/    skills de Claude Code adaptadas a Brai
 .claude/agents/    auditores de seguridad y rendimiento
-app/               (próximamente) la app
+app/               la app: landing, página de la obra y reclamar (ver app/README.md)
 ```
 
 ## Para empezar a trabajar
@@ -55,4 +55,7 @@ app/               (próximamente) la app
 - [ ] Cotizar en MercadoLibre: stickers antidesprendibles, raspadita, tarjetas.
 - [ ] Confirmar con el profesor la fecha del infomercial.
 - [ ] Comprar `brai.art`.
-- [ ] Subir los wireframes a `docs/wireframes/`.
+- [x] Subir los wireframes a `docs/wireframes/`.
+- [ ] Correo del equipo para "Quiero registrar mis obras" (hoy apunta a `hola@brai.art`, que no existe).
+- [ ] Aviso de privacidad antes de guardar correos reales.
+- [ ] Permiso por escrito de José Luis Malo antes de publicar la demo con su nombre.

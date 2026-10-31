@@ -42,5 +42,13 @@ Mismo código para todos. Cada artista tiene en la base de datos su `tema` (colo
 - Probar cada sello con un iPhone, un Android con NFC y un Android sin NFC (por QR).
 - Llevar internet propio (datos del celular): el wifi de un evento falla.
 
+## Estado (31 oct 2026)
+Hecho en `app/` con datos de ejemplo (sin Supabase todavía):
+- Landing `/` prerenderizada, con teléfono 3D que corre la página real de una obra.
+- Página de la obra `/o/:codigo` con tema del artista, ficha, fotos huella, video (portada), historia, línea de dueños, catálogo y sello Registro Brai.
+- Reclamar `/o/:codigo/reclamar`: código + correo, máximo 5 intentos, momento dorado.
+
+Falta: Supabase (tablas, vista pública, función de reclamar), página del artista, panel del artista. Cómo correrla: `app/README.md`.
+
 ## Wireframes
-En `docs/wireframes/`.
+En `docs/wireframes/` (drafts del equipo y qué cambió).

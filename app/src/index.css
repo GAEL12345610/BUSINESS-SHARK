@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+/* Tokens: salen de brand/kit.html. No inventar hex. */
+@theme {
+  --color-terracota: #C06E52;
+  --color-terracota-btn: #A2563D;
+  --color-terracota-hover: #8C4932;
+  --color-terracota-active: #773E2A;
+  --color-tinta: #2B2622;
+  --color-dorado: #C9A24B;
+  --color-dorado-suave: #F3EBD8;
+  --color-lienzo: #F6F1EA;
+  --color-verde: #5E6C52;
+  --color-linea: #E5DDCF;
+  --color-arena: #E9E1D4;
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-sans: 'Schibsted Grotesk', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --ease-suave: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body {
+    @apply bg-lienzo text-tinta font-sans antialiased;
+    font-feature-settings: "ss01";
+  }
+  h1, h2, h3 { text-wrap: balance; }
+  p { text-wrap: pretty; }
+  ::selection { background: var(--color-terracota); color: var(--color-tinta); }
+  :focus-visible { outline: 2px solid var(--color-terracota-btn); outline-offset: 3px; border-radius: 4px; }
+}
+
+/* Aparecer al hacer scroll. Solo se esconde si hay JS (ver index.html). */
+.js .revela { opacity: 0; transform: translateY(14px); transition: opacity 600ms var(--ease-suave), transform 600ms var(--ease-suave); }
+.js .revela.visible { opacity: 1; transform: none; }
+
+/* Tarjeta de dueño: raspadita */
+.raspadita { background: linear-gradient(135deg, #bdb3a4, #d6ccbd 40%, #b3a998); }
+
+/* Momento dorado al reclamar: lo único que brilla en todo Brai */
+@keyframes sello-entra { from { opacity: 0; transform: scale(.6) rotate(-40deg); } to { opacity: 1; transform: none; } }
+@keyframes halo { 0% { opacity: 0; transform: scale(.8); } 40% { opacity: .9; } 100% { opacity: 0; transform: scale(1.6); } }
+.sello-entra { animation: sello-entra 900ms var(--ease-suave) both; }
+.halo-dorado { animation: halo 1.4s 500ms var(--ease-suave) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 1ms !important; transition-duration: 1ms !important; scroll-behavior: auto !important; }
+  .js .revela { opacity: 1; transform: none; }
+}

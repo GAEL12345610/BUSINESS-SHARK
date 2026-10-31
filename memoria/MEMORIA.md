@@ -7,6 +7,7 @@ Varias vienen de errores reales en otros proyectos con el mismo stack (React + V
 ## Verificar
 
 - [verificar-el-artefacto](verificar-el-artefacto.md): Compilar o que un script termine sin error NO es verificar: abre lo que produjo y pregunta si tu prueba vería el fallo
+- [scroll-suave-engana-pruebas](scroll-suave-engana-pruebas.md): Con scroll-behavior smooth, un script que hace scrollTo no llega a donde crees; en pruebas usa behavior instant antes de concluir que algo no aparece
 
 ## Seguridad (Supabase y API)
 
@@ -25,6 +26,7 @@ Varias vienen de errores reales en otros proyectos con el mismo stack (React + V
 
 - [update-con-patch-no-fila-entera](update-con-patch-no-fila-entera.md): Para guardar, manda solo los campos que cambiaron (update con patch), nunca la fila entera desde la copia de una pantalla
 - [animacion-de-entrada-con-barrido](animacion-de-entrada-con-barrido.md): Las animaciones de aparecer al hacer scroll se hacen con un barrido, no solo con IntersectionObserver, o hay secciones que quedan invisibles
+- [logo-animado-con-el-svg-real](logo-animado-con-el-svg-real.md): Para animar el logo se anima el SVG de brand/ (escala, giro, halo), nunca se redibuja un enso a mano en el código
 - [contenido-en-html-crudo](contenido-en-html-crudo.md): Lo que debe leer Google o un modelo de IA (landing, página del artista) tiene que estar en el HTML crudo, no solo pintado por JavaScript
 - [vercel-spa-rewrites](vercel-spa-rewrites.md): Toda SPA de Vite en Vercel necesita vercel.json con rewrite a index.html ANTES del primer deploy, o las subrutas dan 404
 
