@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Brai, kit de marca v2</title>
+<title>Brai, kit de marca v2.1</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Schibsted+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Schibsted+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
   :root{
     --terracota:#C06E52; --terracota-btn:#A2563D; --terracota-hover:#8C4932; --terracota-active:#773E2A;
@@ -15,7 +15,7 @@
   *{box-sizing:border-box}
   body{margin:0;font-family:var(--texto);color:var(--tinta);background:#fff;line-height:1.5}
   section{padding:56px 16px;max-width:1000px;margin:0 auto}
-  h1,h2{font-family:var(--display);font-weight:600;margin:0 0 20px;letter-spacing:-.3px}
+  h1,h2{font-family:var(--display);font-optical-sizing:auto;font-weight:560;margin:0 0 20px;letter-spacing:-.015em;text-wrap:balance}
   h2{font-size:30px}
   p.lead{max-width:640px;margin:0 0 24px}
   .cover{background:var(--lienzo);text-align:center;padding:88px 16px;max-width:none}
@@ -32,10 +32,13 @@
   table{width:100%;border-collapse:collapse;font-size:14px}
   th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--linea);vertical-align:top}
   th{font-size:12px;color:var(--verde);font-weight:600}
-  .t1{font-family:var(--display);font-weight:600;font-size:44px;letter-spacing:-.5px;line-height:1.1}
-  .t2{font-family:var(--display);font-weight:500;font-size:30px;letter-spacing:-.25px}
+  .t1{font-family:var(--display);font-optical-sizing:auto;font-weight:560;font-size:44px;letter-spacing:-.025em;line-height:1.05}
+  .t2{font-family:var(--display);font-optical-sizing:auto;font-weight:560;font-size:30px;letter-spacing:-.015em}
   .t3{font-weight:600;font-size:21px}
-  .t4{font-family:var(--registro);font-size:14px}
+  .t4{font-family:var(--registro);font-size:14px;font-variant-numeric:tabular-nums slashed-zero}
+  .opsz{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+  .opsz div{background:var(--lienzo);border-radius:12px;padding:20px}
+  .opsz p{font-family:var(--display);font-weight:560;margin:0;line-height:1}
   .btn{font-family:var(--texto);font-size:15px;border-radius:10px;padding:12px 24px;border:none;cursor:pointer}
   .primary{background:var(--terracota-btn);color:var(--lienzo);font-weight:600}
   .primary:hover{background:var(--terracota-hover)} .primary:active{background:var(--terracota-active)}
@@ -120,13 +123,17 @@
   <h2>Tipografía: tres voces</h2>
   <table>
     <tr><th>Voz</th><th>Muestra</th><th>Uso</th></tr>
-    <tr><td>Galería</td><td class="t1">Obras con historia</td><td>Fraunces 600, 40 a 48 px. Títulos.</td></tr>
-    <tr><td>Galería</td><td class="t2">Tu obra, registrada</td><td>Fraunces 500, 28 a 32 px.</td></tr>
-    <tr><td>Taller</td><td class="t3">Club de coleccionistas</td><td>Schibsted Grotesk 600, 20 a 22 px.</td></tr>
-    <tr><td>Taller</td><td>Cada obra lleva su historia, su artista y su dueño.</td><td>Schibsted Grotesk 400, 16 px. Texto.</td></tr>
-    <tr><td>Registro</td><td class="t4">BRAI-0007 · Óleo sobre tela · 2026</td><td>IBM Plex Mono 400, 11 a 14 px. Números de registro, fechas, ficha técnica.</td></tr>
+    <tr><td>Galería</td><td class="t1">Obras con historia</td><td>Fraunces 560, de 38 a 104 px según la pantalla. Títulos.</td></tr>
+    <tr><td>Galería</td><td class="t2">Tarde en Tlaquepaque</td><td>Fraunces 560, 28 a 40 px. Nombre de la obra.</td></tr>
+    <tr><td>Taller</td><td class="t3">Club de coleccionistas</td><td>Schibsted Grotesk 600, 20 a 24 px.</td></tr>
+    <tr><td>Taller</td><td>Cada obra lleva su historia, su artista y su dueño.</td><td>Schibsted Grotesk 400, 17 px. Texto.</td></tr>
+    <tr><td>Registro</td><td class="t4">BRAI-0007 · 60 × 80 cm · 2026 · HFKW-3P9Q</td><td>IBM Plex Mono 400, 12 a 14 px, cifras de ancho fijo. Registro, fechas, ficha, códigos.</td></tr>
   </table>
-  <p class="note">v2: Inter salió. Fraunces + Inter es la combinación que más usan las páginas hechas con IA, y se nota. La voz "Registro" en monoespaciada es lo que hace que la obra se sienta archivada, como en un museo.</p>
+  <div class="opsz">
+    <div><p style="font-size:88px;font-variation-settings:'opsz' 144">Aa</p><p class="note">Tamaño óptico 144: corte de cartel, para el hero.</p></div>
+    <div><p style="font-size:88px;font-variation-settings:'opsz' 9">Aa</p><p class="note">Tamaño óptico 9: corte de texto, para tamaños chicos. Con <code>font-optical-sizing: auto</code> el navegador escoge solo.</p></div>
+  </div>
+  <p class="note">v2.1: tamaño óptico automático y peso 560. v2: Inter salió. Fraunces + Inter es la combinación que más usan las páginas hechas con IA, y se nota. La voz "Registro" en monoespaciada es lo que hace que la obra se sienta archivada, como en un museo.</p>
 </section>
 
 <section>

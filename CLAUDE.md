@@ -36,6 +36,7 @@ Eres **socio y consultor de negocio** del equipo (estilo Alex Hormozi + Euge Oll
 | Decisiones tomadas y su porqué | `docs/DECISIONES.md` |
 | Precio, cliente ideal, oferta de fundador, club | `docs/OFERTA.md` |
 | Costos, escenarios, tamaño de mercado | `docs/COSTOS.md` |
+| Competencia y qué copiamos de cada uno | `docs/COMPETENCIA.md` |
 | Cómo se protege una obra, cómo se graba un NFC | `docs/SEGURIDAD_OBRA.md` |
 | Alcance del prototipo, stack, modelo de datos | `docs/PROTOTIPO.md` |
 | Reglas, rúbrica, calendario y roles del concurso | `docs/CONCURSO.md` |
@@ -67,7 +68,8 @@ Agentes: `app-security-auditor` (antes de publicar) y `app-perf-auditor` (si la 
 
 ## 5. Código
 
-- La app vive en `C:\dev\brai\app`, **fuera de OneDrive**. React + Vite + Tailwind + Supabase + Vercel.
+- La app vive en `C:\dev\brai\app`, **fuera de OneDrive**. React + Vite + Tailwind + Supabase + Vercel. Sin `.env.local` corre en **modo ejemplo**.
+- Pruebas: `pnpm test` (lógica y 424 DNA) y `pnpm test:db` (migraciones y RLS en un Postgres desechable). Toda migración nueva lleva su prueba en `app/supabase/pruebas/10_pruebas.sql`.
 - **pnpm siempre, nunca npm.** `"packageManager"` y `"pnpm": { "onlyBuiltDependencies": ["esbuild"] }` en `package.json`.
 - **Mobile first:** cada escaneo pasa en un celular.
 - **El RLS de Supabase es la única protección real.** Los guards de React solo esconden pantallas. Ver `memoria/rls-es-la-unica-puerta.md`.
@@ -78,4 +80,5 @@ Agentes: `app-security-auditor` (antes de publicar) y `app-perf-auditor` (si la 
 ## 6. Estado (actualízalo al cerrar cada sesión)
 
 - **10 oct 2026:** análisis, decisiones, marca v2 y docs listos. Siguiente: entrevista con José Luis Malo, definir roles, cotizar materiales, arrancar el prototipo.
+- **31 oct 2026:** app completa en modo ejemplo (landing, obra, reclamar, artista, panel, tarjeta imprimible), backend Supabase con 20 pruebas de seguridad, verificación 424 DNA, competencia, costos cotizados, Oferta B en prueba, tipografía v2.1. Siguiente: entrevistas con Oferta A y B, conectar Supabase real y publicar, comprar dominio y 424 DNA.
 - **Primer hito: propuesta final, 26 nov 2026.**
