@@ -1,0 +1,128 @@
+/* Brai: tokens de marca y sistema tipográfico. Fuente única: brand/BRAND.md */
+@import "tailwindcss";
+@import "@fontsource-variable/fraunces/opsz.css";
+@import "@fontsource-variable/schibsted-grotesk/wght.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
+
+@theme {
+  /* Paleta (BRAND.md, sección 5). Nada fuera de aquí. */
+  --color-terracota: #C06E52;
+  --color-terracota-btn: #A2563D;
+  --color-terracota-hover: #8C4932;
+  --color-terracota-active: #773E2A;
+  --color-tinta: #2B2622;
+  --color-dorado: #C9A24B;
+  --color-dorado-fondo: #F3EBD8;
+  --color-lienzo: #F6F1EA;
+  --color-lienzo-hondo: #E9E1D4;
+  --color-verde: #5E6C52;
+  --color-linea: #E5DDCF;
+  --color-blanco: #FFFDF9;
+
+  /* Tres voces */
+  --font-galeria: "Fraunces Variable", Georgia, "Times New Roman", serif;
+  --font-taller: "Schibsted Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-registro: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  /* Escala tipográfica fluida: razón 1.2 a 390 px, 1.25 a 1280 px. */
+  --text-registro: 0.75rem;
+  --text-registro--line-height: 1.45;
+  --text-chico: 0.875rem;
+  --text-chico--line-height: 1.5;
+  --text-cuerpo: 1.0625rem;
+  --text-cuerpo--line-height: 1.6;
+  --text-h3: clamp(1.25rem, 1.15rem + 0.4vw, 1.5rem);
+  --text-h3--line-height: 1.25;
+  --text-h2: clamp(1.75rem, 1.5rem + 1.1vw, 2.5rem);
+  --text-h2--line-height: 1.12;
+  --text-h1: clamp(2.375rem, 1.8rem + 2.6vw, 4.25rem);
+  --text-h1--line-height: 1.02;
+  --text-display: clamp(3rem, 2rem + 5vw, 6.5rem);
+  --text-display--line-height: 0.96;
+}
+
+@layer base {
+  html {
+    color: var(--color-tinta);
+    background: var(--color-lienzo);
+    font-family: var(--font-taller);
+    font-size: 100%;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    font-size: var(--text-cuerpo);
+    line-height: 1.6;
+    min-height: 100dvh;
+  }
+  /* Galería: Fraunces con tamaño óptico automático. A 100 px usa el corte de
+     cartel (contraste alto, remates finos); a 20 px el corte de texto. */
+  h1, h2, .galeria {
+    font-family: var(--font-galeria);
+    font-optical-sizing: auto;
+    font-weight: 560;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+    font-feature-settings: "kern", "liga", "onum" 0;
+  }
+  h1 { letter-spacing: -0.025em; }
+  h3 { font-weight: 600; text-wrap: balance; }
+  /* Sin guionado automático: en español parte palabras feo ("ar-tista") en columnas angostas. */
+  p, li { text-wrap: pretty; hyphens: manual; }
+  /* Registro: siempre cifras de ancho fijo para que las columnas cuadren. */
+  .registro {
+    font-family: var(--font-registro);
+    font-variant-numeric: tabular-nums slashed-zero;
+    letter-spacing: 0.02em;
+  }
+  .etiqueta {
+    font-family: var(--font-registro);
+    font-size: var(--text-registro);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-verde);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-terracota-btn);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  ::selection { background: var(--color-terracota); color: var(--color-tinta); }
+}
+
+@layer components {
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+    min-height: 3rem; padding: 0 1.5rem; border-radius: 10px;
+    font-family: var(--font-taller); font-weight: 600; font-size: 1rem;
+    transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
+    cursor: pointer; text-decoration: none;
+  }
+  .btn-primario { background: var(--color-terracota-btn); color: var(--color-lienzo); }
+  .btn-primario:hover { background: var(--color-terracota-hover); }
+  .btn-primario:active { background: var(--color-terracota-active); }
+  .btn-primario:disabled { background: var(--color-terracota); opacity: 0.45; cursor: not-allowed; }
+  .btn-secundario { border: 1.5px solid var(--color-tinta); color: var(--color-tinta); background: transparent; }
+  .btn-secundario:hover { background: rgb(43 38 34 / 0.06); }
+  .btn-fantasma { color: var(--color-terracota-btn); padding: 0 0.25rem; min-height: 2.75rem; font-weight: 500; }
+  .btn-fantasma:hover { color: var(--color-terracota-hover); text-decoration: underline; text-underline-offset: 4px; }
+  .enlace { color: var(--color-terracota-btn); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  .enlace:hover { color: var(--color-terracota-hover); }
+  .campo {
+    width: 100%; min-height: 3rem; padding: 0.75rem 0.875rem;
+    background: var(--color-blanco); border: 1px solid #CFC4B3; border-radius: 8px;
+    color: var(--color-tinta); font-size: 1rem;
+  }
+  .campo:focus { outline: none; border-color: var(--color-terracota-btn); box-shadow: 0 0 0 3px rgb(162 86 61 / 0.18); }
+  .campo-codigo {
+    font-family: var(--font-registro); font-size: 1.625rem; letter-spacing: 0.18em;
+    text-transform: uppercase; text-align: left; font-variant-numeric: tabular-nums;
+  }
+  .punto-dorado { width: 0.625rem; height: 0.625rem; border-radius: 999px; background: var(--color-dorado); display: inline-block; flex: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 1ms !important; transition-duration: 1ms !important; }
+}

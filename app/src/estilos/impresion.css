@@ -1,0 +1,9 @@
+/* Impresión de la tarjeta de dueño y del QR (panel, /panel/tarjeta/:id). */
+@media print {
+  @page { size: letter; margin: 12mm; }
+  html, body { background: #fff !important; }
+  .no-imprimir { display: none !important; }
+  main { padding: 0 !important; max-width: none !important; }
+  .imprimible { margin: 0 !important; }
+  .tarjeta-dueno { -webkit-print-color-adjust: exact; print-color-adjust: exact; break-inside: avoid; }
+}

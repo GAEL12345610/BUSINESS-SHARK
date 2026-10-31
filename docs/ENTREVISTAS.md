@@ -14,7 +14,8 @@ Después de cada entrevista: actualizar la ficha en `CLIENTES.md` y anotar las f
 6. ¿Alguna vez alguien dudó si una obra tuya era original, o viste una copia?
 7. **¿Sabías que la ley te da una parte de cada reventa de tu obra? ¿Lo has cobrado alguna vez?**
 8. Si cada obra contara su historia al acercar el celular, y tú supieras siempre quién la tiene, ¿te serviría? ¿Para qué?
-9. **Prueba de precio:** "Algo así cuesta 7,500 de arranque y 990 al mes. ¿Qué tendría que pasar para que valga la pena para ti?" (No defender el precio: escuchar.)
+9. **Prueba de precio, dos opciones:** "Hay dos formas de pagarlo. A: 7,500 de arranque y 990 al mes. B: 2,500 de arranque con 5 obras y 450 por cada obra nueva, sin mensualidad. ¿Cuál escogerías y por qué? ¿Qué tendría que pasar para que valga la pena?" (No defender ninguna: escuchar y anotar la frase textual.)
+10. ¿Usas algo para llevar tu inventario o tu lista de compradores (Excel, libreta, Artwork Archive)? ¿Has visto algo parecido a Brai?
 
 ## Comprador de arte (10 min)
 

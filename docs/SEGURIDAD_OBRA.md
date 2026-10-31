@@ -8,7 +8,7 @@
 |---|---|
 | "Verificada por el artista": él mismo la registró, con fecha y fotos. | "Imposible de falsificar" |
 | "Registro de propiedad y procedencia" | "Blockchain", "infalible" |
-| Con 424 DNA (versión 2): "este sello es original" | |
+| Con 424 DNA: "este sello es original" | |
 
 ## Las 5 capas
 
@@ -30,7 +30,7 @@ Fotos + 3 fotos huella + ficha (título, técnica, medidas, año) + historia. El
 
 ### 2. Grabar el NFC (app gratis NFC Tools)
 1. NFC Tools → **Leer**: confirma que el tag sea NTAG213, 215 o 216.
-2. **Escribir** → Agregar registro → URL → `https://brai.art/o/7KQ2X` → Escribir.
+2. **Escribir** → Agregar registro → URL → `https://brai.art/o/7KQ2X?v=n` → Escribir. (El `?v=n` cuenta el toque como NFC. El QR lleva `?v=q`.) **Copia la URL desde el panel** (`/panel`, Imprimir tarjeta, botón Copiar): escrita a mano se cuela un punto o un espacio, y bloqueado es para siempre.
 3. Acerca el celular otra vez y confirma que abre la página correcta.
 4. **Otras opciones → Bloquear tag.** ⚠️ **Es permanente.** Prueben primero con 1 de los 50.
 5. Pegar el sello detrás del cuadro, sobre bastidor o tela. **Nunca sobre metal** (los marcos metálicos bloquean la señal). Imprimir el QR con la misma URL al lado.
@@ -49,8 +49,16 @@ El dueño actual presiona **Transferir** → sale un código nuevo para el sigui
 ### 6. Verificar (cualquiera)
 Toca el sello y ve: "Verificada por el artista" con fecha, las fotos huella para comparar, y el dueño actual **solo con iniciales** (privacidad).
 
-## Versión 2: NTAG 424 DNA
-Cada toque genera una firma nueva (cifrado AES-128); copiar el tag no sirve. Cuesta ~2.50 a 5 USD por pieza y requiere configurar llaves y verificar en el servidor. Se considera para la Expo si el prototipo está listo en diciembre.
+## NTAG 424 DNA (sello seguro, entra para la Expo)
+Cada toque genera una firma nueva (cifrado AES-128); copiar el tag no sirve. Cuesta **~18.50 MXN por pieza** (Shop NFC, lote de 50), más envío (ver `COSTOS.md`).
+
+Cómo funciona en Brai (ya construido, `app/supabase/functions/sello/`):
+1. El chip arma la URL `brai.art/o/XXXXX?e=...&c=...`: `e` trae cifrados el UID del chip y un contador de toques; `c` es la firma.
+2. La página de la obra manda `e` y `c` a la función `sello`, que tiene las llaves. Si la firma no cuadra: "Este enlace no viene del sello de la obra".
+3. La base revisa que ese chip sea de esa obra y que **el contador haya subido**. Si alguien copió un enlace viejo y lo comparte, el contador no sube: "Este enlace ya se usó".
+4. La página borra `e` y `c` de la barra de direcciones para que el enlace no se quede para compartirse.
+
+Cada chip tiene su propia llave (sale de una llave maestra y el UID): si se filtra la de un chip, solo cae ese chip. Configuración paso a paso en `PROTOTIPO.md`.
 
 ## Privacidad
-Si guardan correos de compradores reales, necesitan un **aviso de privacidad** (Ley Federal de Protección de Datos Personales). Es una página, pero no se la salten.
+Si guardan correos de compradores reales, necesitan un **aviso de privacidad** (Ley Federal de Protección de Datos Personales). Ya existe en `app/privacidad.html` (`brai.art/privacidad`) y el formulario de reclamar pide aceptarlo. **Pendiente: que lo lea un adulto antes de usar datos reales**, y que exista el correo `hola@brai.art`.

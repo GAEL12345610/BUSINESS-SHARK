@@ -15,8 +15,8 @@ Proyecto para **Business Shark 8°**. Primera entrega: **26 de noviembre de 2026
 | **Problema** | El artista vende una obra y nunca vuelve a saber de ella: no puede volver a venderle a quien ya le compró ni cobrar su derecho de reventa (LFDA art. 92 bis). |
 | **Solución** | Sello NFC + QR detrás del cuadro, tarjeta de dueño firmada a mano con código bajo raspadita, y una página de la obra tipo cédula de museo. |
 | **Cliente** | Artista que vende obra original directo: 10+ obras al año a 10k+ MXN, o con audiencia propia. |
-| **Precio** | Setup 7,500 MXN + 990 MXN al mes. Primer cliente: fundador, gratis a cambio de un caso documentado. |
-| **Diferencia vs Verisart** | Ellos venden software para certificar. Nosotros, un ritual de entrega, hecho contigo, en español. |
+| **Precio** | En prueba: A (setup 7,500 + 990 al mes) contra B (2,500 de arranque + 450 por obra). Primeros 3: fundadores, gratis a cambio de un caso documentado. |
+| **Diferencia vs Verisart** | Ellos venden software para certificar. Nosotros, un ritual de entrega, hecho contigo, en español. Ver `docs/COMPETENCIA.md`. |
 
 ## Cómo está organizado
 
@@ -26,7 +26,8 @@ docs/              todo lo del negocio
   ANALISIS.md        análisis con datos y fuentes
   DECISIONES.md      qué decidimos y por qué
   OFERTA.md          precio, cliente ideal, fundador, club
-  COSTOS.md          mesa de costos (Viabilidad)
+  COSTOS.md          mesa de costos (Viabilidad), cotizada
+  COMPETENCIA.md     ingeniería inversa de Verisart, Tagsmart y otros
   SEGURIDAD_OBRA.md  cómo se protege una obra y cómo se graba un NFC
   PROTOTIPO.md       qué construimos y con qué
   CONCURSO.md        rúbrica, calendario, roles
@@ -37,7 +38,7 @@ brand/             marca v2: BRAND.md, kit.html, logos SVG
 memoria/           lecciones aprendidas, una por archivo
 .claude/skills/    skills de Claude Code adaptadas a Brai
 .claude/agents/    auditores de seguridad y rendimiento
-app/               (próximamente) la app
+app/               la app: landing, página de la obra, reclamar, panel, backend Supabase
 ```
 
 ## Para empezar a trabajar
@@ -47,6 +48,14 @@ app/               (próximamente) la app
 3. Ve la marca: abre `brand/kit.html` en el navegador.
 4. Antes de decidir algo: `docs/DECISIONES.md`. Para afilar una idea: `/grill-brai`.
 
+## Probar la app en 3 minutos
+```
+cd app
+pnpm install
+pnpm dev
+```
+Abre `http://localhost:5173` y toca "Toca una obra de ejemplo". Códigos de ejemplo en `docs/PROTOTIPO.md`.
+
 ## Pendientes ya
 
 - [ ] Entrevista con José Luis Malo (con un adulto presente).
@@ -54,5 +63,10 @@ app/               (próximamente) la app
 - [ ] Revisar el tipo de los 50 stickers NFC con NFC Tools.
 - [ ] Cotizar en MercadoLibre: stickers antidesprendibles, raspadita, tarjetas.
 - [ ] Confirmar con el profesor la fecha del infomercial.
-- [ ] Comprar `brai.art`.
+- [ ] Comprar `brai.art` (~49 MXN el primer año en Porkbun) y crear el correo `hola@brai.art` (lo usan la landing y el aviso de privacidad).
+- [ ] Llenar los `?` de `docs/COSTOS.md` con captura de MercadoLibre: etiquetas VOID y tarjetas.
+- [ ] Cotizar el envío de 50 NTAG 424 DNA (Shop NFC o AliExpress).
+- [ ] Conectar Supabase real y publicar en Vercel (`docs/PROTOTIPO.md`), con un adulto.
+- [ ] Que un adulto lea el aviso de privacidad.
+- [ ] En la entrevista, presentar Oferta A y B y anotar cuál escoge el artista.
 - [ ] Subir los wireframes a `docs/wireframes/`.

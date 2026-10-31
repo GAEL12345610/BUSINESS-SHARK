@@ -7,6 +7,7 @@ Varias vienen de errores reales en otros proyectos con el mismo stack (React + V
 ## Verificar
 
 - [verificar-el-artefacto](verificar-el-artefacto.md): Compilar o que un script termine sin error NO es verificar: abre lo que produjo y pregunta si tu prueba vería el fallo
+- [null-no-es-distinto](null-no-es-distinto.md): En pruebas SQL compara con IS DISTINCT FROM, nunca con <>; NULL <> 'x' da NULL y la prueba pasa aunque la función esté rota
 
 ## Seguridad (Supabase y API)
 
