@@ -22,6 +22,7 @@ Varias vienen de errores reales en otros proyectos con el mismo stack (React + V
 
 ## NFC y demo
 
+- [silueta-propia](silueta-propia.md): Antes de aprobar una mascota, mírala en silueta y chiquita: si se parece a un personaje famoso (Pac-Man), no sirve
 - [tag-nfc-bloqueado-es-para-siempre](tag-nfc-bloqueado-es-para-siempre.md): Un tag NFC bloqueado no se puede reescribir nunca: la URL siempre es de brai.art, se prueba en 1 tag antes y nunca va sobre metal
 - [supabase-free-se-pausa](supabase-free-se-pausa.md): El plan Free de Supabase pausa el proyecto tras 7 días sin uso; antes de una demo ábrelo el día anterior o pasa a Pro
 

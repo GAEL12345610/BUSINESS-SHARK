@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800">
+  <defs>
+    <pattern id="tela" width="6" height="6" patternUnits="userSpaceOnUse">
+      <rect width="6" height="6" fill="#EFE7DA"/>
+      <path d="M0 3h6M3 0v6" stroke="#E2D7C5" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="600" height="800" fill="url(#tela)"/>
+  <rect x="28" y="28" width="544" height="744" fill="none" stroke="#D3C6B1" stroke-width="2" stroke-dasharray="10 8"/>
+  <text x="300" y="300" font-family="ui-monospace, Menlo, monospace" font-size="16" letter-spacing="4" fill="#5E6C52" text-anchor="middle">FOTO PENDIENTE</text>
+  <text x="300" y="390" font-family="Georgia, 'Times New Roman', serif" font-size="40" font-weight="600" fill="#2B2622" text-anchor="middle">Caminantes</text>
+  <text x="300" y="470" font-family="ui-monospace, Menlo, monospace" font-size="17" fill="#5E6C52" text-anchor="middle">Serie</text>
+  <text x="300" y="700" font-family="Helvetica, Arial, sans-serif" font-size="17" fill="#5E6C52" text-anchor="middle">José Luis Malo</text>
+  <text x="300" y="726" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#8A8E7E" text-anchor="middle">La foto se toma con él en la sesión de registro</text>
+</svg>

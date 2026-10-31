@@ -162,6 +162,10 @@ export default function Recorrido() {
             Abrir el panel de ejemplo <ArrowRight size={18} />
           </Link>
           <p className="mt-3 text-sm text-tinta/65">Si reclamaste la obra en el paso 2, ahí vas a ver tu correo.</p>
+          <p className="mt-5 max-w-2xl rounded-2xl bg-white p-5 leading-relaxed shadow-[inset_0_0_0_1px_var(--color-linea)]">
+            <span className="font-semibold">Pruébalo con una obra tuya.</span> En el panel, toca "Registrar obra", tómale foto con el celular y
+            ponle título. En un minuto tiene su página y sus piezas para imprimir.
+          </p>
         </Paso>
 
         <Paso n={4} titulo="Cuánto cuesta, con tus números.">

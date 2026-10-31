@@ -7,13 +7,8 @@ import { Punto } from '../components/punto'
 import { Cifra, EscenaSello, LinkReclamarDemo, Pregunta, Raspadita } from '../components/interaccion'
 import { ARTISTA, CODIGO_DEMO, OBRAS } from '../data/demo'
 
-// Pendiente: el dominio brai.art no está comprado. El buzón lo revisa un adulto.
-const CORREO_EQUIPO = 'hola@brai.art'
-const CORREO_FUNDADOR =
-  `mailto:${CORREO_EQUIPO}?subject=${encodeURIComponent('Quiero ser artista fundador de Brai')}&body=` +
-  encodeURIComponent(
-    'Hola, soy:\nMi Instagram o página:\nObras que vendo al año, más o menos:\nRango de precio de mis obras:\nCómo vendo hoy (taller, redes, galería, encargos):\n',
-  )
+// El botón de fundadores lleva al recorrido mientras no exista el correo del
+// equipo (TODO.md, sección 1). Cuando exista, puede volver a ser un mailto.
 const OBRA_DEMO = OBRAS[0]
 
 // Cifras con fuente (docs/ANALISIS.md y docs/COSTOS.md). No inventar.
@@ -251,7 +246,7 @@ export default function Landing() {
                 <TarjetaDueno
                   titulo={OBRA_DEMO.titulo}
                   artista={ARTISTA.nombre}
-                  ficha={`${OBRA_DEMO.registro} · Óleo · 60×80 cm · ${OBRA_DEMO.anio}`}
+                  ficha={`${OBRA_DEMO.registro} · ${OBRA_DEMO.tecnica} · ${OBRA_DEMO.medidas}`}
                 >
                   <Raspadita codigo={CODIGO_DEMO} alRevelar={() => setRaspada(true)} />
                 </TarjetaDueno>
@@ -343,12 +338,12 @@ export default function Landing() {
                 Es para ti si vendes obra original directo, en tu taller, por redes o por encargo, y vendes 10 obras o más al año, o
                 tienes tu propia audiencia.
               </p>
-              <a
-                href={CORREO_FUNDADOR}
+              <Link
+                to="/recorrido"
                 className="mt-9 inline-flex items-center gap-2 rounded-[10px] bg-lienzo px-6 py-3.5 font-semibold text-tinta transition-colors hover:bg-white"
               >
-                Quiero registrar mis obras <ArrowRight size={18} />
-              </a>
+                Ver cómo funciona para ti <ArrowRight size={18} />
+              </Link>
             </div>
             <div className="revela self-end border-t border-lienzo/25 pt-6">
               <p className="font-mono text-xs uppercase tracking-[0.16em] text-lienzo/70">Después del periodo de fundador</p>

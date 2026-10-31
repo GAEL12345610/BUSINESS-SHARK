@@ -158,7 +158,7 @@ pres.addSection({ title: 'Portada' })
   const s = pres.addSlide({ masterName: 'PORTADA', sectionTitle: 'Portada' })
   s.addText('Cada obra sabe\nde dónde viene', { placeholder: 'title' })
   s.addText('Visuales de marca y del prototipo de Brai. 31 de octubre de 2026.', { placeholder: 'body' })
-  s.addImage({ path: V('punto', 'punto-tranquilo.png'), x: 10.1, y: 2.9, w: 2.4, h: 2.4 * (960 / 880), objectName: 'punto-portada', altText: 'Punto, la mascota de Brai' })
+  imagenEnCaja(s, V('punto', 'punto-tranquilo.png'), 9.9, 2.5, 2.8, 3.0)
   s.addNotes('Todas las imágenes de esta presentación están también como PNG en la carpeta visuales/ del repositorio.')
 }
 
@@ -231,7 +231,7 @@ pres.addSection({ title: 'Marca' })
     texto(s, nombre, { x, y: 4.3, w: 2.9, h: 0.4, bold: true, fontSize: 17, align: 'center' })
     texto(s, cuando, { x, y: 4.72, w: 2.9, h: 0.6, fontSize: 13, align: 'center', color: C.text2 })
   })
-  texto(s, 'Hecho del producto, como el muñeco de Michelin está hecho de llantas: es el sello que va detrás del cuadro. Su contorno es el logo real y su chapita es el punto dorado. Nunca interrumpe y nunca sale en la página de la obra.',
+  texto(s, 'Hecho del producto, como el muñeco de Michelin está hecho de llantas: es el sello que va detrás del cuadro. De Clawd, la mascota de Claude Code, tomamos el color plano, los ojos sin boca y las patitas. Nunca interrumpe y nunca sale en la página de la obra.',
     { x: 0.6, y: 5.55, w: 12.1, h: 0.9, fontSize: 15 })
 }
 {
@@ -299,6 +299,20 @@ pres.addSection({ title: 'Prototipo' })
   ], { x: 4.0, y: 5.75, w: 8.7, h: 0.6, fontSize: 14 })
 }
 {
+  const s = contenido('Prototipo', 'Demo para José Luis Malo', 'Sus obras reales, con su fuente')
+  celular(s, V('pantallas', 'celular', 'jose-luis-obra.png'), 0.9, 1.85, 4.75)
+  celular(s, V('pantallas', 'celular', 'jose-luis-artista.png'), 3.55, 1.85, 4.75)
+  texto(s, [
+    { text: 'Títulos, técnica y medidas de fuentes públicas. Lo que no tiene fuente dice "Por confirmar".', options: { bullet: true, breakLine: true } },
+    { text: 'Ningún dueño inventado sobre una obra real.', options: { bullet: true, breakLine: true } },
+    { text: 'Fotos pendientes: solo con su permiso.', options: { bullet: true } },
+  ], { x: 6.6, y: 2.0, w: 6.1, h: 2.6, fontSize: 16, paraSpaceAfter: 10 })
+  texto(s, [
+    { text: 'Link: ', options: { bold: true } },
+    { text: 'braiart.vercel.app/jose-luis', options: { fontFace: MONO } },
+  ], { x: 6.6, y: 5.3, w: 6.1, h: 0.5, fontSize: 15 })
+}
+{
   const s = contenido('Prototipo', 'Para compartir', 'Lo que se ve en WhatsApp y en redes')
   const caja = imagenEnCaja(s, V('compartir', 'imagen-para-compartir.png'), 0.6, 1.95, 7.6, 4.0, 'left')
   texto(s, 'Imagen al pegar el link (1200 × 630)', { x: 0.6, y: caja.y + caja.h + 0.15, w: 7.6, h: 0.35, fontSize: 12, color: C.text2 })
@@ -315,6 +329,7 @@ pres.addSection({ title: 'Cierre' })
     ['/', 'Landing'],
     ['/o/7KQ2X', 'Página de una obra (código de dueño 4K7P-9QX2)'],
     ['/panel', 'Panel del artista'],
+    ['/jose-luis', 'Demo para José Luis Malo'],
     ['/recorrido?para=Nombre', 'Recorrido de 5 minutos'],
     ['/marca', 'Kit de marca y Punto'],
     ['/imprimir/7KQ2X', 'Piezas en tamaño real'],
@@ -322,9 +337,9 @@ pres.addSection({ title: 'Cierre' })
   rutas.forEach(([r, q], i) => {
     const y = 2.6 + i * 0.6
     texto(s, r, { x: 0.8, y, w: 4.4, h: 0.45, fontFace: MONO, fontSize: 16, color: C.accent3 })
-    texto(s, q, { x: 5.3, y, w: 7.2, h: 0.45, fontSize: 16, color: C.background1 })
+    texto(s, q, { x: 5.3, y, w: 5.4, h: 0.45, fontSize: 16, color: C.background1 })
   })
-  s.addImage({ path: V('punto', 'punto-feliz.png'), x: 11.1, y: 5.3, w: 1.5, h: 1.5 * (960 / 880), objectName: 'punto-cierre', altText: 'Punto feliz' })
+  imagenEnCaja(s, V('punto', 'punto-feliz.png'), 11.0, 5.1, 1.7, 1.8)
 }
 
 ;(async () => {

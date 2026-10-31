@@ -1,8 +1,27 @@
 # Punto, la mascota de Brai
 
-**Qué es:** el sello redondo de Brai con cara. Su cuerpo es el sello que va detrás del cuadro, su contorno es el enso del logo y el punto dorado del logo es su chapita. Se llama **Punto** porque el punto dorado es "el último gesto, el que verifica" (`brand/BRAND.md`, sección 4).
+**Qué es (v2, 31 oct 2026):** el sello redondo de Brai con patitas. Cuerpo terracota de un solo color, el hueco del enso a las 2 en punto con el punto dorado encajado, ojos de bloque, sin boca. La v1 (sello color lienzo con cara de emoji) no convenció: se veía como un emoji más, no como un personaje. Se llama **Punto** porque el punto dorado es "el último gesto, el que verifica" (`brand/BRAND.md`, sección 4).
 
-Componente: `app/src/components/punto.tsx`. Reglas de uso: `brand/BRAND.md`, sección 13.
+Componente: `app/src/components/punto.tsx`. Reglas de uso: `brand/BRAND.md`, sección 12. PNG: `visuales/punto/`.
+
+## v2: ingeniería inversa de Clawd (la mascota de Claude Code)
+
+Clawd es el personaje de pixeles, color naranja, que sale en la terminal de Claude Code. Es de Anthropic: no copiamos su forma (es un cangrejo de bloques), copiamos **por qué funciona**:
+
+| Por qué funciona Clawd | Lo que tomamos para Punto v2 |
+|---|---|
+| **Un solo color plano** (naranja, ojos negros). Se reconoce aunque mida 16 px. | Cuerpo terracota plano, patitas y bracitos terracota oscuro. Se lee chiquito y en una sola tinta. |
+| **No tiene boca.** Toda la expresión está en dos ojos de bloque. | Quitamos boca y chapetes. Los ojos son bloques: normales, más altos al tocarlo, `^ ^` feliz, uno entrecerrado con duda. |
+| **Patitas cortas.** Lo vuelven "alguien" y no un ícono. | Dos patitas y dos bracitos: saluda al tocarlo y levanta los brazos cuando registras una obra. |
+| **Está hecho del medio donde vive** (pixeles de terminal). | Está hecho de lo que es Brai: el sello redondo con el hueco del enso y el punto dorado. |
+
+**Lo que salió mal en el camino:** la primera muesca llegaba al centro del círculo y Punto quedó igual a Pac-Man. Se corrigió a un hueco chico en el borde (`memoria/silueta-propia.md`).
+
+Fuentes sobre Clawd (secundarias, Anthropic no publica la ficha de diseño): [Stark Insider](https://www.starkinsider.com/2025/10/clawd-ai-retro-mascot-command-line.html), [explicación de logo y mascota de Claude Code](https://dot-ai.myuuu.co.jp/times/articles/85).
+
+---
+
+## v1: la investigación de principios (sigue vigente)
 
 ---
 
@@ -21,7 +40,7 @@ Lo que sí hicimos fue **ingeniería inversa de por qué funcionan** y aplicar e
 | Mascota | Por qué funciona | Lo que tomamos para Punto |
 |---|---|---|
 | **Bibendum, Michelin** (1898) | Está hecho del producto: nació de una pila de llantas. Quien lo ve entiende qué vende la marca. | **Punto está hecho del producto:** es el sello NFC redondo. Quien lo conoce en la landing lo reconoce detrás del cuadro. |
-| **Duo, Duolingo** (rediseño 2019) | Hecho de pocas formas básicas (círculos, rectángulos redondeados), con ojos grandes que cargan toda la expresión. Fácil de animar y de reconocer en chiquito. | Punto es un círculo, dos ojos y una boca. **Toda la emoción va en los ojos.** Se ve igual de bien a 24 px que a 200 px. |
+| **Duo, Duolingo** (rediseño 2019) | Hecho de pocas formas básicas (círculos, rectángulos redondeados), con ojos grandes que cargan toda la expresión. Fácil de animar y de reconocer en chiquito. | Punto es un círculo, dos ojos, dos patitas. **Toda la emoción va en los ojos.** Se ve igual de bien a 24 px que a 200 px. |
 | **Duo, Duolingo** | Es el mismo personaje con la misma voz en la app, en las notificaciones y en redes. | Punto habla como Brai: tú, frases cortas, nada de "¡Wow!". |
 | **Clippy, Microsoft** (lo que NO hay que hacer) | Lo odiaron porque interrumpía cuando nadie lo llamaba y no se podía quitar. Microsoft lo apagó por default en Office 2000 y lo quitó en 2007. | **Punto nunca interrumpe.** No sale en ventanas emergentes ni tapa contenido. Aparece solo en momentos de Brai y se queda quieto si no lo tocas. |
 

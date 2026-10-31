@@ -124,6 +124,21 @@ async function revelarTodo(p) {
     }
     await ctx.close()
   }
+  // Demo de José Luis (se entra por /jose-luis para activar su modo)
+  for (const [tipo, vw, vh, dpr] of [['celular', 390, 844, 2], ['escritorio', 1440, 900, 1]]) {
+    const d = dir(`pantallas/${tipo}`)
+    const ctx = await b.newContext({ viewport: { width: vw, height: vh }, deviceScaleFactor: dpr, reducedMotion: 'reduce' })
+    const p = await ctx.newPage()
+    await p.goto(BASE + '/jose-luis')
+    await p.waitForTimeout(500)
+    for (const [nombre, ruta] of [['jose-luis-recorrido', '/recorrido'], ['jose-luis-obra', '/o/TQ4RC'], ['jose-luis-artista', '/a/jose-luis-malo']]) {
+      await p.goto(BASE + ruta)
+      await revelarTodo(p)
+      await p.screenshot({ path: path.join(d, `${nombre}.png`) })
+      await p.screenshot({ path: path.join(d, `${nombre}-completa.png`), fullPage: true })
+    }
+    await ctx.close()
+  }
   listo.push('pantallas')
 
   // 4. Piezas para imprimir: PDF tamaño carta y PNG
@@ -150,9 +165,12 @@ async function revelarTodo(p) {
   {
     const d = dir('obras-ejemplo')
     const p = await b.newPage({ viewport: { width: 900, height: 1200 } })
-    for (const f of fs.readdirSync(path.join(APP, 'public', 'obras'))) {
-      await p.goto(`${BASE}/obras/${f}`)
-      await p.screenshot({ path: path.join(d, f.replace('.svg', '.png')) })
+    const obras = path.join(APP, 'public', 'obras')
+    // Solo archivos .svg (las subcarpetas, como jose-luis/, se recorren aparte)
+    const svgs = fs.readdirSync(obras, { recursive: true }).filter((f) => String(f).endsWith('.svg'))
+    for (const f of svgs) {
+      await p.goto(`${BASE}/obras/${String(f).split(path.sep).join('/')}`)
+      await p.screenshot({ path: path.join(d, String(f).split(path.sep).join('-').replace('.svg', '.png')) })
     }
     await p.close()
     listo.push('obras-ejemplo')

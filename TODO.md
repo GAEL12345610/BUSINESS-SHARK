@@ -12,11 +12,12 @@ Cómo leer esto: **Para quién** dice si lo hace Ricardo, el equipo o un adulto.
 | | Tarea | Para quién | Dónde |
 |---|---|---|---|
 | [ ] | Crear un correo normal del proyecto (Gmail, por ejemplo). **Nunca el correo personal de un integrante.** | Equipo con un adulto | |
-| [ ] | Cambiar `hola@brai.art` por ese correo en la landing y en el aviso de privacidad | Ricardo | `app/src/pages/Landing.tsx` (`CORREO_EQUIPO`) y `app/public/privacidad.html` |
+| [ ] | Poner ese correo en el aviso de privacidad y, si quieren, volver a hacer correo el botón de fundadores de la landing (hoy lleva al recorrido) | Ricardo | `app/public/privacidad.html`, `app/src/pages/Landing.tsx` |
+| [ ] | Pedirle a José Luis permiso y fotos de sus obras para la demo | Equipo con adulto | `docs/DEMO_JOSE_LUIS.md` |
 | [ ] | Que un adulto lea el aviso de privacidad antes de que alguien real deje su correo | Adulto | `app/public/privacidad.html` |
 | [ ] | Agendar la reunión con José Luis, con un adulto presente | Adulto y equipo | `docs/REUNION_JOSE_LUIS.md` |
-| [ ] | Probar el link del recorrido en un iPhone y un Android | Ricardo | `/recorrido?para=José%20Luis%20Malo` |
-| [ ] | Imprimir las piezas de ejemplo y pegarlas en un cartón | Equipo | `/imprimir/7KQ2X` |
+| [ ] | Probar el link de la demo en un iPhone y un Android | Ricardo | `braiart.vercel.app/jose-luis` |
+| [ ] | Imprimir las piezas de *Toricleto* y pegarlas en un cartón (el QR abre la demo) | Equipo | `braiart.vercel.app/imprimir/TQ4RC` |
 
 ## 2. Antes del 26 de noviembre (propuesta final)
 
@@ -62,6 +63,8 @@ Cómo leer esto: **Para quién** dice si lo hace Ricardo, el equipo o un adulto.
 - [x] Panel del artista de ejemplo y recorrido de 5 pasos con calculadora de precios.
 - [x] Mascota Punto y kit de marca vivo en `/marca`.
 - [x] Imagen para compartir (`og.png`) y clip vertical de la escena del sello.
+- [x] Demo pública de José Luis en `/jose-luis` con sus obras reales y fuentes (`docs/DEMO_JOSE_LUIS.md`).
+- [x] Punto v2 (principios de Clawd).
 - [x] Todos los visuales en PNG, PDF, PPTX y GIF en `visuales/` (para la Chromebook). Se regeneran con `visuales/generar.cjs` y `visuales/deck.cjs`.
 - [x] Backend en migraciones con 21 pruebas, verificación del 424 DNA y cadena de huellas.
 - [x] Competencia, costos cotizados, Oferta B en prueba.

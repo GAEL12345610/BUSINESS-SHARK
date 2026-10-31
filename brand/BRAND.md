@@ -118,11 +118,12 @@ Brai tiene dos superficies y cada una tiene un dueño visual distinto. Confundir
 - **El único momento que brilla es el dorado** al reclamar una obra. Nada más tiene animación de celebración.
 - Siempre respetar `prefers-reduced-motion`.
 
-## 12. Mascota: Punto
-Punto es el sello redondo con cara. Su cuerpo es el sello físico, su contorno es el isotipo real y su chapita es el punto dorado. Por qué es así y qué copiamos de otras mascotas (el principio, nunca el dibujo): `docs/MASCOTA.md`. Componente: `app/src/components/punto.tsx`.
+## 12. Mascota: Punto (v2)
+Punto es el sello redondo con patitas: cuerpo terracota plano, el hueco del enso a las 2 en punto con el punto dorado encajado, ojos de bloque y sin boca. Por qué es así (principios de Michelin, Duolingo y Clawd de Claude Code, y el anti ejemplo de Clippy): `docs/MASCOTA.md`. Componente: `app/src/components/punto.tsx`. PNG: `visuales/punto/`.
 
-- **Nunca se redibuja el logo para hacerlo:** el contorno es `brand/isotipo.svg` tal cual.
-- **Toda la emoción va en los ojos.** Cuatro estados: tranquilo, toque, feliz, duda. No se inventan más sin pasar por aquí.
+- **Un solo color plano** (terracota, con patitas y brazos en terracota oscuro). Nada de degradados ni sombras duras.
+- **Sin boca.** Toda la emoción va en los ojos. Cuatro estados: tranquilo, toque, feliz, duda. No se inventan más sin pasar por aquí.
+- **El hueco va en el borde, nunca hasta el centro:** hasta el centro es Pac-Man (`memoria/silueta-propia.md`).
 - **Una vez por pantalla, como mucho.** Nunca interrumpe, nunca tapa contenido, nunca en ventanas emergentes.
 - **Nunca en la página de la obra ni en reclamar:** ahí manda el artista. Punto vive en la voz de Brai: landing, panel, recorrido, marca, página no encontrada.
 - **Habla como Brai:** frases cortas, tú, sin signos de admiración.
@@ -131,6 +132,7 @@ Punto es el sello redondo con cara. Su cuerpo es el sello físico, su contorno e
 `app/public/og.png` (1200 × 630) es lo que se ve cuando alguien pega el link en WhatsApp o en redes. Se genera desde `app/scripts/og/plantilla.html` con `node app/scripts/og/generar.cjs`. Si cambia el titular de la landing, se regenera.
 
 ## 14. Historial
+- **v2.4 (31 oct 2026):** Punto v2 con principios de Clawd: color plano, sin boca, patitas.
 - **v2.3 (31 oct 2026):** mascota Punto (sección 12), imagen para compartir (13), kit vivo en `/marca`.
 - **v2.2 (31 oct 2026):** sistema tipográfico: tamaño óptico, peso 560, cifras tabulares en el registro, fuentes autohospedadas. Ver sección 6.
 - **v2.1 (31 oct 2026):** qué tiene que sentir cada quien (sección 0), las dos caras digitales y el tema del artista (9), frases digitales (10), reglas de movimiento (11). Sale "Verificado por Brai" y "Conectando artistas con sus compradores" de los drafts.

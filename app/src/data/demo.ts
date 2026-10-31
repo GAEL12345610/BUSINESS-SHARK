@@ -1,8 +1,10 @@
-// DATOS DE EJEMPLO. José Luis Malo todavía no registra obras en Brai.
-// Solo su nombre y el título "Los olvidados" salen del draft del equipo.
-// Todo lo demás es ejemplo (docs/DECISIONES.md #24): se cambia aquí por sus
-// datos reales después de la entrevista. NO publicar con su nombre hasta que
-// firme el permiso de fundador (docs/OFERTA.md).
+// DATOS DE LA DEMO. Dos modos:
+//  - "ejemplo": Lucía Arce, artista INVENTADA, con obras inventadas.
+//  - "jose-luis": José Luis Malo, con datos PÚBLICOS y su fuente (DECISIONES #42).
+//    Se activa entrando a /jose-luis y se quita con /?salir-demo.
+//    Reglas: nada inventado (lo que no se sabe dice "Por confirmar"), ningún
+//    dueño inventado sobre una obra real, ninguna cita que él no haya dicho y
+//    ninguna foto de su obra sin su permiso (van en public/obras/jose-luis/).
 //
 // La forma de estos datos es la que va a devolver la vista pública de Supabase
 // (docs/PROTOTIPO.md): sin correos, dueños solo con iniciales.
@@ -19,7 +21,8 @@ export type Obra = {
   titulo: string
   tecnica: string
   medidas: string
-  anio: number
+  /** null = año por confirmar */
+  anio: number | null
   imagen: string
   /** Fotos huella: acercamientos de la misma foto (x, y en % del cuadro) */
   huellas: { x: number; y: number; nota: string }[]
@@ -28,6 +31,8 @@ export type Obra = {
   eventos: Evento[]
   /** Iniciales del dueño actual, null si nadie la ha reclamado */
   dueno: string | null
+  /** De dónde salen los datos (modo José Luis) */
+  fuente?: { texto: string; url: string }
 }
 
 export type Artista = {
@@ -38,35 +43,86 @@ export type Artista = {
   correo: string | null
   /** true mientras los datos no sean reales: la página muestra el aviso */
   ejemplo: boolean
+  ciudad: string
+  bio: string[]
+  fuentes: { texto: string; url: string }[]
 }
 
-// CANDADO (DECISIONES #24): con su nombre SOLO en tu compu, con
-// VITE_DEMO_JOSE_LUIS=1 en app/.env.local. Lo publicado en Vercel usa una
-// artista inventada y marcada como ejemplo hasta que él firme el permiso.
-export const CON_NOMBRE_REAL = import.meta.env.VITE_DEMO_JOSE_LUIS === '1'
+export function anioTexto(o: Pick<Obra, 'anio'>) {
+  return o.anio === null ? 'Año por confirmar' : String(o.anio)
+}
 
-export const ARTISTA: Artista = CON_NOMBRE_REAL
-  ? {
-      slug: 'jose-luis-malo',
-      nombre: 'José Luis Malo',
-      disciplina: 'Pintura', // ejemplo, por confirmar
-      acento: '#2F5D62', // ejemplo: el color lo elige él
-      correo: null,
-      ejemplo: true,
+// ---------------------------------------------------------------- modo
+export type Modo = 'ejemplo' | 'jose-luis'
+const CLAVE_MODO = 'brai-demo-modo'
+function leerModo(): Modo {
+  if (import.meta.env.VITE_DEMO_JOSE_LUIS === '1') return 'jose-luis'
+  if (typeof window === 'undefined') return 'ejemplo'
+  try {
+    const ruta = window.location.pathname
+    // Entrar a una obra suya (por ejemplo, al escanear el QR impreso con otro
+    // celular) o a su página también activa su modo.
+    const suya = /^\/(o\/(TQ4RC|D7PNG|C8MNT|VJ6KC|K9FGR)|a\/jose-luis-malo|imprimir\/(TQ4RC|D7PNG|C8MNT|VJ6KC|K9FGR))(\/|$)/i.test(ruta)
+    if (ruta === '/jose-luis' || ruta.startsWith('/jose-luis/') || suya) {
+      localStorage.setItem(CLAVE_MODO, 'jose-luis')
+      return 'jose-luis'
     }
-  : {
-      slug: 'ejemplo',
-      nombre: 'Lucía Arce',
-      disciplina: 'Pintura',
-      acento: '#2F5D62',
-      correo: null,
-      ejemplo: true,
+    if (new URLSearchParams(window.location.search).has('salir-demo')) {
+      localStorage.removeItem(CLAVE_MODO)
+      return 'ejemplo'
     }
+    return localStorage.getItem(CLAVE_MODO) === 'jose-luis' ? 'jose-luis' : 'ejemplo'
+  } catch {
+    return 'ejemplo'
+  }
+}
+export const MODO: Modo = leerModo()
+export const MODO_JOSE_LUIS = MODO === 'jose-luis'
+
+// Fuentes públicas consultadas el 31 oct 2026 (docs/DEMO_JOSE_LUIS.md)
+const F = {
+  vertice: { texto: 'Galería Vértice', url: 'https://galeriavertice.mx/pages/jose-luis-malo' },
+  mutualart: { texto: 'MutualArt', url: 'https://www.mutualart.com/Artist/Jose-Luis-Malo/8BB17FDEB44116E3' },
+  informador2012: { texto: 'El Informador, 2012', url: 'https://www.informador.mx/Cultura/Jose-Luis-Malo-y-su-arte-politico-20120810-0257.html' },
+  pincelada: { texto: 'Pincelada de Vida, Gobierno de Jalisco', url: 'https://pinceladadevida.jalisco.gob.mx/jose-luis-malo/' },
+  despertador: { texto: 'El Despertador Panamericano', url: 'https://eldespertadorpanamericano.com/arte-combatir-delincuencia-jl-malo/' },
+  arteinformado: { texto: 'Arte Informado', url: 'https://www.arteinformado.com/guia/f/jose-luis-malo-213461' },
+  udgtv: { texto: 'UDGTV, 2026', url: 'https://udgtv.com/noticias/jose-luis-malo-interviene-siteur/314993' },
+}
+
+const ARTISTA_EJEMPLO: Artista = {
+  slug: 'ejemplo',
+  nombre: 'Lucía Arce',
+  disciplina: 'Pintura',
+  acento: '#2F5D62',
+  correo: null,
+  ejemplo: true,
+  ciudad: 'Guadalajara, Jalisco',
+  bio: ['Aquí va la presentación del artista, en sus palabras: qué pinta, desde cuándo y por qué.'],
+  fuentes: [],
+}
+
+const ARTISTA_JOSE_LUIS: Artista = {
+  slug: 'jose-luis-malo',
+  nombre: 'José Luis Malo',
+  disciplina: 'Pintura y escultura',
+  acento: '#2F5D62', // por confirmar: el color lo escoge él
+  correo: null,
+  ejemplo: true,
+  ciudad: 'Guadalajara, Jalisco',
+  bio: [
+    'Pintor y escultor tapatío, nacido en 1971, con más de 30 años de trayectoria. Su obra mezcla el juego con la crítica política.',
+    'Ha expuesto en México y en Asia. Según su perfil público, su obra está en colecciones como las del Museum of Contemporary Art de Chicago, el Museo Nacional del Tequila, el Senado de la República y el Congreso de Jalisco.',
+    'En 2026 presentó Portador de la Paz, pintura y escultura contra la violencia normalizada, en la galería de la Estación Juárez del Tren Ligero.',
+  ],
+  fuentes: [F.pincelada, F.arteinformado, F.informador2012, F.udgtv],
+}
+
+export const ARTISTA: Artista = { ...(MODO_JOSE_LUIS ? ARTISTA_JOSE_LUIS : ARTISTA_EJEMPLO) }
 
 // PERSONALIZACIÓN POR LINK (DECISIONES #38): /recorrido?para=Nombre pinta ese
-// nombre en la demo SOLO en el navegador de quien abre el link. El nombre no se
-// guarda en el código ni en el sitio publicado, y se borra al cerrar la pestaña.
-// Para quitarlo: ?para= vacío.
+// nombre en la demo SOLO en el navegador de quien abre el link. Para quitarlo:
+// ?para= vacío. No aplica en modo José Luis (ahí ya es él).
 const CLAVE_PARA = 'brai-demo-para'
 function leerPara(): string | null {
   if (typeof window === 'undefined') return null
@@ -83,17 +139,19 @@ function leerPara(): string | null {
     return null
   }
 }
-export const NOMBRE_PARA = CON_NOMBRE_REAL ? null : leerPara()
+export const NOMBRE_PARA = MODO_JOSE_LUIS ? ARTISTA_JOSE_LUIS.nombre : leerPara()
 if (NOMBRE_PARA) ARTISTA.nombre = NOMBRE_PARA
+/** El HTML prerenderizado (Lucía) no coincide: hay que pintar desde cero. */
+export const DEMO_PERSONALIZADA = MODO_JOSE_LUIS || Boolean(NOMBRE_PARA)
 
 /** Código de dueño de la demo. En la real va cifrado en la base y bajo raspadita. */
 export const CODIGO_DEMO = '4K7P-9QX2'
 
-export const OBRAS: Obra[] = [
+const OBRAS_EJEMPLO: Obra[] = [
   {
     codigo: '7KQ2X',
     registro: 'BRAI-0001',
-    titulo: CON_NOMBRE_REAL ? 'Los olvidados' : 'Figuras del barrio',
+    titulo: 'Figuras del barrio',
     tecnica: 'Óleo sobre tela',
     medidas: '60 × 80 cm',
     anio: 2026,
@@ -103,7 +161,7 @@ export const OBRAS: Obra[] = [
       { x: 55, y: 30, nota: 'Veladura sobre la figura del centro' },
       { x: 50, y: 92, nota: 'Trazo oscuro de la base, de un solo gesto' },
     ],
-    historia: CON_NOMBRE_REAL ? ['Texto de ejemplo. Aquí José Luis cuenta, con sus palabras, cómo nació la obra. Se llena después de la entrevista.'] : [
+    historia: [
       'Empecé este cuadro pensando en la gente que pasa por la vida de un barrio y nadie nombra. Las figuras se van borrando de izquierda a derecha, como se borra la memoria.',
       'Lo pinté en capas durante tres meses. La última figura casi no se ve a propósito: quería que quien la mire tenga que acercarse.',
     ],
@@ -173,33 +231,89 @@ export const OBRAS: Obra[] = [
   },
 ]
 
+// ---------------------------------------------------------------- obras de José Luis
+// Solo datos públicos con fuente. Lo que no se sabe: "Por confirmar".
+// Las imágenes son marcos vacíos hasta que él nos dé fotos (public/obras/jose-luis/).
+const SIN_FOTO = [
+  { x: 25, y: 30, nota: 'Detalle que fotografiamos contigo' },
+  { x: 65, y: 55, nota: 'Detalle que fotografiamos contigo' },
+  { x: 40, y: 85, nota: 'La firma' },
+]
+const DEMO_REGISTRO: Evento[] = [
+  { tipo: 'registro', fecha: new Date().toISOString().slice(0, 10), texto: 'Demostración: esta obra todavía no está registrada en Brai' },
+]
+const sinVideo = { duracion: '0:00', disponible: false }
+
+const OBRAS_JOSE_LUIS: Obra[] = [
+  {
+    codigo: 'TQ4RC', registro: 'BRAI-0001', titulo: 'Toricleto', tecnica: 'Óleo sobre tela', medidas: '100 × 80 cm', anio: null,
+    imagen: '/obras/jose-luis/toricleto.svg', huellas: SIN_FOTO, video: sinVideo, eventos: DEMO_REGISTRO, dueno: null,
+    historia: ['Obra única (1 de 1), en exhibición en Galería Vértice. La historia de la obra la cuenta José Luis con sus palabras en la sesión de registro.'],
+    fuente: F.vertice,
+  },
+  {
+    codigo: 'D7PNG', registro: 'BRAI-0002', titulo: 'Diana y la Patria Náufraga', tecnica: 'Óleo sobre tela', medidas: 'Por confirmar', anio: null,
+    imagen: '/obras/jose-luis/diana-y-la-patria-naufraga.svg', huellas: SIN_FOTO, video: sinVideo, eventos: DEMO_REGISTRO, dueno: null,
+    historia: [
+      'Un barco de vela que resiste la tempestad con una tripulación peculiar a bordo, entre ella Benito Juárez y El Chapulín Colorado: una sátira de México.',
+      'Formó parte de Lúdico, su exposición de 2012 en la sala de arte del Congreso de Jalisco.',
+    ],
+    fuente: F.informador2012,
+  },
+  {
+    codigo: 'C8MNT', registro: 'BRAI-0003', titulo: 'Caminantes', tecnica: 'Por confirmar', medidas: 'Por confirmar', anio: null,
+    imagen: '/obras/jose-luis/caminantes.svg', huellas: SIN_FOTO, video: sinVideo, eventos: DEMO_REGISTRO, dueno: null,
+    historia: [
+      'Con el fondo blanco de sus paisajes, la serie capta el instante en que una persona pierde su identidad y empieza a desprenderse.',
+      'Nació de buscar una colección menos cruda sin dejar de provocar, y lo llevó al tema de la migración.',
+    ],
+    fuente: F.despertador,
+  },
+  {
+    codigo: 'VJ6KC', registro: 'BRAI-0004', titulo: 'Viejo loco', tecnica: 'Por confirmar', medidas: 'Por confirmar', anio: 2016,
+    imagen: '/obras/jose-luis/viejo-loco.svg', huellas: SIN_FOTO, video: sinVideo, eventos: DEMO_REGISTRO, dueno: null,
+    historia: ['Se vendió en una subasta en línea en 2021. Con Brai, José Luis sabría hoy dónde está y podría escribirle a quien la tiene.'],
+    fuente: F.mutualart,
+  },
+  {
+    codigo: 'K9FGR', registro: 'BRAI-0005', titulo: 'Configuraciones de un personaje', tecnica: 'Por confirmar', medidas: 'Por confirmar', anio: 1998,
+    imagen: '/obras/jose-luis/configuraciones-de-un-personaje.svg', huellas: SIN_FOTO, video: sinVideo, eventos: DEMO_REGISTRO, dueno: null,
+    historia: ['Premiada en el Salón de Octubre de 1998, en Guadalajara.'],
+    fuente: F.arteinformado,
+  },
+]
+
+export const OBRAS: Obra[] = MODO_JOSE_LUIS ? OBRAS_JOSE_LUIS : OBRAS_EJEMPLO
+
 // Con un nombre real en pantalla (?para=) no se le atribuye una cita inventada
 // (regla 3 de CLAUDE.md): la historia pasa a texto de ejemplo neutro.
-if (NOMBRE_PARA) {
+if (NOMBRE_PARA && !MODO_JOSE_LUIS) {
   OBRAS[0].historia = ['Texto de ejemplo. Aquí cuentas, con tus palabras, cómo nació la obra. Lo escribimos contigo en la sesión de registro.']
 }
 
 // Reclamos hechos en esta sesión de la demo. En la versión real esto lo hace
 // UNA función en Supabase (revisa el código cifrado, cuenta intentos, crea el evento).
-const CLAVE = 'brai-demo-reclamos'
+// localStorage (no sessionStorage): lo que se reclama en una pestaña se ve en el
+// panel abierto en otra, en el mismo navegador. Claves separadas por modo.
+const CLAVE = `brai-demo-reclamos-${MODO}`
 
 type Reclamo = { iniciales: string; fecha: string; correo?: string }
 
 function leerReclamos(): Record<string, Reclamo> {
   try {
-    return JSON.parse(sessionStorage.getItem(CLAVE) ?? '{}')
+    return JSON.parse(localStorage.getItem(CLAVE) ?? '{}')
   } catch {
     return {}
   }
 }
 
-// Obras que el artista registra en el panel durante la demo (solo esta pestaña).
-const CLAVE_OBRAS = 'brai-demo-obras'
+// Obras que el artista registra en el panel durante la demo (en este navegador).
+const CLAVE_OBRAS = `brai-demo-obras-${MODO}`
 
 export function obrasRegistradas(): Obra[] {
   if (typeof window === 'undefined') return []
   try {
-    return JSON.parse(sessionStorage.getItem(CLAVE_OBRAS) ?? '[]')
+    return JSON.parse(localStorage.getItem(CLAVE_OBRAS) ?? '[]')
   } catch {
     return []
   }
@@ -247,12 +361,12 @@ export function registrarObra(n: NuevaObra): Obra {
     dueno: null,
   }
   try {
-    sessionStorage.setItem(CLAVE_OBRAS, JSON.stringify([obra, ...lista]))
+    localStorage.setItem(CLAVE_OBRAS, JSON.stringify([obra, ...lista]))
   } catch {
     // Si la foto no cabe en el storage, se registra sin ella.
     obra.imagen = OBRAS[0].imagen
     try {
-      sessionStorage.setItem(CLAVE_OBRAS, JSON.stringify([obra, ...lista]))
+      localStorage.setItem(CLAVE_OBRAS, JSON.stringify([obra, ...lista]))
     } catch {
       /* sin storage: la obra vive solo en esta pantalla */
     }
@@ -340,7 +454,7 @@ export function reclamar(codigoObra: string, codigoDueno: string, correo: string
   try {
     const todos = leerReclamos()
     todos[obra.codigo] = { iniciales: ini, fecha: new Date().toISOString().slice(0, 10), correo }
-    sessionStorage.setItem(CLAVE, JSON.stringify(todos))
+    localStorage.setItem(CLAVE, JSON.stringify(todos))
   } catch {
     // Sin storage la demo sigue: solo no recuerda el reclamo al recargar.
   }
@@ -351,4 +465,14 @@ const MESES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'o
 export function fecha(iso: string) {
   const [a, m, d] = iso.split('-').map(Number)
   return `${d} ${MESES[m - 1]} ${a}`
+}
+
+/** Deja la demo como nueva: borra reclamos y obras registradas de este modo. */
+export function reiniciarDemo() {
+  try {
+    localStorage.removeItem(CLAVE)
+    localStorage.removeItem(CLAVE_OBRAS)
+  } catch {
+    /* sin storage no hay nada que borrar */
+  }
 }

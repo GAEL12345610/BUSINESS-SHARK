@@ -2,6 +2,15 @@
 
 Una línea por decisión, con su porqué. Lo más reciente arriba. Si una decisión cambia, se tacha y se agrega la nueva con fecha: nunca se borra.
 
+## 31 oct 2026, quinta sesión (demo pública de José Luis, Punto v2)
+
+| # | Decisión | Por qué |
+|---|---|---|
+| 42 | ~~#24 y #36 en lo que toca al nombre~~ **La demo de José Luis Malo se publica en `/jose-luis` con sus datos PÚBLICOS y su fuente.** Lo que no tiene fuente dice "Por confirmar". Sin dueños inventados sobre sus obras reales, sin citas suyas y sin fotos de su obra hasta que dé permiso. | Lo pidió el equipo, sabiendo el riesgo. Sus datos ya son públicos; lo que sí haría daño es un registro falso sobre una obra real a la venta o una cita que no dijo. Detalle: `DEMO_JOSE_LUIS.md`. |
+| 43 | **El QR de la hoja de impresión de la DEMO apunta a donde corre la app** (hoy `braiart.vercel.app`), con un aviso que no se imprime. Los sellos reales siguen apuntando siempre a `brai.art` (#12). | Un QR a `brai.art`, que todavía no existe, no abre nada en la reunión. El QR impreso se puede tirar; un sello bloqueado no. |
+| 44 | **Punto v2:** cuerpo terracota plano, hueco del enso en el borde con el punto dorado, ojos de bloque, sin boca, patitas. Se tomaron los principios de Clawd (Claude Code), no su forma. | La v1 parecía un emoji. Detalle: `MASCOTA.md`. |
+| 45 | **El botón de fundadores de la landing lleva al recorrido**, no a un correo. | `hola@brai.art` no existe: un botón que no lleva a nada no es "totalmente funcional". Vuelve a ser correo cuando el equipo tenga uno (`TODO.md`). |
+
 ## 31 oct 2026, cuarta sesión (prototipo para José Luis, mascota)
 
 | # | Decisión | Por qué |

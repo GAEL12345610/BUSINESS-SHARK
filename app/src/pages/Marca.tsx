@@ -80,8 +80,8 @@ export default function Marca() {
             <div className="border-t border-tinta pt-5">
               <p className="font-semibold">Por qué es así</p>
               <p className="mt-2 leading-relaxed text-tinta/80">
-                Está hecho del producto, como el muñeco de Michelin está hecho de llantas: es el sello que va detrás del cuadro. Su contorno es el
-                logo real y su chapita es el punto dorado. Toda la emoción va en los ojos, para que se lea igual de chiquito que de grande.
+                Está hecho del producto, como el muñeco de Michelin está hecho de llantas: es el sello que va detrás del cuadro. Tomamos de Clawd, la
+                mascota de Claude Code, el color plano, los ojos sin boca y las patitas. El hueco y el punto dorado son los del logo.
               </p>
             </div>
             <div className="border-t border-linea pt-5">

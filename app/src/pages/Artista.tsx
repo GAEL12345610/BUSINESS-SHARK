@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router'
 import { SelloRegistroBrai } from '../components/marca'
-import { ARTISTA, OBRAS, getObra } from '../data/demo'
+import { ARTISTA, MODO_JOSE_LUIS, anioTexto, todasLasObras } from '../data/demo'
 import NoEncontrada from './NoEncontrada'
 import { Etiqueta, PaginaArtista } from './Obra'
 
@@ -8,7 +8,7 @@ import { Etiqueta, PaginaArtista } from './Obra'
 export default function Artista() {
   const { slug = '' } = useParams()
   if (slug !== ARTISTA.slug) return <NoEncontrada />
-  const obras = OBRAS.map((o) => getObra(o.codigo) ?? o)
+  const obras = todasLasObras()
   const conDueno = obras.filter((o) => o.dueno).length
 
   return (
@@ -17,13 +17,34 @@ export default function Artista() {
         <section className="entra max-w-2xl">
           <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-verde">{ARTISTA.disciplina}</p>
           <h1 className="mt-2 font-display text-5xl font-semibold leading-[1.02] tracking-[-0.02em] sm:text-6xl">{ARTISTA.nombre}</h1>
-          {ARTISTA.ejemplo && <p className="mt-3 font-mono text-[10px] text-verde">Texto de ejemplo. Lo escribe el artista.</p>}
-          <p className="mt-4 text-lg leading-relaxed text-tinta/85">
-            Aquí va la presentación del artista, en sus palabras: qué pinta, desde cuándo y por qué.
-          </p>
+          <p className="mt-2 font-mono text-xs text-verde">{ARTISTA.ciudad}</p>
+          {ARTISTA.ejemplo && (
+            <p className="mt-3 font-mono text-[10px] text-verde">
+              {MODO_JOSE_LUIS ? 'Datos de fuentes públicas, por confirmar con él. En la versión real lo escribe el artista.' : 'Texto de ejemplo. Lo escribe el artista.'}
+            </p>
+          )}
+          <div className="mt-4 space-y-3 text-lg leading-relaxed text-tinta/85">
+            {ARTISTA.bio.map((p) => (
+              <p key={p}>{p}</p>
+            ))}
+          </div>
+          {ARTISTA.fuentes.length > 0 && (
+            <p className="mt-4 text-xs leading-relaxed text-verde">
+              Fuentes:{' '}
+              {ARTISTA.fuentes.map((f, i) => (
+                <span key={f.url}>
+                  {i > 0 && ', '}
+                  <a href={f.url} target="_blank" rel="noreferrer" className="underline underline-offset-2">
+                    {f.texto}
+                  </a>
+                </span>
+              ))}
+              .
+            </p>
+          )}
           <dl className="mt-8 flex gap-10 border-t border-linea pt-5">
             <div>
-              <dt className="font-mono text-[11px] uppercase tracking-[0.14em] text-verde">Obras registradas</dt>
+              <dt className="font-mono text-[11px] uppercase tracking-[0.14em] text-verde">{MODO_JOSE_LUIS ? 'Obras en la demo' : 'Obras registradas'}</dt>
               <dd className="mt-1 font-display text-4xl font-semibold">{obras.length}</dd>
             </div>
             <div>
@@ -43,11 +64,11 @@ export default function Artista() {
                 </div>
                 <p className="mt-3 font-display text-lg font-semibold leading-tight">{o.titulo}</p>
                 <p className="mt-1 font-mono text-[11px] text-verde">
-                  {o.registro} · {o.tecnica} · {o.anio}
+                  {o.registro} · {o.tecnica} · {anioTexto(o)}
                 </p>
                 <p className="mt-2 inline-flex items-center gap-1.5 text-xs font-semibold">
                   <i className={`size-2 rounded-full ${o.dueno ? 'bg-[var(--acento)]' : 'bg-dorado'}`} />
-                  {o.dueno ? `Con dueño, ${o.dueno}` : 'Registrada, sin reclamar'}
+                  {o.dueno ? `Con dueño, ${o.dueno}` : MODO_JOSE_LUIS ? 'Sin dueño registrado' : 'Registrada, sin reclamar'}
                 </p>
               </Link>
             ))}

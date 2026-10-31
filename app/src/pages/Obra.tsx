@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router'
 import { Expand, Play } from 'lucide-react'
 import { SelloRegistroBrai } from '../components/marca'
 import { Capa, CompararHuella, Compartir, VisorObra } from '../components/visor'
-import { ARTISTA, CODIGO_DEMO, OBRAS, esMia, fecha, getObra, huellaRegistro, type Obra as TObra } from '../data/demo'
+import { ARTISTA, CODIGO_DEMO, MODO_JOSE_LUIS, OBRAS, anioTexto, esMia, fecha, getObra, huellaRegistro, type Obra as TObra } from '../data/demo'
 import { varsTema } from '../lib/tema'
 import NoEncontrada from './NoEncontrada'
 
@@ -13,8 +13,18 @@ export function PaginaArtista({ children }: { children: ReactNode }) {
     <div style={varsTema(ARTISTA.acento)} className="min-h-[100dvh] bg-lienzo">
       {ARTISTA.ejemplo && (
         <p className="bg-arena px-4 py-2 text-center text-[12px] leading-snug text-tinta/80">
-          Obra de ejemplo. {ARTISTA.nombre} todavía no registra obras en Brai. Para probar, el código de dueño es{' '}
-          <span className="font-mono font-medium text-tinta">{CODIGO_DEMO}</span>.
+          {MODO_JOSE_LUIS ? (
+            <>
+              Demostración para {ARTISTA.nombre}. Datos de fuentes públicas, por confirmar con él. Para probar, el código de dueño es{' '}
+              <span className="font-mono font-medium text-tinta">{CODIGO_DEMO}</span>.{' '}
+              <a href="/?salir-demo" className="underline underline-offset-2">Salir de la demo</a>
+            </>
+          ) : (
+            <>
+              Obra de ejemplo. {ARTISTA.nombre} todavía no registra obras en Brai. Para probar, el código de dueño es{' '}
+              <span className="font-mono font-medium text-tinta">{CODIGO_DEMO}</span>.
+            </>
+          )}
         </p>
       )}
       <header className="border-b border-linea bg-lienzo">
@@ -82,7 +92,7 @@ export default function Obra() {
     ['Registro', obra.registro],
     ['Técnica', obra.tecnica],
     ['Medidas', obra.medidas],
-    ['Año', String(obra.anio)],
+    ['Año', anioTexto(obra)],
     ['Dueño', obra.dueno ?? 'Sin reclamar'],
   ]
   const h = huella === null ? null : obra.huellas[huella]
@@ -111,7 +121,11 @@ export default function Obra() {
               <Expand size={14} /> Ver en grande
             </span>
           </button>
-          {ARTISTA.ejemplo && <p className="px-4 pt-2 font-mono text-[10px] text-verde lg:px-0">Imagen de ejemplo</p>}
+          {ARTISTA.ejemplo && (
+            <p className="px-4 pt-2 font-mono text-[10px] text-verde lg:px-0">
+              {MODO_JOSE_LUIS ? 'Foto pendiente: la tomamos contigo en la sesión de registro' : 'Imagen de ejemplo'}
+            </p>
+          )}
         </div>
 
         <div className="px-4 sm:px-6 lg:px-0">
@@ -129,8 +143,8 @@ export default function Obra() {
                   <span className="absolute size-3.5 rounded-full bg-dorado/40" />
                   <span className="size-2 rounded-full bg-dorado" />
                 </span>
-                Registrada por el artista
-                <span className="font-mono text-[11px] font-normal text-tinta/70">{fecha(registro.fecha)}</span>
+                {MODO_JOSE_LUIS ? 'Así se verá: registrada por el artista' : 'Registrada por el artista'}
+                {!MODO_JOSE_LUIS && <span className="font-mono text-[11px] font-normal text-tinta/70">{fecha(registro.fecha)}</span>}
               </p>
             )}
             <dl className="entra mt-6 grid grid-cols-[auto_1fr] gap-x-6 gap-y-2 border-t border-linea pt-4 font-mono text-[13px]" style={paso(4)}>
@@ -174,10 +188,24 @@ export default function Obra() {
 
           <section className="revela mt-12">
             <Etiqueta>Historia de la obra</Etiqueta>
-            {ARTISTA.ejemplo && <p className="mt-2 font-mono text-[10px] text-verde">Texto de ejemplo. Lo escribe el artista.</p>}
+            {ARTISTA.ejemplo && (
+              <p className="mt-2 font-mono text-[10px] text-verde">
+                {obra.fuente ? (
+                  <>
+                    Dato público, fuente:{' '}
+                    <a href={obra.fuente.url} target="_blank" rel="noreferrer" className="underline underline-offset-2">
+                      {obra.fuente.texto}
+                    </a>
+                    . En la versión real lo escribe el artista.
+                  </>
+                ) : (
+                  'Texto de ejemplo. Lo escribe el artista.'
+                )}
+              </p>
+            )}
             <div className="mt-4 space-y-4 text-[17px] leading-relaxed">
               {obra.historia.map((p, i) => (
-                <p key={i} className={i === 0 ? 'font-display text-xl italic leading-snug' : ''}>
+                <p key={i} className={i === 0 && !obra.fuente ? 'font-display text-xl italic leading-snug' : ''}>
                   {p}
                 </p>
               ))}
@@ -244,7 +272,7 @@ export default function Obra() {
                 </div>
                 <p className="mt-2 font-display font-semibold leading-tight">{o.titulo}</p>
                 <p className="font-mono text-[11px] text-verde">
-                  {o.registro} · {o.anio}
+                  {o.registro} · {anioTexto(o)}
                 </p>
               </Link>
             ))}

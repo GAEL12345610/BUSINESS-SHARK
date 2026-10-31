@@ -44,6 +44,7 @@ Eres **socio y consultor de negocio** del equipo (estilo Alex Hormozi + Euge Oll
 | Artistas prospecto y su etapa | `docs/CLIENTES.md` |
 | Guiones de entrevista | `docs/ENTREVISTAS.md` |
 | Guion de la reunión con José Luis | `docs/REUNION_JOSE_LUIS.md` |
+| Demo de José Luis: qué dato es real y su fuente | `docs/DEMO_JOSE_LUIS.md` |
 | Mascota Punto (por qué es así y dónde sale) | `docs/MASCOTA.md` |
 | Análisis inicial con datos y fuentes | `docs/ANALISIS.md` |
 | Marca (logo, colores, fuentes, voz) | `brand/BRAND.md` + `brand/kit.html` |
@@ -76,7 +77,7 @@ Agentes: `app-security-auditor` (antes de publicar) y `app-perf-auditor` (si la 
 
 ## 5. Código
 
-- La app vive en `C:\dev\brai\app`, **fuera de OneDrive**. React + Vite + Tailwind + Supabase + Vercel. Hoy corre con los datos de ejemplo de `app/src/data/demo.ts`; José Luis solo aparece en local con `VITE_DEMO_JOSE_LUIS=1`.
+- La app vive en `C:\dev\brai\app`, **fuera de OneDrive**. React + Vite + Tailwind + Supabase + Vercel. Hoy corre con los datos de `app/src/data/demo.ts`: artista de ejemplo por default y la demo de José Luis en `/jose-luis` (DECISIONES #42, `docs/DEMO_JOSE_LUIS.md`).
 - Pruebas: `pnpm test` (lógica y 424 DNA) y `pnpm test:db` (migraciones y RLS en un Postgres desechable). Toda migración nueva lleva su prueba en `app/supabase/pruebas/10_pruebas.sql`.
 - **pnpm siempre, nunca npm.** `"packageManager"` y `"pnpm": { "onlyBuiltDependencies": ["esbuild"] }` en `package.json`.
 - **Mobile first:** cada escaneo pasa en un celular.
@@ -92,4 +93,5 @@ Agentes: `app-security-auditor` (antes de publicar) y `app-perf-auditor` (si la 
 - **31 oct 2026, tarde:** auditoría de diseño hecha y aplicada (escena del sello, raspadita, visor, huellas, compartir, página del artista). NFT descartado con datos (DECISIONES #25), en su lugar cadena de huellas. Esquema de Supabase escrito y probado en Postgres. Hoja de piezas para imprimir. Guion del infomercial. Siguiente: entrevista con José Luis, crear el proyecto en Supabase y conectar la app, comprar `brai.art`, grabar el infomercial.
 - **31 oct 2026, noche:** competencia (`docs/COMPETENCIA.md`), costos cotizados, Oferta B en prueba, backend de migraciones con 21 pruebas y verificación 424 DNA, tipografía v2.2. Se unieron las dos ramas: app de la sesión de la tarde, backend de migraciones, candado de José Luis en el código (DECISIONES #35 a #37). Siguiente: publicar en Vercel (Root Directory `app`), entrevista con José Luis presentando Oferta A y B, conectar Supabase, deck del 26 nov.
 - **31 oct 2026, cierre:** prototipo listo para José Luis: panel del artista de ejemplo, recorrido `/recorrido?para=Nombre` con calculadora A y B, mascota Punto, kit vivo en `/marca`, imagen para compartir, clip vertical. Todo en el link de Vercel. Desde el 1 nov el repo lo lleva **Ricardo**: su lista está en `TODO.md`.
+- **31 oct 2026, último ajuste:** demo pública de José Luis en `braiart.vercel.app/jose-luis` con sus obras reales y fuentes, sin dueños ni fotos inventadas. Punto v2 con principios de Clawd. El botón de fundadores lleva al recorrido.
 - **Primer hito: propuesta final, 26 nov 2026.**

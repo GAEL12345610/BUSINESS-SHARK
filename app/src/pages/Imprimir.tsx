@@ -2,13 +2,16 @@ import { Link, useParams } from 'react-router'
 import { Printer } from 'lucide-react'
 import QRCode from 'qrcode'
 import { Isotipo } from '../components/marca'
-import { ARTISTA, CODIGO_DEMO, getObra } from '../data/demo'
+import { ARTISTA, CODIGO_DEMO, anioTexto, getObra } from '../data/demo'
 import NoEncontrada from './NoEncontrada'
 
 // Hoja de piezas físicas en tamaño real (brand/BRAND.md, sección 7).
-// Los sellos y QR SIEMPRE apuntan a brai.art (docs/DECISIONES.md #12), aunque
-// la demo corra en otro lado: el tag bloqueado es para siempre.
-const DOMINIO = 'https://brai.art'
+// Los sellos REALES siempre apuntan a brai.art (DECISIONES #12): el tag
+// bloqueado es para siempre. Mientras brai.art no exista, el QR de la DEMO
+// apunta a donde corre la app, para que al escanearlo abra (DECISIONES #43).
+// Ese QR es solo para enseñar: nunca se graba en un sello bloqueado.
+const DOMINIO_REAL = 'https://brai.art'
+const DOMINIO = typeof window !== 'undefined' && !window.location.hostname.endsWith('brai.art') ? window.location.origin : DOMINIO_REAL
 
 function QR({ texto, mm }: { texto: string; mm: number }) {
   const q = QRCode.create(texto, { errorCorrectionLevel: 'M' })
@@ -36,7 +39,9 @@ export default function Imprimir() {
   const obra = getObra(codigo)
   if (!obra) return <NoEncontrada />
   const url = `${DOMINIO}/o/${obra.codigo}`
-  const codigoDueno = obra.codigo === '7KQ2X' ? CODIGO_DEMO : null
+  // En la demo, todas las obras aceptan el mismo código de prueba.
+  const codigoDueno = CODIGO_DEMO
+  const urlCorta = url.replace(/^https?:\/\//, '')
 
   return (
     <div className="min-h-[100dvh] bg-white">
@@ -45,6 +50,12 @@ export default function Imprimir() {
           <div>
             <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-verde">Piezas para imprimir</p>
             <h1 className="font-display text-2xl font-semibold">{obra.titulo}</h1>
+            {DOMINIO !== DOMINIO_REAL && (
+              <p className="mt-2 max-w-xl rounded-md bg-dorado-suave px-3 py-2 text-xs leading-snug">
+                QR de demostración: apunta a {DOMINIO.replace(/^https?:\/\//, '')} para que abra al escanearlo. Los sellos reales siempre apuntan a
+                brai.art. No grabes ni bloquees un sello NFC con esta dirección.
+              </p>
+            )}
             <p className="mt-1 max-w-xl text-sm text-tinta/75">
               Imprime al 100% (sin "ajustar a la página") en papel opalina o adhesivo. Recorta por la línea punteada. Cubre el código con
               una etiqueta de raspadita antes de entregar la tarjeta.
@@ -73,18 +84,18 @@ export default function Imprimir() {
               <div>
                 <p className="font-display text-[13pt] font-semibold leading-tight">{obra.titulo}</p>
                 <p className="mt-[1mm] font-mono text-[6.5pt] text-verde">
-                  {obra.registro} · {obra.tecnica} · {obra.medidas} · {obra.anio}
+                  {obra.registro} · {obra.tecnica} · {obra.medidas} · {anioTexto(obra)}
                 </p>
               </div>
               <Isotipo size={26} />
             </div>
             <div className="rounded-[1.5mm] border border-dashed border-tinta/40 px-[2mm] py-[2mm] text-center">
               <p className="font-mono text-[5.5pt] uppercase tracking-[0.12em] text-verde">Tu código de dueño</p>
-              <p className="font-mono text-[12pt] font-medium tracking-[0.2em]">{codigoDueno ?? 'XXXX-XXXX'}</p>
+              <p className="font-mono text-[12pt] font-medium tracking-[0.2em]">{codigoDueno}</p>
             </div>
             <div className="flex items-end justify-between">
               <div className="w-[38mm] border-t border-tinta pt-[0.5mm] font-display text-[7pt] italic">Firma de {ARTISTA.nombre}</div>
-              <p className="font-mono text-[5.5pt] text-verde">brai.art/o/{obra.codigo}</p>
+              <p className="font-mono text-[5.5pt] text-verde">{urlCorta}</p>
             </div>
           </div>
         </Corte>
@@ -120,7 +131,7 @@ export default function Imprimir() {
         <Corte nota="QR junto al sello, para celulares sin NFC. 30 mm">
           <div className="flex w-[30mm] flex-col items-center gap-[1mm] bg-white">
             <QR texto={url} mm={26} />
-            <span className="font-mono text-[5pt]">brai.art/o/{obra.codigo}</span>
+            <span className="font-mono text-[5pt]">{urlCorta}</span>
           </div>
         </Corte>
       </main>
