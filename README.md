@@ -34,7 +34,8 @@ docs/              todo lo del negocio
   CLIENTES.md        artistas prospecto
   ENTREVISTAS.md     guiones
   wireframes/
-brand/             marca v2: BRAND.md, kit.html, logos SVG
+brand/             marca: BRAND.md, kit.html, logos SVG
+visuales/          TODO lo visual en PNG, PDF, PPTX y GIF (para la Chromebook)
 memoria/           lecciones aprendidas, una por archivo
 .claude/skills/    skills de Claude Code adaptadas a Brai
 .claude/agents/    auditores de seguridad y rendimiento
