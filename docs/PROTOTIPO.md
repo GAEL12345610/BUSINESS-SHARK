@@ -1,101 +1,97 @@
 # Prototipo de Brai
 
-**Estado al 31 oct 2026:** el prototipo ya existe en `app/` y corre completo en **modo ejemplo** (sin Supabase). Falta conectarlo a un proyecto real de Supabase y publicarlo en Vercel (pasos abajo).
+**Estado al 31 oct 2026 (noche):** se unieron las dos sesiones del día (DECISIONES #35).
+- **La app** (lo que se ve) es la de la sesión de la tarde: corre con datos de ejemplo de `app/src/data/demo.ts`, sin Supabase.
+- **El backend** (la base de datos) es el de migraciones, con 21 pruebas. Está escrito y probado, pero **todavía no está conectado a la app**.
 
-## Alcance hasta el 26 de noviembre
+Cómo correr la app, sus rutas y el código de dueño de ejemplo: `app/README.md`.
 
-| Pantalla | Ruta | Estado |
+## Qué hay y qué falta
+
+| Pieza | Ruta o archivo | Estado |
 |---|---|---|
-| Landing | `/` (`app/index.html`) | Hecha. HTML crudo, 730 palabras legibles sin JavaScript. |
-| Página de la obra | `/o/:codigo` | Hecha. Cédula, ficha, capas de confianza, fotos huella, línea de tiempo, contador de toques. |
-| Reclamar | `/o/:codigo/reclamar` | Hecha. Código de un solo uso, 5 intentos por hora, solo iniciales en público. |
-| Página del artista | `/a/:slug` | Hecha. Subdominio `artista.brai.art`: pendiente (necesita el dominio). |
-| Panel del artista | `/panel` | Hecho. Entrar con enlace al correo, lista de obras con dueño, registrar obra con fotos, tarjeta imprimible con QR. |
-| Aviso de privacidad | `/privacidad` | Hecho. **Pendiente que lo lea un adulto** antes de usar datos reales. |
-| Verificar sello 424 DNA | función `sello` | Hecha y probada con el vector oficial de NXP. Falta probar con un chip físico. |
+| Landing | `/` | Hecha. Se prerenderiza: ~800 palabras legibles sin JavaScript. |
+| Página de la obra | `/o/:codigo` | Hecha, con datos de ejemplo. Tema del artista, ficha, visor, fotos huella, historia, línea de dueños, sello Registro Brai. |
+| Reclamar | `/o/:codigo/reclamar` | Hecha, con datos de ejemplo. Liga al aviso de privacidad. |
+| Página del artista | `/a/:slug` | Hecha (`/a/ejemplo` en lo publicado). |
+| Hoja de piezas para imprimir | `/imprimir/:codigo` | Hecha: tarjeta, sello y QR en tamaño real. |
+| Aviso de privacidad | `/privacidad` (`app/public/privacidad.html`) | Hecho. **Falta que lo lea un adulto** y poner el correo real del equipo. |
+| Base de datos | `app/supabase/migrations/` | Hecha y probada en un Postgres que imita a Supabase. Falta crear el proyecto real. |
+| Verificar sello 424 DNA | `app/supabase/functions/sello/` | Hecha, probada con el vector oficial de NXP. Falta un chip físico y la pantalla en la app. |
+| Panel del artista | | **Falta en la app actual.** Existe una versión en el historial de git (commit `2676021`, `app/src/app/paginas/Panel.tsx`) que se puede rescatar al conectar Supabase. |
 
-Después del 26 nov: transferir desde el dueño (hoy lo hace el artista generando código nuevo), club de coleccionistas, aviso por correo al artista.
+Después del 26 nov: transferir desde el dueño, club de coleccionistas, aviso por correo al artista.
 
 ## Stack (no se discute)
-- **React 19 + Vite + Tailwind 4**, gestor **pnpm**. Web móvil, no App Store.
+- **React 19 + Vite + Tailwind 4 + react-router**, gestor **pnpm**. Web móvil, no App Store.
 - **Supabase**: base de datos, login con enlace al correo, fotos.
 - **Vercel**: publica la web. Dominio `brai.art`.
+- Fuentes autohospedadas (`@fontsource`), nada de Google Fonts.
 - Todo vive en `C:\dev\brai\app`, **fuera de OneDrive**.
 
-## Cómo correrlo en tu compu (modo ejemplo, 3 minutos)
-```bash
-cd C:\dev\brai\app
-pnpm install
-pnpm dev
+## Candado de José Luis Malo (DECISIONES #24 y #36)
+Lo publicado usa una artista inventada (**Lucía Arce, marcada como ejemplo**). Para ver la demo con el nombre de José Luis **solo en tu compu**, crea `app/.env.local` con:
 ```
-Abre `http://localhost:5173`. Sin `.env.local` todo corre con datos de ejemplo guardados en tu navegador.
-
-**Códigos de ejemplo** (solo para la demo, nunca en obras reales):
-| Obra | URL | Código de dueño |
-|---|---|---|
-| Tarde en Tlaquepaque | `/o/7KQ2X` | `HFKW-3P9Q` |
-| Barro de Tonalá (424 DNA) | `/o/M4RTZ` | `TQ7N-K2DV` |
-| Lluvia sobre Chapultepec | `/o/R9WCH` | ya tiene dueño |
-
-**Simular un toque al sello seguro:** `/o/M4RTZ?e=EF963FF7828658A599F3041510671E88&c=94EED9EE65337086` dice "Sello original". Si recargas ese mismo enlace, dice "Este enlace ya se usó". El botón **Reiniciar** de la barra negra deja todo como al principio.
+VITE_DEMO_JOSE_LUIS=1
+```
+Nunca pongas esa variable en Vercel hasta que él firme el permiso de fundador.
 
 ## Pruebas
 ```bash
 pnpm test
 ```
-Prueba los códigos y la verificación del 424 DNA (9 pruebas).
+Verificación del 424 DNA con el vector oficial de NXP (5 pruebas).
 
 ```bash
 pnpm test:db
 ```
-Levanta un Postgres desechable, corre las migraciones y 20 pruebas de seguridad (anon no lee nada, el límite de intentos frena, el correo nunca sale en público, la historia no se borra ni por el admin). Necesita Postgres 16 (en Windows, dentro de WSL).
+Levanta un Postgres desechable, corre las migraciones y 21 pruebas: anon no lee ninguna tabla, el límite de 5 intentos frena, el correo nunca sale en público, la historia no se borra ni por el admin, el sello 424 detecta enlaces repetidos y la cadena de huellas delata una edición a escondidas. Necesita Postgres 16 (en Windows, dentro de WSL).
 
-## Cómo conectarlo a Supabase real (hacerlo con un adulto)
-1. Crear proyecto en Supabase (región `us-east-1` o la más cercana).
-2. SQL Editor: pegar y correr, **en orden**, los 4 archivos de `app/supabase/migrations/`. No correr `seed.sql` en producción.
-3. Authentication, Providers, Email: activado. URL Configuration: Site URL `https://brai.art`, Redirect URLs `https://brai.art/panel` y `http://localhost:5173/panel`.
-4. Crear la cuenta de cada artista: Authentication, Users, Add user, con su correo. Luego, en SQL Editor:
+## Publicar en Vercel (modo ejemplo)
+1. New Project, importar el repo, **Root Directory: `app`**, preset **Vite**.
+2. **Sin variables de entorno.**
+3. `app/vercel.json` ya manda las rutas de obras a `app.html`, sirve `/privacidad` y pone cabeceras de seguridad.
+4. Abrir `/o/7KQ2X` en el link publicado, en un iPhone y en un Android. Si da 404, no está listo.
+
+## Conectar Supabase (con un adulto, después de publicar)
+1. Crear el proyecto en Supabase.
+2. SQL Editor: correr **en orden** los 5 archivos de `app/supabase/migrations/`. No correr `seed.sql` en producción.
+3. Authentication, Email activado. Site URL `https://brai.art`.
+4. Crear la cuenta de cada artista (Authentication, Users, Add user) y ligarla:
    ```sql
-   insert into public.artistas (slug, nombre, ciudad, user_id)
-   values ('jose-luis-malo', 'José Luis Malo', '?', (select id from auth.users where email = 'CORREO_DEL_ARTISTA'));
+   insert into public.artistas (slug, nombre, ciudad, user_id, tema)
+   values ('jose-luis-malo', 'José Luis Malo', '?', (select id from auth.users where email = 'CORREO_DEL_ARTISTA'), '{"acento": "#2F5D62"}');
    ```
-5. Copiar URL y anon key a `app/.env.local` (ver `app/.env.example`). **Nunca la service_role.**
-6. **Probar que anon no ve nada** (memoria `rls-es-la-unica-puerta.md`): `curl "$URL/rest/v1/duenos?select=email" -H "apikey: $ANON"` debe responder error `42501`.
-7. Correr el agente **app-security-auditor** antes de publicar.
-
-**Lo que no se pudo probar en esta sesión:** las migraciones se probaron en un Postgres 16 que imita a Supabase, no en Supabase real. La primera vez que se corran allá, revisar que no truene nada y repetir el paso 6.
+5. URL y anon key en `app/.env.local` y en Vercel. **Nunca la service_role.**
+6. **Lo que falta programar para conectar:** la app lee `src/data/demo.ts`. Hay que cambiarla para que llame a `obra_publica`, `artista_publico`, `registrar_escaneo` y `reclamar_obra`. Ojo con dos diferencias: el backend guarda el color del artista en `tema.acento` (no en `acento`), y `reclamar_obra` pide **nombre** además de código y correo.
+7. Probar que anon no ve nada: `curl "$URL/rest/v1/duenos?select=email" -H "apikey: $ANON"` debe dar error `42501`.
+8. Correr el agente **app-security-auditor**.
 
 ### Sello 424 DNA (cuando lleguen los chips)
-1. Generar dos llaves aleatorias de 32 caracteres hex (una "meta" y una "maestra"). Guardarlas en un gestor de contraseñas del equipo.
-2. Supabase, Edge Functions: publicar `app/supabase/functions/sello` y poner los secretos `SELLO_LLAVE_META`, `SELLO_LLAVE_MAESTRA` y `ORIGENES=https://brai.art`.
-3. Grabar el chip con la app **NXP TagXplorer** o **NFC TagInfo/TagWriter** con SUN activado, URL `https://brai.art/o/XXXXX?e={PICCData}&c={CMAC}`, la llave de **SDMMetaRead** = llave meta y la de **SDMFileRead** = llave del chip. La llave del chip se saca con `node app/scripts/llave-chip.ts LLAVE_MAESTRA UID` (corre en tu compu, nunca pegues la maestra en un chat ni en un commit). **Pedir ayuda: esto se hace una vez con calma, probando en 1 chip.**
+1. Generar dos llaves aleatorias de 32 caracteres hex ("meta" y "maestra"). Guardarlas en un gestor de contraseñas del equipo.
+2. Supabase, Edge Functions: publicar `app/supabase/functions/sello` con los secretos `SELLO_LLAVE_META`, `SELLO_LLAVE_MAESTRA` y `ORIGENES=https://brai.art`.
+3. Grabar el chip con **NXP TagXplorer** o **TagWriter** con SUN activado, URL `https://brai.art/o/XXXXX?e={PICCData}&c={CMAC}`, la llave de **SDMMetaRead** = llave meta y la de **SDMFileRead** = llave del chip. La llave del chip se saca con `node app/scripts/llave-chip.ts LLAVE_MAESTRA UID` en tu compu. Nunca pegues la maestra en un chat ni en un commit. **Se hace una vez con calma, probando en 1 chip.**
 4. Ligar el chip a la obra: `insert into public.sellos (uid, obra_id) values ('UID_DEL_CHIP', 'ID_DE_LA_OBRA');`
-
-## Publicar en Vercel
-1. Importar el repo, **Root Directory: `app`**. Framework: Vite. Install: `pnpm install`. Build: `pnpm build`.
-2. Variables: `VITE_SUPABASE_URL` y `VITE_SUPABASE_ANON_KEY`. Nada más con `VITE_`.
-3. `app/vercel.json` ya trae los rewrites de `/o`, `/a` y `/panel` (memoria `vercel-spa-rewrites.md`) y las cabeceras de seguridad.
-4. Después de publicar: bajar el JS y confirmar que la llave dice `"role":"anon"` (memoria `service-role-nunca-en-vite.md`).
 
 ## Modelo de datos
 
 | Tabla | Qué guarda | Quién la lee |
 |---|---|---|
-| `artistas` | nombre, slug, bio, tema, dominio, `es_demo`, usuario | el artista (lo suyo) |
+| `artistas` | nombre, slug, bio, tema (color), dominio, `es_demo`, usuario | el artista (lo suyo) |
 | `obras` | registro `BRAI-0007`, código corto `7KQ2X`, ficha, historia, fotos, fotos huella, tipo de sello | el artista (lo suyo) |
 | `duenos` | nombre y correo | el artista, solo de sus obras |
 | `codigos_dueno` | hash bcrypt del código, usado, anulado | nadie (solo funciones) |
-| `intentos_reclamo` | intentos fallidos, para el límite | nadie |
-| `eventos_obra` | registro, reclamo, transferencia, nota. **Solo se agregan.** | el artista (lo suyo) |
+| `intentos_reclamo` | intentos, para el límite de 5 por hora | nadie |
+| `eventos_obra` | registro, reclamo, transferencia, nota, con **cadena de huellas** sha256. Solo se agregan. | el artista (lo suyo) |
 | `escaneos` | toques por obra y por vía (nfc, qr, link) | el artista (lo suyo) |
 | `sellos` | UID del 424 DNA y último contador | nadie (solo la función `sello`) |
 
-Lo público sale por funciones que **solo devuelven lo público**: `obra_publica`, `artista_publico`, `registrar_escaneo`, `reclamar_obra`.
+Lo público sale por funciones que **solo devuelven lo público**: `obra_publica` (incluye `cadena_intacta`), `artista_publico`, `registrar_escaneo`, `reclamar_obra`.
 
 ## Antes de la Expo (16 feb)
-- **Supabase Free se pausa tras 7 días sin uso.** Abrir la app el día anterior o pasar a Pro. Plan B: el modo ejemplo corre sin internet si la página ya está cargada.
+- **Supabase Free se pausa tras 7 días sin uso.** Abrir la app el día anterior o pasar a Pro.
 - Probar cada sello con un iPhone, un Android con NFC y un Android sin NFC (por QR).
 - Llevar internet propio (datos del celular): el wifi de un evento falla.
 
 ## Wireframes
-En `docs/wireframes/`. Las capturas de las pantallas reales salen corriendo la app.
+En `docs/wireframes/` (drafts del equipo y qué cambió).

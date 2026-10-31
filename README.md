@@ -38,7 +38,8 @@ brand/             marca v2: BRAND.md, kit.html, logos SVG
 memoria/           lecciones aprendidas, una por archivo
 .claude/skills/    skills de Claude Code adaptadas a Brai
 .claude/agents/    auditores de seguridad y rendimiento
-app/               la app: landing, página de la obra, reclamar, panel, backend Supabase
+app/               la app: landing, obra, reclamar, artista, imprimir y el backend de Supabase (ver app/README.md)
+pitch/             guion y subtítulos del infomercial
 ```
 
 ## Para empezar a trabajar
@@ -54,7 +55,7 @@ cd app
 pnpm install
 pnpm dev
 ```
-Abre `http://localhost:5173` y toca "Toca una obra de ejemplo". Códigos de ejemplo en `docs/PROTOTIPO.md`.
+Abre `http://localhost:5173`. Rutas y código de dueño de ejemplo en `app/README.md`.
 
 ## Pendientes ya
 
@@ -63,10 +64,15 @@ Abre `http://localhost:5173` y toca "Toca una obra de ejemplo". Códigos de ejem
 - [ ] Revisar el tipo de los 50 stickers NFC con NFC Tools.
 - [ ] Cotizar en MercadoLibre: stickers antidesprendibles, raspadita, tarjetas.
 - [ ] Confirmar con el profesor la fecha del infomercial.
-- [ ] Comprar `brai.art` (~49 MXN el primer año en Porkbun) y crear el correo `hola@brai.art` (lo usan la landing y el aviso de privacidad).
+- [ ] Publicar en Vercel: Root Directory `app`, preset Vite, sin variables.
+- [ ] Correo normal del proyecto para "Quiero registrar mis obras" y el aviso de privacidad (hoy apunta a `hola@brai.art`, que no existe). Nunca el personal de un integrante.
+- [ ] Comprar `brai.art` (~49 MXN el primer año en Porkbun) antes de grabar y bloquear el primer sello.
+- [ ] Que un adulto lea el aviso de privacidad (`app/public/privacidad.html`).
+- [ ] Permiso por escrito de José Luis Malo antes de publicar la demo con su nombre.
+- [ ] En la entrevista, presentar Oferta A y B y anotar cuál escoge el artista.
 - [ ] Llenar los `?` de `docs/COSTOS.md` con captura de MercadoLibre: etiquetas VOID y tarjetas.
 - [ ] Cotizar el envío de 50 NTAG 424 DNA (Shop NFC o AliExpress).
-- [ ] Conectar Supabase real y publicar en Vercel (`docs/PROTOTIPO.md`), con un adulto.
-- [ ] Que un adulto lea el aviso de privacidad.
-- [ ] En la entrevista, presentar Oferta A y B y anotar cuál escoge el artista.
-- [ ] Subir los wireframes a `docs/wireframes/`.
+- [ ] Crear el proyecto en Supabase y correr `app/supabase/migrations/` en orden (`docs/PROTOTIPO.md`), con un adulto.
+- [ ] Grabar el infomercial (`pitch/infomercial_guion.md`) y asignar quién graba cada escena.
+- [ ] Comprar etiquetas de raspadita y papel adhesivo para imprimir `/imprimir/7KQ2X`.
+- [x] Subir los wireframes a `docs/wireframes/`.

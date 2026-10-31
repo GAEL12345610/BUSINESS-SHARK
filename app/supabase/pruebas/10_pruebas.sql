@@ -309,4 +309,32 @@ end $$;
 reset role;
 select 'ok 20: sellos 424 DNA';
 
+-- 21. Cadena de huellas: intacta, no depende de la zona horaria, y delata una edición.
+do $$
+declare o jsonb := public.obra_publica('7KQ2X');
+begin
+  if (o->>'cadena_intacta')::boolean is not true then raise exception 'FALLA: cadena rota de origen %', o; end if;
+  if coalesce(o->>'huella', '') !~ '^[0-9a-f]{64}$' then raise exception 'FALLA huella: %', o->>'huella'; end if;
+end $$;
+set timezone = 'Asia/Tokyo';
+do $$ begin
+  if (public.obra_publica('7KQ2X')->>'cadena_intacta')::boolean is not true then raise exception 'FALLA: la cadena depende de la zona horaria'; end if;
+end $$;
+reset timezone;
+set role anon;
+do $$ begin
+  perform public.brai_verificar_cadena('00000000-0000-4000-8000-000000000101');
+  raise exception 'FALLA: anon ejecutó un helper interno';
+exception when insufficient_privilege then null;
+end $$;
+reset role;
+alter table public.eventos_obra disable trigger eventos_obra_inmutables;
+update public.eventos_obra set nota = 'Editada a escondidas'
+where obra_id = '00000000-0000-4000-8000-000000000101' and tipo = 'nota';
+alter table public.eventos_obra enable trigger eventos_obra_inmutables;
+do $$ begin
+  if (public.obra_publica('7KQ2X')->>'cadena_intacta')::boolean is not false then raise exception 'FALLA: la cadena no detectó la edición'; end if;
+end $$;
+select 'ok 21: cadena de huellas';
+
 select 'TODAS LAS PRUEBAS PASARON';
