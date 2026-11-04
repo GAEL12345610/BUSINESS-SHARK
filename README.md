@@ -5,7 +5,9 @@
 Brai pone un sello NFC detrás de cada obra de un artista independiente. Al acercar el celular, cualquiera ve la historia de la obra, que la registró el propio artista y quién es su dueño. El artista se ve como una marca seria y nunca pierde de vista a quien le compró.
 
 Proyecto para **Business Shark 8°**. Primera entrega: **26 de noviembre de 2026**.
-
+---
+## LINK PARA LA DEMO: 
+https://braiart.vercel.app/
 ---
 
 ## En 30 segundos
