@@ -10,6 +10,7 @@
 | `checklist-demo.md` | Qué revisar antes, qué tocar en la demo y qué decir, qué hacer si algo falla | Markdown |
 | `objeciones.md` | Objeciones probables con respuestas honestas, y lo que nunca se dice | Markdown |
 | `onboarding.md` | Pasos propuestos para artista y comprador, con lo que existe hoy y lo que no | Markdown |
+| `borradores-adulto.md` | Mensajes de primer contacto, gracias y borrador del permiso por escrito. **Los revisa y manda un adulto** | Markdown |
 | `plan-piloto.md` | Borrador de piloto con huecos y los bloqueos antes de usar una obra real | Markdown |
 | `one-pager.html` y `one-pager.pdf` | Hoja de una página para dejar impresa. Genérica, sin su nombre | HTML y PDF carta |
 | `deck.html` y `deck.pdf` | 9 slides de respaldo si falla el internet. Genérico, sin su nombre | HTML 1920 × 1080 y PDF |

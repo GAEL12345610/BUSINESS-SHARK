@@ -63,7 +63,15 @@ const MATERIALES = [
 ]
 
 test('materiales de la reunión: puntuación humana y sin promesas de retorno', () => {
-  const malos = MATERIALES.filter((f) => /—|…|\.\.\.|\S - \S|Se paga con|pagan el primer año/.test(leer(f).replace(/```[\s\S]*?```|<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g, '')))
+  // Se quitan bloques de código, <script>, <style> y los marcadores de lista al
+  // inicio de línea ("- ", "> - "): esos guiones no son conectores.
+  const limpio = (t: string) =>
+    t
+      .replace(/```[\s\S]*?```|<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g, '')
+      .split('\n')
+      .map((l) => l.replace(/^\s*(>\s*)*([-*]\s+(\[[ x]\]\s*)?)?/, ''))
+      .join('\n')
+  const malos = MATERIALES.filter((f) => /—|…|\.\.\.|\S - \S|Se paga con|pagan el primer año/.test(limpio(leer(f))))
   assert.deepEqual(malos.map((f) => f.split('/').slice(-2).join('/')), [])
 })
 

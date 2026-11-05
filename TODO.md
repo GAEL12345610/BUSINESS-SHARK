@@ -42,7 +42,7 @@ Lo que más sube la calificación no es código: son las entrevistas y una obra 
 | [ ] | Poner ese correo en el aviso de privacidad (hoy es un borrador no vigente) y en `/demo`, sección Contacto. Quitar de `app/pruebas/claims.test.ts` la regla del correo solo si el correo ya existe | Ricardo | `app/public/privacidad.html`, `app/src/pages/Demo.tsx` |
 | [ ] | Pedirle a José Luis permiso y fotos de sus obras para la demo, **por escrito y después de la plática**, nunca antes | Equipo con adulto | `docs/DEMO_JOSE_LUIS.md` |
 | [ ] | Que un adulto lea el aviso de privacidad antes de que alguien real deje su correo | Adulto | `app/public/privacidad.html` |
-| [ ] | Agendar la reunión con José Luis, con un adulto presente | Adulto y equipo | `docs/REUNION_JOSE_LUIS.md` |
+| [ ] | Agendar la reunión con José Luis, con un adulto presente. El mensaje de contacto ya está en borrador | Adulto y equipo | `docs/REUNION_JOSE_LUIS.md`, `pitch/reunion-jose-luis/borradores-adulto.md` |
 | [ ] | Probar el link de la demo en un iPhone y un Android | Ricardo | `braiart.vercel.app/jose-luis` |
 | [ ] | Imprimir el one-pager y, si quieren, las piezas de la obra de ejemplo (dicen DEMO). ~~Piezas de *Toricleto*~~: es una obra real a la venta; la demo genérica va primero | Equipo | `pitch/reunion-jose-luis/one-pager.pdf`, `braiart.vercel.app/imprimir/7KQ2X` |
 

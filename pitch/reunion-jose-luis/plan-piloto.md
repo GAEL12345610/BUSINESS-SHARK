@@ -22,14 +22,14 @@ Ninguna de estas metas está definida. Las define el equipo después de las prim
 | Fecha de inicio | ? | Antes, todo lo de "Bloqueos" |
 
 ## Bloqueos antes de usar una sola obra real
-1. **Permiso por escrito** del artista, redactado y revisado por un adulto. No existe plantilla.
+1. **Permiso por escrito** del artista, redactado y revisado por un adulto. Hay un borrador en `borradores-adulto.md`, punto 5; falta que un adulto lo adapte.
 2. **Correo del proyecto** (no personal de un integrante, DECISIONES #37). No existe.
 3. **Aviso de privacidad** real, revisado por un adulto. Hoy solo hay un borrador marcado como no vigente (`app/public/privacidad.html`).
 4. **Base de datos conectada** y probada en producción (proyecto de Supabase creado por un adulto, `docs/PROTOTIPO.md`). Hoy las migraciones solo se probaron en un Postgres local.
 5. **Login del artista** y panel conectado. No existe.
 6. **Revisión de seguridad** con el agente `app-security-auditor` antes de guardar datos reales.
 7. **Dominio `brai.art`** comprado antes de grabar o bloquear cualquier sello (regla 4).
-8. **Materiales** (sellos, VOID, raspaditas, tarjetas) cotizados y comprados por un adulto. Costos en `docs/COSTOS.md`, con `?` por llenar.
+8. **Materiales** (sellos, VOID, raspaditas, tarjetas) cotizados y comprados por un adulto. Costos en `docs/COSTOS.md` (cotizados en línea el 5 nov; falta confirmar el impuesto de importación del 424 DNA y una imprenta local).
 9. **Quitar el aviso de DEMO** solo cuando todo lo anterior sea cierto, y cambiar la página `/demo` en el mismo commit.
 
 ## Quién decide qué
