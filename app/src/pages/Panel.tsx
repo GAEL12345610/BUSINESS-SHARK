@@ -6,7 +6,7 @@ import { Link } from 'react-router'
 import { ArrowUpRight, Check, Mail, Plus, Printer } from 'lucide-react'
 import { Logo } from '../components/marca'
 import { Punto } from '../components/punto'
-import { ARTISTA, ES_FICTICIA, CODIGO_DEMO, CORREO_PRUEBA, MODO_JOSE_LUIS, fecha, panel, registrarObra, reiniciarDemo, type Obra } from '../data/demo'
+import { ARTISTA, ES_FICTICIA, CODIGO_DEMO, CORREO_PRUEBA, MODO_JOSE_LUIS, fecha, panel, registrarObra, type Obra } from '../data/demo'
 import { Ficticio } from '../components/demo'
 
 /** Achica la foto en el navegador para que quepa en la demo (máx. 900 px, JPG). */
@@ -75,20 +75,7 @@ export default function Panel() {
         {MODO_JOSE_LUIS
           ? 'Demostración para José Luis. Sus obras salen de fuentes públicas y ninguna está registrada todavía.'
           : 'Panel de ejemplo con obras y dueños ficticios. No hay cuentas: cualquiera puede abrirlo.'}{' '}
-        Lo que hagas aquí se guarda solo en este navegador.{' '}
-        <button
-          type="button"
-          onClick={() => {
-            if (confirm('¿Borrar lo que se reclamó y registró en esta demo?')) {
-              reiniciarDemo()
-              setVersion((v) => v + 1)
-              setNueva(null)
-            }
-          }}
-          className="underline underline-offset-2"
-        >
-          Reiniciar demo
-        </button>
+        Para empezar de cero, usa Reiniciar demo en el aviso de arriba.
       </p>
 
       <main className="mx-auto max-w-5xl px-4 pb-24 pt-10 sm:px-6">
