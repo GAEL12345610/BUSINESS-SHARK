@@ -30,6 +30,7 @@ Después de cada entrevista: actualizar la ficha en `CLIENTES.md` y anotar las f
 4. Si la obra tuviera un sello que al tocarlo con el celular te muestra su historia y que es tuya, ¿te importaría? ¿Por qué?
 5. **Club:** si por ser dueño pudieras visitar el taller o ver obra nueva antes que nadie, ¿te interesaría? ¿Qué te haría ir?
 6. ¿Algún día venderías esa obra? ¿Te serviría poder demostrar que es original y quién la tuvo antes?
+7. **Si para ponerla a tu nombre tuvieras que escribir un código y tu correo, ¿lo harías? ¿Te molestaría que el artista te escribiera después? ¿Cada cuánto estaría bien?** (Es la métrica que más importa: `PERSPECTIVAS.md`, sección 2.)
 
 ## Qué escuchar (y qué no)
 - **Lo que hicieron > lo que dicen que harían.** "Lo haría" vale poco; "me pasó" vale mucho.

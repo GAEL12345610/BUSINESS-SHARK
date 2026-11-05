@@ -23,6 +23,17 @@ Claude dejó la demo diciendo la verdad sobre sí misma y el paquete de la reuni
 | [ ] | Conseguir una obra real de alguien cercano, con permiso por escrito revisado por un adulto, para la demo del 26 nov (`CONCURSO.md` la pide) | Equipo con adulto | `docs/PERSPECTIVAS.md`, sección 3 |
 | [ ] | Llenar las láminas 12 y 14 del deck del jurado con entrevistas reales y el equipo | Equipo | `pitch/jurado-26nov/` |
 
+## Calendario propuesto hasta el 26 nov (lo ajusta el equipo)
+
+Lo que más sube la calificación no es código: son las entrevistas y una obra real con permiso (`docs/PERSPECTIVAS.md`).
+
+| Semana | Qué | Listo cuando |
+|---|---|---|
+| **5 a 11 nov** | Revisar y unir la rama del 5 nov. Un adulto agenda las 8 entrevistas. Conseguir una obra real con permiso por escrito. Definir roles con nombres. Llenar los `?` de `COSTOS.md` | Hay 8 fechas en el calendario y roles en `CONCURSO.md` |
+| **12 a 18 nov** | Hacer las entrevistas con las hojas impresas (`visuales/documentos/hojas-de-entrevista.pdf`). Confirmar con el profe la fecha del infomercial y grabarlo | Fichas llenas en `CLIENTES.md`. Video grabado |
+| **19 a 25 nov** | Decidir A o B si 2 de 3 coinciden (DECISIONES #26). Llenar las láminas 12 y 14 del deck. Probar la demo en un iPhone y un Android. Ensayar la presentación 2 veces con reloj | Deck final en PDF. Ensayo sin pasarse de tiempo |
+| **26 nov** | Propuesta final | |
+
 ## 1. Antes de la reunión con José Luis (urgente)
 
 | | Tarea | Para quién | Dónde |

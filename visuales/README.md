@@ -8,6 +8,7 @@ Todo lo visual de Brai en formatos que abre cualquier computadora, incluida la C
 | **`Brai-visuales.pptx`** | Presentación de 13 diapositivas: logo, color, tipografía, Punto, piezas físicas, pantallas del prototipo y la demo de José Luis. Ábrela con Google Slides. |
 | **`Brai-visuales.pdf`** | La misma presentación en PDF. Se abre directo en la Chromebook. |
 | `imprimir/piezas-BRAI-0001-carta.pdf` | Tarjeta de dueño, sello y QR en **tamaño real**, hoja carta. Para imprimir. |
+| **`documentos/hojas-de-entrevista.pdf`** | **Hojas para imprimir y llenar a mano** en cada entrevista (artista y comprador). Salen de `docs/ENTREVISTAS.md`. |
 | **`documentos/`** | **Todos los documentos del repo en PDF** (análisis, mercado, costos, decisiones, guiones). Índice en `documentos/README.md`. |
 | `../pitch/jurado-26nov/deck.pdf` | Deck del jurado del 26 nov (base, con láminas por llenar). |
 | `../pitch/reunion-jose-luis/one-pager.pdf` y `deck.pdf` | Hoja y deck de la reunión exploratoria. |
