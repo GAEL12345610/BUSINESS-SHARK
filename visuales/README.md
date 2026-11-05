@@ -31,6 +31,8 @@ Todo lo visual de Brai en formatos que abre cualquier computadora, incluida la C
 **Pantallas:** `landing`, `obra`, `reclamar`, `artista`, `panel`, `recorrido`, `marca` (con Lucía Arce, artista inventada) y `jose-luis-recorrido`, `jose-luis-obra`, `jose-luis-artista` (demo de José Luis con sus datos públicos, `docs/DEMO_JOSE_LUIS.md`).
 
 ## Volver a generar todo
+**Lo más fácil:** `bash visuales/regenerar-todo.sh` desde la raíz. Regenera la app, el clip, el GIF, las pantallas, los decks, el Lean Canvas, el animatic y los PDF, en ese orden. Lo de abajo es cada paso por separado.
+
 Necesita Playwright con Chromium y ffmpeg.
 ```
 cd app

@@ -53,7 +53,7 @@
 ## Reglas de la grabación
 
 - Música sin derechos de autor: Biblioteca de audio de YouTube. Una sola pista, suave, de guitarra o piano.
-- Voz: un integrante, hablando como el artista. Despacio. Se graba aparte, en un cuarto sin eco (un clóset con ropa sirve).
+- Voz: un integrante, hablando como el artista. Despacio. **Propuesta (5 nov):** como no es la voz de un artista real, poner "Dramatización" en pantalla en la escena 2. Así lo marca el animatic (`pitch/clips/animatic-infomercial.mp4`). Se graba aparte, en un cuarto sin eco (un clóset con ropa sirve).
 - Quien salga a cuadro y sea menor de edad, con permiso de sus papás. El artista, con permiso por escrito para usar su imagen.
 - Al final se mide la duración real. **Si pasa de 1:30, se recorta una escena, no se acelera.** La primera que sale es la 7.
 - Subtítulos: el `.srt` se carga en el editor (CapCut, DaVinci o YouTube). Máximo 42 caracteres por línea.

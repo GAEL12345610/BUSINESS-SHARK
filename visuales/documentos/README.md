@@ -26,6 +26,7 @@ Cada PDF es una copia del documento Markdown del repo. **Si cambias el .md, vuel
 | `docs/wireframes/AUDITORIA.md` | [docs__wireframes__AUDITORIA.pdf](docs__wireframes__AUDITORIA.pdf) |
 | `pitch/infomercial_guion.md` | [pitch__infomercial_guion.pdf](pitch__infomercial_guion.pdf) |
 | `pitch/reunion-jose-luis/README.md` | [pitch__reunion-jose-luis__README.pdf](pitch__reunion-jose-luis__README.pdf) |
+| `pitch/reunion-jose-luis/borradores-adulto.md` | [pitch__reunion-jose-luis__borradores-adulto.pdf](pitch__reunion-jose-luis__borradores-adulto.pdf) |
 | `pitch/reunion-jose-luis/checklist-demo.md` | [pitch__reunion-jose-luis__checklist-demo.pdf](pitch__reunion-jose-luis__checklist-demo.pdf) |
 | `pitch/reunion-jose-luis/objeciones.md` | [pitch__reunion-jose-luis__objeciones.pdf](pitch__reunion-jose-luis__objeciones.pdf) |
 | `pitch/reunion-jose-luis/onboarding.md` | [pitch__reunion-jose-luis__onboarding.pdf](pitch__reunion-jose-luis__onboarding.pdf) |

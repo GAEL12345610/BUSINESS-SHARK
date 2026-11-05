@@ -53,7 +53,7 @@ Lo que más sube la calificación no es código: son las entrevistas y una obra 
 | [ ] | Entrevistar a José Luis + 2 artistas más + 5 compradores | Equipo con adulto | `docs/ENTREVISTAS.md`, `docs/CLIENTES.md` |
 | [ ] | Decidir Oferta A o B con lo que digan los artistas | Equipo | `docs/OFERTA.md`, `docs/DECISIONES.md` #26 |
 | [ ] | Hacer el deck del 26 nov | Equipo | skill `brai-slides`; las imágenes ya están en `visuales/` |
-| [ ] | Grabar el infomercial (obligatorio para pasar) y confirmar la fecha con el profe | Equipo | `pitch/infomercial_guion.md`, `pitch/clips/` |
+| [ ] | Grabar el infomercial (obligatorio para pasar) y confirmar la fecha con el profe. Hay un animatic de guía con tiempos y textos | Equipo | `pitch/infomercial_guion.md`, `pitch/clips/animatic-infomercial.mp4` |
 | [ ] | Comprar `brai.art` **antes de bloquear cualquier sello** | Adulto | ~49 MXN el primer año, `docs/COSTOS.md` |
 | [ ] | Llenar los `?` de costos con capturas de MercadoLibre (etiquetas VOID, tarjetas) | Equipo | `docs/COSTOS.md` |
 | [ ] | Revisar con NFC Tools de qué tipo son los 50 stickers que ya tenemos | Equipo | `docs/SEGURIDAD_OBRA.md` |
