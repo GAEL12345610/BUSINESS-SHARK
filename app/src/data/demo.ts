@@ -504,3 +504,51 @@ export function reiniciarDemo() {
     /* sin storage no hay nada que borrar */
   }
 }
+
+// ---------------------------------------------------------------- capas de confianza
+// DECISIONES #34 (copiado del COA+ de Verisart): la página de la obra enseña qué
+// capas de confianza tiene y cuáles no. Mientras no haya backend NINGUNA sale
+// como "cumplida": en la demo todo es ejemplo o pendiente (docs/DEMO_HONESTA.md).
+export type EstadoCapa = 'cumplida' | 'demo' | 'pendiente'
+export type Capa = { id: string; nombre: string; estado: EstadoCapa; hoy: string; real: string }
+
+export function capasDeConfianza(obra: Obra, mia = false): Capa[] {
+  const jl = MODO_JOSE_LUIS
+  return [
+    {
+      id: 'registro',
+      nombre: 'Registrada por el artista',
+      estado: jl ? 'pendiente' : 'demo',
+      hoy: jl ? 'Esta obra no está registrada en Brai.' : 'Ejemplo: registro inventado para la demo.',
+      real: 'El artista la registra en su taller, con fecha.',
+    },
+    {
+      id: 'sello',
+      nombre: 'Sello en la obra',
+      estado: 'pendiente',
+      hoy: 'Los sellos NFC no están funcionando todavía. El QR impreso abre esta demo.',
+      real: 'Sello NFC detrás del cuadro y QR al lado. Con NTAG 424 DNA, cada toque trae una firma nueva.',
+    },
+    {
+      id: 'huellas',
+      nombre: 'Fotos huella',
+      estado: jl ? 'pendiente' : 'demo',
+      hoy: jl ? 'Se fotografían en la sesión de registro.' : 'Acercamientos de una imagen de ejemplo.',
+      real: 'Tres fotos de detalles únicos para comparar con el cuadro que tienes enfrente.',
+    },
+    {
+      id: 'dueno',
+      nombre: 'Dueño que la reclamó',
+      estado: obra.dueno ? 'demo' : 'pendiente',
+      hoy: obra.dueno ? (mia ? 'La reclamaste en este navegador: es una simulación.' : 'Dueño ficticio de la demo.') : 'Nadie la ha reclamado.',
+      real: 'El comprador raspa su tarjeta y la pone a su nombre. En público, solo iniciales.',
+    },
+    {
+      id: 'cadena',
+      nombre: 'Historial encadenado',
+      estado: 'demo',
+      hoy: 'Huella de muestra calculada en tu navegador.',
+      real: 'Cada evento guarda la huella del anterior en la base: si alguien cambia uno, deja de cuadrar.',
+    },
+  ]
+}

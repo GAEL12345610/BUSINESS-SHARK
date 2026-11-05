@@ -11,7 +11,7 @@ Cómo correr la app, sus rutas y el código de dueño de ejemplo: `app/README.md
 | Pieza | Ruta o archivo | Estado |
 |---|---|---|
 | Landing | `/` | Hecha. Se prerenderiza: ~800 palabras legibles sin JavaScript. |
-| Página de la obra | `/o/:codigo` | Hecha, con datos de ejemplo. Tema del artista, ficha, visor, fotos huella, historia, línea de dueños, sello Registro Brai. |
+| Página de la obra | `/o/:codigo` | Hecha, con datos de ejemplo. Tema del artista, ficha, capas de confianza (5 nov, todas Ejemplo o Pendiente), visor, fotos huella, historia, línea de dueños, sello Registro Brai. |
 | Reclamar | `/o/:codigo/reclamar` | Hecha, con datos de ejemplo. Liga al aviso de privacidad. |
 | Página del artista | `/a/:slug` | Hecha (`/a/ejemplo` en lo publicado). |
 | Hoja de piezas para imprimir | `/imprimir/:codigo` | Hecha: tarjeta, sello y QR en tamaño real. |

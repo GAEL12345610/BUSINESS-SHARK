@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router'
 import { Expand, Play } from 'lucide-react'
 import { SelloRegistroBrai } from '../components/marca'
 import { Capa, CompararHuella, Compartir, VisorObra } from '../components/visor'
-import { ARTISTA, ES_FICTICIA, CODIGO_DEMO, MODO_JOSE_LUIS, OBRAS, anioTexto, esMia, fecha, getObra, huellaRegistro, type Obra as TObra } from '../data/demo'
+import { ARTISTA, ES_FICTICIA, CODIGO_DEMO, MODO_JOSE_LUIS, OBRAS, anioTexto, capasDeConfianza, esMia, fecha, getObra, huellaRegistro, type EstadoCapa, type Obra as TObra } from '../data/demo'
 import { varsTema } from '../lib/tema'
 import { Ficticio } from '../components/demo'
 import NoEncontrada from './NoEncontrada'
@@ -53,6 +53,38 @@ export function Etiqueta({ children }: { children: ReactNode }) {
 
 /** Retraso de la entrada escalonada (clase .entra en index.css). */
 const paso = (n: number): CSSProperties => ({ animationDelay: `${n * 90}ms` })
+
+const ESTADO: Record<EstadoCapa, { texto: string; clase: string }> = {
+  cumplida: { texto: 'Cumplida', clase: 'bg-dorado-suave text-tinta' },
+  demo: { texto: 'Ejemplo', clase: 'border border-tinta/30 text-tinta/80' },
+  pendiente: { texto: 'Pendiente', clase: 'bg-arena text-tinta/80' },
+}
+
+/** DECISIONES #34: la confianza se explica, no se presume. */
+function CapasConfianza({ obra, mia }: { obra: TObra; mia: boolean }) {
+  return (
+    <section className="revela mt-12" aria-labelledby="capas">
+      <h2 id="capas" className="font-mono text-[11px] uppercase tracking-[0.16em] text-verde">
+        Capas de confianza
+      </h2>
+      <p className="mt-3 leading-relaxed text-tinta/80">Lo que respalda esta obra, y lo que todavía no. En esta demo ninguna capa está cumplida de verdad.</p>
+      <ul className="mt-5 divide-y divide-linea border-y border-linea">
+        {capasDeConfianza(obra, mia).map((c) => (
+          <li key={c.id} className="grid gap-1 py-3.5 sm:grid-cols-[1fr_auto] sm:gap-4">
+            <div>
+              <p className="font-semibold">{c.nombre}</p>
+              <p className="text-sm text-tinta/80">{c.hoy}</p>
+              <p className="mt-0.5 text-[13px] text-tinta/70">En la versión real: {c.real.charAt(0).toLowerCase() + c.real.slice(1)}</p>
+            </div>
+            <span className={`h-fit w-fit rounded-full px-2.5 py-0.5 font-mono text-[11px] uppercase tracking-[0.08em] ${ESTADO[c.estado].clase}`}>
+              {ESTADO[c.estado].texto}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}
 
 function Video({ obra }: { obra: TObra }) {
   const [aviso, setAviso] = useState(false)
@@ -185,6 +217,8 @@ export default function Obra() {
               </p>
             )
           )}
+
+          <CapasConfianza obra={obra} mia={mia} />
 
           <section className="revela mt-12">
             <Etiqueta>El artista te cuenta</Etiqueta>

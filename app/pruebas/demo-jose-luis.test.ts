@@ -29,3 +29,12 @@ test('ninguna historia habla por él ni especula sobre lo que sabría', () => {
   assert.doesNotMatch(todo, /\b(yo|mi|mis|me)\b/i)
   assert.doesNotMatch(todo, /sabría/)
 })
+
+test('capas de confianza de sus obras: registro y fotos huella pendientes, nada cumplido', () => {
+  for (const o of d.OBRAS) {
+    const capas = d.capasDeConfianza(o)
+    assert.equal(capas.find((c) => c.id === 'registro')!.estado, 'pendiente', o.titulo)
+    assert.equal(capas.find((c) => c.id === 'huellas')!.estado, 'pendiente', o.titulo)
+    assert.ok(capas.every((c) => c.estado !== 'cumplida'), o.titulo)
+  }
+})

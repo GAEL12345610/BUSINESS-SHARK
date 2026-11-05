@@ -18,6 +18,7 @@ Aplicadas en la rama local `claude/demo-honesta-jose-luis` (sin publicar, sin pu
 | P8 | **En la reunión, demo genérica primero; `/jose-luis` solo si él acepta verla.** El modo José Luis se puede apagar con `VITE_DEMO_JOSE_LUIS=0`. | Es persona real que no ha dado permiso. Lo que está publicado lo decidió el equipo (#42); esto no lo revierte, solo da el interruptor y el protocolo. | Nada. **Queda abierto:** si se apaga antes de la reunión. Lo decide el equipo con un adulto |
 | P9 | **El guion de la reunión dura 25 minutos y cierra pidiendo permiso para un siguiente paso**, no la aceptación como fundador. | Primera meta de cada contacto es entrevista, no venta (`CLIENTES.md`, regla 3). | Cambia el bloque "Fundador (5 min)" del guion anterior |
 | P10 | **`pnpm build` falla si el HTML publicado pierde el aviso de DEMO o el estado del precio** (`scripts/verificar-dist.mjs`). | Que nadie publique sin querer una versión que vuelva a prometer de más. | Nada. Si molesta, se quita del script `build` |
+| P11 | **La página de la obra enseña sus capas de confianza** (registro, sello, fotos huella, dueño, historial), cada una como Cumplida, Ejemplo o Pendiente. En la demo ninguna sale Cumplida (prueba en `app/pruebas/`). | Cumple la #34, que estaba pendiente de pasar a la app. | Nada |
 
 ## 31 oct 2026, quinta sesión (demo pública de José Luis, Punto v2)
 
@@ -57,7 +58,7 @@ Aplicadas en la rama local `claude/demo-honesta-jose-luis` (sin publicar, sin pu
 | 31 | **El NFC graba `brai.art/o/XXXXX?v=n` y el QR `?v=q`.** | Así sabemos cuántos toques vienen por NFC y cuántos por QR, sin romper la regla 4. |
 | 32 | **Las cuentas de artista las crea el equipo en el setup.** Nadie se registra solo en el panel. | El setup es un servicio pagado; una cuenta suelta no tiene artista ligado y sería ruido. |
 | 33 | **Tipografía v2.2:** tamaño óptico de Fraunces, peso 560, escala fluida, fuentes autohospedadas. **No se cambia de familia.** | Ver `brand/BRAND.md`, sección 6. |
-| 34 | **La página de la obra enseña sus capas de confianza** (pendiente de pasar a la app actual) (sello, fotos huella, dueño), cada una marcada como cumplida o pendiente. | Lo copiamos del "COA+" de Verisart: la confianza se explica, no se presume. |
+| 34 | **La página de la obra enseña sus capas de confianza** (en la app desde el 5 nov, propuesta P11) (sello, fotos huella, dueño), cada una marcada como cumplida o pendiente. | Lo copiamos del "COA+" de Verisart: la confianza se explica, no se presume. |
 
 ## 31 oct 2026, segunda sesión (auditoría y NFT)
 

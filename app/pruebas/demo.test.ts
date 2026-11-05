@@ -75,3 +75,12 @@ test('la huella de muestra es la misma para los mismos eventos', () => {
   assert.equal(d.huellaRegistro(o), d.huellaRegistro({ ...o }))
   assert.notEqual(d.huellaRegistro(o), d.huellaRegistro({ ...o, eventos: o.eventos.slice(1) }))
 })
+
+test('capas de confianza: en la demo ninguna sale como cumplida', () => {
+  for (const o of d.OBRAS) for (const c of d.capasDeConfianza(o)) assert.notEqual(c.estado, 'cumplida', `${o.codigo} ${c.id}`)
+  const sin = d.capasDeConfianza(d.getObra('7KQ2X')!).find((c) => c.id === 'dueno')!
+  assert.equal(sin.estado, 'pendiente')
+  const con = d.capasDeConfianza(d.getObra('M3RT8')!).find((c) => c.id === 'dueno')!
+  assert.equal(con.estado, 'demo')
+  assert.equal(d.capasDeConfianza(d.OBRAS[0]).find((c) => c.id === 'sello')!.estado, 'pendiente')
+})
