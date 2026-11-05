@@ -13,7 +13,7 @@ Fuentes de datos: `COSTOS.md`, `MERCADO.md`, `COMPETENCIA.md`, `OFERTA.md`, `CON
 | 1 | Jurado | **La rúbrica pide para el 26 nov "página de una obra real con su sello" y 3 artistas y 5 compradores entrevistados. Hoy hay 0 entrevistas y 0 obras reales con permiso.** | Agendar entrevistas ya. Para la obra real: una obra de alguien cercano al equipo (un familiar que pinte, un maestro de arte) con **permiso por escrito**, revisado por un adulto. No usar a José Luis sin su permiso. |
 | 2 | Artista | El certificado digital con NFC **ya es gratis** (markmy.art). Lo único que Brai vende que no es gratis es el servicio en persona y el ritual. | Preguntarlo directo en cada entrevista (`ENTREVISTAS.md`, pregunta 10). Si nadie lo valora, el modelo cambia. |
 | 3 | Comprador | Todo el valor depende de que el comprador **reclame la obra y deje su correo**. Nadie sabe si lo hará. | Medirlo es la meta del piloto (`pitch/reunion-jose-luis/plan-piloto.md`). Preguntarlo a los 5 compradores. |
-| 4 | Mate | Con las horas del equipo contadas, la Opción B deja ~354 MXN por hora y necesita ~4 clientes para cubrir costos fijos; A deja ~1,479 MXN por hora y 1 cliente basta. Pero A cuesta 16% de lo que vende el artista ideal el primer año, y B 4%. | Llevar las dos cuentas al jurado (abajo), con las horas. Eso es lo que separa un "buen proyecto" de uno viable. |
+| 4 | Mate | Con las horas del equipo contadas, la Opción B deja ~358 MXN por hora y necesita ~4 clientes para cubrir costos fijos; A deja ~1,483 MXN por hora y 1 cliente basta. Pero A cuesta 16% de lo que vende el artista ideal el primer año, y B 4%. | Llevar las dos cuentas al jurado (abajo), con las horas. Eso es lo que separa un "buen proyecto" de uno viable. |
 | 5 | Legal | Somos menores: **no podemos firmar contratos ni facturar.** La ley de datos personales es nueva (marzo 2025). Vercel Hobby no permite uso comercial. | Todo cobro, contrato o aviso de privacidad pasa por un adulto. En el pitch, decirlo como parte del plan, no esconderlo. |
 
 ---
@@ -65,21 +65,21 @@ Califican Innovación (Arte y Español) y Viabilidad (Mate). Nadie califica el c
 
 ## 4. El profesor de Mate (viabilidad)
 
-Cálculo con los números de `COSTOS.md`. Supuestos marcados: 15 MXN de materiales por obra, 8 horas por setup, **1 hora por obra adicional (supuesto)** y la hora del equipo a 100 MXN (supuesto de `COSTOS.md`). Artista que registra 10 obras el primer año.
+Cálculo con los números de `COSTOS.md`. Supuestos marcados: ~10 MXN de materiales por obra (9.60, `COSTOS.md` del 5 nov), 8 horas por setup, **1 hora por obra adicional (supuesto)** y la hora del equipo a 100 MXN (supuesto de `COSTOS.md`). Artista que registra 10 obras el primer año.
 
 | | Opción A | Opción B |
 |---|---|---|
 | Ingreso año 1 | 19,380 MXN | 4,750 MXN |
-| Materiales | 150 MXN | 150 MXN |
+| Materiales | ~96 MXN | ~96 MXN |
 | Horas del equipo | 13 h | 13 h |
-| **Margen por hora** | **~1,479 MXN** | **~354 MXN** |
-| Aporte después de pagar las horas a 100 MXN | 17,930 MXN | 3,300 MXN |
+| **Margen por hora** | **~1,483 MXN** | **~358 MXN** |
+| Aporte después de pagar las horas a 100 MXN | ~17,984 MXN | ~3,354 MXN |
 | Clientes para cubrir el costo fijo comercial (10,550 MXN al año) | **1** | **~4** (3.2) |
 | Lo que le cuesta al artista ideal (10 obras de 12,000) | 16% de sus ventas | 4% |
 
 **La tensión que hay que enseñar:** A es mejor negocio para Brai y B es más fácil de vender al artista. La entrevista decide (DECISIONES #26). Un artista que solo registra 5 obras en B deja 1,625 MXN después de horas: harían falta ~7 así para cubrir el costo fijo.
 
-**Los 3 fundadores gratis** cuestan poco dinero (~225 MXN de materiales) pero ~24 horas del equipo. Es una inversión en casos, no un regalo.
+**Los 3 fundadores gratis** cuestan poco dinero (~150 MXN de materiales) pero ~24 horas del equipo. Es una inversión en casos, no un regalo.
 
 **Lo que no está contado y alguien va a preguntar:** el transporte al taller, la impresión de tarjetas a escala, el tiempo de soporte cuando un comprador pierde su tarjeta y el costo de que el equipo deje el proyecto después del concurso.
 

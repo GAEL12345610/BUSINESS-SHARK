@@ -89,7 +89,7 @@ Pensábamos que un NTAG 424 DNA (el chip que genera una firma nueva en cada toqu
 
 Falta sumar envío desde Italia (`?`, cotizar) y posible impuesto de importación (`?`).
 
-**Traducción:** por **~15 MXN más por obra**, la promesa pasa de "registro de propiedad" a "y además **este sello es el original**". Eso cambia la decisión 8 (ver `DECISIONES.md`, 31 oct). El backend ya trae la verificación lista (`app/supabase/functions/sello/`).
+**Traducción:** por **~15 a 21 MXN más por obra** (21 si se paga impuesto de importación, `COSTOS.md` del 5 nov), la promesa pasa de "registro de propiedad" a "y además **este sello es el original**". Eso cambia la decisión 8 (ver `DECISIONES.md`, 31 oct). El backend ya trae la verificación lista (`app/supabase/functions/sello/`).
 
 ---
 

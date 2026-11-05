@@ -21,7 +21,7 @@
 | 6 | Demo | Que el jurado escanee el QR. Tener un celular listo por si el suyo no lee QR | Innovación |
 | 7 | Ritual y marca | Por qué se ve así | Innovación (Arte y Español) |
 | 8 | Competencia | Lo gratis existe; lo nuestro es en persona | Viabilidad |
-| 9 | Costos | ~15 MXN por obra | Viabilidad (Mate) |
+| 9 | Costos | ~10 MXN por obra | Viabilidad (Mate) |
 | 10 | Precio | A contra B contra la galería, como % de ventas | Viabilidad (Mate) |
 | 11 | Equilibrio | Con horas contadas: A con 1 artista, B con ~4 | Viabilidad (Mate) |
 | 12 | Aprendizajes | **Llenar con frases textuales** | Viabilidad |
