@@ -6,6 +6,8 @@
 
 **Regla de oro: mostrar, no explicar.** Nadie dice "NFC" en voz. La tecnología se ve funcionar.
 
+**Ajuste del 5 nov 2026 (propuesta, `docs/DEMO_HONESTA.md`):** la escena 7 decía "sabe siempre dónde está", que promete más de lo que hace (Brai sabe quién reclamó la obra, no dónde está). La escena 9 decía `brai.art`, que todavía no existe. Las grabaciones de pantalla van a mostrar el aviso negro de DEMO: se deja, no se recorta. Si se quiere un plano limpio, se pone un texto "Prototipo" en pantalla.
+
 ## Escenas
 
 | # | Tiempo | Toma (qué se ve) | Voz | Texto en pantalla | Graba |
@@ -15,10 +17,10 @@
 | 3 | 0:12 a 0:20 | Las mismas manos envuelven el cuadro y lo entregan en una puerta. La puerta se cierra. Plano quieto de la puerta, 1 segundo. | "Lo vendí. Y nunca volví a saber de él." | ¿Sabes dónde está tu obra hoy? | ? |
 | 4 | 0:20 a 0:28 | Reverso del cuadro, sobre el bastidor. Una mano pega el sello redondo y el QR al lado. | "Ahora cada obra lleva un sello." | Un sello detrás de cada obra | ? |
 | 5 | 0:28 a 0:38 | Sala de una casa, el cuadro colgado. Alguien acerca su celular y se abre la página: la obra, el nombre del artista, el sello dorado "Registrada por el artista". Grabación de pantalla en vivo, no simulada. | "Acercas tu celular y la obra te cuenta su historia." | Registrada por el artista | ? |
-| 6 | 0:38 a 0:50 | La tarjeta de dueño firmada a mano. Una moneda raspa el código. Se teclea. Aparece "Esta obra ya es tuya" con el sello dorado. | "Raspas tu tarjeta, y la obra queda a tu nombre." | | ? |
-| 7 | 0:50 a 0:58 | La línea de tiempo de la obra en la pantalla: registro, entrega, nuevo dueño. Corte a las manos del artista sonriendo, limpiando un pincel. | "Y quien la pintó sabe siempre dónde está." | Registro de propiedad y procedencia | ? |
+| 6 | 0:38 a 0:50 | La tarjeta de dueño firmada a mano. Una moneda raspa el código. Se teclea. Aparece "Así se ve cuando la obra es tuya" con el sello dorado (texto de la demo desde el 5 nov). | "Raspas tu tarjeta, y la obra queda a tu nombre." | | ? |
+| 7 | 0:50 a 0:58 | La línea de tiempo de la obra en la pantalla: registro, entrega, nuevo dueño. Corte a las manos del artista sonriendo, limpiando un pincel. | "Y quien la pintó sabe quién la tiene." | Registro de propiedad y procedencia | ? |
 | 8 | 0:58 a 1:08 | **Prueba.** Ver las dos versiones abajo. | | | ? |
-| 9 | 1:08 a 1:15 | Fondo lienzo. Aparece el isotipo, el punto dorado cierra el círculo. Debajo, "Brai" y la dirección web. | "Brai. Cada obra sabe de dónde viene." | brai.art | ? |
+| 9 | 1:08 a 1:15 | Fondo lienzo. Aparece el isotipo, el punto dorado cierra el círculo. Debajo, "Brai" y la dirección web. | "Brai. Cada obra sabe de dónde viene." | Prototipo de estudiantes · braiart.vercel.app | ? |
 
 ### Escena 8, dos versiones
 
