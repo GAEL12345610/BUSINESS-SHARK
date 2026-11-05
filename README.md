@@ -21,6 +21,9 @@ https://braiart.vercel.app/
 | **Estado** | **Prototipo sin backend.** La demo publicada usa personas ficticias y no manda datos a ningún lado (`docs/DEMO_HONESTA.md`). Ningún artista ha sido entrevistado todavía. |
 | **Diferencia vs Verisart** | Ellos venden software para certificar. Nosotros, un ritual de entrega, hecho contigo, en español. Ver `docs/COMPETENCIA.md`. |
 
+## Desde la Chromebook
+Todo lo que no abre como `.md` está en PDF o PNG en **`visuales/`**: los documentos en `visuales/documentos/`, el deck del jurado en `pitch/jurado-26nov/deck.pdf` y los materiales de la reunión en `pitch/reunion-jose-luis/`. En GitHub, los `.md` también se leen directo en el navegador.
+
 ## Cómo está organizado
 
 ```

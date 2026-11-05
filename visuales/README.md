@@ -8,6 +8,9 @@ Todo lo visual de Brai en formatos que abre cualquier computadora, incluida la C
 | **`Brai-visuales.pptx`** | Presentación de 13 diapositivas: logo, color, tipografía, Punto, piezas físicas, pantallas del prototipo y la demo de José Luis. Ábrela con Google Slides. |
 | **`Brai-visuales.pdf`** | La misma presentación en PDF. Se abre directo en la Chromebook. |
 | `imprimir/piezas-BRAI-0001-carta.pdf` | Tarjeta de dueño, sello y QR en **tamaño real**, hoja carta. Para imprimir. |
+| **`documentos/`** | **Todos los documentos del repo en PDF** (análisis, mercado, costos, decisiones, guiones). Índice en `documentos/README.md`. |
+| `../pitch/jurado-26nov/deck.pdf` | Deck del jurado del 26 nov (base, con láminas por llenar). |
+| `../pitch/reunion-jose-luis/one-pager.pdf` y `deck.pdf` | Hoja y deck de la reunión exploratoria. |
 
 ## Carpetas
 | Carpeta | Contenido |
@@ -20,6 +23,8 @@ Todo lo visual de Brai en formatos que abre cualquier computadora, incluida la C
 | `imprimir/` | Piezas para imprimir en PNG y en PDF tamaño carta. |
 | `obras-ejemplo/` | Las 4 pinturas de ejemplo (inventadas, no son de ningún artista) y los marcos "foto pendiente" de las obras de José Luis. |
 | `compartir/` | La imagen que sale al pegar el link en WhatsApp y el ícono para celular. |
+| `documentos/` | Los documentos del repo en PDF. Se regeneran con `node visuales/documentos/generar.cjs`. |
+| `viabilidad/` | Gráficas del deck del jurado en PNG (canales de compra, costo como % de ventas). |
 | `clips/` | La escena del sello en GIF (se ve en cualquier lado) y un cuadro fijo. El video original en MP4 está en `pitch/clips/`. |
 
 **Pantallas:** `landing`, `obra`, `reclamar`, `artista`, `panel`, `recorrido`, `marca` (con Lucía Arce, artista inventada) y `jose-luis-recorrido`, `jose-luis-obra`, `jose-luis-artista` (demo de José Luis con sus datos públicos, `docs/DEMO_JOSE_LUIS.md`).

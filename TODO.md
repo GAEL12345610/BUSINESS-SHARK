@@ -19,6 +19,9 @@ Claude dejó la demo diciendo la verdad sobre sí misma y el paquete de la reuni
 | [ ] | Si se aprueba: Pull Request a `main` y revisar en un iPhone y un Android de verdad | Ricardo | |
 | [ ] | Volver a generar `visuales/` (las capturas de ahí son de antes del 5 nov) | Ricardo | `visuales/README.md` |
 | [ ] | Definir el precio de fundador del mes 4 con la Opción B | Equipo | `docs/OFERTA.md` |
+| [ ] | Leer `PERSPECTIVAS.md` y `MERCADO.md`: el certificado digital ya es gratis en markmy.art; decidir qué se vende entonces | Equipo | `docs/PERSPECTIVAS.md`, `docs/MERCADO.md` |
+| [ ] | Conseguir una obra real de alguien cercano, con permiso por escrito revisado por un adulto, para la demo del 26 nov (`CONCURSO.md` la pide) | Equipo con adulto | `docs/PERSPECTIVAS.md`, sección 3 |
+| [ ] | Llenar las láminas 12 y 14 del deck del jurado con entrevistas reales y el equipo | Equipo | `pitch/jurado-26nov/` |
 
 ## 1. Antes de la reunión con José Luis (urgente)
 

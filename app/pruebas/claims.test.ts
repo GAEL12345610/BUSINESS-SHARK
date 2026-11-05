@@ -54,8 +54,11 @@ test('el aviso de privacidad no dice que hay base de datos conectada', () => {
 // Materiales de la reunión (pitch/reunion-jose-luis/): misma puntuación, ningún
 // claim de retorno, y el one-pager y el deck no llevan el nombre de una persona real.
 const PITCH = join(APP, '../pitch/reunion-jose-luis')
+const JURADO = join(APP, '../pitch/jurado-26nov')
 const MATERIALES = [
-  ...readdirSync(PITCH).filter((n) => /\.(md|html)$/.test(n)).map((n) => join(PITCH, n)),
+  ...[PITCH, JURADO].flatMap((d) => readdirSync(d).filter((n) => /\.(md|html)$/.test(n)).map((n) => join(d, n))),
+  join(APP, '../docs/MERCADO.md'),
+  join(APP, '../docs/PERSPECTIVAS.md'),
   join(APP, '../docs/REUNION_JOSE_LUIS.md'),
 ]
 
