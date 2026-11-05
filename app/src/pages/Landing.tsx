@@ -27,10 +27,11 @@ const CIFRAS = [
     url: 'https://www.economia.gob.mx/datamexico/es/profile/occupation/pintores-disenadores-y-dibujantes-artisticos-escultores-y-escenografos',
   },
   {
-    valor: 1,
-    texto: 'venta extra al año a quien ya te compró paga Brai desde el segundo año, si tu obra vale 12,000 MXN.',
-    fuente: 'Cálculo del equipo con nuestro precio',
-    url: null,
+    valor: 78,
+    sufijo: '%',
+    texto: 'de los celulares en México son Android, y muchos no traen NFC o lo traen apagado. Por eso cada sello lleva un QR al lado.',
+    fuente: 'StatCounter México, jul 2026',
+    url: 'https://gs.statcounter.com/os-market-share/mobile/mexico',
   },
 ]
 
@@ -74,7 +75,7 @@ export default function Landing() {
             <a href="#como-funciona" className="hidden rounded-[10px] px-3 py-2 hover:underline sm:inline">Cómo funciona</a>
             <a href="#para-ti" className="hidden rounded-[10px] px-3 py-2 hover:underline sm:inline">Para artistas</a>
             <Link to="/panel" className="rounded-[10px] px-3 py-2 font-medium text-terracota-btn hover:text-terracota-hover hover:underline">
-              Entrar
+              Panel de ejemplo
             </Link>
           </nav>
         </div>
@@ -85,29 +86,33 @@ export default function Landing() {
         {/* Hero */}
         <section className="mx-auto grid max-w-6xl items-center gap-14 px-4 pb-20 pt-12 sm:px-6 md:grid-cols-[1.15fr_1fr] md:pt-20">
           <div>
-            <Kicker>Registro de obra para artistas independientes</Kicker>
+            <Kicker>Para artistas que venden su obra directo</Kicker>
             <h1 className="mt-5 font-display text-[2.6rem] font-semibold leading-[1.04] tracking-[-0.02em] sm:text-6xl lg:text-[4.4rem]">
               <span className="block">Vendiste tu obra.</span>
               <span className="block text-terracota-btn">¿Sabes dónde está hoy?</span>
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-tinta/85">
-              Brai pone un sello detrás de cada cuadro. Quien acerque su celular ve la historia de la obra, que la registraste tú
-              y quién es su dueño. Y tú nunca pierdes de vista a quien te compró.
+              Brai te ayuda a registrar la procedencia de cada obra que vendes. Tu comprador recibe la página de la obra, un sello con QR y una
+              tarjeta con su código. Si la reclama y comparte su correo, tú puedes volver a escribirle cuando tengas obra nueva.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
               <Link
-                to={`/o/${OBRA_DEMO.codigo}`}
+                to="/recorrido"
                 className="inline-flex items-center justify-center gap-2 rounded-[10px] bg-terracota-btn px-6 py-3.5 font-semibold text-lienzo transition-colors hover:bg-terracota-hover active:bg-terracota-active"
               >
-                Ver una obra registrada <ArrowRight size={18} strokeWidth={2} />
+                Recorrer la demo en 5 minutos <ArrowRight size={18} strokeWidth={2} />
               </Link>
-              <a
-                href="#fundadores"
+              <Link
+                to={`/o/${OBRA_DEMO.codigo}`}
                 className="inline-flex items-center justify-center rounded-[10px] border-[1.5px] border-tinta px-6 py-3.5 font-semibold transition-colors hover:bg-tinta/5"
               >
-                Quiero registrar mis obras
-              </a>
+                Ver una obra de ejemplo
+              </Link>
             </div>
+            <p className="mt-4 max-w-xl text-sm leading-relaxed text-tinta/70">
+              Es un prototipo de estudiantes: la artista, las obras y los dueños son ficticios.{' '}
+              <Link to="/demo" className="underline underline-offset-2">Qué hace la demo y qué no</Link>.
+            </p>
           </div>
           <div className="revela md:justify-self-end">
             <Telefono3D src={`/o/${OBRA_DEMO.codigo}`} titulo={`Página de la obra ${OBRA_DEMO.titulo}`} />
@@ -188,8 +193,9 @@ export default function Landing() {
                 Tu panel te dice quién tiene cada obra.
               </h2>
               <p className="mt-5 max-w-xl text-lg leading-relaxed text-tinta/85">
-                Cuando tu comprador reclama la obra, aparece en tu panel con su nombre y su correo. Cuando terminas una obra nueva, les avisas
-                primero a quienes ya te compraron. En público, el dueño solo sale con sus iniciales.
+                Cuando tu comprador reclama la obra y deja su correo, aparece en tu panel. Si no la reclama, no sabrás quién es: Brai no
+                adivina. Cuando terminas una obra nueva, puedes escribirles primero a quienes ya te compraron. En público, el dueño solo sale
+                con sus iniciales.
               </p>
               <Link
                 to="/panel"
@@ -202,12 +208,12 @@ export default function Landing() {
               <TarjetaTilt className="rounded-2xl border border-linea bg-lienzo p-6">
                 <div className="flex items-center justify-between [transform:translateZ(24px)]">
                   <p className="font-semibold">Quién tiene tu obra</p>
-                  <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-verde">Ejemplo</span>
+                  <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-verde">Ejemplo ficticio</span>
                 </div>
                 <ul className="mt-4 divide-y divide-linea border-y border-linea [transform:translateZ(16px)]">
                   {[
-                    { nombre: 'Mariana Ruiz', correo: 'mariana.ruiz@ejemplo.com', obra: 'Sin título I', desde: '24 oct 2026' },
-                    { nombre: 'Andrés Gómez', correo: 'andres.g@ejemplo.com', obra: 'Sin título II', desde: '28 oct 2026' },
+                    { nombre: 'Mariana Ruiz', correo: 'mariana.ruiz@example.com', obra: 'Sin título I', desde: '24 oct 2026' },
+                    { nombre: 'Andrés Gómez', correo: 'andres.g@example.com', obra: 'Sin título II', desde: '28 oct 2026' },
                   ].map((d) => (
                     <li key={d.correo} className="py-3">
                       <p className="flex items-center gap-2 font-semibold">
@@ -255,7 +261,7 @@ export default function Landing() {
                     <LinkReclamarDemo codigoObra={OBRA_DEMO.codigo} codigo={CODIGO_DEMO} titulo={OBRA_DEMO.titulo} />
                   ) : (
                     <>
-                      <span className="font-semibold">La tarjeta de dueño.</span> Firmada a mano. Ráspala: si la raspadita está intacta, nadie vio el código antes.
+                      <span className="font-semibold">La tarjeta de dueño.</span> Firmada a mano. Ráspala: si la raspadita está intacta, nadie vio el código antes. (En esta demo el código es público.)
                     </>
                   )}
                 </figcaption>
@@ -269,7 +275,7 @@ export default function Landing() {
                   <div className="px-2.5 py-2">
                     <div className="truncate font-display text-sm font-semibold">{OBRA_DEMO.titulo}</div>
                     <div className="mt-1 flex items-center gap-1.5 text-[10px] font-semibold">
-                      <i className="size-2 rounded-full bg-dorado" /> Registrada
+                      <i className="size-2 rounded-full bg-dorado" /> Ejemplo
                     </div>
                   </div>
                 </Link>
@@ -292,6 +298,9 @@ export default function Landing() {
               La verdad de una obra vive en su registro, no en el chip. El sello es la puerta. Lo que dice quién la pintó y de quién es,
               lo guarda Brai.
             </p>
+            <p className="mt-3 leading-relaxed text-tinta/70">
+              Así está diseñado. Hoy es un prototipo: el registro real todavía no está conectado y en esta demo esas piezas se simulan.
+            </p>
           </div>
           <div className="mt-12 grid gap-10 md:grid-cols-2">
             <ul className="revela space-y-4 border-t border-tinta pt-6">
@@ -310,7 +319,8 @@ export default function Landing() {
             <ul className="revela space-y-4 border-t border-linea pt-6 text-tinta/70">
               {[
                 'Que nadie pueda copiar jamás tu obra. Nadie serio puede prometer eso.',
-                'Tecnología rara que tengas que entender para usarla.',
+                'Una prueba legal de quién es el dueño. Es un registro, no una escritura.',
+                'Que tu comprador la reclame: si no lo hace, no tendrás su contacto.',
                 'Ventas garantizadas.',
               ].map((t) => (
                 <li key={t} className="flex gap-3">
@@ -331,8 +341,9 @@ export default function Landing() {
                 Buscamos a los primeros 3 artistas.
               </h2>
               <p className="mt-5 max-w-xl text-lg leading-relaxed text-lienzo/85">
-                Te montamos Brai gratis y te damos 3 meses sin costo. A cambio, registras de 3 a 5 obras reales, entregas las tarjetas
-                a tus compradores y nos dejas contar tu caso.
+                La propuesta: te montamos Brai gratis y te damos 3 meses sin costo. A cambio, registras de 3 a 5 obras reales, entregas las
+                tarjetas a tus compradores y nos dejas contar tu caso. Antes de eso, primero queremos platicar contigo y escuchar si esto te
+                sirve.
               </p>
               <p className="mt-4 max-w-xl leading-relaxed text-lienzo/70">
                 Es para ti si vendes obra original directo, en tu taller, por redes o por encargo, y vendes 10 obras o más al año, o
@@ -342,11 +353,14 @@ export default function Landing() {
                 to="/recorrido"
                 className="mt-9 inline-flex items-center gap-2 rounded-[10px] bg-lienzo px-6 py-3.5 font-semibold text-tinta transition-colors hover:bg-white"
               >
-                Ver cómo funciona para ti <ArrowRight size={18} />
+                Recorrer la demo en 5 minutos <ArrowRight size={18} />
               </Link>
+              <p className="mt-4 max-w-xl text-sm leading-relaxed text-lienzo/70">
+                Todavía no abrimos registros ni tenemos un correo público del proyecto. Este sitio no pide tus datos.
+              </p>
             </div>
             <div className="revela self-end border-t border-lienzo/25 pt-6">
-              <p className="font-mono text-xs uppercase tracking-[0.16em] text-lienzo/70">Después del periodo de fundador</p>
+              <p className="font-mono text-xs uppercase tracking-[0.16em] text-lienzo/70">Precio publicado, sin validar</p>
               <dl className="mt-5 space-y-5">
                 <div>
                   <dt className="text-sm text-lienzo/70">Arranque, una vez</dt>
@@ -360,7 +374,12 @@ export default function Landing() {
                 </div>
               </dl>
               <p className="mt-6 text-sm leading-relaxed text-lienzo/85">
-                Si tu obra vale 12,000, dos ventas extra a quien ya te compró pagan el primer año.
+                Estamos probando este precio y una alternativa por obra (2,500 MXN de arranque y 450 MXN por obra adicional). Ningún artista lo
+                ha pagado todavía.
+              </p>
+              <p className="mt-3 text-xs leading-relaxed text-lienzo/65">
+                Referencia ilustrativa, no una promesa: con obras de 12,000 MXN, el primer año (19,380 MXN) equivale al precio de venta de 2
+                obras. Es dinero bruto, no ganancia, y no está comprobado que Brai cause esas ventas.
               </p>
             </div>
           </div>
@@ -388,11 +407,17 @@ export default function Landing() {
               registro que delata cualquier cambio.
             </Pregunta>
             <Pregunta pregunta="¿Quién ve los datos de mi comprador?">
-              Solo tú. En la página pública el dueño aparece con sus iniciales. Su correo sirve para que sepas quién tiene tu obra y para
-              avisarle cuando tengas obra nueva, si así lo quiere.
+              En el diseño: tú, y el equipo que opera Brai solo para dar soporte. En la página pública el dueño aparece con sus iniciales. Su
+              correo solo existe si él decide reclamar la obra y compartirlo. En esta demo no se guarda ningún correo real: solo aceptamos
+              correos inventados y se quedan en tu navegador.
             </Pregunta>
             <Pregunta pregunta="¿Y si un día me voy de Brai?">
-              Te llevas todo lo registrado: fichas, fotos, historias y dueños. Tu historial es tuyo, no de la plataforma.
+              Lo que proponemos: te llevas todo lo registrado, fichas, fotos, historias y dueños. La función para descargarlo todavía no está
+              construida.
+            </Pregunta>
+            <Pregunta pregunta="¿Esto ya funciona?">
+              Todavía no. Es un prototipo de estudiantes para enseñar la idea y escuchar a artistas. No hay cuentas, no se mandan correos y los
+              sellos NFC no están funcionando. La lista completa está en la página <Link to="/demo" className="underline underline-offset-2">Qué es real</Link>.
             </Pregunta>
             <Pregunta pregunta="¿Qué gana quien compra mi obra?">
               La historia contada por ti, una prueba de procedencia si algún día la revende o la hereda, y una línea directa contigo.
@@ -408,10 +433,10 @@ export default function Landing() {
               Cada obra sabe de dónde viene.
             </h2>
             <Link
-              to={`/o/${OBRA_DEMO.codigo}`}
+              to="/recorrido"
               className="inline-flex items-center gap-2 rounded-[10px] bg-terracota-btn px-6 py-3.5 font-semibold text-lienzo transition-colors hover:bg-terracota-hover"
             >
-              Ver una obra registrada <ArrowRight size={18} />
+              Recorrer la demo en 5 minutos <ArrowRight size={18} />
             </Link>
           </div>
         </section>
@@ -428,13 +453,14 @@ export default function Landing() {
             <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-verde">Brai</p>
             <Link to={`/o/${OBRA_DEMO.codigo}`} className="hover:underline">Obra de ejemplo</Link>
             <Link to={`/a/${ARTISTA.slug}`} className="hover:underline">Página de artista</Link>
-            <Link to="/panel" className="hover:underline">Panel del artista</Link>
+            <Link to="/panel" className="hover:underline">Panel de ejemplo</Link>
             <Link to="/recorrido" className="hover:underline">Recorrido en 5 minutos</Link>
+            <Link to="/demo" className="hover:underline">Qué es real en la demo</Link>
           </nav>
           <nav aria-label="Más" className="flex flex-col gap-2">
             <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-verde">Más</p>
             <Link to="/marca" className="hover:underline">Marca y mascota</Link>
-            <a href="/privacidad" className="hover:underline">Aviso de privacidad</a>
+            <a href="/privacidad" className="hover:underline">Datos de la demo</a>
           </nav>
         </div>
       </footer>

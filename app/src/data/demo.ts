@@ -56,8 +56,12 @@ export function anioTexto(o: Pick<Obra, 'anio'>) {
 export type Modo = 'ejemplo' | 'jose-luis'
 const CLAVE_MODO = 'brai-demo-modo'
 function leerModo(): Modo {
-  if (import.meta.env.VITE_DEMO_JOSE_LUIS === '1') return 'jose-luis'
-  if (typeof window === 'undefined') return 'ejemplo'
+  // VITE_DEMO_JOSE_LUIS: '1' fuerza su modo, '0' lo apaga del todo (ni /jose-luis
+  // lo activa). Sin valor: se activa por ruta (DECISIONES #42). `?.` para que las
+  // pruebas de Node, que no tienen import.meta.env, puedan importar este archivo.
+  const flag = import.meta.env?.VITE_DEMO_JOSE_LUIS
+  if (flag === '1') return 'jose-luis'
+  if (flag === '0' || typeof window === 'undefined') return 'ejemplo'
   try {
     const ruta = window.location.pathname
     // Entrar a una obra suya (por ejemplo, al escanear el QR impreso con otro
@@ -90,6 +94,8 @@ const F = {
   udgtv: { texto: 'UDGTV, 2026', url: 'https://udgtv.com/noticias/jose-luis-malo-interviene-siteur/314993' },
 }
 
+// Lucía Arce NO existe: es una artista ficticia para la demo. Todo lo suyo
+// (obras, registros, dueños, correos, toques) es inventado y se dice en pantalla.
 const ARTISTA_EJEMPLO: Artista = {
   slug: 'ejemplo',
   nombre: 'Lucía Arce',
@@ -98,7 +104,7 @@ const ARTISTA_EJEMPLO: Artista = {
   correo: null,
   ejemplo: true,
   ciudad: 'Guadalajara, Jalisco',
-  bio: ['Aquí va la presentación del artista, en sus palabras: qué pinta, desde cuándo y por qué.'],
+  bio: ['Lucía Arce es una artista ficticia, inventada para esta demo. Aquí va la presentación del artista real, en sus palabras: qué pinta, desde cuándo y por qué.'],
   fuentes: [],
 }
 
@@ -141,11 +147,30 @@ function leerPara(): string | null {
 }
 export const NOMBRE_PARA = MODO_JOSE_LUIS ? ARTISTA_JOSE_LUIS.nombre : leerPara()
 if (NOMBRE_PARA) ARTISTA.nombre = NOMBRE_PARA
+if (NOMBRE_PARA && !MODO_JOSE_LUIS)
+  ARTISTA.bio = ['Demo personalizada: el nombre solo se ve en este navegador. Aquí va tu presentación, en tus palabras. Las obras de abajo son inventadas.']
+/** Lucía Arce, la artista inventada, sin nombre personalizado encima. */
+export const ES_FICTICIA = !MODO_JOSE_LUIS && !NOMBRE_PARA
 /** El HTML prerenderizado (Lucía) no coincide: hay que pintar desde cero. */
 export const DEMO_PERSONALIZADA = MODO_JOSE_LUIS || Boolean(NOMBRE_PARA)
 
-/** Código de dueño de la demo. En la real va cifrado en la base y bajo raspadita. */
+/**
+ * Código de dueño de la demo. Es FIJO y PÚBLICO: sirve para todas las obras y
+ * para cualquiera. No es seguro ni de un solo uso. En la versión real cada obra
+ * tiene el suyo, cifrado en la base y bajo raspadita (app/supabase/migrations/).
+ */
 export const CODIGO_DEMO = '4K7P-9QX2'
+
+/**
+ * La demo solo acepta correos de prueba con este dominio (reservado por el
+ * estándar RFC 2606, nunca llega a nadie). Así nadie deja un correo real en un
+ * sitio sin backend ni aviso de privacidad revisado (TODO.md, sección 1).
+ */
+export const DOMINIO_PRUEBA = 'example.com'
+export const CORREO_PRUEBA = `comprador.demo@${DOMINIO_PRUEBA}`
+export function esCorreoDePrueba(correo: string) {
+  return /^[^\s@]+@example\.com$/i.test(correo.trim())
+}
 
 const OBRAS_EJEMPLO: Obra[] = [
   {
@@ -167,7 +192,7 @@ const OBRAS_EJEMPLO: Obra[] = [
     ],
     video: { duracion: '0:40', disponible: false },
     eventos: [
-      { tipo: 'registro', fecha: '2026-10-20', texto: 'Registrada por el artista en su taller' },
+      { tipo: 'registro', fecha: '2026-10-20', texto: 'Ejemplo: registrada por el artista en su taller' },
     ],
     dueno: null,
   },
@@ -187,9 +212,9 @@ const OBRAS_EJEMPLO: Obra[] = [
     historia: ['Texto de ejemplo. Aquí el artista cuenta cómo nació la obra.'],
     video: { duracion: '0:35', disponible: false },
     eventos: [
-      { tipo: 'registro', fecha: '2026-10-20', texto: 'Registrada por el artista en su taller' },
-      { tipo: 'entrega', fecha: '2026-10-24', texto: 'Entregada en persona con su tarjeta firmada' },
-      { tipo: 'reclamo', fecha: '2026-10-24', texto: 'Reclamada por su primer dueño, M. R.' },
+      { tipo: 'registro', fecha: '2026-10-20', texto: 'Ejemplo: registrada por el artista en su taller' },
+      { tipo: 'entrega', fecha: '2026-10-24', texto: 'Ejemplo: entregada en persona con su tarjeta firmada' },
+      { tipo: 'reclamo', fecha: '2026-10-24', texto: 'Ejemplo: reclamada por su primer dueño ficticio, M. R.' },
     ],
     dueno: 'M. R.',
   },
@@ -208,7 +233,7 @@ const OBRAS_EJEMPLO: Obra[] = [
     ],
     historia: ['Texto de ejemplo. Aquí el artista cuenta cómo nació la obra.'],
     video: { duracion: '0:30', disponible: false },
-    eventos: [{ tipo: 'registro', fecha: '2026-10-21', texto: 'Registrada por el artista en su taller' }],
+    eventos: [{ tipo: 'registro', fecha: '2026-10-21', texto: 'Ejemplo: registrada por el artista en su taller' }],
     dueno: null,
   },
   {
@@ -226,7 +251,7 @@ const OBRAS_EJEMPLO: Obra[] = [
     ],
     historia: ['Texto de ejemplo. Aquí el artista cuenta cómo nació la obra.'],
     video: { duracion: '0:25', disponible: false },
-    eventos: [{ tipo: 'registro', fecha: '2026-10-22', texto: 'Registrada por el artista en su taller' }],
+    eventos: [{ tipo: 'registro', fecha: '2026-10-22', texto: 'Ejemplo: registrada por el artista en su taller' }],
     dueno: null,
   },
 ]
@@ -272,7 +297,7 @@ const OBRAS_JOSE_LUIS: Obra[] = [
   {
     codigo: 'VJ6KC', registro: 'BRAI-0004', titulo: 'Viejo loco', tecnica: 'Por confirmar', medidas: 'Por confirmar', anio: 2016,
     imagen: '/obras/jose-luis/viejo-loco.svg', huellas: SIN_FOTO, video: sinVideo, eventos: DEMO_REGISTRO, dueno: null,
-    historia: ['Se vendió en una subasta en línea en 2021. Con Brai, José Luis sabría hoy dónde está y podría escribirle a quien la tiene.'],
+    historia: ['Según MutualArt, se vendió en una subasta en línea en 2021.'],
     fuente: F.mutualart,
   },
   {
@@ -357,7 +382,7 @@ export function registrarObra(n: NuevaObra): Obra {
     ],
     historia: n.historia ? [n.historia] : ['El artista todavía no escribe la historia de esta obra.'],
     video: { duracion: '0:00', disponible: false },
-    eventos: [{ tipo: 'registro', fecha: hoy, texto: 'Registrada por el artista en su panel' }],
+    eventos: [{ tipo: 'registro', fecha: hoy, texto: 'Registro de prueba, guardado solo en este navegador' }],
     dueno: null,
   }
   try {
@@ -376,7 +401,7 @@ export function registrarObra(n: NuevaObra): Obra {
 
 // Dueños y toques de EJEMPLO para el panel. Nadie de aquí es real.
 const DUENOS_EJEMPLO: Record<string, { nombre: string; correo: string; desde: string }> = {
-  M3RT8: { nombre: 'Mariana Ruiz (ejemplo)', correo: 'mariana.ruiz@ejemplo.com', desde: '2026-10-24' },
+  M3RT8: { nombre: 'Mariana Ruiz (ficticia)', correo: 'mariana.ruiz@example.com', desde: '2026-10-24' },
 }
 const TOQUES_EJEMPLO: Record<string, number> = { '7KQ2X': 12, M3RT8: 37, P9WD4: 5, H2ZC6: 2 }
 
@@ -416,7 +441,8 @@ export function esMia(codigo: string) {
 }
 
 // Cadena de huellas (docs/TOKENIZAR.md): cada evento lleva la huella del anterior.
-// En la demo es FNV-1a para mostrarlo; en Supabase es SHA-256 (app/supabase/schema.sql).
+// En la demo es FNV-1a, calculada en el navegador, solo para mostrar la idea: NO
+// prueba autenticidad ni propiedad. En la base es SHA-256 (migración 500).
 function fnv(texto: string) {
   let h = 0x811c9dc5
   for (let i = 0; i < texto.length; i++) {
@@ -446,10 +472,12 @@ export function reclamar(codigoObra: string, codigoDueno: string, correo: string
   if (!obra) return { ok: false, error: 'No encontramos esta obra.' }
   if (obra.dueno) return { ok: false, error: 'Esta obra ya tiene dueño. Si es tuya y la compraste de segunda mano, pídele al dueño anterior que te la transfiera.' }
   intentos[obra.codigo] = (intentos[obra.codigo] ?? 0) + 1
-  if (intentos[obra.codigo] > 5) return { ok: false, error: 'Demasiados intentos. Espera una hora y vuelve a probar.' }
+  // En la real el límite vive en la base (5 por hora). Aquí es solo memoria: recargar lo borra.
+  if (intentos[obra.codigo] > 5) return { ok: false, error: 'Demasiados intentos. En la versión real se bloquearía una hora; en la demo, recarga la página.' }
   const limpio = codigoDueno.toUpperCase().replace(/[^A-Z0-9]/g, '')
   if (limpio !== CODIGO_DEMO.replace('-', '')) return { ok: false, error: 'Ese código no coincide. Revisa la tarjeta: son 8 letras y números.' }
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)) return { ok: false, error: 'Revisa tu correo, parece que le falta algo.' }
+  if (!esCorreoDePrueba(correo))
+    return { ok: false, error: `En esta demo solo se aceptan correos inventados que terminan en @${DOMINIO_PRUEBA}, por ejemplo ${CORREO_PRUEBA}. No escribas tu correo real.` }
   const ini = iniciales(correo)
   try {
     const todos = leerReclamos()

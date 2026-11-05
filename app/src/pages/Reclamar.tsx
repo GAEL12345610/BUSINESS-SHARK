@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from 'react'
 import { Link, useParams, useSearchParams } from 'react-router'
 import { ArrowLeft } from 'lucide-react'
-import { ARTISTA, fecha, getObra, reclamar } from '../data/demo'
+import { ARTISTA, CORREO_PRUEBA, DOMINIO_PRUEBA, MODO_JOSE_LUIS, fecha, getObra, reclamar } from '../data/demo'
 import { PaginaArtista } from './Obra'
 import NoEncontrada from './NoEncontrada'
 
@@ -27,7 +27,8 @@ export default function Reclamar() {
   const [params] = useSearchParams()
   // La raspadita de la landing manda el código ya escrito
   const [codigoDueno, setCodigoDueno] = useState(() => formatear(params.get('codigo') ?? ''))
-  const [correo, setCorreo] = useState('')
+  // Correo inventado ya escrito: la demo no debe invitar a dejar un correo real.
+  const [correo, setCorreo] = useState(CORREO_PRUEBA)
   const [error, setError] = useState<string | null>(null)
   const [listo, setListo] = useState<string | null>(null)
 
@@ -51,19 +52,27 @@ export default function Reclamar() {
         <main className="mx-auto flex max-w-md flex-col items-start px-4 pb-16 pt-14 sm:px-6">
           <SelloDorado />
           <p className="mt-8 font-mono text-xs uppercase tracking-[0.16em] text-verde">{obra.registro}</p>
-          <h1 className="mt-2 font-display text-[2.4rem] font-semibold leading-[1.05] tracking-[-0.015em]">Esta obra ya es tuya.</h1>
+          <h1 className="mt-2 font-display text-[2.4rem] font-semibold leading-[1.05] tracking-[-0.015em]">Así se ve cuando la obra es tuya.</h1>
           <p className="mt-4 text-lg leading-relaxed text-tinta/85">
-            <span className="font-display italic">{obra.titulo}</span> quedó registrada a nombre de{' '}
-            <span className="font-semibold">{listo}</span> el {fecha(new Date().toISOString().slice(0, 10))}. Ya apareces en el registro de
-            {' '}{ARTISTA.nombre} como su dueño.
+            Simulación: en este navegador, <span className="font-display italic">{obra.titulo}</span> quedó a nombre de{' '}
+            <span className="font-semibold">{listo}</span> el {fecha(new Date().toISOString().slice(0, 10))}. En la versión real, quedarías en el
+            registro de {ARTISTA.nombre} como su dueño y el código de tu tarjeta dejaría de servir.
           </p>
-          <p className="mt-3 text-sm text-tinta/70">El código de tu tarjeta ya no sirve. Guárdala: es parte de la obra.</p>
-          <Link
-            to={`/o/${obra.codigo}`}
-            className="mt-9 inline-flex items-center justify-center rounded-[10px] bg-[var(--acento-texto)] px-6 py-3.5 font-semibold text-lienzo hover:opacity-90"
-          >
-            Ver mi obra
-          </Link>
+          <p className="mt-3 rounded-[10px] bg-arena px-4 py-3 text-sm leading-relaxed text-tinta/80">
+            No se registró nada en ningún servidor ni se mandó ningún correo.
+            {MODO_JOSE_LUIS && ' Esta obra no tiene dueño en Brai: es una demostración sobre una obra real.'}
+          </p>
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <Link
+              to={`/o/${obra.codigo}`}
+              className="inline-flex items-center justify-center rounded-[10px] bg-[var(--acento-texto)] px-6 py-3.5 font-semibold text-lienzo hover:opacity-90"
+            >
+              Ver la obra
+            </Link>
+            <Link to="/panel" className="inline-flex items-center justify-center rounded-[10px] border-[1.5px] border-tinta px-6 py-3.5 font-semibold hover:bg-tinta/5">
+              Ver lo que ve el artista
+            </Link>
+          </div>
         </main>
       </PaginaArtista>
     )
@@ -88,8 +97,8 @@ export default function Reclamar() {
 
         <h1 className="mt-8 font-display text-[2.2rem] font-semibold leading-[1.05] tracking-[-0.015em]">Reclama tu obra</h1>
         <p className="mt-3 leading-relaxed text-tinta/85">
-          Raspa la tarjeta que te entregó {ARTISTA.nombre} y escribe el código. Es de un solo uso: si la raspadita ya venía
-          raspada, avísale al artista.
+          Raspa la tarjeta que te entregó {ARTISTA.nombre} y escribe el código. En la versión real es de un solo uso. En esta demo el código
+          es público y el reclamo es simulado.
         </p>
 
         {obra.dueno ? (
@@ -118,7 +127,7 @@ export default function Reclamar() {
             </div>
             <div>
               <label htmlFor="correo" className="block text-sm font-semibold">
-                Tu correo
+                Correo de prueba
               </label>
               <input
                 id="correo"
@@ -128,15 +137,17 @@ export default function Reclamar() {
                   setCorreo(e.target.value)
                   setError(null)
                 }}
-                autoComplete="email"
-                placeholder="tu@correo.com"
+                autoComplete="off"
+                aria-describedby="correo-ayuda"
+                placeholder={CORREO_PRUEBA}
                 className="mt-2 w-full rounded-[10px] border-[1.5px] border-tinta/25 bg-white px-4 py-3.5 text-base focus:border-tinta focus:outline-none"
               />
-              <p className="mt-2 text-[13px] leading-snug text-tinta/70">
-                Solo lo ve el artista. En la página pública apareces con tus iniciales.
-                Al reclamar aceptas el{' '}
+              <p id="correo-ayuda" className="mt-2 text-[13px] leading-snug text-tinta/70">
+                <span className="font-semibold text-tinta">No escribas tu correo real.</span> La demo solo acepta correos inventados que terminan
+                en @{DOMINIO_PRUEBA}. No se manda a nadie y se queda solo en este navegador. En la versión real, solo el artista vería tu correo
+                y en público saldrían tus iniciales.{' '}
                 <a href="/privacidad" target="_blank" rel="noopener" className="underline underline-offset-2">
-                  aviso de privacidad
+                  Qué datos guarda la demo
                 </a>
                 .
               </p>
@@ -151,7 +162,7 @@ export default function Reclamar() {
               disabled={codigoDueno.length < 9 || !correo}
               className="w-full rounded-[10px] bg-[var(--acento-texto)] px-6 py-3.5 font-semibold text-lienzo transition-opacity hover:opacity-90 disabled:opacity-40"
             >
-              Reclamar mi obra
+              Simular reclamo
             </button>
           </form>
         )}

@@ -6,7 +6,8 @@ import { Link } from 'react-router'
 import { ArrowUpRight, Check, Mail, Plus, Printer } from 'lucide-react'
 import { Logo } from '../components/marca'
 import { Punto } from '../components/punto'
-import { ARTISTA, CODIGO_DEMO, MODO_JOSE_LUIS, fecha, panel, registrarObra, reiniciarDemo, type Obra } from '../data/demo'
+import { ARTISTA, ES_FICTICIA, CODIGO_DEMO, CORREO_PRUEBA, MODO_JOSE_LUIS, fecha, panel, registrarObra, reiniciarDemo, type Obra } from '../data/demo'
+import { Ficticio } from '../components/demo'
 
 /** Achica la foto en el navegador para que quepa en la demo (máx. 900 px, JPG). */
 async function achicar(archivo: File): Promise<string> {
@@ -60,15 +61,20 @@ export default function Panel() {
             <Logo />
             <span className="hidden font-mono text-xs uppercase tracking-[0.14em] text-verde sm:inline">Panel</span>
           </div>
-          <Link to={`/a/${ARTISTA.slug}`} className="inline-flex items-center gap-1 text-sm font-medium text-terracota-btn hover:underline">
-            Mi página <ArrowUpRight size={16} />
-          </Link>
+          <div className="flex items-center gap-4 text-sm font-medium">
+            <Link to="/recorrido" className="text-terracota-btn hover:underline">
+              Volver al recorrido
+            </Link>
+            <Link to={`/a/${ARTISTA.slug}`} className="inline-flex items-center gap-1 text-terracota-btn hover:underline">
+              Mi página <ArrowUpRight size={16} />
+            </Link>
+          </div>
         </div>
       </header>
       <p className="bg-arena px-4 py-2 text-center text-[12px] leading-snug text-tinta/80">
         {MODO_JOSE_LUIS
           ? 'Demostración para José Luis. Sus obras salen de fuentes públicas y ninguna está registrada todavía.'
-          : 'Así se ve tu panel. Los datos son de ejemplo.'}{' '}
+          : 'Panel de ejemplo con obras y dueños ficticios. No hay cuentas: cualquiera puede abrirlo.'}{' '}
         Lo que hagas aquí se guarda solo en este navegador.{' '}
         <button
           type="button"
@@ -86,11 +92,13 @@ export default function Panel() {
       </p>
 
       <main className="mx-auto max-w-5xl px-4 pb-24 pt-10 sm:px-6">
-        <h1 className="text-3xl font-semibold tracking-[-0.01em] sm:text-4xl">Hola, {primerNombre}.</h1>
+        <h1 className="text-3xl font-semibold tracking-[-0.01em] sm:text-4xl">
+          Hola, {primerNombre}.{ES_FICTICIA && <Ficticio>Ficticia</Ficticio>}
+        </h1>
         <p className="mt-2 text-tinta/75">Esto es lo que pasa con tus obras.</p>
 
         <dl className="mt-8 grid grid-cols-3 border-y border-linea">
-          <Cifra valor={filas.length} nombre="Obras registradas" />
+          <Cifra valor={filas.length} nombre={MODO_JOSE_LUIS ? 'Obras en la demo' : 'Obras de ejemplo'} />
           <Cifra valor={coleccionistas.length} nombre="Con dueño" />
           <Cifra valor={toques} nombre="Toques al sello" nota="ejemplo" />
         </dl>
@@ -100,7 +108,9 @@ export default function Panel() {
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
               <h2 className="text-xl font-semibold">Quién tiene tu obra</h2>
-              <p className="mt-1 text-sm text-tinta/70">En la página pública solo salen sus iniciales. Su correo lo ves solo tú.</p>
+              <p className="mt-1 text-sm text-tinta/70">
+                Solo aparece quien reclamó su obra y dejó su correo. En la página pública solo salen sus iniciales.
+              </p>
             </div>
             {coleccionistas.length > 0 && !escribiendo && (
               <button
@@ -140,8 +150,9 @@ export default function Panel() {
                 <div className="flex items-start gap-3">
                   <Check className="mt-0.5 shrink-0 text-verde" size={20} />
                   <p className="text-sm leading-relaxed">
-                    En la versión real, a {coleccionistas.length === 1 ? 'tu coleccionista le llega' : `tus ${coleccionistas.length} coleccionistas les llega`} este
-                    correo de tu parte. Hoy es una demostración: no se mandó nada.
+                    Simulación: no se mandó ningún correo. En la versión real, a{' '}
+                    {coleccionistas.length === 1 ? 'tu coleccionista le llegaría' : `tus ${coleccionistas.length} coleccionistas les llegaría`} este
+                    mensaje de tu parte. El envío de correos todavía no está construido.
                   </p>
                 </div>
               ) : (
@@ -158,7 +169,7 @@ export default function Panel() {
                   />
                   <div className="mt-3 flex gap-3">
                     <button type="button" onClick={() => setEnviado(true)} className="rounded-[10px] bg-terracota-btn px-4 py-2.5 text-sm font-semibold text-lienzo hover:bg-terracota-hover">
-                      Mandar
+                      Simular envío
                     </button>
                     <button type="button" onClick={() => setEscribiendo(false)} className="rounded-[10px] px-3 py-2.5 text-sm text-tinta/70 hover:text-tinta">
                       Cancelar
@@ -170,7 +181,8 @@ export default function Panel() {
           )}
 
           <p className="mt-4 text-[13px] text-tinta/65">
-            Pruébalo: abre una obra sin dueño, reclámala con el código <span className="font-mono text-tinta">{CODIGO_DEMO}</span> y tu correo, y vuelve aquí.
+            Pruébalo: abre una obra sin dueño, reclámala con el código público <span className="font-mono text-tinta">{CODIGO_DEMO}</span> y un
+            correo inventado como <span className="font-mono text-tinta">{CORREO_PRUEBA}</span>, y vuelve aquí.
           </p>
         </section>
 
@@ -208,8 +220,10 @@ export default function Panel() {
               <Punto tam={84} estado="feliz" />
               <div>
                 <p className="font-mono text-xs text-verde">{nueva.registro} · brai.art/o/{nueva.codigo}</p>
-                <p className="mt-1 text-lg font-semibold">{nueva.titulo} quedó registrada.</p>
-                <p className="mt-1 text-sm text-tinta/75">Ahora imprime su tarjeta y su sello, y entrégala firmada.</p>
+                <p className="mt-1 text-lg font-semibold">{nueva.titulo} quedó registrada en esta demo.</p>
+                <p className="mt-1 text-sm text-tinta/75">
+                  Es un registro de prueba: vive solo en este navegador. En la versión real, después imprimirías su tarjeta y su sello.
+                </p>
                 <div className="mt-3 flex flex-wrap gap-4 text-sm font-semibold">
                   <Link to={`/imprimir/${nueva.codigo}`} className="inline-flex items-center gap-1.5 text-terracota-btn hover:underline">
                     <Printer size={16} /> Piezas para imprimir
@@ -275,6 +289,10 @@ function Registrar({ alTerminar, alCancelar }: { alTerminar: (o: Obra) => void; 
 
   return (
     <form onSubmit={enviar} className="entra mt-5 grid gap-4 rounded-2xl bg-lienzo p-5 sm:grid-cols-2">
+      <p className="rounded-[10px] bg-arena px-3.5 py-2.5 text-[13px] leading-snug text-tinta/80 sm:col-span-2">
+        Registro de prueba. Lo que escribas y la foto se quedan solo en este navegador hasta que toques Reiniciar demo. Usa una obra de
+        prueba, o una real solo si su artista dio permiso de fotografiarla.
+      </p>
       <label className="text-sm font-semibold sm:col-span-2">
         Título
         <input value={f.titulo} onChange={campo('titulo')} maxLength={120} className={clase} autoFocus />
@@ -292,7 +310,7 @@ function Registrar({ alTerminar, alCancelar }: { alTerminar: (o: Obra) => void; 
         <input value={f.anio} onChange={campo('anio')} inputMode="numeric" maxLength={4} className={`${clase} font-mono`} />
       </label>
       <label className="text-sm font-semibold">
-        Foto de la obra
+        Foto de la obra (opcional)
         <input
           type="file"
           accept="image/jpeg,image/png,image/webp"

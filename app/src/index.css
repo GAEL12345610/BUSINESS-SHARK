@@ -41,7 +41,7 @@
   :focus-visible { outline: 2px solid var(--color-terracota-btn); outline-offset: 3px; border-radius: 4px; }
 }
 
-/* Tipografía v2.1 (brand/BRAND.md, sección 6). Fuera de @layer a propósito:
+/* Tipografía v2.2 (brand/BRAND.md, sección 6). Fuera de @layer a propósito:
    así le gana a las utilidades de Tailwind. Fraunces elige su corte según el
    tamaño y pesa 560; el registro usa cifras de ancho fijo. */
 .font-display { font-optical-sizing: auto; }

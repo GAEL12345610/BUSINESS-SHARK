@@ -39,7 +39,7 @@ export default function Marca() {
       <header className="border-b border-linea">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3.5 sm:px-6">
           <Logo />
-          <span className="font-mono text-xs uppercase tracking-[0.14em] text-verde">Kit de marca v2.2</span>
+          <span className="font-mono text-xs uppercase tracking-[0.14em] text-verde">Kit de marca v2.4</span>
         </div>
       </header>
       <main className="mx-auto max-w-6xl px-4 sm:px-6">
