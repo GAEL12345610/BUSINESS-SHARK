@@ -25,7 +25,7 @@ Todo lo visual de Brai en formatos que abre cualquier computadora, incluida la C
 | `obras-ejemplo/` | Las 4 pinturas de ejemplo (inventadas, no son de ningún artista) y los marcos "foto pendiente" de las obras de José Luis. |
 | `compartir/` | La imagen que sale al pegar el link en WhatsApp y el ícono para celular. |
 | `documentos/` | Los documentos del repo en PDF. Se regeneran con `node visuales/documentos/generar.cjs`. |
-| `viabilidad/` | Gráficas del deck del jurado en PNG (canales de compra, costo como % de ventas). |
+| `viabilidad/` | Gráficas del deck del jurado y el Lean Canvas en PNG. |
 | `clips/` | La escena del sello en GIF (se ve en cualquier lado) y un cuadro fijo. El video original en MP4 está en `pitch/clips/`. |
 
 **Pantallas:** `landing`, `obra`, `reclamar`, `artista`, `panel`, `recorrido`, `marca` (con Lucía Arce, artista inventada) y `jose-luis-recorrido`, `jose-luis-obra`, `jose-luis-artista` (demo de José Luis con sus datos públicos, `docs/DEMO_JOSE_LUIS.md`).

@@ -6,8 +6,9 @@
 |---|---|
 | `deck.html` | 14 láminas, 1920 × 1080. Se abre en el navegador; flechas o clic para avanzar |
 | `deck.pdf` | El mismo deck en PDF, para la Chromebook o para imprimir |
+| `lean-canvas.html` y `lean-canvas.pdf` | El modelo de negocio en una hoja carta horizontal. Cada bloque dice si es dato, supuesto o pendiente |
 | `qr-demo.svg` | QR a `braiart.vercel.app/recorrido` (lámina 6) |
-| `exportar.cjs` | Regenera el PDF: `node pitch/jurado-26nov/exportar.cjs` |
+| `exportar.cjs` | Regenera los PDF y el PNG del canvas: `node pitch/jurado-26nov/exportar.cjs` |
 | `../../visuales/viabilidad/` | Las dos gráficas en PNG |
 
 ## Qué decir en cada lámina (para quien presenta)
