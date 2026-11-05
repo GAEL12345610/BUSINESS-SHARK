@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brai, plática con un artista</title>
+<!-- Deck de respaldo para una plática exploratoria con un artista (si falla el
+     internet, o para leer después). Genérico: sin nombre, obras ni datos de una
+     persona real. Flechas o clic para avanzar. PDF: node pitch/reunion-jose-luis/exportar.cjs -->
+<style>
+  @font-face{font-family:Fraunces;src:url(fuentes/fraunces-latin-opsz-normal.woff2) format('woff2');font-weight:100 900}
+  @font-face{font-family:Schibsted;src:url(fuentes/schibsted-grotesk-latin-wght-normal.woff2) format('woff2');font-weight:400 900}
+  @font-face{font-family:Plex;src:url(fuentes/ibm-plex-mono-latin-400-normal.woff2) format('woff2')}
+  :root{--terracota:#C06E52;--btn:#A2563D;--tinta:#2B2622;--dorado:#C9A24B;--lienzo:#F6F1EA;--verde:#5E6C52;--linea:#E5DDCF;--claro2:#CFC6B8}
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:#1E1A17;overflow:hidden}
+  body{font-family:Schibsted,system-ui,sans-serif;color:var(--tinta)}
+  .escenario{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:0 0}
+  .slide{position:absolute;inset:0;background:var(--lienzo);padding:88px 112px;display:none;grid-template-rows:auto 1fr auto}
+  .slide.activa{display:grid}
+  .slide.oscura{background:var(--tinta);color:var(--lienzo)}
+  .arriba{display:flex;justify-content:space-between;align-items:center;font:20px Plex,monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--verde)}
+  .oscura .arriba{color:var(--claro2)}
+  .marca{display:flex;align-items:center;gap:14px;font:600 40px Fraunces,Georgia,serif;letter-spacing:0;text-transform:none;color:inherit}
+  .oscura .marca{color:var(--lienzo)}
+  .demo{background:var(--dorado);color:var(--tinta);padding:4px 12px;border-radius:4px;font:600 18px Plex,monospace;letter-spacing:.14em}
+  .abajo{display:flex;justify-content:space-between;font:20px Plex,monospace;color:var(--verde);border-top:1px solid var(--linea);padding-top:20px}
+  .oscura .abajo{border-color:#4a423c;color:var(--claro2)}
+  .cuerpo{align-self:center}
+  .kicker{font:22px Plex,monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--verde);margin:0 0 24px}
+  .oscura .kicker{color:var(--dorado)}
+  h1{font:600 112px/1.02 Fraunces,Georgia,serif;letter-spacing:-.02em;margin:0}
+  h2{font:600 76px/1.06 Fraunces,Georgia,serif;letter-spacing:-.015em;margin:0 0 40px;max-width:1500px}
+  h1 em,h2 em{font-style:normal;color:var(--btn)}
+  .oscura h1 em,.oscura h2 em{color:var(--dorado)}
+  p.grande{font-size:38px;line-height:1.4;max-width:1400px;margin:32px 0 0}
+  .oscura p.grande{color:#E8E0D5}
+  .pasos{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;margin-top:20px}
+  .paso{border-top:3px solid var(--terracota);padding-top:24px}
+  .paso b{display:block;font:20px Plex,monospace;color:var(--verde);margin-bottom:12px}
+  .paso h3{font:600 38px/1.15 Schibsted,sans-serif;margin:0 0 12px}
+  .paso p{font-size:27px;line-height:1.4;margin:0;color:#4a423c}
+  .dos{display:grid;grid-template-columns:1fr 1fr;gap:72px}
+  .lista{list-style:none;margin:0;padding:24px 0 0;border-top:3px solid var(--tinta)}
+  .lista.no{border-top-color:var(--linea);color:#5b534c}
+  .lista li{font-size:32px;line-height:1.35;padding:12px 0 12px 48px;position:relative}
+  .lista li::before{content:'';position:absolute;left:0;top:24px;width:22px;height:22px;border-radius:50%;background:var(--verde)}
+  .lista.no li::before{background:none;border:3px solid #9b9085}
+  .titulo-lista{font:600 40px Schibsted,sans-serif;margin:0 0 20px}
+  .con-foto{display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:center}
+  .tel{justify-self:center;width:440px;border-radius:52px;background:var(--tinta);padding:14px;box-shadow:0 30px 60px rgba(43,38,34,.18)}
+  .tel img{display:block;width:100%;border-radius:40px}
+  .pie-foto{font:20px Plex,monospace;color:var(--verde);text-align:center;margin-top:16px}
+  table{border-collapse:collapse;width:100%;font-size:30px}
+  th{font:20px Plex,monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--verde);text-align:left;font-weight:400;padding:0 20px 16px 0}
+  td{padding:24px 20px 24px 0;border-top:1px solid var(--linea);vertical-align:top}
+  td.num{font:500 40px Plex,monospace}
+  .estado{display:inline-block;font:19px Plex,monospace;letter-spacing:.08em;text-transform:uppercase;border:1.5px solid var(--verde);color:var(--verde);padding:4px 12px;border-radius:4px}
+  .nota{font-size:27px;line-height:1.45;color:#5b534c;margin-top:36px;max-width:1500px}
+  ol.preguntas{font-size:44px;line-height:1.35;margin:0;padding-left:1.2em}
+  ol.preguntas li{margin:0 0 26px}
+  .controles{position:fixed;bottom:12px;right:16px;font:12px ui-monospace,monospace;color:#8a8178}
+  @media print{
+    @page{size:1920px 1080px;margin:0}
+    html,body{height:auto;overflow:visible;background:none}
+    .escenario{position:static;transform:none!important;width:1920px;height:auto}
+    .slide{position:relative;display:grid!important;width:1920px;height:1080px;break-after:page}
+    .controles{display:none}
+  }
+</style>
+</head>
+<body>
+<div class="escenario" id="escenario">
+
+  <section class="slide oscura activa">
+    <div class="arriba"><span class="marca"><img src="../../brand/isotipo_claro.svg" width="44" height="44" alt="">Brai</span><span class="demo">PROTOTIPO</span></div>
+    <div class="cuerpo">
+      <p class="kicker">Una plática, no una venta</p>
+      <h1>Vendiste tu obra.<br><em>¿Sabes dónde está hoy?</em></h1>
+      <p class="grande">Somos estudiantes de secundaria. Brai es nuestro proyecto para Business Shark 8°, y queremos saber si a un artista como tú le serviría.</p>
+    </div>
+    <div class="abajo"><span>Business Shark 8° · 2026</span><span>01 / 09</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="arriba"><span>Lo que estamos probando</span><span class="demo">HIPÓTESIS</span></div>
+    <div class="cuerpo">
+      <h2>Brai ayuda a artistas que venden directo a <em>registrar la procedencia</em> de cada obra y, cuando el comprador la reclama, <em>mantener el contacto</em> para futuras obras.</h2>
+      <p class="grande">Es una idea, no un resultado. Todavía no sabemos si los compradores la reclamarían, si los artistas volverían a venderles o si alguien pagaría por ella. Eso es lo que venimos a aprender.</p>
+    </div>
+    <div class="abajo"><span>Brai</span><span>02 / 09</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="arriba"><span>Cómo funcionaría</span><span></span></div>
+    <div class="cuerpo">
+      <h2>Lo montamos contigo, obra por obra.</h2>
+      <div class="pasos">
+        <div class="paso"><b>01</b><h3>Registras la obra</h3><p>Fotos, tres fotos de detalles únicos, ficha e historia en tus palabras.</p></div>
+        <div class="paso"><b>02</b><h3>Sellamos el cuadro</h3><p>Un sello detrás y un QR al lado, para cualquier celular.</p></div>
+        <div class="paso"><b>03</b><h3>Entregas la tarjeta</h3><p>Firmada por ti, con un código bajo raspadita.</p></div>
+        <div class="paso"><b>04</b><h3>Tu comprador la reclama, si quiere</h3><p>Escribe el código y su correo. Si no lo hace, no tendrás su contacto.</p></div>
+      </div>
+    </div>
+    <div class="abajo"><span>Brai</span><span>03 / 09</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="arriba"><span>Lo que ve quien toca el sello</span><span class="demo">DEMO FICTICIA</span></div>
+    <div class="cuerpo con-foto">
+      <div>
+        <h2>La obra cuenta su historia.</h2>
+        <p class="grande">Ficha, historia, fotos de detalles para comparar y la línea de dueños con iniciales. Sin descargar ninguna app.</p>
+        <p class="nota">En la captura: Lucía Arce, una artista inventada para la demo. La obra y sus datos también son inventados.</p>
+      </div>
+      <div><div class="tel"><img src="img/obra.png" alt="Página de una obra de ejemplo en un celular"></div><p class="pie-foto">braiart.vercel.app/o/7KQ2X</p></div>
+    </div>
+    <div class="abajo"><span>Brai</span><span>04 / 09</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="arriba"><span>Lo que ves tú</span><span class="demo">DEMO FICTICIA</span></div>
+    <div class="cuerpo con-foto">
+      <div>
+        <h2>Sabrías quién tiene tu obra, <em>si la reclamó</em>.</h2>
+        <p class="grande">En tu panel aparece quien reclamó cada obra, con su correo. En público solo salen sus iniciales.</p>
+        <p class="nota">En la demo, el correo es inventado y el aviso a coleccionistas es una simulación: no se manda nada.</p>
+      </div>
+      <div><div class="tel"><img src="img/panel.png" alt="Panel de ejemplo del artista en un celular"></div><p class="pie-foto">braiart.vercel.app/panel</p></div>
+    </div>
+    <div class="abajo"><span>Brai</span><span>05 / 09</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="arriba"><span>Sin humo</span><span></span></div>
+    <div class="cuerpo dos">
+      <div><h3 class="titulo-lista">Lo que la demo sí enseña</h3><ul class="lista">
+        <li>La página de una obra de ejemplo</li>
+        <li>Raspar la tarjeta y simular el reclamo</li>
+        <li>El panel con quien la reclamó</li>
+        <li>Las dos formas de precio con tus números</li>
+      </ul></div>
+      <div><h3 class="titulo-lista">Lo que todavía no existe</h3><ul class="lista no">
+        <li>Cuentas, servidor y envío de correos</li>
+        <li>Sellos NFC funcionando</li>
+        <li>Una prueba legal de autoría o de propiedad</li>
+        <li>Clientes, ventas o resultados medidos</li>
+      </ul></div>
+    </div>
+    <div class="abajo"><span>Brai</span><span>06 / 09</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="arriba"><span>Precio</span><span class="demo">EN PRUEBA</span></div>
+    <div class="cuerpo">
+      <h2>Dos formas de cobrarlo. Ninguna está decidida.</h2>
+      <table>
+        <tr><th></th><th>Arranque</th><th>Después</th><th>Estado</th></tr>
+        <tr><td><b>Opción A</b></td><td><span class="num" style="font:500 40px Plex,monospace">7,500 MXN</span><br>hasta 20 obras con sello y tarjeta</td><td><span style="font:500 40px Plex,monospace">990 MXN</span><br>al mes</td><td><span class="estado">Publicado, sin validar</span></td></tr>
+        <tr><td><b>Opción B</b></td><td><span style="font:500 40px Plex,monospace">2,500 MXN</span><br>5 obras con sello y tarjeta</td><td><span style="font:500 40px Plex,monospace">450 MXN</span><br>por obra adicional, sin mensualidad</td><td><span class="estado">Alternativa en prueba</span></td></tr>
+      </table>
+      <p class="nota">Nadie lo ha pagado. No prometemos ventas ni retorno. Para los primeros 3 artistas fundadores proponemos arranque y 3 meses sin costo; las condiciones finales están por definir.</p>
+    </div>
+    <div class="abajo"><span>Brai</span><span>07 / 09</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="arriba"><span>Lo que queremos aprender de ti</span><span></span></div>
+    <div class="cuerpo">
+      <ol class="preguntas">
+        <li>¿Qué pasa con quien te compra una obra, después de la venta?</li>
+        <li>¿Qué te serviría de esto, si algo? ¿Qué le quitarías?</li>
+        <li>¿Cuál de las dos formas de precio te haría más sentido, o ninguna?</li>
+      </ol>
+    </div>
+    <div class="abajo"><span>Brai</span><span>08 / 09</span></div>
+  </section>
+
+  <section class="slide oscura">
+    <div class="arriba"><span class="marca"><img src="../../brand/isotipo_claro.svg" width="44" height="44" alt="">Brai</span><span></span></div>
+    <div class="cuerpo">
+      <p class="kicker">Gracias por tu tiempo</p>
+      <h1>Cada obra sabe<br>de dónde viene.</h1>
+      <p class="grande">Hoy no te pedimos nada más que tu opinión. Si te parece, ¿te podemos volver a buscar cuando tengamos una versión mejor?</p>
+    </div>
+    <div class="abajo"><span>Demo: braiart.vercel.app · Qué es real: /demo · Contacto del proyecto: pendiente</span><span>09 / 09</span></div>
+  </section>
+
+</div>
+<div class="controles">← → para avanzar</div>
+<script>
+  const slides = [...document.querySelectorAll('.slide')]
+  const esc = document.getElementById('escenario')
+  let i = 0
+  const ajustar = () => {
+    const k = Math.min(innerWidth / 1920, innerHeight / 1080)
+    esc.style.transform = `scale(${k}) translate(-50%, -50%)`
+  }
+  const ir = (n) => {
+    i = Math.max(0, Math.min(slides.length - 1, n))
+    slides.forEach((s, j) => s.classList.toggle('activa', j === i))
+  }
+  addEventListener('resize', ajustar)
+  addEventListener('keydown', (e) => {
+    if (['ArrowRight', 'PageDown', ' '].includes(e.key)) ir(i + 1)
+    if (['ArrowLeft', 'PageUp'].includes(e.key)) ir(i - 1)
+  })
+  addEventListener('click', (e) => ir(e.clientX > innerWidth / 3 ? i + 1 : i - 1))
+  ajustar()
+</script>
+</body>
+</html>

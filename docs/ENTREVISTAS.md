@@ -6,16 +6,21 @@ Después de cada entrevista: actualizar la ficha en `CLIENTES.md` y anotar las f
 
 ## Artista (15 min)
 
-1. ¿Cómo vendes tus obras hoy (taller, galería, redes, encargos)?
-2. ¿Cuántas obras vendes al año, más o menos, y a qué rango de precio?
-3. **¿Sabes dónde están las obras que vendiste hace 3 años? ¿Podrías escribirle hoy a quien te las compró?**
-4. ¿Cuántas veces un comprador te ha vuelto a comprar?
-5. ¿Qué le entregas hoy al comprador (certificado, firma, factura, nada)?
-6. ¿Alguna vez alguien dudó si una obra tuya era original, o viste una copia?
-7. **¿Sabías que la ley te da una parte de cada reventa de tu obra? ¿Lo has cobrado alguna vez?**
-8. Si cada obra contara su historia al acercar el celular, y tú supieras siempre quién la tiene, ¿te serviría? ¿Para qué?
-9. **Prueba de precio, dos opciones:** "Hay dos formas de pagarlo. A: 7,500 de arranque y 990 al mes. B: 2,500 de arranque con 5 obras y 450 por cada obra nueva, sin mensualidad. ¿Cuál escogerías y por qué? ¿Qué tendría que pasar para que valga la pena?" (No defender ninguna: escuchar y anotar la frase textual.)
+**Bloque A: antes de enseñar nada (abiertas, sobre lo que ya pasó).**
+1. Cuéntame cómo fue la última obra que vendiste. ¿Cómo te encontró quien la compró?
+2. ¿Cómo vendes tus obras hoy, en general (taller, galería, redes, encargos)?
+3. **¿Qué pasa con esa persona después de la venta? ¿Siguen en contacto? ¿Podrías escribirle hoy?**
+4. ¿Alguna vez un comprador te volvió a comprar? ¿Cómo pasó?
+5. ¿Qué le entregas hoy al comprador junto con la obra (certificado, firma, factura, nada)?
+6. ¿Qué es lo más difícil de vender tu obra hoy?
+7. ¿Cuántas obras vendes al año, más o menos, y en qué rango de precio? (Solo si hay confianza; si no la quiere decir, no se insiste.)
+
+**Bloque B: después de la demo.**
+8. ¿Qué parte de lo que viste te serviría, si alguna? ¿Para qué la usarías?
+9. **Prueba de precio, dos opciones:** "Hay dos formas en que estamos pensando cobrarlo, ninguna está decidida. A: 7,500 de arranque y 990 al mes. B: 2,500 de arranque con 5 obras y 450 por cada obra nueva, sin mensualidad. ¿Cuál te haría más sentido, o ninguna? ¿Qué tendría que pasar para que valga la pena?" (No defender ninguna: escuchar y anotar la frase textual.)
 10. ¿Usas algo para llevar tu inventario o tu lista de compradores (Excel, libreta, Artwork Archive)? ¿Has visto algo parecido a Brai?
+11. ¿Alguna vez alguien dudó si una obra tuya era original, o viste una copia?
+12. ¿Sabías que la ley te da una parte de algunas reventas de tu obra (subasta, galería)? ¿Lo has cobrado alguna vez? (Beneficio secundario, DECISIONES #28: no se usa para vender.)
 
 ## Comprador de arte (10 min)
 

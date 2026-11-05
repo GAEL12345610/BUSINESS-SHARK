@@ -50,3 +50,20 @@ test('el aviso de privacidad no dice que hay base de datos conectada', () => {
   assert.match(p, /sin servidor/)
   assert.doesNotMatch(p, /Los datos se guardan en Supabase/)
 })
+
+// Materiales de la reunión (pitch/reunion-jose-luis/): misma puntuación, ningún
+// claim de retorno, y el one-pager y el deck no llevan el nombre de una persona real.
+const PITCH = join(APP, '../pitch/reunion-jose-luis')
+const MATERIALES = [
+  ...readdirSync(PITCH).filter((n) => /\.(md|html)$/.test(n)).map((n) => join(PITCH, n)),
+  join(APP, '../docs/REUNION_JOSE_LUIS.md'),
+]
+
+test('materiales de la reunión: puntuación humana y sin promesas de retorno', () => {
+  const malos = MATERIALES.filter((f) => /—|…|\.\.\.|\S - \S|Se paga con|pagan el primer año/.test(leer(f).replace(/```[\s\S]*?```|<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g, '')))
+  assert.deepEqual(malos.map((f) => f.split('/').slice(-2).join('/')), [])
+})
+
+test('el one-pager y el deck son genéricos: sin el nombre de José Luis', () => {
+  for (const n of ['one-pager.html', 'deck.html']) assert.doesNotMatch(leer(join(PITCH, n)), /José Luis|Malo/, n)
+})
