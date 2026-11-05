@@ -133,7 +133,7 @@ export default function Marca() {
             ].map(([si, no]) => (
               <li key={si} className="border-t border-linea pt-4">
                 <p className="font-semibold">{si}</p>
-                <p className="mt-1 text-tinta/55 line-through decoration-terracota/60">{no}</p>
+                <p className="mt-1 text-tinta/70 line-through decoration-terracota/60">{no}</p>
               </li>
             ))}
           </ul>

@@ -61,4 +61,4 @@ Cómo funciona en Brai (ya construido, `app/supabase/functions/sello/`):
 Cada chip tiene su propia llave (sale de una llave maestra y el UID): si se filtra la de un chip, solo cae ese chip. Configuración paso a paso en `PROTOTIPO.md`.
 
 ## Privacidad
-Si guardan correos de compradores reales, necesitan un **aviso de privacidad** (Ley Federal de Protección de Datos Personales). Ya existe en `app/privacidad.html` (`brai.art/privacidad`) y el formulario de reclamar pide aceptarlo. **Pendiente: que lo lea un adulto antes de usar datos reales**, y que exista el correo `hola@brai.art`.
+Si guardan correos de compradores reales, necesitan un **aviso de privacidad** (Ley Federal de Protección de Datos Personales). Hoy `app/public/privacidad.html` explica que la demo no guarda nada fuera del navegador y trae el aviso real como **borrador no vigente**. El formulario de reclamar de la demo solo acepta correos `@example.com`. **Antes de usar datos reales:** que exista el correo del proyecto (DECISIONES #37; `hola@brai.art` no existe), que un adulto lea el aviso y que la base esté conectada.

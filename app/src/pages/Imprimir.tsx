@@ -140,7 +140,7 @@ export default function Imprimir() {
         </Corte>
       </main>
 
-      <p className="mx-auto max-w-4xl px-4 pb-10 text-xs text-tinta/60 sm:px-6 print:hidden">
+      <p className="mx-auto max-w-4xl px-4 pb-10 text-xs text-tinta/70 sm:px-6 print:hidden">
         El sello y el QR abren {url}. Antes de bloquear un sello, pruébalo en un iPhone y en un Android (memoria/tag-nfc-bloqueado-es-para-siempre.md).
       </p>
     </div>

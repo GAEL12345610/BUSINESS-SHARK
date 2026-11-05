@@ -157,7 +157,7 @@ pres.addSection({ title: 'Portada' })
 {
   const s = pres.addSlide({ masterName: 'PORTADA', sectionTitle: 'Portada' })
   s.addText('Cada obra sabe\nde dónde viene', { placeholder: 'title' })
-  s.addText('Visuales de marca y del prototipo de Brai. 31 de octubre de 2026.', { placeholder: 'body' })
+  s.addText('Visuales de marca y del prototipo de Brai. Actualizado el 5 de noviembre de 2026. Demo con datos ficticios.', { placeholder: 'body' })
   imagenEnCaja(s, V('punto', 'punto-tranquilo.png'), 9.9, 2.5, 2.8, 3.0)
   s.addNotes('Todas las imágenes de esta presentación están también como PNG en la carpeta visuales/ del repositorio.')
 }
@@ -280,7 +280,7 @@ pres.addSection({ title: 'Prototipo' })
     { text: 'Avisar a tus coleccionistas de tu obra nueva.', options: { bullet: true, breakLine: true } },
     { text: 'Registrar una obra con foto.', options: { bullet: true } },
   ], { x: 9.95, y: 2.0, w: 2.8, h: 2.6, fontSize: 15, paraSpaceAfter: 8 })
-  texto(s, 'En la demo, si alguien reclama una obra, su correo aparece aquí al momento.', { x: 4.0, y: 5.6, w: 8.7, h: 0.6, fontSize: 15, bold: true })
+  texto(s, 'En la demo, si alguien simula el reclamo con un correo de prueba, aparece aquí al momento.', { x: 4.0, y: 5.6, w: 8.7, h: 0.6, fontSize: 15, bold: true })
 }
 {
   const s = contenido('Prototipo', 'Para la reunión con un artista', 'Brai en 5 minutos, con su nombre')

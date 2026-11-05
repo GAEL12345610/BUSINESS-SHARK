@@ -67,7 +67,7 @@ export function EscenaSello({ titulo, artista, registro, imagen }: { titulo: str
               {/* travesaños del bastidor */}
               <div className="absolute inset-x-[10px] top-1/2 h-4 -translate-y-1/2 bg-[#C9AE8A]" />
               <div className="absolute inset-y-[10px] left-1/2 w-4 -translate-x-1/2 bg-[#C9AE8A]" />
-              <p className="absolute bottom-5 left-5 font-mono text-[10px] text-tinta/50">Reverso de la obra</p>
+              <p className="absolute bottom-5 left-5 font-mono text-[10px] text-tinta/70">Reverso de la obra</p>
             </div>
             {/* el sello, con ondas cuando el celular lo toca */}
             <div className="absolute left-1/2 top-[30%] -translate-x-1/2 -translate-y-1/2">

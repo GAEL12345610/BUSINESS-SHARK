@@ -15,10 +15,12 @@ Cómo correr la app, sus rutas y el código de dueño de ejemplo: `app/README.md
 | Reclamar | `/o/:codigo/reclamar` | Hecha, con datos de ejemplo. Liga al aviso de privacidad. |
 | Página del artista | `/a/:slug` | Hecha (`/a/ejemplo` en lo publicado). |
 | Hoja de piezas para imprimir | `/imprimir/:codigo` | Hecha: tarjeta, sello y QR en tamaño real. |
-| Aviso de privacidad | `/privacidad` (`app/public/privacidad.html`) | Hecho. **Falta que lo lea un adulto** y poner el correo real del equipo. |
+| Aviso de privacidad | `/privacidad` (`app/public/privacidad.html`) | Hoy dice lo que pasa en la demo (nada sale del navegador). El aviso real es un **borrador no vigente**: falta el correo del equipo, que lo lea un adulto y la base conectada. |
+| Qué es real en la demo | `/demo` | Hecho (5 nov). Aviso negro de DEMO en todas las rutas (`docs/DEMO_HONESTA.md`). |
+| Entrar | `/entrar` | Dice que no hay cuentas. Antes redirigía al panel. |
 | Base de datos | `app/supabase/migrations/` | Hecha y probada en un Postgres que imita a Supabase. Falta crear el proyecto real. |
 | Verificar sello 424 DNA | `app/supabase/functions/sello/` | Hecha, probada con el vector oficial de NXP. Falta un chip físico y la pantalla en la app. |
-| Panel del artista | `/panel` | Hecho **de ejemplo**: quién tiene cada obra (con correo), avisar a coleccionistas, registrar obra con foto. Falta conectarlo a Supabase con login real. |
+| Panel del artista | `/panel` | Hecho **de ejemplo**, sin login: quién tiene cada obra (con correo de prueba), avisar a coleccionistas (simulado, no manda nada), registrar obra de prueba. Falta conectarlo a Supabase con login real. |
 | Recorrido para artistas | `/recorrido?para=Nombre` | Hecho: 5 pasos y calculadora de Oferta A y B. Guion de uso: `docs/REUNION_JOSE_LUIS.md`. |
 | Kit de marca vivo | `/marca` | Hecho, con la mascota Punto. |
 
@@ -38,12 +40,12 @@ Después del 26 nov: transferir desde el dueño, club de coleccionistas, aviso p
 ```bash
 pnpm test
 ```
-Verificación del 424 DNA con el vector oficial de NXP (5 pruebas).
+34 pruebas: verificación del 424 DNA con el vector oficial de NXP (5) y, en `app/pruebas/`, la lógica de la demo, el modo José Luis y frases prohibidas (`docs/DEMO_HONESTA.md`).
 
 ```bash
 pnpm test:db
 ```
-Levanta un Postgres desechable, corre las migraciones y 21 pruebas: anon no lee ninguna tabla, el límite de 5 intentos frena, el correo nunca sale en público, la historia no se borra ni por el admin, el sello 424 detecta enlaces repetidos y la cadena de huellas delata una edición a escondidas. Necesita Postgres 16 (en Windows, dentro de WSL).
+Levanta un Postgres desechable, corre las migraciones y 21 pruebas (pasaron el 5 nov 2026 en Postgres 16 local; **esto no prueba que exista una instancia de Supabase ni que la app esté conectada**): anon no lee ninguna tabla, el límite de 5 intentos frena, el correo nunca sale en público, la historia no se borra ni por el admin, el sello 424 detecta enlaces repetidos y la cadena de huellas delata una edición a escondidas. Necesita Postgres 16 (en Windows, dentro de WSL).
 
 ## Publicar en Vercel (modo ejemplo)
 1. New Project, importar el repo, **Root Directory: `app`**, preset **Vite**.

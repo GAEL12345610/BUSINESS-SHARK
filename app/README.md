@@ -17,16 +17,18 @@ Rutas de la demo:
 | Ruta | Qué es |
 |---|---|
 | `/` | Landing |
-| `/o/7KQ2X` | Obra de ejemplo sin reclamar. Código de dueño: `4K7P-9QX2` |
+| `/demo` | Qué hace la demo y qué no (a esta página lleva el aviso negro de DEMO) |
+| `/o/7KQ2X` | Obra de ejemplo sin reclamar. Código público de la demo: `4K7P-9QX2`, con un correo que termine en `@example.com` |
 | `/o/M3RT8` | Una obra que ya tiene dueño |
 | `/a/ejemplo` | Página del artista (`/a/jose-luis-malo` con el candado abierto, ver abajo) |
 | `/imprimir/7KQ2X` | Tarjeta, sello y QR en tamaño real para imprimir |
-| `/panel` | Panel del artista de ejemplo: quién tiene cada obra, avisar a coleccionistas, registrar obra |
+| `/panel` | Panel del artista de ejemplo: quién tiene cada obra, avisar a coleccionistas (simulado), registrar obra de prueba. Sin login |
+| `/entrar` | Dice que todavía no hay cuentas y lleva al panel de ejemplo |
 | `/jose-luis` | Demo para José Luis Malo: sus obras reales con fuente (`docs/DEMO_JOSE_LUIS.md`). Salir: `/?salir-demo`. El modo vive en `localStorage` |
 | `/recorrido?para=Nombre` | Recorrido de 5 pasos con calculadora de Oferta A y B. El nombre vive solo en esa pestaña |
 | `/marca` | Kit de marca vivo y la mascota Punto |
 
-Los reclamos y las obras registradas en la demo se borran al cerrar la pestaña.
+Los reclamos y las obras registradas en la demo se guardan en `localStorage` de ese navegador: **siguen ahí aunque cierres la pestaña**, hasta tocar **Reiniciar demo** (aviso negro de arriba) o borrar los datos del sitio. Nada se manda a ningún servidor. Lo que es real y lo que no: `docs/DEMO_HONESTA.md`.
 
 Imagen para compartir: `node scripts/og/generar.cjs` regenera `public/og.png` y `public/apple-touch-icon.png`.
 
@@ -37,7 +39,7 @@ pnpm build
 pnpm preview
 ```
 
-El build prerenderiza la landing en `dist/index.html` (para que Google y los modelos de IA la lean sin JavaScript) y deja `dist/app.html` vacío para las rutas de obras.
+El build prerenderiza la landing en `dist/index.html` (para que Google y los modelos de IA la lean sin JavaScript) y deja `dist/app.html` vacío para las rutas de obras. Al final corre `scripts/verificar-dist.mjs`: si el HTML ya no trae el aviso de DEMO, el estado del precio o trae un correo que no existe, **el build falla**.
 
 ## Dónde vive cada cosa
 
@@ -60,11 +62,11 @@ pnpm test:db
 ```
 21 pruebas: nadie sin sesión lee tablas, un artista no toca obras ajenas, reclamar sirve una sola vez con máximo 5 intentos por hora, el correo nunca sale en público, el sello 424 DNA detecta enlaces repetidos y la cadena de huellas delata una edición a escondidas. Tiene que terminar en `TODAS LAS PRUEBAS PASARON`.
 
-`pnpm test` prueba la verificación del 424 DNA con el vector oficial de NXP.
+`pnpm test` corre 34 pruebas: la verificación del 424 DNA con el vector oficial de NXP (5) y, en `pruebas/`, la lógica de la demo, el modo José Luis y las frases que no pueden volver a la app ni a los materiales de reunión.
 
 ## Demo de José Luis Malo
 
-`/jose-luis` activa su modo (sus obras públicas con fuente). También se activa solo al abrir una de sus obras, por ejemplo al escanear el QR impreso. `/?salir-demo` regresa a la artista de ejemplo. Reglas y fuentes: `docs/DEMO_JOSE_LUIS.md`. Los marcos "foto pendiente" se regeneran con `node scripts/marcos-jose-luis.mjs`.
+`/jose-luis` activa su modo (sus obras públicas con fuente). Para apagarlo del todo: variable `VITE_DEMO_JOSE_LUIS=0` y volver a publicar. También se activa solo al abrir una de sus obras, por ejemplo al escanear el QR impreso. `/?salir-demo` regresa a la artista de ejemplo. Reglas y fuentes: `docs/DEMO_JOSE_LUIS.md`. Los marcos "foto pendiente" se regeneran con `node scripts/marcos-jose-luis.mjs`.
 
 ## Publicar en Vercel
 

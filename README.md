@@ -17,7 +17,8 @@ https://braiart.vercel.app/
 | **Problema** | El artista vende una obra y nunca vuelve a saber de ella: no puede volver a venderle a quien ya le compró ni cobrar su derecho de reventa (LFDA art. 92 bis). |
 | **Solución** | Sello NFC + QR detrás del cuadro, tarjeta de dueño firmada a mano con código bajo raspadita, y una página de la obra tipo cédula de museo. |
 | **Cliente** | Artista que vende obra original directo: 10+ obras al año a 10k+ MXN, o con audiencia propia. |
-| **Precio** | En prueba: A (setup 7,500 + 990 al mes) contra B (2,500 de arranque + 450 por obra). Primeros 3: fundadores, gratis a cambio de un caso documentado. |
+| **Precio** | A (7,500 de arranque + 990 al mes): precio publicado, **sin validar**. B (2,500 de arranque + 450 por obra): alternativa **en prueba**. Nadie ha pagado. Primeros 3: fundadores, gratis a cambio de un caso documentado (propuesta). |
+| **Estado** | **Prototipo sin backend.** La demo publicada usa personas ficticias y no manda datos a ningún lado (`docs/DEMO_HONESTA.md`). Ningún artista ha sido entrevistado todavía. |
 | **Diferencia vs Verisart** | Ellos venden software para certificar. Nosotros, un ritual de entrega, hecho contigo, en español. Ver `docs/COMPETENCIA.md`. |
 
 ## Cómo está organizado
@@ -42,7 +43,7 @@ memoria/           lecciones aprendidas, una por archivo
 .claude/skills/    skills de Claude Code adaptadas a Brai
 .claude/agents/    auditores de seguridad y rendimiento
 app/               la app: landing, obra, reclamar, artista, imprimir y el backend de Supabase (ver app/README.md)
-pitch/             guion y subtítulos del infomercial
+pitch/             guion del infomercial y paquete de la reunión con José Luis (pitch/reunion-jose-luis/)
 ```
 
 ## Para empezar a trabajar
@@ -67,11 +68,12 @@ Todo lo pendiente, con quién lo hace y dónde, vive en **[`TODO.md`](TODO.md)**
 | Ruta | Qué es |
 |---|---|
 | `/` | Landing |
-| `/o/7KQ2X` | Página de una obra de ejemplo (código de dueño `4K7P-9QX2`) |
+| `/demo` | Qué hace la demo y qué no |
+| `/o/7KQ2X` | Página de una obra de ejemplo (código público de la demo `4K7P-9QX2`, correo que termine en `@example.com`) |
 | `/a/ejemplo` | Página de la artista de ejemplo |
 | `/panel` | Panel del artista (ejemplo) |
 | `/jose-luis` | **Demo para José Luis Malo** con sus obras reales (`docs/DEMO_JOSE_LUIS.md`). Salir: `/?salir-demo` |
 | `/recorrido?para=Nombre` | Recorrido de 5 minutos para enseñárselo a un artista |
 | `/marca` | Kit de marca vivo y la mascota Punto |
 | `/imprimir/7KQ2X` | Tarjeta, sello y QR en tamaño real |
-| `/privacidad` | Aviso de privacidad |
+| `/privacidad` | Qué datos guarda la demo (ninguno sale del navegador) y borrador del aviso real, no vigente |

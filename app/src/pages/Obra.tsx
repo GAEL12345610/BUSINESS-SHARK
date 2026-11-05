@@ -252,8 +252,8 @@ export default function Obra() {
                 </li>
               ))}
             </ol>
-            <p className="mt-4 text-xs text-tinta/60">Por privacidad, los dueños aparecen solo con sus iniciales.</p>
-            <p className="mt-3 flex flex-wrap items-baseline gap-x-2 text-xs text-tinta/60">
+            <p className="mt-4 text-xs text-tinta/70">Por privacidad, los dueños aparecen solo con sus iniciales.</p>
+            <p className="mt-3 flex flex-wrap items-baseline gap-x-2 text-xs text-tinta/70">
               Huella del registro
               <span className="font-mono text-[11px] text-tinta">{huellaRegistro(obra).replace(/(.{4})/, '$1·')}</span>
               <span>

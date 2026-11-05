@@ -60,8 +60,9 @@ const PASOS = [
   { titulo: 'Tu comprador la reclama', texto: 'Raspa, escribe su código y su correo, y la obra queda a su nombre. Tú sabes quién la tiene.' },
 ]
 
-function Kicker({ children }: { children: string }) {
-  return <p className="font-mono text-xs uppercase tracking-[0.16em] text-verde">{children}</p>
+// Sobre bg-arena el verde no llega a 4.5:1 (4.3): ahí va en tinta.
+function Kicker({ children, sobreArena = false }: { children: string; sobreArena?: boolean }) {
+  return <p className={`font-mono text-xs uppercase tracking-[0.16em] ${sobreArena ? 'text-tinta/85' : 'text-verde'}`}>{children}</p>
 }
 
 export default function Landing() {
@@ -236,7 +237,7 @@ export default function Landing() {
         <section className="bg-arena">
           <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 md:py-28">
             <div className="revela max-w-2xl">
-              <Kicker>Lo que recibe tu comprador</Kicker>
+              <Kicker sobreArena>Lo que recibe tu comprador</Kicker>
               <h2 className="mt-4 font-display text-3xl font-semibold leading-tight tracking-[-0.01em] sm:text-[2.6rem]">
                 Tres piezas, como la cédula de un museo.
               </h2>

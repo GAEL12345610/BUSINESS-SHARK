@@ -39,4 +39,4 @@ Para la presentación hace falta `pptxgenjs`, que no es parte de la app. Instál
 ```
 NODE_PATH=<esa carpeta>/node_modules node visuales/deck.cjs
 ```
-El PDF de la presentación se saca abriendo el PPTX en Google Slides o PowerPoint y exportando a PDF.
+El PDF de la presentación se saca abriendo el PPTX en Google Slides o PowerPoint y exportando a PDF, o con `soffice --headless --convert-to pdf visuales/Brai-visuales.pptx` (así se hizo el 5 nov 2026).

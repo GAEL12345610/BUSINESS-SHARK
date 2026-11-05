@@ -63,7 +63,7 @@ function Calculadora() {
               {o.nombre} <span className="font-mono text-[10px] font-normal uppercase tracking-[0.12em] text-verde">{o.estado}</span>
             </p>
             <p className="mt-1 text-sm text-tinta/75">{o.como}</p>
-            <p className="text-xs text-tinta/60">{o.nota}</p>
+            <p className="text-xs text-tinta/70">{o.nota}</p>
             <dl className="mt-5 grid grid-cols-2 gap-4">
               <div>
                 <dt className="text-xs text-tinta/65">Primer año</dt>
@@ -83,7 +83,7 @@ function Calculadora() {
           </div>
         ))}
       </div>
-      <p className="mt-5 text-xs leading-relaxed text-tinta/60">
+      <p className="mt-5 text-xs leading-relaxed text-tinta/70">
         Referencia ilustrativa, no una promesa ni un retorno: compara el costo de Brai con el precio bruto de tus obras, sin descontar
         materiales, tiempo ni comisiones. No sabemos todavía si Brai te ayudaría a vender más: eso es justo lo que queremos averiguar. Como
         referencia, una galería suele quedarse con 40 a 50% de cada venta.

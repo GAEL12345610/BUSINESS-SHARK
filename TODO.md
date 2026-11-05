@@ -7,17 +7,30 @@ Cómo leer esto: **Para quién** dice si lo hace Ricardo, el equipo o un adulto.
 
 ---
 
+## 0. Revisar el trabajo del 5 nov (rama `claude/demo-honesta-jose-luis`)
+
+Claude dejó la demo diciendo la verdad sobre sí misma y el paquete de la reunión. **Está en una rama local, sin push ni publicar.** Nada de esto llega a `braiart.vercel.app` hasta que alguien lo revise y lo una a `main`.
+
+| | Tarea | Para quién | Dónde |
+|---|---|---|---|
+| [ ] | Leer las propuestas P1 a P10 y aprobar, cambiar o rechazar cada una | Equipo | `docs/DECISIONES.md`, sección 5 nov |
+| [ ] | Decidir con un adulto si `/jose-luis` sigue publicado antes de que él lo vea, o se apaga con `VITE_DEMO_JOSE_LUIS=0` | Equipo con adulto | `docs/DEMO_JOSE_LUIS.md`, propuesta P8 |
+| [ ] | Abrir la rama en el celular (`pnpm build && pnpm preview`) y recorrer la demo | Ricardo | `pitch/reunion-jose-luis/checklist-demo.md` |
+| [ ] | Si se aprueba: Pull Request a `main` y revisar en un iPhone y un Android de verdad | Ricardo | |
+| [ ] | Volver a generar `visuales/` (las capturas de ahí son de antes del 5 nov) | Ricardo | `visuales/README.md` |
+| [ ] | Definir el precio de fundador del mes 4 con la Opción B | Equipo | `docs/OFERTA.md` |
+
 ## 1. Antes de la reunión con José Luis (urgente)
 
 | | Tarea | Para quién | Dónde |
 |---|---|---|---|
 | [ ] | Crear un correo normal del proyecto (Gmail, por ejemplo). **Nunca el correo personal de un integrante.** | Equipo con un adulto | |
-| [ ] | Poner ese correo en el aviso de privacidad y, si quieren, volver a hacer correo el botón de fundadores de la landing (hoy lleva al recorrido) | Ricardo | `app/public/privacidad.html`, `app/src/pages/Landing.tsx` |
-| [ ] | Pedirle a José Luis permiso y fotos de sus obras para la demo | Equipo con adulto | `docs/DEMO_JOSE_LUIS.md` |
+| [ ] | Poner ese correo en el aviso de privacidad (hoy es un borrador no vigente) y en `/demo`, sección Contacto. Quitar de `app/pruebas/claims.test.ts` la regla del correo solo si el correo ya existe | Ricardo | `app/public/privacidad.html`, `app/src/pages/Demo.tsx` |
+| [ ] | Pedirle a José Luis permiso y fotos de sus obras para la demo, **por escrito y después de la plática**, nunca antes | Equipo con adulto | `docs/DEMO_JOSE_LUIS.md` |
 | [ ] | Que un adulto lea el aviso de privacidad antes de que alguien real deje su correo | Adulto | `app/public/privacidad.html` |
 | [ ] | Agendar la reunión con José Luis, con un adulto presente | Adulto y equipo | `docs/REUNION_JOSE_LUIS.md` |
 | [ ] | Probar el link de la demo en un iPhone y un Android | Ricardo | `braiart.vercel.app/jose-luis` |
-| [ ] | Imprimir las piezas de *Toricleto* y pegarlas en un cartón (el QR abre la demo) | Equipo | `braiart.vercel.app/imprimir/TQ4RC` |
+| [ ] | Imprimir el one-pager y, si quieren, las piezas de la obra de ejemplo (dicen DEMO). ~~Piezas de *Toricleto*~~: es una obra real a la venta; la demo genérica va primero | Equipo | `pitch/reunion-jose-luis/one-pager.pdf`, `braiart.vercel.app/imprimir/7KQ2X` |
 
 ## 2. Antes del 26 de noviembre (propuesta final)
 
@@ -57,7 +70,9 @@ Cómo leer esto: **Para quién** dice si lo hace Ricardo, el equipo o un adulto.
 No se gastó dinero en ninguna herramienta.
 
 ## 4. Deuda conocida (no es urgente, pero que no se olvide)
-- La demo usa el mismo código de dueño (`4K7P-9QX2`) para todas las obras y cuenta los intentos en memoria. Es a propósito para la demo; la versión real ya está en Supabase.
+- La demo usa el mismo código de dueño (`4K7P-9QX2`) para todas las obras y cuenta los intentos en memoria. Es a propósito para la demo y la app lo dice; la versión real está escrita en las migraciones, no conectada.
+- Accesibilidad sin auditar: contraste formal, lector de pantalla y celulares reales. La raspadita ya se usa con teclado (5 nov).
+- El video del artista y las fotos huella siguen siendo de ejemplo.
 - No hay `Content-Security-Policy` en `app/vercel.json` porque `app/index.html` tiene un script en línea. Para ponerla, mover ese script a un archivo.
 - El video del artista en la página de la obra es una portada sin video.
 - La huella de la demo usa FNV (rápida, para enseñar); la de Supabase usa SHA-256.
