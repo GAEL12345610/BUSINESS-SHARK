@@ -191,7 +191,7 @@ export default function Landing() {
             <div className="revela">
               <Kicker>Lo que ves tú</Kicker>
               <h2 className="mt-4 font-display text-3xl font-semibold leading-tight tracking-[-0.01em] sm:text-[2.6rem]">
-                Tu panel te dice quién tiene cada obra.
+                Tu panel te dice quién reclamó cada obra.
               </h2>
               <p className="mt-5 max-w-xl text-lg leading-relaxed text-tinta/85">
                 Cuando tu comprador reclama la obra y deja su correo, aparece en tu panel. Si no la reclama, no sabrás quién es: Brai no
