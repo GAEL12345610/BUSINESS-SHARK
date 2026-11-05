@@ -14,6 +14,7 @@ Regla: si la respuesta honesta es "no sé" o "todavía no", se dice así. Ningun
 | "¿Quién ve los datos de mis compradores?" | "En el diseño: tú, y el equipo solo para dar soporte. En público solo las iniciales. Hoy la demo no guarda datos reales de nadie." |
 | "¿Y si ustedes dejan el proyecto?" | "Es un riesgo real: somos estudiantes. Lo que proponemos es que puedas llevarte todo lo registrado; esa función todavía no existe." |
 | "¿Es como un NFT o blockchain?" | "No. Lo evaluamos y lo descartamos (`docs/TOKENIZAR.md`): obligaría a tu comprador a usar una cartera digital y no protege lo que de verdad se puede copiar." |
+| "Hay páginas gratis para hacer certificados." | "Sí, por ejemplo markmy.art, y está bien que lo sepas. Lo que nosotros proponemos es hacerlo contigo en tu taller y que tu comprador quede ligado a la obra al reclamarla. ¿Eso vale algo para ti, o con lo gratis te basta?" Anotar textual. |
 | "¿Por qué no lo hace mi galería?" | "Puede que sí. Brai está pensado para artistas que venden directo, sin galería. Si vendes por galería, quizá no te hace falta." |
 | "No tengo tiempo para registrar cada obra." | "En la propuesta, el registro lo hacemos contigo en tu taller. ¿Cuánto tiempo te parecería razonable por obra?" |
 | "¿Me están pidiendo dinero?" | "No. Hoy no se paga ni se firma nada. Solo queremos tu opinión." |

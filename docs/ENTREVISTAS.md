@@ -18,7 +18,7 @@ Después de cada entrevista: actualizar la ficha en `CLIENTES.md` y anotar las f
 **Bloque B: después de la demo.**
 8. ¿Qué parte de lo que viste te serviría, si alguna? ¿Para qué la usarías?
 9. **Prueba de precio, dos opciones:** "Hay dos formas en que estamos pensando cobrarlo, ninguna está decidida. A: 7,500 de arranque y 990 al mes. B: 2,500 de arranque con 5 obras y 450 por cada obra nueva, sin mensualidad. ¿Cuál te haría más sentido, o ninguna? ¿Qué tendría que pasar para que valga la pena?" (No defender ninguna: escuchar y anotar la frase textual.)
-10. ¿Usas algo para llevar tu inventario o tu lista de compradores (Excel, libreta, Artwork Archive)? ¿Has visto algo parecido a Brai?
+10. ¿Usas algo para llevar tu inventario o tu lista de compradores (Excel, libreta, Artwork Archive)? ¿Has visto algo parecido a Brai? Si existiera una página gratis donde haces tus certificados tú mismo (como markmy.art), ¿la usarías en lugar de que lo hagamos contigo? ¿Por qué? (`MERCADO.md`, sección 4)
 11. ¿Alguna vez alguien dudó si una obra tuya era original, o viste una copia?
 12. ¿Sabías que la ley te da una parte de algunas reventas de tu obra (subasta, galería)? ¿Lo has cobrado alguna vez? (Beneficio secundario, DECISIONES #28: no se usa para vender.)
 
