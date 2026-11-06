@@ -7,17 +7,17 @@ Cómo leer esto: **Para quién** dice si lo hace Ricardo, el equipo o un adulto.
 
 ---
 
-## 0. Revisar el trabajo del 5 nov (rama `claude/demo-honesta-jose-luis`)
+## 0. Revisar el trabajo del 5 nov (publicado el 6 nov)
 
-Claude dejó la demo diciendo la verdad sobre sí misma y el paquete de la reunión. **Está en una rama local, sin push ni publicar.** Nada de esto llega a `braiart.vercel.app` hasta que alguien lo revise y lo una a `main`.
+Claude dejó la demo diciendo la verdad sobre sí misma, el paquete de la reunión y los materiales del 26 nov. **Se unió a `main` y se publicó en `braiart.vercel.app` el 6 nov 2026, a pedido de Gael.** Falta que el equipo lo revise: si algo no les gusta, se cambia y se vuelve a publicar.
 
 | | Tarea | Para quién | Dónde |
 |---|---|---|---|
-| [ ] | Leer las propuestas P1 a P10 y aprobar, cambiar o rechazar cada una | Equipo | `docs/DECISIONES.md`, sección 5 nov |
+| [ ] | Leer las propuestas P1 a P11 (ya publicadas) y quedarse con ellas, cambiarlas o revertirlas | Equipo | `docs/DECISIONES.md`, sección 5 nov |
 | [ ] | Decidir con un adulto si `/jose-luis` sigue publicado antes de que él lo vea, o se apaga con `VITE_DEMO_JOSE_LUIS=0` | Equipo con adulto | `docs/DEMO_JOSE_LUIS.md`, propuesta P8 |
-| [ ] | Abrir la rama en el celular (`pnpm build && pnpm preview`) y recorrer la demo | Ricardo | `pitch/reunion-jose-luis/checklist-demo.md` |
-| [ ] | Si se aprueba: Pull Request a `main` y revisar en un iPhone y un Android de verdad | Ricardo | |
-| [ ] | Volver a generar `visuales/` (las capturas de ahí son de antes del 5 nov) | Ricardo | `visuales/README.md` |
+| [ ] | Recorrer la demo publicada en el celular | Ricardo | `braiart.vercel.app`, `pitch/reunion-jose-luis/checklist-demo.md` |
+| [ ] | Probarla en un iPhone y un Android de verdad (Claude solo la probó emulada) | Ricardo | `braiart.vercel.app` |
+| [x] | ~~Volver a generar `visuales/`~~: regenerados el 5 nov. La próxima vez, `bash visuales/regenerar-todo.sh` | Ricardo | `visuales/README.md` |
 | [ ] | Definir el precio de fundador del mes 4 con la Opción B | Equipo | `docs/OFERTA.md` |
 | [ ] | Leer `PERSPECTIVAS.md` y `MERCADO.md`: el certificado digital ya es gratis en markmy.art; decidir qué se vende entonces | Equipo | `docs/PERSPECTIVAS.md`, `docs/MERCADO.md` |
 | [ ] | Conseguir una obra real de alguien cercano, con permiso por escrito revisado por un adulto, para la demo del 26 nov (`CONCURSO.md` la pide) | Equipo con adulto | `docs/PERSPECTIVAS.md`, sección 3 |

@@ -2,9 +2,9 @@
 
 Una línea por decisión, con su porqué. Lo más reciente arriba. Si una decisión cambia, se tacha y se agrega la nueva con fecha: nunca se borra.
 
-## 5 nov 2026, sexta sesión: PROPUESTAS de Claude, pendientes de que el equipo las apruebe
+## 5 nov 2026, sexta sesión: propuestas de Claude, publicadas el 6 nov
 
-Aplicadas en la rama local `claude/demo-honesta-jose-luis` (sin publicar, sin push). **No son decisión del equipo** hasta que alguien las revise y una la rama a `main`. Detalle de cada cambio: `DEMO_HONESTA.md`.
+Hechas en la rama `claude/demo-honesta-jose-luis` y **publicadas en producción el 6 nov 2026 a pedido de Gael**. El resto del equipo todavía no las revisa: si no está de acuerdo con alguna, se cambia aquí, en la app, y se vuelve a publicar. Detalle de cada cambio: `DEMO_HONESTA.md`.
 
 | # | Propuesta | Por qué | Choca con |
 |---|---|---|---|

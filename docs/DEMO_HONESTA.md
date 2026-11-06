@@ -1,6 +1,6 @@
 # Demo honesta: qué dice la app de sí misma y cómo se protege
 
-**Desde el 5 nov 2026** (rama `claude/demo-honesta-jose-luis`, sin publicar). Lista que ve el visitante: la página `/demo` (`app/src/pages/Demo.tsx`). Este archivo es para el equipo: por qué existe, qué se cambió y qué prueba que no se rompa.
+**Desde el 5 nov 2026**, publicado en `braiart.vercel.app` el 6 nov 2026. Lista que ve el visitante: la página `/demo` (`app/src/pages/Demo.tsx`). Este archivo es para el equipo: por qué existe, qué se cambió y qué prueba que no se rompa.
 
 ## La regla
 La app publicada **no tiene backend**. Mientras eso sea cierto, cada página dice que es una demo, que las personas son ficticias y que nada sale del navegador. **Si un día se conecta Supabase, se cambia el aviso y `/demo` en el mismo commit. No se borra el aviso antes.**
@@ -38,6 +38,5 @@ Las pruebas se comprobaron metiendo el defecto a propósito (aceptar Gmail, volv
 
 ## Lo que este cambio NO resuelve
 - La demo sigue sin backend, sin login, sin envío de correos y sin NFC. Solo dice la verdad sobre eso.
-- `braiart.vercel.app` no cambia hasta que el equipo una esta rama a `main`.
 - El modo José Luis (`/jose-luis`, DECISIONES #42) sigue publicado. Ahora dice que él no lo revisó ni aprobó, y se puede apagar con `VITE_DEMO_JOSE_LUIS=0` (`docs/DEMO_JOSE_LUIS.md`). Si se apaga o no lo decide el equipo con un adulto (`docs/DECISIONES.md`, propuestas del 5 nov).
 - Contraste: se corrigió texto chico a 3.9:1 y un kicker a 4.3:1; el chequeo automático aproximado pasa en 8 rutas (no incluye `/marca` ni `/imprimir`). **No** es una auditoría formal. Lector de pantalla y celulares reales: sin probar. Solo un iPhone 13 emulado en Chromium.

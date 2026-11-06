@@ -2,7 +2,7 @@
 
 **Estado (5 nov 2026):** José Luis está **por contactar**. No hay reunión, fecha, permiso ni interés confirmado. Todo esto es preparación.
 
-**Ojo, antes de usarlo:** el paquete describe la demo de la rama `claude/demo-honesta-jose-luis` (aviso de DEMO, `/demo`, "Simular reclamo", correos `@example.com`). Mientras esa rama no se una a `main` y Vercel no la publique, `braiart.vercel.app` sigue mostrando la versión anterior, con los textos viejos. Para probarla antes: `cd app && pnpm build && pnpm preview`.
+**La demo que describe este paquete está publicada en `braiart.vercel.app` desde el 6 nov 2026** (aviso de DEMO, `/demo`, "Simular reclamo", correos `@example.com`). Antes de la reunión, recórrela una vez en el celular que vas a usar.
 
 | Archivo | Para qué | Formato |
 |---|---|---|
