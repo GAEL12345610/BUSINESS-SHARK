@@ -4,10 +4,10 @@
 // Aproximado: no reemplaza una auditoría formal ni un lector de pantalla.
 // Uso: con pnpm preview corriendo, node app/scripts/e2e/contraste.cjs
 const { chromium, devices } = require('playwright')
-const B = 'http://localhost:4173'
+const B = process.env.BASE || 'http://localhost:4173' // BASE=https://braiart.vercel.app para probar producción
 const ok = (c, m) => { console.log((c ? 'ok: ' : 'FALLA: ') + m); if (!c) process.exitCode = 1 }
 ;(async () => {
-  const b = await chromium.launch()
+  const b = await chromium.launch(B.startsWith('https') && process.env.HTTPS_PROXY ? { proxy: { server: process.env.HTTPS_PROXY } } : {})
   const ctx = await b.newContext({ ...devices['iPhone 13'] })
   const p = await ctx.newPage()
   await p.goto(B + '/?salir-demo')

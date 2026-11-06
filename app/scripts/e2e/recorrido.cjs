@@ -5,16 +5,16 @@
 // Uso: cd app && pnpm build && pnpm preview, y en otra terminal:
 //   node app/scripts/e2e/recorrido.cjs <carpeta-para-capturas>
 const { chromium, devices } = require('playwright')
-const B = 'http://localhost:4173'
+const B = process.env.BASE || 'http://localhost:4173' // BASE=https://braiart.vercel.app para probar producción
 const OUT = process.argv[2]
 const ve = (l) => l.first().waitFor({ state: 'visible', timeout: 6000 }).then(() => true, () => false)
 const ok = (c, m) => { if (!c) { console.log('FALLA:', m); process.exitCode = 1 } else console.log('ok:', m) }
 ;(async () => {
-  const browser = await chromium.launch()
+  const browser = await chromium.launch(B.startsWith('https') && process.env.HTTPS_PROXY ? { proxy: { server: process.env.HTTPS_PROXY } } : {})
   const ctx = await browser.newContext({ ...devices['iPhone 13'] })
   const page = await ctx.newPage()
   const externas = [], errores = []
-  page.on('request', (r) => { const u = new URL(r.url()); if (u.host !== 'localhost:4173' && !u.protocol.startsWith('data')) externas.push(r.url()) })
+  page.on('request', (r) => { const u = new URL(r.url()); if (u.host !== new URL(B).host && !u.protocol.startsWith('data')) externas.push(r.url()) })
   page.on('pageerror', (e) => errores.push(e.message))
   page.on('console', (m) => m.type() === 'error' && errores.push(m.text()))
   page.on('dialog', (d) => d.accept())
