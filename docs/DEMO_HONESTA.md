@@ -30,7 +30,7 @@ La app publicada **no tiene backend**. Mientras eso sea cierto, cada página dic
 | Prueba | Qué falla si alguien rompe la regla | Archivo |
 |---|---|---|
 | `pnpm test` (34 pruebas) | Correos reales aceptados, eventos ficticios sin "Ejemplo", dueños o fotos inventados en el modo José Luis, frases prohibidas en `src/` o en los materiales de reunión, `/entrar` como login, aviso de DEMO desmontado | `app/pruebas/*.test.ts` |
-| `node app/scripts/e2e/recorrido.cjs <carpeta>` | Recorrido completo en un iPhone 13 emulado: aviso, CTA, raspadita con teclado, correo real rechazado, reclamo simulado, panel, `/entrar`, `/demo`, Reiniciar demo, modo José Luis, sin scroll horizontal, cero peticiones a otros dominios y cero errores de consola. Necesita `pnpm preview` corriendo | `app/scripts/e2e/` |
+| `node app/scripts/e2e/recorrido.cjs <carpeta>` | Recorrido completo en un iPhone 13 emulado: aviso, CTA, raspadita con teclado, correo real rechazado, reclamo simulado, panel, `/entrar`, `/demo`, Reiniciar demo, modo José Luis, sin scroll horizontal, cero peticiones a otros dominios y cero errores de consola. Necesita `pnpm preview` corriendo, o `BASE=https://braiart.vercel.app` para probar producción (así se verificó el 6 nov: 27 de 27) | `app/scripts/e2e/` |
 | `node app/scripts/e2e/contraste.cjs` | Modo `?para=Nombre` sin "ficticia" y contraste aproximado AA en 8 rutas | `app/scripts/e2e/` |
 | `pnpm build` | Al final corre `scripts/verificar-dist.mjs`: si el HTML publicado no trae el aviso de DEMO, el CTA, el estado del precio o trae `hola@brai.art`, el build falla y Vercel no publica | `app/scripts/verificar-dist.mjs` |
 
