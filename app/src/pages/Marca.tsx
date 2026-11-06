@@ -39,7 +39,7 @@ export default function Marca() {
       <header className="border-b border-linea">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3.5 sm:px-6">
           <Logo />
-          <span className="font-mono text-xs uppercase tracking-[0.14em] text-verde">Kit de marca v2.2</span>
+          <span className="font-mono text-xs uppercase tracking-[0.14em] text-verde">Kit de marca v2.4</span>
         </div>
       </header>
       <main className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -133,7 +133,7 @@ export default function Marca() {
             ].map(([si, no]) => (
               <li key={si} className="border-t border-linea pt-4">
                 <p className="font-semibold">{si}</p>
-                <p className="mt-1 text-tinta/55 line-through decoration-terracota/60">{no}</p>
+                <p className="mt-1 text-tinta/70 line-through decoration-terracota/60">{no}</p>
               </li>
             ))}
           </ul>

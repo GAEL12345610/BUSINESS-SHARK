@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brai, propuesta final</title>
+<!-- Deck para el jurado de Business Shark 8° (26 nov 2026). Base para el equipo:
+     la lámina 12 y el equipo se llenan con datos reales antes de presentar.
+     Flechas o clic para avanzar. PDF: node pitch/jurado-26nov/exportar.cjs -->
+<style>
+  @font-face{font-family:Fraunces;src:url(../reunion-jose-luis/fuentes/fraunces-latin-opsz-normal.woff2) format('woff2');font-weight:100 900}
+  @font-face{font-family:Schibsted;src:url(../reunion-jose-luis/fuentes/schibsted-grotesk-latin-wght-normal.woff2) format('woff2');font-weight:400 900}
+  @font-face{font-family:Plex;src:url(../reunion-jose-luis/fuentes/ibm-plex-mono-latin-400-normal.woff2) format('woff2')}
+  :root{--terracota:#C06E52;--btn:#A2563D;--tinta:#2B2622;--dorado:#C9A24B;--lienzo:#F6F1EA;--verde:#5E6C52;--linea:#E5DDCF;--claro2:#CFC6B8}
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:#1E1A17;overflow:hidden}
+  body{font-family:Schibsted,system-ui,sans-serif;color:var(--tinta)}
+  .escenario{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:0 0}
+  .slide{position:absolute;inset:0;background:var(--lienzo);padding:88px 112px;display:none;grid-template-rows:auto 1fr auto}
+  .slide.activa{display:grid}
+  .slide.oscura{background:var(--tinta);color:var(--lienzo)}
+  .arriba{display:flex;justify-content:space-between;align-items:center;font:20px Plex,monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--verde)}
+  .oscura .arriba{color:var(--claro2)}
+  .marca{display:flex;align-items:center;gap:14px;font:600 40px Fraunces,Georgia,serif;letter-spacing:0;text-transform:none;color:inherit}
+  .oscura .marca{color:var(--lienzo)}
+  .demo{background:var(--dorado);color:var(--tinta);padding:4px 12px;border-radius:4px;font:600 18px Plex,monospace;letter-spacing:.14em}
+  .abajo{display:flex;justify-content:space-between;font:20px Plex,monospace;color:var(--verde);border-top:1px solid var(--linea);padding-top:20px}
+  .oscura .abajo{border-color:#4a423c;color:var(--claro2)}
+  .cuerpo{align-self:center}
+  .kicker{font:22px Plex,monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--verde);margin:0 0 24px}
+  .oscura .kicker{color:var(--dorado)}
+  h1{font:600 112px/1.02 Fraunces,Georgia,serif;letter-spacing:-.02em;margin:0}
+  h2{font:600 76px/1.06 Fraunces,Georgia,serif;letter-spacing:-.015em;margin:0 0 40px;max-width:1500px}
+  h1 em,h2 em{font-style:normal;color:var(--btn)}
+  .oscura h1 em,.oscura h2 em{color:var(--dorado)}
+  p.grande{font-size:38px;line-height:1.4;max-width:1400px;margin:32px 0 0}
+  .oscura p.grande{color:#E8E0D5}
+  .pasos{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;margin-top:20px}
+  .paso{border-top:3px solid var(--terracota);padding-top:24px}
+  .paso b{display:block;font:20px Plex,monospace;color:var(--verde);margin-bottom:12px}
+  .paso h3{font:600 38px/1.15 Schibsted,sans-serif;margin:0 0 12px}
+  .paso p{font-size:27px;line-height:1.4;margin:0;color:#4a423c}
+  .dos{display:grid;grid-template-columns:1fr 1fr;gap:72px}
+  .lista{list-style:none;margin:0;padding:24px 0 0;border-top:3px solid var(--tinta)}
+  .lista.no{border-top-color:var(--linea);color:#5b534c}
+  .lista li{font-size:32px;line-height:1.35;padding:12px 0 12px 48px;position:relative}
+  .lista li::before{content:'';position:absolute;left:0;top:24px;width:22px;height:22px;border-radius:50%;background:var(--verde)}
+  .lista.no li::before{background:none;border:3px solid #9b9085}
+  .titulo-lista{font:600 40px Schibsted,sans-serif;margin:0 0 20px}
+  .con-foto{display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:center}
+  .tel{justify-self:center;width:440px;border-radius:52px;background:var(--tinta);padding:14px;box-shadow:0 30px 60px rgba(43,38,34,.18)}
+  .tel img{display:block;width:100%;border-radius:40px}
+  .pie-foto{font:20px Plex,monospace;color:var(--verde);text-align:center;margin-top:16px}
+  table{border-collapse:collapse;width:100%;font-size:30px}
+  th{font:20px Plex,monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--verde);text-align:left;font-weight:400;padding:0 20px 16px 0}
+  td{padding:24px 20px 24px 0;border-top:1px solid var(--linea);vertical-align:top}
+  td.num{font:500 40px Plex,monospace}
+  .estado{display:inline-block;font:19px Plex,monospace;letter-spacing:.08em;text-transform:uppercase;border:1.5px solid var(--verde);color:var(--verde);padding:4px 12px;border-radius:4px}
+  .nota{font-size:27px;line-height:1.45;color:#5b534c;margin-top:36px;max-width:1500px}
+  ol.preguntas{font-size:44px;line-height:1.35;margin:0;padding-left:1.2em}
+  ol.preguntas li{margin:0 0 26px}
+  .controles{position:fixed;bottom:12px;right:16px;font:12px ui-monospace,monospace;color:#8a8178}
+  @media print{
+    @page{size:1920px 1080px;margin:0}
+    html,body{height:auto;overflow:visible;background:none}
+    .escenario{position:static;transform:none!important;width:1920px;height:auto}
+    .slide{position:relative;display:grid!important;width:1920px;height:1080px;break-after:page}
+    .controles{display:none}
+  }
+
+  .grafica{width:100%;height:auto;display:block}
+  .g1 .g-etq{font-size:38px}
+  .g1 .g-num{font-size:40px}
+  .g-etq{font:28px Schibsted,sans-serif;fill:#2B2622}
+  .g-num{font:500 30px Plex,monospace;fill:#2B2622}
+  .fuente{font:19px Plex,monospace;color:var(--verde);margin-top:24px;max-width:1600px;line-height:1.5}
+  .tres{display:grid;grid-template-columns:repeat(3,1fr);gap:56px}
+  .cifra b{display:block;font:500 92px/1 Plex,monospace;color:var(--btn);margin-bottom:14px}
+  .cifra p{font-size:28px;line-height:1.4;margin:0;color:#4a423c}
+  .pantallas{display:flex;gap:40px;justify-content:center}
+  .pantallas img{width:330px;border-radius:36px;border:10px solid var(--tinta)}
+  .pend{display:inline-block;background:var(--dorado);color:var(--tinta);font:600 18px Plex,monospace;letter-spacing:.12em;padding:3px 10px;border-radius:4px;vertical-align:middle}
+  table.tabla td,table.tabla th{font-size:26px;padding:16px 18px 16px 0}
+  table.tabla td:first-child{font-weight:600}
+  .qr{width:300px;height:300px;background:var(--lienzo);padding:12px;border-radius:12px}
+</style>
+</head>
+<body>
+<div class="escenario" id="escenario">
+  <section class="slide oscura activa">
+    <div class="arriba"><span><span class="marca"><img src="../../brand/isotipo_claro.svg" width="44" height="44" alt="">Brai</span></span><span><span class="demo">PROTOTIPO</span></span></div>
+    <div class="cuerpo"><p class="kicker">Propuesta final · 26 de noviembre de 2026</p>
+<h1>Vendiste tu obra.<br><em>¿Sabes dónde está hoy?</em></h1>
+<p class="grande">Brai ayuda a artistas que venden directo a registrar la procedencia de cada obra y, cuando el comprador la reclama, mantener el contacto para futuras obras.</p></div>
+    <div class="abajo"><span>Brai · Business Shark 8°</span><span>01 / 14</span></div>
+  </section>
+  <section class="slide">
+    <div class="arriba"><span>El problema</span><span><span class="demo">HIPÓTESIS</span></span></div>
+    <div class="cuerpo"><h2>Una obra vendida es una obra que se pierde de vista.</h2>
+<div class="tres">
+<div class="paso"><b>01</b><h3>No sabe quién la tiene</h3><p>La vendió en su taller o por Instagram y ahí se acabó el rastro.</p></div>
+<div class="paso"><b>02</b><h3>No puede volver a venderle</h3><p>Su mejor cliente es quien ya le compró, pero cada obra nueva empieza de cero.</p></div>
+<div class="paso"><b>03</b><h3>No hay registro de la obra</h3><p>Si la obra se revende o se hereda, su historia se pierde.</p></div>
+</div>
+<p class="nota">Es una hipótesis. La estamos probando con entrevistas a artistas y compradores (lámina 12).</p></div>
+    <div class="abajo"><span>Brai · Business Shark 8°</span><span>02 / 14</span></div>
+  </section>
+  <section class="slide">
+    <div class="arriba"><span>El mercado</span><span></span></div>
+    <div class="cuerpo"><h2>Los coleccionistas ya le compran directo al artista.</h2>
+<div class="dos" style="grid-template-columns:1fr 1.5fr;align-items:center">
+<div class="cifra"><b>69%</b><p>de los coleccionistas compró directo a un artista. Es el 19% de lo que gastan, el segundo canal después de las galerías.</p></div>
+<div><p style="font:600 28px Schibsted,sans-serif;margin:0 0 12px">Cómo compraron directo</p><svg viewBox="0 0 1300 330" class="grafica g1" role="img" aria-labelledby="g1t"><title id="g1t">De los coleccionistas que compraron directo a un artista: 48% en su taller, 40% por encargo, 38% por Instagram</title><line x1="300" y1="10" x2="300" y2="320" stroke="#D9CFBF" stroke-width="2"/><g><title>En su taller: 48%</title><text x="280" y="59" text-anchor="end" class="g-etq">En su taller</text><path d="M300 40 h716.0 a4 4 0 0 1 4 4 v20 a4 4 0 0 1 -4 4 h-716.0 z" fill="#A2563D"/><text x="1036.0" y="62" class="g-num">48%</text></g><g><title>Por encargo: 40%</title><text x="280" y="159" text-anchor="end" class="g-etq">Por encargo</text><path d="M300 140 h596.0 a4 4 0 0 1 4 4 v20 a4 4 0 0 1 -4 4 h-596.0 z" fill="#A2563D"/><text x="916.0" y="162" class="g-num">40%</text></g><g><title>Por Instagram: 38%</title><text x="280" y="259" text-anchor="end" class="g-etq">Por Instagram</text><path d="M300 240 h566.0 a4 4 0 0 1 4 4 v20 a4 4 0 0 1 -4 4 h-566.0 z" fill="#A2563D"/><text x="886.0" y="262" class="g-num">38%</text></g></svg></div>
+</div>
+<p class="fuente">Art Basel y UBS, Survey of Global Collecting 2026: 3,100 coleccionistas de alto patrimonio en 10 países. México no está incluido; sirve como tendencia. En Jalisco trabajan 8,870 artistas visuales (DataMéxico, ENOE 2025).</p></div>
+    <div class="abajo"><span>Brai · Business Shark 8°</span><span>03 / 14</span></div>
+  </section>
+  <section class="slide">
+    <div class="arriba"><span>La solución</span><span></span></div>
+    <div class="cuerpo"><h2>Tres piezas, como la cédula de un museo.</h2>
+<img src="../../visuales/marca/piezas-fisicas.png" alt="Sello NFC, tarjeta de dueño con raspadita y QR" style="width:100%;max-width:1500px;display:block;margin:0 auto;border-radius:12px">
+<p class="nota">El sello NFC va detrás del cuadro con un QR al lado. La tarjeta, firmada a mano por el artista, esconde el código de dueño bajo una raspadita.</p></div>
+    <div class="abajo"><span>Brai · Business Shark 8°</span><span>04 / 14</span></div>
+  </section>
+  <section class="slide">
+    <div class="arriba"><span>Cómo funciona</span><span></span></div>
+    <div class="cuerpo"><h2>Lo montamos contigo, obra por obra.</h2>
+<div class="pasos">
+<div class="paso"><b>01</b><h3>El artista registra</h3><p>Fotos, tres fotos de detalles únicos, ficha e historia, en su taller, con nosotros.</p></div>
+<div class="paso"><b>02</b><h3>Sellamos el cuadro</h3><p>Sello detrás y QR al lado. Sin descargar ninguna app.</p></div>
+<div class="paso"><b>03</b><h3>Entrega con ritual</h3><p>La tarjeta firmada va con la obra. El comprador raspa su código.</p></div>
+<div class="paso"><b>04</b><h3>El comprador reclama</h3><p>Si escribe el código y su correo, el artista sabe quién la tiene.</p></div>
+</div></div>
+    <div class="abajo"><span>Brai · Business Shark 8°</span><span>05 / 14</span></div>
+  </section>
+  <section class="slide">
+    <div class="arriba"><span>Pruébalo ahora</span><span><span class="demo">DEMO</span></span></div>
+    <div class="cuerpo"><div class="con-foto" style="grid-template-columns:1.6fr 1fr">
+<div class="pantallas"><img src="../../visuales/pantallas/celular/obra.png" alt="Página de una obra de ejemplo"><img src="../../visuales/pantallas/celular/panel.png" alt="Panel del artista de ejemplo"></div>
+<div style="text-align:center"><svg class="qr" role="img" aria-label="QR a braiart.vercel.app/recorrido" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 31" shape-rendering="crispEdges"><path fill="#F6F1EA" d="M0 0h31v31H0z"/><path stroke="#2B2622" d="M1 1.5h7m1 0h2m1 0h1m2 0h1m2 0h2m1 0h1m1 0h7M1 2.5h1m5 0h1m3 0h1m1 0h1m3 0h2m1 0h2m1 0h1m5 0h1M1 3.5h1m1 0h3m1 0h1m2 0h2m2 0h1m3 0h1m2 0h1m1 0h1m1 0h3m1 0h1M1 4.5h1m1 0h3m1 0h1m1 0h5m1 0h1m1 0h1m1 0h2m2 0h1m1 0h3m1 0h1M1 5.5h1m1 0h3m1 0h1m1 0h1m2 0h6m1 0h1m3 0h1m1 0h3m1 0h1M1 6.5h1m5 0h1m1 0h1m1 0h1m2 0h2m3 0h2m2 0h1m5 0h1M1 7.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M9 8.5h2m1 0h2m1 0h2m1 0h2m1 0h1M1 9.5h1m3 0h1m1 0h4m2 0h3m2 0h1m1 0h7m2 0h1M1 10.5h1m2 0h1m1 0h1m1 0h2m1 0h2m3 0h2m5 0h7M1 11.5h1m2 0h4m3 0h1m2 0h3m1 0h1m2 0h3m5 0h1M1 12.5h3m1 0h1m2 0h1m1 0h2m1 0h2m1 0h3m1 0h1m2 0h4m1 0h2M2 13.5h1m2 0h1m1 0h2m1 0h1m3 0h1m1 0h1m1 0h1m1 0h3m5 0h1M1 14.5h1m3 0h2m1 0h1m1 0h8m4 0h8M2 15.5h2m3 0h2m1 0h2m4 0h3m3 0h2m2 0h2m1 0h1M1 16.5h1m1 0h2m5 0h1m4 0h1m1 0h2m1 0h1m1 0h1m1 0h1m3 0h2M3 17.5h1m3 0h3m1 0h1m1 0h3m1 0h4m1 0h1m5 0h1M1 18.5h2m3 0h1m1 0h3m1 0h2m2 0h4m2 0h5m1 0h2M5 19.5h4m2 0h7m1 0h1m1 0h1m1 0h3m1 0h1m1 0h1M3 20.5h1m1 0h1m3 0h4m1 0h1m2 0h3m1 0h4m3 0h2M1 21.5h2m1 0h1m1 0h3m1 0h2m1 0h2m2 0h2m1 0h7m2 0h1M9 22.5h1m1 0h7m2 0h2m3 0h1m3 0h1M1 23.5h7m1 0h2m2 0h1m2 0h1m3 0h2m1 0h1m1 0h3m1 0h1M1 24.5h1m5 0h1m2 0h1m4 0h1m2 0h1m1 0h2m3 0h1m2 0h2M1 25.5h1m1 0h3m1 0h1m1 0h1m2 0h5m1 0h1m1 0h7m1 0h1M1 26.5h1m1 0h3m1 0h1m2 0h3m1 0h1m1 0h2m1 0h2m3 0h1m4 0h1M1 27.5h1m1 0h3m1 0h1m2 0h1m2 0h2m1 0h1m1 0h3m1 0h1m3 0h4M1 28.5h1m5 0h1m2 0h2m2 0h1m2 0h5m2 0h3m1 0h2M1 29.5h7m1 0h1m2 0h2m1 0h1m2 0h1m2 0h1m1 0h1m1 0h2m1 0h1"/></svg>
+<p class="grande" style="font-size:30px;margin-top:20px">Escanea y recorre la demo en 5 minutos.</p><p class="nota" style="font-size:22px">Personas y obras ficticias. Nada se envía a ningún servidor.</p></div>
+</div></div>
+    <div class="abajo"><span>Brai · Business Shark 8°</span><span>06 / 14</span></div>
+  </section>
+  <section class="slide">
+    <div class="arriba"><span>Innovación: el ritual y la marca</span><span></span></div>
+    <div class="cuerpo"><div class="con-foto" style="grid-template-columns:1.4fr 1fr">
+<div><h2>La tecnología se ve, no se explica.</h2>
+<ul class="lista"><li>La tarjeta firmada con raspadita convierte la entrega en un momento.</li><li>Punto, la mascota: el sello con cara.</li><li>La página de la obra lleva el color del artista; Brai solo firma abajo.</li><li>Prometemos lo que sí hace: "registrada por el artista", nunca "imposible de falsificar".</li></ul></div>
+<img src="../../visuales/punto/punto-feliz.png" alt="Punto, la mascota de Brai" style="width:420px;justify-self:center">
+</div></div>
+    <div class="abajo"><span>Brai · Business Shark 8°</span><span>07 / 14</span></div>
+  </section>
+  <section class="slide">
+    <div class="arriba"><span>Competencia</span><span></span></div>
+    <div class="cuerpo"><h2>El certificado digital ya es gratis. El servicio en persona, no.</h2>
+<table class="tabla">
+<tr><th></th><th>Precio</th><th>En persona</th><th>En español</th><th>El comprador se registra solo</th></tr>
+<tr><td>markmy.art</td><td>Gratis</td><td>No</td><td>Sí</td><td>No lo describe</td></tr>
+<tr><td>Verisart</td><td>0 a 99.99 USD al mes</td><td>No</td><td>No</td><td>Transferencias</td></tr>
+<tr><td>Artwork Archive</td><td>8 a 24 USD al mes</td><td>No</td><td>No</td><td>No, el artista captura</td></tr>
+<tr><td>Tagsmart</td><td>20 a 120 libras por obra</td><td>Servicio</td><td>No</td><td>?</td></tr>
+<tr><td style="color:var(--btn)">Brai</td><td>En prueba</td><td>Sí</td><td>Sí</td><td>Sí, al reclamar</td></tr>
+</table>
+<p class="fuente">Precios consultados el 5 nov 2026 (docs/COMPETENCIA.md y docs/MERCADO.md).</p></div>
+    <div class="abajo"><span>Brai · Business Shark 8°</span><span>08 / 14</span></div>
+  </section>
+  <section class="slide">
+    <div class="arriba"><span>Viabilidad: cuánto cuesta</span><span></span></div>
+    <div class="cuerpo"><h2>Una obra registrada cuesta unos 10 pesos.</h2>
+<div class="tres">
+<div class="cifra"><b>~10</b><p>MXN por obra con NTAG213: sello, raspadita, etiqueta VOID, tarjeta y QR.</p></div>
+<div class="cifra"><b>~31</b><p>MXN por obra con NTAG 424 DNA, el sello que genera una firma nueva en cada toque, con impuesto de importación.</p></div>
+<div class="cifra"><b>~880</b><p>MXN al mes de costos fijos si se opera de verdad (Vercel Pro, Supabase Pro, dominio). Prototipo: ~49 MXN al año.</p></div>
+</div>
+<p class="fuente">docs/COSTOS.md, precios en línea del 5 nov 2026. Por confirmar: el impuesto de importación del 424 DNA y una imprenta en Guadalajara.</p></div>
+    <div class="abajo"><span>Brai · Business Shark 8°</span><span>09 / 14</span></div>
+  </section>
+  <section class="slide">
+    <div class="arriba"><span>Viabilidad: el precio</span><span><span class="demo">EN PRUEBA</span></span></div>
+    <div class="cuerpo"><h2>Dos precios en prueba. Ninguno está validado.</h2>
+<p style="font:600 28px Schibsted,sans-serif;margin:0 0 8px">Costo para un artista que vende 10 obras de 12,000 MXN al año, como % de sus ventas</p>
+<svg viewBox="0 0 1500 420" class="grafica" role="img" aria-labelledby="g2t"><title id="g2t">Costo para un artista que vende 10 obras de 12,000 MXN al año, como porcentaje de sus ventas: Opción B 4%, Opción A 16% el primer año y 10% después, galería 40 a 50%</title><line x1="520" y1="10" x2="520" y2="410" stroke="#D9CFBF" stroke-width="2"/><g><title>Brai, Opción B: 4%</title><text x="500" y="61" text-anchor="end" class="g-etq">Brai, Opción B</text><path d="M520 40 h60.0 a4 4 0 0 1 4 4 v20 a4 4 0 0 1 -4 4 h-60.0 z" fill="#A2563D"/><text x="600.0" y="62" class="g-num">4%</text></g><g><title>Brai, Opción A desde el año 2: 10%</title><text x="500" y="156" text-anchor="end" class="g-etq">Brai, Opción A desde el año 2</text><path d="M520 135 h156.0 a4 4 0 0 1 4 4 v20 a4 4 0 0 1 -4 4 h-156.0 z" fill="#A2563D"/><text x="696.0" y="157" class="g-num">10%</text></g><g><title>Brai, Opción A año 1: 16%</title><text x="500" y="251" text-anchor="end" class="g-etq">Brai, Opción A año 1</text><path d="M520 230 h252.0 a4 4 0 0 1 4 4 v20 a4 4 0 0 1 -4 4 h-252.0 z" fill="#A2563D"/><text x="792.0" y="252" class="g-num">16%</text></g><g><title>Galería, comisión típica: 40 a 50%</title><text x="500" y="346" text-anchor="end" class="g-etq">Galería, comisión típica</text><path d="M520 325 h636.0 a4 4 0 0 1 4 4 v20 a4 4 0 0 1 -4 4 h-636.0 z" fill="#8F857A"/><rect x="1162.0" y="325" width="158.0" height="28" fill="#8F857A" opacity=".35" rx="4"/><text x="1336.0" y="347" class="g-num">40 a 50%</text></g></svg>
+<p class="fuente">Opción A: 7,500 MXN de arranque y 990 al mes (publicada, sin validar). Opción B: 2,500 de arranque con 5 obras y 450 por obra adicional (en prueba). Galería: comisión típica de la industria.</p></div>
+    <div class="abajo"><span>Brai · Business Shark 8°</span><span>10 / 14</span></div>
+  </section>
+  <section class="slide">
+    <div class="arriba"><span>Viabilidad: punto de equilibrio</span><span></span></div>
+    <div class="cuerpo"><h2>Contando las horas del equipo.</h2>
+<table class="tabla">
+<tr><th></th><th>Opción A</th><th>Opción B</th></tr>
+<tr><td>Ingreso por artista, año 1</td><td>19,380 MXN</td><td>4,750 MXN</td></tr>
+<tr><td>Horas del equipo por artista</td><td>~13 h</td><td>~13 h</td></tr>
+<tr><td>Margen por hora</td><td>~1,483 MXN</td><td>~358 MXN</td></tr>
+<tr><td>Artistas para cubrir el costo fijo</td><td>1</td><td>~4</td></tr>
+<tr><td>Fácil de vender</td><td>Difícil: 16% de sus ventas</td><td>Más fácil: 4%</td></tr>
+</table>
+<p class="fuente">Cálculo con docs/COSTOS.md. Supuestos: 10 obras al año, 8 h por arranque y 1 h por obra adicional, hora del equipo a 100 MXN, costo fijo comercial 10,550 MXN al año. Detalle: docs/PERSPECTIVAS.md.</p></div>
+    <div class="abajo"><span>Brai · Business Shark 8°</span><span>11 / 14</span></div>
+  </section>
+  <section class="slide">
+    <div class="arriba"><span>Lo que aprendimos</span><span><span class="demo">LLENAR</span></span></div>
+    <div class="cuerpo"><h2>Lo que nos dijeron los artistas y compradores.</h2>
+<table class="tabla">
+<tr><th>Pregunta</th><th>Respuesta</th></tr>
+<tr><td>Artistas entrevistados</td><td><span class="pend">PENDIENTE</span> ? de 3</td></tr>
+<tr><td>Compradores entrevistados</td><td><span class="pend">PENDIENTE</span> ? de 5</td></tr>
+<tr><td>¿Sabe quién tiene sus obras?</td><td>?</td></tr>
+<tr><td>¿Le han vuelto a comprar?</td><td>?</td></tr>
+<tr><td>¿Opción A, B o ninguna?</td><td>?</td></tr>
+<tr><td>¿El comprador dejaría su correo?</td><td>?</td></tr>
+</table>
+<p class="nota">Esta lámina se llena con frases textuales de las entrevistas (docs/CLIENTES.md). No se presenta con datos inventados.</p></div>
+    <div class="abajo"><span>Brai · Business Shark 8°</span><span>12 / 14</span></div>
+  </section>
+  <section class="slide">
+    <div class="arriba"><span>Riesgos y cómo los manejamos</span><span></span></div>
+    <div class="cuerpo"><div class="dos">
+<div><h3 class="titulo-lista">Riesgo</h3><ul class="lista">
+<li>Ya existe una opción gratis</li><li>Que el comprador no reclame</li><li>Somos menores de edad</li><li>Cada arranque toma ~8 horas</li></ul></div>
+<div><h3 class="titulo-lista">Qué hacemos</h3><ul class="lista no">
+<li>Vender el servicio en persona, no el certificado</li><li>Medirlo en el piloto antes de prometer</li><li>Contratos, cobros y privacidad, siempre con un adulto</li><li>Manual de registro y kits pagados por un patrocinador</li></ul></div>
+</div></div>
+    <div class="abajo"><span>Brai · Business Shark 8°</span><span>13 / 14</span></div>
+  </section>
+  <section class="slide oscura">
+    <div class="arriba"><span><span class="marca"><img src="../../brand/isotipo_claro.svg" width="44" height="44" alt="">Brai</span></span><span></span></div>
+    <div class="cuerpo"><p class="kicker">Siguiente paso</p>
+<h1>Cada obra sabe<br>de dónde viene.</h1>
+<p class="grande">Piloto con hasta 3 artistas fundadores antes de la Expo del 16 de febrero, con permiso por escrito y un adulto presente. Lo que digan decide el precio.</p>
+<p class="nota" style="color:#CFC6B8">Equipo: <span class="pend">PENDIENTE</span> nombres y roles (docs/CONCURSO.md).</p></div>
+    <div class="abajo"><span>Brai · Business Shark 8°</span><span>14 / 14</span></div>
+  </section>
+</div>
+<div class="controles">← → para avanzar</div>
+<script>
+  const slides = [...document.querySelectorAll('.slide')]
+  const esc = document.getElementById('escenario')
+  let i = 0
+  const ajustar = () => {
+    const k = Math.min(innerWidth / 1920, innerHeight / 1080)
+    esc.style.transform = `scale(${k}) translate(-50%, -50%)`
+  }
+  const ir = (n) => {
+    i = Math.max(0, Math.min(slides.length - 1, n))
+    slides.forEach((s, j) => s.classList.toggle('activa', j === i))
+  }
+  addEventListener('resize', ajustar)
+  addEventListener('keydown', (e) => {
+    if (['ArrowRight', 'PageDown', ' '].includes(e.key)) ir(i + 1)
+    if (['ArrowLeft', 'PageUp'].includes(e.key)) ir(i - 1)
+  })
+  addEventListener('click', (e) => ir(e.clientX > innerWidth / 3 ? i + 1 : i - 1))
+  ajustar()
+</script>
+</body>
+</html>

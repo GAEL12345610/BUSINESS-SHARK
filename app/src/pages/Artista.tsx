@@ -1,7 +1,8 @@
 import { Link, useParams } from 'react-router'
 import { SelloRegistroBrai } from '../components/marca'
-import { ARTISTA, MODO_JOSE_LUIS, anioTexto, todasLasObras } from '../data/demo'
+import { ARTISTA, ES_FICTICIA, MODO_JOSE_LUIS, anioTexto, todasLasObras } from '../data/demo'
 import NoEncontrada from './NoEncontrada'
+import { Ficticio } from '../components/demo'
 import { Etiqueta, PaginaArtista } from './Obra'
 
 // Página del artista (docs/PROTOTIPO.md, punto 3). Con su color; Brai solo firma abajo.
@@ -16,7 +17,10 @@ export default function Artista() {
       <main className="mx-auto max-w-5xl px-4 pb-16 pt-10 sm:px-6">
         <section className="entra max-w-2xl">
           <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-verde">{ARTISTA.disciplina}</p>
-          <h1 className="mt-2 font-display text-5xl font-semibold leading-[1.02] tracking-[-0.02em] sm:text-6xl">{ARTISTA.nombre}</h1>
+          <h1 className="mt-2 font-display text-5xl font-semibold leading-[1.02] tracking-[-0.02em] sm:text-6xl">
+            {ARTISTA.nombre}
+            {ES_FICTICIA && <Ficticio>Ficticia</Ficticio>}
+          </h1>
           <p className="mt-2 font-mono text-xs text-verde">{ARTISTA.ciudad}</p>
           {ARTISTA.ejemplo && (
             <p className="mt-3 font-mono text-[10px] text-verde">
@@ -44,7 +48,7 @@ export default function Artista() {
           )}
           <dl className="mt-8 flex gap-10 border-t border-linea pt-5">
             <div>
-              <dt className="font-mono text-[11px] uppercase tracking-[0.14em] text-verde">{MODO_JOSE_LUIS ? 'Obras en la demo' : 'Obras registradas'}</dt>
+              <dt className="font-mono text-[11px] uppercase tracking-[0.14em] text-verde">{MODO_JOSE_LUIS ? 'Obras en la demo' : 'Obras de ejemplo'}</dt>
               <dd className="mt-1 font-display text-4xl font-semibold">{obras.length}</dd>
             </div>
             <div>
@@ -68,7 +72,7 @@ export default function Artista() {
                 </p>
                 <p className="mt-2 inline-flex items-center gap-1.5 text-xs font-semibold">
                   <i className={`size-2 rounded-full ${o.dueno ? 'bg-[var(--acento)]' : 'bg-dorado'}`} />
-                  {o.dueno ? `Con dueño, ${o.dueno}` : MODO_JOSE_LUIS ? 'Sin dueño registrado' : 'Registrada, sin reclamar'}
+                  {o.dueno ? `Con dueño, ${o.dueno}` : MODO_JOSE_LUIS ? 'Sin dueño registrado' : 'Ejemplo, sin reclamar'}
                 </p>
               </Link>
             ))}

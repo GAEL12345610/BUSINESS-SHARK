@@ -1,6 +1,8 @@
 # Demo para José Luis Malo
 
 **Link:** `https://braiart.vercel.app/jose-luis` (abre el recorrido con su nombre).
+**Él no la ha visto, revisado ni aprobado.** La app lo dice en el aviso de arriba. En la reunión se enseña primero la demo genérica y esta solo si él acepta verla (`docs/REUNION_JOSE_LUIS.md`, bloque 3).
+**Apagarla:** variable `VITE_DEMO_JOSE_LUIS=0` en Vercel (Settings, Environment Variables) y volver a publicar. Con eso `/jose-luis` y sus obras caen a la demo genérica. Hacerlo el mismo día si él lo pide.
 **Salir de la demo:** `https://braiart.vercel.app/?salir-demo` (vuelve a la artista de ejemplo).
 Decisión: `docs/DECISIONES.md` #42. Guion de la reunión: `docs/REUNION_JOSE_LUIS.md`.
 
@@ -31,7 +33,7 @@ Decisión: `docs/DECISIONES.md` #42. Guion de la reunión: `docs/REUNION_JOSE_LU
 - **Ninguna foto de su obra sin su permiso.** Cuando la dé: guardar las fotos en `app/public/obras/jose-luis/<nombre>.jpg` y cambiar `imagen` en `app/src/data/demo.ts`.
 
 ## Lo que funciona y lo que no
-- **Funciona:** recorrido, página de cada obra, reclamar con el código `4K7P-9QX2`, panel con quien reclamó, registrar una obra nueva con la cámara, imprimir piezas con un QR que abre la demo al escanearlo.
-- **Funciona entre pestañas del mismo navegador.** Lo que se reclama en una pestaña aparece en el panel abierto en otra.
+- **Funciona (simulado, en el navegador):** recorrido, página de cada obra, reclamar con el código público `4K7P-9QX2` y un correo `@example.com`, panel con quien reclamó, registrar una obra de prueba, imprimir piezas marcadas DEMO con un QR que abre la demo. Cada reclamo dice "Simulación"; ninguna obra suya queda con dueño en ningún lado.
+- **Funciona entre pestañas del mismo navegador** (`localStorage`, persiste hasta Reiniciar demo). Lo que se reclama en una pestaña aparece en el panel abierto en otra.
 - **No se comparte entre dos celulares distintos.** Si José Luis reclama en su celular, ese reclamo no aparece en la laptop del equipo. Para eso hace falta conectar Supabase (`TODO.md`, sección 3). En la reunión: hacer todo el recorrido en **un mismo celular**.
 - El QR de la hoja de impresión apunta a `braiart.vercel.app` mientras no exista `brai.art`. **Nunca grabar ni bloquear un sello NFC con esa dirección** (regla 4).

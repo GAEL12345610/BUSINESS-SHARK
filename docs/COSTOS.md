@@ -1,8 +1,8 @@
 # Mesa de costos de Brai (para Viabilidad)
 
-**Actualizada: 31 oct 2026** con cotizaciones reales (antes eran estimados del 10 oct).
+**Actualizada: 5 nov 2026** (VOID, tarjetas y envío del 424 DNA cotizados en línea; antes, 31 oct). Los precios son de páginas públicas consultadas ese día: confirmar con captura antes de entregar.
 **Tipo de cambio:** 18.80 MXN por USD (FIX de Banxico del 30 oct 2026: 18.7962). **21 MXN por EUR** es supuesto: confirmar con el banco antes de entregar.
-Lo que dice `?` no se pudo cotizar en México todavía. **Antes del 26 nov alguien del equipo entra a MercadoLibre y llena los `?` con captura de pantalla.**
+Lo que dice `?` no se pudo cotizar en México todavía. **Antes del 26 nov alguien del equipo abre cada liga, toma captura de pantalla y la guarda** (los precios de MercadoLibre cambian).
 
 ## 1. Costo de una obra registrada
 
@@ -12,21 +12,22 @@ Lo que dice `?` no se pudo cotizar en México todavía. **Antes del 26 nov algui
 |---|---|---|
 | Sticker NFC NTAG213 | **3.40 MXN** | MercadoLibre México: lotes de 100 entre 238 y 337 MXN (oct 2026). Tomamos el caro. |
 | Etiqueta raspadita | **1.60 MXN** | MercadoLibre México: 300 etiquetas rascables en 477.80 MXN (también hay 300 en 119.82 con descuento). Tomamos el caro. |
-| Etiqueta antidesprendible (VOID) para el sello | **~3.50 MXN** `?` | Referencia de MercadoLibre Argentina: 500 por 92 USD. Falta cotización en México. |
-| Tarjeta de dueño impresa | **~5 MXN** `?` | Sin cotización mexicana. Opción barata: imprimir en casa en cartulina opalina. Pedir precio a 2 imprentas de Guadalajara. |
+| Etiqueta antidesprendible (VOID) para el sello | **~0.70 MXN** | MercadoLibre México, 5 nov 2026: lotes de 500 hologramas VOID entre 208 y 349 MXN ([listado](https://listado.mercadolibre.com.mx/etiquetas-de-seguridad-void)). Tomamos el caro. Antes suponíamos 3.50 con un precio de Argentina. |
+| Tarjeta de dueño impresa | **~2.90 MXN** | 100 tarjetas en opalina: 130 MXN a una cara ([Pop México](https://popmexico.com.mx/products/tarjetas-de-presentacion-opalina-texturizada)) o 2.88 MXN por pieza a doble cara sin IVA ([Printec](https://printec.mx/papeleria/tarjetas-de-presentacion/)). Tomamos el caro. **Ojo:** cada tarjeta lleva un código distinto, y una imprenta normal imprime 100 iguales; lo realista es imprimir en casa sobre opalina. Imprenta física en Guadalajara: `?` (pedir cotización a Imprematic o Todo en Vinil GDL). |
 | QR impreso | **~1 MXN** | Se imprime en la misma hoja de etiquetas. |
-| **Total por obra** | **~15 MXN** | Antes estimábamos ~20. |
+| **Total por obra** | **~9.60 MXN** | 3.40 + 1.60 + 0.70 + 2.90 + 1. El 31 oct era ~15 y el 10 oct ~20. |
 
 ### Versión 2: NTAG 424 DNA (sello que no se puede copiar)
 
 | Pieza | Costo por obra | De dónde sale |
 |---|---|---|
 | Sticker NTAG 424 DNA 22 mm | **~18.50 MXN** | Shop NFC (Italia): 0.88 EUR por pieza en lote de 50. |
-| Envío a México | `?` | Cotizar en el carrito de Shop NFC. Si es caro, buscar en AliExpress (~1.09 USD la pieza). |
-| Resto (raspadita, VOID, tarjeta, QR) | ~11 MXN | Igual que la versión 1. |
-| **Total por obra** | **~30 MXN + envío** | |
+| Envío a México | **0 MXN** (estándar, 8 a 16 días hábiles) | [Shop NFC, envíos](https://shopnfc.com/en/content/1-shipping-and-delivery): "Rest of the World" estándar sin costo; exprés desde 19.90 EUR. México no aparece por nombre: confirmar en el carrito. |
+| Impuestos de importación | **~6.20 MXN** (supuesto) | Shop NFC dice que la aduana la paga quien recibe. 50 piezas son ~44 EUR (~924 MXN). Por mensajería, la tasa global de México para orígenes sin tratado aplicable es 33.5% desde ago 2025 ([The Logistics World](https://thelogisticsworld.com/actualidad-logistica/mexico-lleva-al-33-5-el-impuesto-a-importaciones-por-paqueteria/)); si aplica, son ~310 MXN, ~6.20 por pieza. Hasta 50 USD podría estar exento: **no está confirmado para envíos de Europa**. Lo confirma un adulto con la paquetería |
+| Resto (raspadita, VOID, tarjeta, QR) | ~6.20 MXN | Igual que la versión 1. |
+| **Total por obra** | **~31 MXN** con impuesto, ~25 sin él | 18.50 + 6.20 + 6.20. |
 
-**El dato que cambia todo:** el sello seguro cuesta ~15 MXN más que el barato, no 40 a 90 como creíamos. Ver `COMPETENCIA.md` sección 4.
+**El dato que cambia todo:** el sello seguro cuesta ~21 MXN más que el barato (con impuesto), no 40 a 90 como creíamos. Ver `COMPETENCIA.md` sección 4.
 
 ## 2. Costos fijos
 
@@ -51,7 +52,7 @@ Supuesto: el artista registra **10 obras al año** (5 en el arranque y 5 despué
 | **Año 1** | **19,380 MXN** | **4,750 MXN** |
 | **Año 2 en adelante** | **11,880 MXN** | **4,500 MXN** |
 | % de lo que vende el artista (10 obras de 12,000) | 16% el año 1, 10% después | 4% el año 1 y después |
-| Materiales (versión 1) | ~150 al año | ~150 al año |
+| Materiales (versión 1) | ~100 al año | ~100 al año |
 
 **La verdad sin suavizar:** B es mucho más fácil de vender (4% se parece a lo que ya pagan en comisiones de tarjeta, 16% no). Pero con B necesitas **4 veces más clientes** para ganar lo mismo. Ninguna de las dos está validada: la entrevista decide.
 

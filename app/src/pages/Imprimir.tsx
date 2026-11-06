@@ -56,6 +56,10 @@ export default function Imprimir() {
                 brai.art. No grabes ni bloquees un sello NFC con esta dirección.
               </p>
             )}
+            <p className="mt-2 max-w-xl rounded-md bg-arena px-3 py-2 text-xs leading-snug">
+              Estas piezas son de demostración: el código {codigoDueno} es público y sirve para todas las obras, y las piezas impresas dicen
+              DEMO. No las entregues como si fueran un registro real.
+            </p>
             <p className="mt-1 max-w-xl text-sm text-tinta/75">
               Imprime al 100% (sin "ajustar a la página") en papel opalina o adhesivo. Recorta por la línea punteada. Cubre el código con
               una etiqueta de raspadita antes de entregar la tarjeta.
@@ -90,7 +94,7 @@ export default function Imprimir() {
               <Isotipo size={26} />
             </div>
             <div className="rounded-[1.5mm] border border-dashed border-tinta/40 px-[2mm] py-[2mm] text-center">
-              <p className="font-mono text-[5.5pt] uppercase tracking-[0.12em] text-verde">Tu código de dueño</p>
+              <p className="font-mono text-[5.5pt] uppercase tracking-[0.12em] text-verde">Código de dueño · DEMO, sin validez</p>
               <p className="font-mono text-[12pt] font-medium tracking-[0.2em]">{codigoDueno}</p>
             </div>
             <div className="flex items-end justify-between">
@@ -112,7 +116,7 @@ export default function Imprimir() {
                 Escanea, raspa tu código y la obra queda a tu nombre. Es de un solo uso.
               </p>
               <p className="mt-[2mm] flex items-center gap-[1.5mm] font-mono text-[6pt] text-lienzo/70">
-                <Isotipo size={12} variante="_claro" /> Registro Brai
+                <Isotipo size={12} variante="_claro" /> Prototipo Brai · pieza de demostración
               </p>
             </div>
           </div>
@@ -123,7 +127,7 @@ export default function Imprimir() {
           <div className="flex size-[30mm] flex-col items-center justify-center gap-[1mm] rounded-full bg-lienzo text-center">
             <Isotipo size={30} />
             <span className="text-[5.5pt] font-semibold leading-none">Acerca tu celular</span>
-            <span className="font-mono text-[5pt] text-verde">{obra.registro}</span>
+            <span className="font-mono text-[5pt] text-verde">{obra.registro} · DEMO</span>
           </div>
         </Corte>
 
@@ -136,7 +140,7 @@ export default function Imprimir() {
         </Corte>
       </main>
 
-      <p className="mx-auto max-w-4xl px-4 pb-10 text-xs text-tinta/60 sm:px-6 print:hidden">
+      <p className="mx-auto max-w-4xl px-4 pb-10 text-xs text-tinta/70 sm:px-6 print:hidden">
         El sello y el QR abren {url}. Antes de bloquear un sello, pruébalo en un iPhone y en un Android (memoria/tag-nfc-bloqueado-es-para-siempre.md).
       </p>
     </div>

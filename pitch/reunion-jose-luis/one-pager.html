@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brai, una hoja</title>
+<!-- One-pager para dejar impreso en una plática con un artista. Genérico: no lleva
+     el nombre, las obras ni los datos de ninguna persona real.
+     PDF: node pitch/reunion-jose-luis/exportar.cjs (hoja carta). -->
+<style>
+  @font-face{font-family:Fraunces;src:url(fuentes/fraunces-latin-opsz-normal.woff2) format('woff2');font-weight:100 900}
+  @font-face{font-family:Schibsted;src:url(fuentes/schibsted-grotesk-latin-wght-normal.woff2) format('woff2');font-weight:400 900}
+  @font-face{font-family:Plex;src:url(fuentes/ibm-plex-mono-latin-400-normal.woff2) format('woff2')}
+  :root{--terracota:#C06E52;--btn:#A2563D;--tinta:#2B2622;--dorado:#C9A24B;--lienzo:#F6F1EA;--verde:#5E6C52;--linea:#E5DDCF}
+  @page{size:letter;margin:0}
+  *{box-sizing:border-box}
+  html{background:#ddd}
+  body{margin:0;color:var(--tinta);font:11.4pt/1.5 Schibsted,system-ui,sans-serif}
+  .hoja{width:8.5in;min-height:11in;margin:24px auto;background:var(--lienzo);padding:0.55in 0.6in}
+  @media print{html{background:none}.hoja{margin:0;min-height:auto;height:11in}}
+  .demo{display:inline-block;background:var(--tinta);color:var(--lienzo);font:8pt Plex,monospace;letter-spacing:.1em;padding:3px 8px;border-radius:3px}
+  .demo b{background:var(--dorado);color:var(--tinta);padding:0 5px;margin-right:6px;border-radius:2px}
+  header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+  .marca{display:flex;gap:10px;align-items:center;font:600 22pt Fraunces,Georgia,serif}
+  h1{font:600 27pt/1.08 Fraunces,Georgia,serif;letter-spacing:-.015em;margin:6px 0 8px}
+  h1 span{color:var(--btn)}
+  .lead{font-size:13pt;max-width:6.6in;margin:0 0 16px}
+  h2{font:8.2pt Plex,monospace;text-transform:uppercase;letter-spacing:.14em;color:var(--verde);margin:0 0 6px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:20px 26px}
+  .caja{border-top:1.5px solid var(--tinta);padding-top:8px}
+  .caja.suave{border-top-color:var(--linea)}
+  ul{margin:0;padding-left:1.1em}
+  li{margin:2px 0}
+  table{width:100%;border-collapse:collapse;font-size:10.6pt}
+  td,th{text-align:left;padding:4px 6px;border-bottom:1px solid var(--linea);vertical-align:top}
+  th{font:8pt Plex,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--verde);font-weight:400}
+  .estado{font:7.6pt Plex,monospace;color:var(--verde);white-space:nowrap}
+  .preguntas{background:#fff;padding:12px 16px;border-radius:8px;margin-top:20px;font-size:12pt}
+  .preguntas ol{margin:4px 0 0;padding-left:1.2em}
+  footer{margin-top:14px;font:7.8pt/1.5 Plex,monospace;color:var(--verde);display:flex;justify-content:space-between;gap:18px}
+</style>
+</head>
+<body>
+<div class="hoja">
+  <header>
+    <div class="marca"><img src="../../brand/isotipo.svg" width="30" height="30" alt="">Brai</div>
+    <span class="demo"><b>DEMO</b>Prototipo de estudiantes, Business Shark 8°</span>
+  </header>
+
+  <h2>Una idea que estamos probando</h2>
+  <h1>Vendiste tu obra. <span>¿Sabes dónde está hoy?</span></h1>
+  <p class="lead">Brai ayuda a artistas que venden directo a registrar la procedencia de cada obra y, cuando el comprador la reclama, mantener el contacto para futuras obras.</p>
+
+  <div class="grid">
+    <div class="caja">
+      <h2>Qué pagaría el artista</h2>
+      <p style="margin:0">El registro de cada obra hecho contigo en tu taller, tu página con tu color, las piezas físicas y el acompañamiento.</p>
+    </div>
+    <div class="caja">
+      <h2>Qué recibe el comprador</h2>
+      <p style="margin:0">La página de la obra con su historia, un sello con QR detrás del cuadro y una tarjeta firmada por ti con un código para reclamarla. Si la reclama y comparte su correo, tú puedes volver a escribirle.</p>
+    </div>
+    <div class="caja">
+      <h2>Lo que la demo sí enseña</h2>
+      <ul>
+        <li>La página de una obra de ejemplo</li>
+        <li>Raspar la tarjeta y simular el reclamo</li>
+        <li>El panel donde el artista vería quién la reclamó</li>
+        <li>Las dos formas de precio con tus números</li>
+      </ul>
+    </div>
+    <div class="caja suave">
+      <h2>Lo que todavía no existe</h2>
+      <ul>
+        <li>Cuentas, servidor y correos: todo es simulado</li>
+        <li>Sellos NFC funcionando</li>
+        <li>Prueba legal de autoría o propiedad</li>
+        <li>Clientes, ventas o resultados medidos</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="caja" style="margin-top:14px">
+    <h2>Precio: en prueba, nadie lo ha pagado</h2>
+    <table>
+      <tr><th></th><th>Arranque</th><th>Después</th><th>Estado</th></tr>
+      <tr><td><b>Opción A</b></td><td>7,500 MXN, hasta 20 obras con sello y tarjeta</td><td>990 MXN al mes</td><td class="estado">Publicado, sin validar</td></tr>
+      <tr><td><b>Opción B</b></td><td>2,500 MXN, 5 obras con sello y tarjeta</td><td>450 MXN por obra adicional, sin mensualidad</td><td class="estado">Alternativa en prueba</td></tr>
+    </table>
+    <p style="margin:6px 0 0;font-size:9pt;color:#5b534c">No prometemos ventas ni retorno. Buscamos 3 artistas fundadores con arranque y 3 meses sin costo, a cambio de registrar obras reales y contar su caso con permiso por escrito. Condiciones finales por definir.</p>
+  </div>
+
+  <div class="preguntas">
+    <h2>Lo que queremos aprender de ti</h2>
+    <ol>
+      <li>¿Qué pasa con quien te compra una obra después de la venta?</li>
+      <li>¿Qué te serviría de esto, si algo? ¿Qué le quitarías?</li>
+      <li>¿Cuál de las dos formas de precio te haría más sentido, o ninguna?</li>
+    </ol>
+  </div>
+
+  <footer>
+    <span>Demo: braiart.vercel.app (personas, obras y correos ficticios). Qué es real: braiart.vercel.app/demo</span>
+    <span>Contacto del proyecto: pendiente</span>
+  </footer>
+</div>
+</body>
+</html>

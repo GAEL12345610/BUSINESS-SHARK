@@ -1,6 +1,6 @@
 # Competencia de Brai: ingeniería inversa
 
-Fecha: 31 oct 2026. Fuentes al final. Lo que no se pudo confirmar dice `?`.
+Fecha: 31 oct 2026, **actualizado el 5 nov 2026** (Verisart y markmy, ver `MERCADO.md`). Fuentes al final. Lo que no se pudo confirmar dice `?`.
 
 **Cómo leer esto:** no copiamos el producto de nadie. Copiamos **cómo cobran, cómo consiguen clientes y qué prometen**, y le ponemos lo nuestro (servicio en persona, en español, en México).
 
@@ -10,13 +10,14 @@ Fecha: 31 oct 2026. Fuentes al final. Lo que no se pudo confirmar dice `?`.
 
 | Quién | Qué vende | A quién | Cómo cobra | Chip |
 |---|---|---|---|---|
-| **Verisart** (EUA, Reino Unido) | Certificado digital + packs físicos (NFC, QR, holograma) | Artistas, galerías, tiendas Shopify | Starter a 1 USD por certificado, Growth 29.99 USD al mes, Premium 49.99, Pro 99.99. En Shopify, 0.25 USD por venta certificada | **NFC Pack: 25 sellos por 50 USD más envío (2 USD por sello).** QR Pack: 25 por 25 USD. Verificado en su página el 31 oct 2026 |
+| **Verisart** (EUA, Reino Unido) | Certificado digital + packs físicos (NFC, QR, holograma) | Artistas, galerías, tiendas Shopify | Starter gratis (1 certificado, luego 1 USD por certificado), Growth 29.99 USD al mes, Premium 49.99, Pro 99.99. En Shopify, 0.25 USD por venta certificada | **NFC Pack: 25 sellos por 100 USD más envío (4 USD por sello).** QR Pack: 25 por 50 USD. Verificado en su página el 5 nov 2026 (el 31 oct decía 50 y 25 USD) |
 | **Tagsmart** (Reino Unido) | Servicio administrado: certificado + etiqueta con ADN sintético | Artistas e impresores | Plataforma gratis. **Cobra por obra:** de 20 a 120 libras según el soporte (papel, aluminio, lienzo) | Etiqueta con ADN, no NFC |
 | **Artwork Archive** (EUA) | Inventario de obra + contactos de coleccionistas + certificados en PDF | Artistas y coleccionistas | Suscripción de ~8 a 24 USD al mes | Ninguno |
 | **Arteïa** (Francia) | Pasaporte digital con NFC cifrado + "VIP Room" para el dueño | Casas de subasta, galerías, herederos | `?` (venta a la medida) | NFC cifrado, se destruye si lo despegas |
 | **Startbahn Cert.** (Japón) | Certificado con chip IC | Galerías, escuelas, fundaciones | `?`. Una fundación compró 3,000 sellos y **se los regaló a artistas** | Chip IC |
 | **Hahnemühle My Art Registry** (Alemania) | Registro en línea ligado a sus certificados con holograma | Quien imprime en papel Hahnemühle | Viene con el certificado físico | Holograma |
-| **Fine Art Ledger, markmy, Ixkio** | Variantes de NFC + registro | Artistas sueltos y galerías | `?` | NFC |
+| **markmy.art** (antes proofmark) | Perfil de artista, certificados ilimitados, NFC opcional. Interfaz en español | Artistas sueltos | **Gratis.** Los NFC se venden aparte, precio `?` | NFC opcional |
+| **Fine Art Ledger, Ixkio** | Variantes de NFC + registro | Artistas sueltos y galerías | `?` | NFC |
 | **INDAUTOR** (gobierno de México) | Registro de obra (prueba de autoría) | Cualquier autor | **~367 MXN por obra** (2026, dato de un blog; confirmar) | Ninguno |
 
 **En México y Latinoamérica no encontramos a nadie que haga NFC + registro de dueño para artistas plásticos.** Lo más cercano en la región fueron plataformas de NFT (Perú, Argentina), que no es lo mismo. Ojo: "no lo encontramos" no es lo mismo que "no existe". Hay que preguntarle a cada artista entrevistado si ha visto algo así.
@@ -26,10 +27,14 @@ Fecha: 31 oct 2026. Fuentes al final. Lo que no se pudo confirmar dice `?`.
 ## 2. Lo que aprendimos de cada uno (y qué copiamos)
 
 ### Verisart: el líder, y su truco es el físico
-- **Dato verificado (31 oct 2026, verisart.com/pricing):** cobran **2 USD por sello NFC** (pack de 25 en 50 USD más envío). A nosotros un NTAG 424 DNA nos cuesta 0.92 euros (~19 MXN) en Shop NFC. El sello solo, a precio de Verisart, ya deja margen.
+- **Dato verificado (5 nov 2026, verisart.com/pricing):** cobran **4 USD por sello NFC** (pack de 25 en 100 USD más envío; el 31 oct era la mitad). A nosotros un NTAG 424 DNA nos cuesta 0.92 euros (~19 MXN) en Shop NFC. El sello solo, a precio de Verisart, deja margen.
 - **Cómo gana dinero de verdad:** el software es casi gratis; el margen está en los **packs físicos** (NFC, QR, certificados con holograma) y en la **comisión por venta** en Shopify.
 - **El truco de producto que copiamos:** su certificado sube de nivel ("COA+") cuando ligas un chip físico a la obra. La página **enseña el nivel de confianza**. Brai hace lo mismo: la página de la obra dice qué capas tiene (sello, fotos huella, dueño reclamado).
 - **Su debilidad:** todo es "hazlo tú mismo", en inglés, con la palabra blockchain al frente. El artista mexicano promedio no va a configurar Shopify.
+
+### markmy.art: el certificado digital ya es gratis (5 nov 2026)
+- Perfil de artista, certificados ilimitados y NFC opcional, **gratis**, con interfaz en español. No describe transferencia de dueño.
+- **Lección:** Brai no puede vender "certificado digital con NFC": eso cuesta cero en otro lado. Lo que se vende es el servicio en persona, el ritual de la tarjeta y que el comprador quede ligado a la obra. Si al artista no le importa eso, perdemos (`MERCADO.md`, sección 4).
 
 ### Tagsmart: la prueba de que se puede cobrar por obra
 - Cobran **de 20 a 120 libras por obra** (unos 500 a 3,000 MXN) y el software es gratis. Es un servicio administrado, igual que el nuestro.
@@ -84,7 +89,7 @@ Pensábamos que un NTAG 424 DNA (el chip que genera una firma nueva en cada toqu
 
 Falta sumar envío desde Italia (`?`, cotizar) y posible impuesto de importación (`?`).
 
-**Traducción:** por **~15 MXN más por obra**, la promesa pasa de "registro de propiedad" a "y además **este sello es el original**". Eso cambia la decisión 8 (ver `DECISIONES.md`, 31 oct). El backend ya trae la verificación lista (`app/supabase/functions/sello/`).
+**Traducción:** por **~15 a 21 MXN más por obra** (21 si se paga impuesto de importación, `COSTOS.md` del 5 nov), la promesa pasa de "registro de propiedad" a "y además **este sello es el original**". Eso cambia la decisión 8 (ver `DECISIONES.md`, 31 oct). El backend ya trae la verificación lista (`app/supabase/functions/sello/`).
 
 ---
 
@@ -95,7 +100,7 @@ Falta sumar envío desde Italia (`?`, cotizar) y posible impuesto de importació
 | Idioma y cercanía | Español, en persona, en Guadalajara | |
 | Ritual | Tarjeta firmada a mano y raspadita en la entrega | |
 | Datos del comprador | Los captura el comprador al reclamar, no el artista | |
-| Precio mensual | | 990 MXN contra 150 a 550 MXN de software hazlo tú mismo |
+| Precio mensual | | 990 MXN contra 0 (markmy.art) o 150 a 550 MXN de software hazlo tú mismo |
 | Marca y confianza | | Verisart tiene +50,000 creadores. Nosotros, cero casos. **Por eso el caso fundador vale oro.** |
 | Escala | | Cada setup son ~8 horas en persona. Eso no escala sin contratar. |
 
@@ -115,6 +120,7 @@ Falta sumar envío desde Italia (`?`, cotizar) y posible impuesto de importació
 - Arteïa: [Tezos, Millon y Arteïa](https://spotlight.tezos.com/leading-auction-house-millon-to-use-arteia-and-tezos-blockchain-to-authenticate-art-sales/).
 - Startbahn: [Bijutsu Techo, lanzamiento de Startbahn Cert.](https://bijutsutecho.com/magazine/news/headline/21573).
 - Hahnemühle: [My Art Registry](https://www.hahnemuehle.com/es/digital-fineart/my-art-registry.html).
+- markmy.art: [markmy.art](https://markmy.art/), consultado el 5 nov 2026.
 - Otros: [NFCW, Fine Art Ledger](https://www.nfcw.com/?p=58091), [Ixkio y Mahajati](https://www.nfcw.com/2023/03/06/382289/mahajati-picks-ixkio-to-authenticate-artworks-with-nfc/), [markmy](https://alternativeto.net/software/markmy/about/).
 - INDAUTOR registro de obra: [TramiTeca, tarifa 2026](https://www.tramitecadigital.com/?p=4753) (blog, confirmar en el DOF).
 - Derecho de participación: [Secretaría de Cultura](https://www.gob.mx/cultura/prensa/el-indautor-da-a-conocer-el-esquema-tarifario-del-derecho-de-participacion-a-favor-de-las-personas-artistas-visuales), [Uhthoff](https://uhthoff.com.mx/en/nuevas-obligaciones-para-revendedores-de-obras-entendiendo-el-acuerdo-publicado-por-indautor-respecto-al-esquema-tarifario-del-derecho-de-seguimiento/), [DOF 19 ene 2023](https://dof.gob.mx/index_111.php?year=2023&month=01&day=19).

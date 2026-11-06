@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brai, Lean Canvas</title>
+<!-- Lean Canvas de Brai en una hoja carta horizontal. Fuentes de cada dato:
+     docs/OFERTA.md, docs/COSTOS.md, docs/MERCADO.md, docs/COMPETENCIA.md.
+     Cada bloque dice si es DATO (con fuente), SUPUESTO o PENDIENTE.
+     PDF y PNG: node pitch/jurado-26nov/exportar.cjs -->
+<style>
+  @font-face{font-family:Fraunces;src:url(../reunion-jose-luis/fuentes/fraunces-latin-opsz-normal.woff2) format('woff2');font-weight:100 900}
+  @font-face{font-family:Schibsted;src:url(../reunion-jose-luis/fuentes/schibsted-grotesk-latin-wght-normal.woff2) format('woff2');font-weight:400 900}
+  @font-face{font-family:Plex;src:url(../reunion-jose-luis/fuentes/ibm-plex-mono-latin-400-normal.woff2) format('woff2')}
+  @page{size:11in 8.5in;margin:0}
+  *{box-sizing:border-box}
+  html{background:#ddd}
+  body{margin:0;color:#2B2622;font:8.6pt/1.38 Schibsted,system-ui,sans-serif}
+  .hoja{width:11in;height:8.5in;margin:20px auto;background:#F6F1EA;padding:0.4in 0.45in;display:grid;grid-template-rows:auto 1fr auto;gap:10px}
+  @media print{html{background:none}.hoja{margin:0}}
+  header{display:flex;justify-content:space-between;align-items:baseline}
+  h1{font:600 20pt Fraunces,Georgia,serif;margin:0;letter-spacing:-.01em}
+  h1 span{color:#A2563D}
+  .meta{font:7.5pt Plex,monospace;color:#5E6C52}
+  .canvas{display:grid;grid-template-columns:repeat(10,1fr);grid-template-rows:1fr 1fr 0.85fr;gap:6px}
+  .b{background:#fff;border-radius:6px;padding:8px 10px;overflow:hidden}
+  .b h2{font:7.4pt Plex,monospace;text-transform:uppercase;letter-spacing:.1em;color:#5E6C52;margin:0 0 5px;display:flex;justify-content:space-between;gap:6px}
+  .b ul{margin:0;padding-left:1em}
+  .b li{margin:0 0 3px}
+  .b p{margin:0 0 4px}
+  .t{font:6.6pt Plex,monospace;letter-spacing:.08em;padding:1px 5px;border-radius:3px;white-space:nowrap}
+  .dato{background:#E3E8DD;color:#3F4A36}
+  .sup{background:#F3E4DC;color:#7A3F2B}
+  .pend{background:#C9A24B;color:#2B2622}
+  .problema{grid-column:1/3;grid-row:1/3}
+  .solucion{grid-column:3/5;grid-row:1}
+  .metricas{grid-column:3/5;grid-row:2}
+  .propuesta{grid-column:5/7;grid-row:1/3;background:#2B2622;color:#F6F1EA}
+  .propuesta h2{color:#C9A24B}
+  .propuesta .grande{font:600 12.5pt/1.25 Fraunces,Georgia,serif;margin:4px 0 8px}
+  .ventaja{grid-column:7/9;grid-row:1}
+  .canales{grid-column:7/9;grid-row:2}
+  .clientes{grid-column:9/11;grid-row:1/3}
+  .costos{grid-column:1/6;grid-row:3}
+  .ingresos{grid-column:6/11;grid-row:3}
+  footer{font:7pt Plex,monospace;color:#5E6C52;display:flex;justify-content:space-between;gap:20px}
+</style>
+</head>
+<body>
+<div class="hoja">
+  <header>
+    <h1>Brai · <span>Lean Canvas</span></h1>
+    <span class="meta">Prototipo de estudiantes · Business Shark 8° · 5 nov 2026 · 0 entrevistas hechas</span>
+  </header>
+
+  <div class="canvas">
+    <section class="b problema">
+      <h2>Problema <span class="t sup">HIPÓTESIS</span></h2>
+      <ul>
+        <li>El artista vende una obra y pierde el rastro de quién la tiene.</li>
+        <li>No puede volver a venderle a quien ya le compró.</li>
+        <li>La obra no tiene un registro de su historia si se revende o se hereda.</li>
+      </ul>
+      <p style="margin-top:8px"><b>Hoy lo resuelven con:</b> libreta, WhatsApp, Instagram, certificado en papel, o nada.</p>
+      <p><b>Sustituto gratis:</b> markmy.art (certificados con NFC, en español). <span class="t dato">DATO</span></p>
+    </section>
+
+    <section class="b solucion">
+      <h2>Solución <span class="t pend">PROTOTIPO</span></h2>
+      <ul>
+        <li>Registro de cada obra hecho con el artista en su taller.</li>
+        <li>Sello NFC con QR, tarjeta firmada con raspadita y página de la obra.</li>
+        <li>El comprador la reclama y queda ligado a la obra.</li>
+      </ul>
+    </section>
+
+    <section class="b metricas">
+      <h2>Métricas clave <span class="t pend">SIN DATOS</span></h2>
+      <ul>
+        <li><b>% de obras reclamadas</b> por su comprador. La que más importa.</li>
+        <li>Mensajes del artista a sus compradores.</li>
+        <li>Recompras que el artista reporte.</li>
+        <li>Artistas que pagarían, y cuál opción.</li>
+      </ul>
+    </section>
+
+    <section class="b propuesta">
+      <h2>Propuesta única de valor <span class="t pend">EN PRUEBA</span></h2>
+      <p class="grande">Registra la procedencia de cada obra que vendes y, cuando tu comprador la reclama, mantén el contacto para tus próximas obras.</p>
+      <p>Para el artista: autoridad y saber quién reclamó cada obra. Para el comprador: la historia de la obra y un registro de procedencia.</p>
+      <p style="color:#CFC6B8">No es: marketplace, intermediario de pagos, prueba legal de propiedad ni NFT.</p>
+    </section>
+
+    <section class="b ventaja">
+      <h2>Ventaja difícil de copiar <span class="t sup">SUPUESTO</span></h2>
+      <p>El servicio en persona, en español, en Guadalajara, y los primeros casos de artistas fundadores. La tecnología se copia; la relación, no.</p>
+    </section>
+
+    <section class="b canales">
+      <h2>Canales <span class="t sup">SUPUESTO</span></h2>
+      <ul>
+        <li>Contactos del equipo (con un adulto).</li>
+        <li>Estudios abiertos y ferias: ART WKND GDL, Estación Material. <span class="t dato">DATO</span></li>
+        <li>Después: patrocinador que regala kits (modelo Startbahn).</li>
+      </ul>
+    </section>
+
+    <section class="b clientes">
+      <h2>Clientes <span class="t sup">SUPUESTO</span></h2>
+      <p><b>Paga:</b> artista que vende obra original directo, 10 o más obras al año a 10,000 MXN o más, o con audiencia propia.</p>
+      <p><b>Usa:</b> el comprador, que no paga.</p>
+      <p><b>Primeros:</b> hasta 3 fundadores. Ninguno ha aceptado.</p>
+      <p style="margin-top:6px">69% de los coleccionistas ya compró directo a un artista: en el taller 48%, por encargo 40%, por Instagram 38% (Art Basel y UBS 2026; México no incluido). <span class="t dato">DATO</span></p>
+      <p>8,870 artistas visuales en Jalisco (DataMéxico). <span class="t dato">DATO</span></p>
+    </section>
+
+    <section class="b costos">
+      <h2>Estructura de costos <span class="t dato">COTIZADO</span></h2>
+      <ul>
+        <li><b>~9.60 MXN por obra</b> con NTAG213 (sello, raspadita, VOID, tarjeta, QR). ~31 MXN con NTAG 424 DNA e impuesto.</li>
+        <li><b>Fijos:</b> ~49 MXN al año como prototipo; ~10,550 MXN al año si se opera (Vercel Pro, Supabase Pro, dominio).</li>
+        <li><b>Lo más caro: las horas.</b> ~8 h por arranque y ~1 h por obra adicional. <span class="t sup">SUPUESTO</span></li>
+      </ul>
+    </section>
+
+    <section class="b ingresos">
+      <h2>Ingresos <span class="t pend">SIN VALIDAR</span></h2>
+      <ul>
+        <li><b>Opción A</b> (publicada): 7,500 MXN de arranque y 990 al mes. Año 1: 19,380. Equilibrio con 1 artista.</li>
+        <li><b>Opción B</b> (en prueba): 2,500 de arranque con 5 obras y 450 por obra. Año 1 con 10 obras: 4,750. Equilibrio con ~4 artistas, contando horas.</li>
+        <li>Nadie ha pagado. La entrevista decide: gana la que escojan 2 de 3 artistas.</li>
+      </ul>
+    </section>
+  </div>
+
+  <footer>
+    <span>DATO: con fuente en docs/ · SUPUESTO: lo creemos, sin probar · PENDIENTE: no existe o no se ha medido</span>
+    <span>Fuentes: docs/MERCADO.md, docs/COSTOS.md, docs/OFERTA.md, docs/PERSPECTIVAS.md</span>
+  </footer>
+</div>
+</body>
+</html>

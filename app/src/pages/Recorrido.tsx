@@ -55,13 +55,15 @@ function Calculadora() {
 
       <div className="mt-8 grid gap-4 md:grid-cols-2">
         {[
-          { nombre: 'Opción A', como: `${mxn(OFERTA_A.setup)} de arranque + ${mxn(OFERTA_A.mes)} al mes`, nota: `Incluye ${OFERTA_A.incluidas} obras en el arranque.`, y1: a1, y2: a2 },
-          { nombre: 'Opción B', como: `${mxn(OFERTA_B.arranque)} de arranque + ${mxn(OFERTA_B.porObra)} por obra`, nota: `El arranque incluye ${OFERTA_B.incluidas} obras. Sin mensualidad.`, y1: b1, y2: b2 },
+          { nombre: 'Opción A', estado: 'Precio publicado, sin validar', como: `${mxn(OFERTA_A.setup)} de arranque + ${mxn(OFERTA_A.mes)} al mes`, nota: `Incluye ${OFERTA_A.incluidas} obras en el arranque.`, y1: a1, y2: a2 },
+          { nombre: 'Opción B', estado: 'Alternativa en prueba', como: `${mxn(OFERTA_B.arranque)} de arranque + ${mxn(OFERTA_B.porObra)} por obra`, nota: `El arranque incluye ${OFERTA_B.incluidas} obras. Sin mensualidad.`, y1: b1, y2: b2 },
         ].map((o) => (
           <div key={o.nombre} className="rounded-2xl bg-lienzo p-5">
-            <p className="font-semibold">{o.nombre}</p>
+            <p className="flex flex-wrap items-baseline justify-between gap-2 font-semibold">
+              {o.nombre} <span className="font-mono text-[10px] font-normal uppercase tracking-[0.12em] text-verde">{o.estado}</span>
+            </p>
             <p className="mt-1 text-sm text-tinta/75">{o.como}</p>
-            <p className="text-xs text-tinta/60">{o.nota}</p>
+            <p className="text-xs text-tinta/70">{o.nota}</p>
             <dl className="mt-5 grid grid-cols-2 gap-4">
               <div>
                 <dt className="text-xs text-tinta/65">Primer año</dt>
@@ -75,14 +77,16 @@ function Calculadora() {
               </div>
             </dl>
             <p className="mt-4 border-t border-linea pt-3 text-sm">
-              Se paga con <span className="font-semibold">{ventas(o.y1)} {ventas(o.y1) === 1 ? 'venta extra' : 'ventas extra'}</span> el primer año.
+              El primer año equivale al precio de venta de <span className="font-semibold">{ventas(o.y1)} {ventas(o.y1) === 1 ? 'obra' : 'obras'}</span>{' '}
+              como las tuyas.
             </p>
           </div>
         ))}
       </div>
-      <p className="mt-5 text-xs leading-relaxed text-tinta/60">
-        "Venta extra" es una obra que le vendes a alguien que ya te compró y que sin Brai no te habría vuelto a comprar. Es una estimación, no
-        una promesa. La galería, como referencia, se queda con 40 a 50% de cada venta.
+      <p className="mt-5 text-xs leading-relaxed text-tinta/70">
+        Referencia ilustrativa, no una promesa ni un retorno: compara el costo de Brai con el precio bruto de tus obras, sin descontar
+        materiales, tiempo ni comisiones. No sabemos todavía si Brai te ayudaría a vender más: eso es justo lo que queremos averiguar. Como
+        referencia, una galería suele quedarse con 40 a 50% de cada venta.
       </p>
     </div>
   )
@@ -110,8 +114,8 @@ export default function Recorrido() {
               {primer ? `Hola, ${primer}.` : 'Hola.'}
             </h1>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-tinta/85">
-              Te enseñamos cómo funcionaría Brai con tu obra. Todo lo que ves es un ejemplo: tus obras, tus colores y tus historias van después,
-              si te late.
+              Te enseñamos cómo funcionaría Brai con tu obra. Es un prototipo: todo lo que ves es un ejemplo y nada de lo que hagas se envía a
+              ningún lado. Tus obras, tus colores y tus historias van después, si te late.
             </p>
           </div>
           <div className="flex justify-center md:justify-end">
@@ -145,8 +149,8 @@ export default function Recorrido() {
             </div>
             <div>
               <p className="text-lg leading-relaxed text-tinta/85">
-                Con la obra le entregas una tarjeta firmada por ti. Raspa su código, lo escribe con su correo y la obra queda a su nombre. El
-                código sirve una sola vez.
+                Con la obra le entregas una tarjeta firmada por ti. Raspa su código, lo escribe con su correo y la obra queda a su nombre. En la
+                versión real el código sirve una sola vez; aquí es un código público y el correo es inventado.
               </p>
               <p className="mt-4 font-semibold">{raspada ? <LinkReclamarDemo codigoObra={obra.codigo} codigo={CODIGO_DEMO} titulo={obra.titulo} /> : 'Ráspala con el dedo.'}</p>
             </div>
@@ -155,27 +159,33 @@ export default function Recorrido() {
 
         <Paso n={3} titulo="Tú sabes quién la tiene.">
           <p className="max-w-2xl text-lg leading-relaxed text-tinta/85">
-            En tu panel ves cada obra, quién es su dueño y su correo. Cuando terminas una obra nueva, les avisas primero a quienes ya te compraron.
-            En la página pública el dueño solo aparece con sus iniciales.
+            En tu panel ves cada obra y, si su comprador la reclamó, quién es y su correo. Si no la reclama, no sabrás quién la tiene. Cuando
+            terminas una obra nueva, puedes escribirles primero a quienes ya te compraron. En la página pública el dueño solo aparece con sus
+            iniciales.
           </p>
           <Link to="/panel" className="mt-6 inline-flex items-center gap-2 rounded-[10px] bg-terracota-btn px-5 py-3 font-semibold text-lienzo hover:bg-terracota-hover">
             Abrir el panel de ejemplo <ArrowRight size={18} />
           </Link>
-          <p className="mt-3 text-sm text-tinta/65">Si reclamaste la obra en el paso 2, ahí vas a ver tu correo.</p>
+          <p className="mt-3 text-sm text-tinta/65">Si reclamaste la obra en el paso 2, ahí vas a ver el correo de prueba que usaste.</p>
           <p className="mt-5 max-w-2xl rounded-2xl bg-white p-5 leading-relaxed shadow-[inset_0_0_0_1px_var(--color-linea)]">
-            <span className="font-semibold">Pruébalo con una obra tuya.</span> En el panel, toca "Registrar obra", tómale foto con el celular y
-            ponle título. En un minuto tiene su página y sus piezas para imprimir.
+            <span className="font-semibold">Pruébalo con una obra de prueba.</span> En el panel, toca "Registrar obra" y ponle título. En un
+            minuto tiene su página de ejemplo y sus piezas para imprimir. Se queda solo en este navegador.
           </p>
         </Paso>
 
         <Paso n={4} titulo="Cuánto cuesta, con tus números.">
           <p className="mb-8 max-w-2xl text-lg leading-relaxed text-tinta/85">
-            Tenemos dos formas de cobrarlo y queremos saber cuál te hace más sentido. Mueve las barras con lo que vendes de verdad.
+            Tenemos dos formas de cobrarlo y ninguna está validada todavía: queremos saber cuál te hace más sentido, o si ninguna. Mueve las
+            barras con números parecidos a los tuyos. No se guardan.
           </p>
           <Calculadora />
         </Paso>
 
-        <Paso n={5} titulo="Queremos que seas de los primeros tres.">
+        <Paso n={5} titulo="Una propuesta para platicar, no para firmar.">
+          <p className="mb-8 max-w-2xl text-lg leading-relaxed text-tinta/85">
+            Buscamos a los primeros tres artistas fundadores. Hoy no te pedimos ninguna decisión: solo queremos saber si te interesaría y qué
+            cambiarías.
+          </p>
           <div className="grid gap-10 md:grid-cols-2">
             <div>
               <p className="font-semibold">Lo que te damos</p>
@@ -183,7 +193,8 @@ export default function Recorrido() {
                 <li>El arranque, sin costo.</li>
                 <li>Tres meses sin costo.</li>
                 <li>Tu página con tu nombre y tu color.</li>
-                <li>Al cuarto mes sigues con precio de fundador, o te vas y te quedas con todo lo registrado.</li>
+                <li>Al cuarto mes decides si sigues o te vas. Con la Opción A seguirías a 990 MXN al mes congelados. Con la Opción B: por definir.</li>
+                <li>Si te vas, la idea es que te lleves todo lo registrado. La forma de descargarlo todavía no existe.</li>
               </ul>
             </div>
             <div>
@@ -192,7 +203,7 @@ export default function Recorrido() {
                 <li>Registrar de 3 a 5 obras reales.</li>
                 <li>Entregar las tarjetas a tus compradores.</li>
                 <li>30 minutos de grabación para nuestro video.</li>
-                <li>Permiso por escrito para contar tu caso.</li>
+                <li>Permiso por escrito para contar tu caso. Lo redacta y lo revisa un adulto; nada se firma el día de la plática.</li>
               </ul>
             </div>
           </div>
@@ -201,6 +212,9 @@ export default function Recorrido() {
         <section className="border-t border-linea py-16 text-center">
           <p className="mx-auto max-w-xl font-display text-3xl font-semibold leading-tight">Cada obra sabe de dónde viene.</p>
           <p className="mx-auto mt-4 max-w-md text-tinta/75">Gracias por tu tiempo. Lo que nos digas hoy decide cómo construimos Brai.</p>
+          <p className="mx-auto mt-6 max-w-md text-sm text-tinta/65">
+            <Link to="/demo" className="underline underline-offset-2">Qué hace la demo y qué no</Link>
+          </p>
         </section>
       </main>
     </>

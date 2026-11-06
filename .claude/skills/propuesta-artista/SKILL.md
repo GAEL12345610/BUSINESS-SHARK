@@ -1,6 +1,6 @@
 ---
 name: propuesta-artista
-description: "Propuesta comercial de Brai para un artista: traduce lo que dijo en la entrevista en su dolor real, aplica el precio vigente, calcula cuántas ventas extra pagan el servicio y saca un markdown de 1 página. Gatillos: hazme la propuesta para X, arma la oferta para el artista, cotización para X."
+description: "Propuesta comercial de Brai para un artista: traduce lo que dijo en la entrevista en su dolor real, aplica el precio vigente, compara su costo con el precio de sus obras como referencia ilustrativa (nunca como retorno) y saca un markdown de 1 página. Gatillos: hazme la propuesta para X, arma la oferta para el artista, cotización para X."
 ---
 
 # Propuesta para un artista
@@ -25,8 +25,9 @@ Si falta un dato, **no lo inventes**: pregúntalo con AskUserQuestion.
 
 Con datos del artista:
 - Costo anual = setup + 12 × mantenimiento.
-- Ventas extra para pagarlo = costo anual ÷ precio promedio de su obra.
-- Frase ancla: *"Con vender [N] obra más al año a alguien que ya te compró, Brai se paga solo."*
+- Equivalencia = costo anual ÷ precio promedio de su obra. Se dice así: *"El primer año cuesta lo mismo que el precio de venta de [N] obras tuyas."* Y siempre al lado: es precio bruto, no ganancia, y no está comprobado que Brai cause ventas.
+- **Prohibido** (`docs/DEMO_HONESTA.md`): "se paga solo", "con N ventas extra recuperas", "vas a vender más". Mientras no haya un caso medido, no hay retorno que prometer.
+- El precio va con su estado (`docs/OFERTA.md`): A publicado sin validar, B en prueba.
 - Si el artista vende a través de galería: compara contra la comisión (suele ser 40 a 50%). Marca este dato como referencia de industria, no de su galería.
 - Derecho de reventa (LFDA art. 92 bis): menciónalo como beneficio, sin prometer montos.
 

@@ -1,4 +1,4 @@
-# Brai, manual de marca v2.3
+# Brai, manual de marca v2.4
 
 *Cada obra sabe de dónde viene.*
 
@@ -132,6 +132,7 @@ Punto es el sello redondo con patitas: cuerpo terracota plano, el hueco del enso
 `app/public/og.png` (1200 × 630) es lo que se ve cuando alguien pega el link en WhatsApp o en redes. Se genera desde `app/scripts/og/plantilla.html` con `node app/scripts/og/generar.cjs`. Si cambia el titular de la landing, se regenera.
 
 ## 14. Historial
+- **v2.4, ajuste (5 nov 2026):** el título de este manual, `brand/kit.html` y `/marca` decían v2.2 y v2.3; ahora todos dicen v2.4. Sin cambios de diseño.
 - **v2.4 (31 oct 2026):** Punto v2 con principios de Clawd: color plano, sin boca, patitas.
 - **v2.3 (31 oct 2026):** mascota Punto (sección 12), imagen para compartir (13), kit vivo en `/marca`.
 - **v2.2 (31 oct 2026):** sistema tipográfico: tamaño óptico, peso 560, cifras tabulares en el registro, fuentes autohospedadas. Ver sección 6.

@@ -2,6 +2,24 @@
 
 Una línea por decisión, con su porqué. Lo más reciente arriba. Si una decisión cambia, se tacha y se agrega la nueva con fecha: nunca se borra.
 
+## 5 nov 2026, sexta sesión: propuestas de Claude, publicadas el 6 nov
+
+Hechas en la rama `claude/demo-honesta-jose-luis` y **publicadas en producción el 6 nov 2026 a pedido de Gael**. El resto del equipo todavía no las revisa: si no está de acuerdo con alguna, se cambia aquí, en la app, y se vuelve a publicar. Detalle de cada cambio: `DEMO_HONESTA.md`.
+
+| # | Propuesta | Por qué | Choca con |
+|---|---|---|---|
+| P1 | **Aviso negro de DEMO en todas las rutas**, con "Qué es real" (`/demo`) y "Reiniciar demo". Se quita solo cuando haya backend real. | La app no tiene backend: sin aviso, un artista o el jurado puede creer que ya funciona. Aplica la regla 1 (promesa honesta). | Nada |
+| P2 | **La demo solo acepta correos `@example.com`.** | No hay aviso de privacidad revisado ni correo de contacto (#37, TODO sección 1): no se deben pedir datos reales. | #18 en lo que toca al texto: el botón final dice "Simular reclamo" |
+| P3 | **Frase de oferta en prueba:** "Brai ayuda a artistas que venden directo a registrar la procedencia de cada obra y, cuando el comprador la reclama, mantener el contacto para futuras obras." Se usa en el hero, `OFERTA.md` y los materiales. El headline de #17 se queda. | "Nunca pierdes de vista a quien te compró" depende de que el comprador reclame. | Ajusta la frase de `OFERTA.md` (la anterior queda citada ahí) |
+| P4 | **Fuera "dos ventas extra pagan Brai" y "se paga con N ventas".** Se dice "equivale al precio de venta de N obras", bruto e ilustrativo. | Compara precio con ingreso bruto hipotético: no es ganancia ni retorno comprobado. | #3 ("una venta extra al año lo paga") como argumento de venta |
+| P5 | **La landing nombra la Opción B** en una línea, y cada precio lleva su estado: A "publicado, sin validar", B "en prueba". B **no** pasa a vigente. | Mostrar A como si estuviera validada es un dato que no tenemos. | #40 ("la landing solo enseña la Oferta A") |
+| P6 | **CTA principal de la landing: "Recorrer la demo en 5 minutos".** "Quiero registrar mis obras" sale porque no hay canal de alta ni de contacto. | Un botón que promete un alta que no existe no es honesto (#45 ya lo había detectado). | #20 en lo que toca al botón 2 |
+| P7 | **`/entrar` dice "Todavía no hay cuentas"** en lugar de abrir el panel. El botón "Entrar" pasa a "Panel de ejemplo". | Parecía un login. | Nada |
+| P8 | **En la reunión, demo genérica primero; `/jose-luis` solo si él acepta verla.** El modo José Luis se puede apagar con `VITE_DEMO_JOSE_LUIS=0`. | Es persona real que no ha dado permiso. Lo que está publicado lo decidió el equipo (#42); esto no lo revierte, solo da el interruptor y el protocolo. | Nada. **Queda abierto:** si se apaga antes de la reunión. Lo decide el equipo con un adulto |
+| P9 | **El guion de la reunión dura 25 minutos y cierra pidiendo permiso para un siguiente paso**, no la aceptación como fundador. | Primera meta de cada contacto es entrevista, no venta (`CLIENTES.md`, regla 3). | Cambia el bloque "Fundador (5 min)" del guion anterior |
+| P10 | **`pnpm build` falla si el HTML publicado pierde el aviso de DEMO o el estado del precio** (`scripts/verificar-dist.mjs`). | Que nadie publique sin querer una versión que vuelva a prometer de más. | Nada. Si molesta, se quita del script `build` |
+| P11 | **La página de la obra enseña sus capas de confianza** (registro, sello, fotos huella, dueño, historial), cada una como Cumplida, Ejemplo o Pendiente. En la demo ninguna sale Cumplida (prueba en `app/pruebas/`). | Cumple la #34, que estaba pendiente de pasar a la app. | Nada |
+
 ## 31 oct 2026, quinta sesión (demo pública de José Luis, Punto v2)
 
 | # | Decisión | Por qué |
@@ -40,7 +58,7 @@ Una línea por decisión, con su porqué. Lo más reciente arriba. Si una decisi
 | 31 | **El NFC graba `brai.art/o/XXXXX?v=n` y el QR `?v=q`.** | Así sabemos cuántos toques vienen por NFC y cuántos por QR, sin romper la regla 4. |
 | 32 | **Las cuentas de artista las crea el equipo en el setup.** Nadie se registra solo en el panel. | El setup es un servicio pagado; una cuenta suelta no tiene artista ligado y sería ruido. |
 | 33 | **Tipografía v2.2:** tamaño óptico de Fraunces, peso 560, escala fluida, fuentes autohospedadas. **No se cambia de familia.** | Ver `brand/BRAND.md`, sección 6. |
-| 34 | **La página de la obra enseña sus capas de confianza** (pendiente de pasar a la app actual) (sello, fotos huella, dueño), cada una marcada como cumplida o pendiente. | Lo copiamos del "COA+" de Verisart: la confianza se explica, no se presume. |
+| 34 | **La página de la obra enseña sus capas de confianza** (en la app desde el 5 nov, propuesta P11) (sello, fotos huella, dueño), cada una marcada como cumplida o pendiente. | Lo copiamos del "COA+" de Verisart: la confianza se explica, no se presume. |
 
 ## 31 oct 2026, segunda sesión (auditoría y NFT)
 

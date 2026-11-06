@@ -6,9 +6,9 @@
   "packageManager": "pnpm@10.28.0",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
+    "build": "tsc && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs && node scripts/verificar-dist.mjs",
     "preview": "vite preview",
-    "test": "node --test supabase/functions/sello/sun.test.ts",
+    "test": "node --test supabase/functions/sello/sun.test.ts pruebas/demo.test.ts pruebas/demo-jose-luis.test.ts pruebas/claims.test.ts",
     "test:db": "bash supabase/pruebas/correr.sh"
   },
   "pnpm": {

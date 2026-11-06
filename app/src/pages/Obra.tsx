@@ -3,8 +3,9 @@ import { Link, useParams } from 'react-router'
 import { Expand, Play } from 'lucide-react'
 import { SelloRegistroBrai } from '../components/marca'
 import { Capa, CompararHuella, Compartir, VisorObra } from '../components/visor'
-import { ARTISTA, CODIGO_DEMO, MODO_JOSE_LUIS, OBRAS, anioTexto, esMia, fecha, getObra, huellaRegistro, type Obra as TObra } from '../data/demo'
+import { ARTISTA, ES_FICTICIA, CODIGO_DEMO, MODO_JOSE_LUIS, OBRAS, anioTexto, capasDeConfianza, esMia, fecha, getObra, huellaRegistro, type EstadoCapa, type Obra as TObra } from '../data/demo'
 import { varsTema } from '../lib/tema'
+import { Ficticio } from '../components/demo'
 import NoEncontrada from './NoEncontrada'
 
 /** Marco y barra del artista: lo comparten la obra, reclamar y la página del artista. */
@@ -15,14 +16,19 @@ export function PaginaArtista({ children }: { children: ReactNode }) {
         <p className="bg-arena px-4 py-2 text-center text-[12px] leading-snug text-tinta/80">
           {MODO_JOSE_LUIS ? (
             <>
-              Demostración para {ARTISTA.nombre}. Datos de fuentes públicas, por confirmar con él. Para probar, el código de dueño es{' '}
-              <span className="font-mono font-medium text-tinta">{CODIGO_DEMO}</span>.{' '}
+              Demostración sobre la obra pública de {ARTISTA.nombre}. Él no la ha revisado ni aprobado. Ninguna de estas obras está registrada en
+              Brai. Para probar, el código público de la demo es <span className="font-mono font-medium text-tinta">{CODIGO_DEMO}</span>.{' '}
               <a href="/?salir-demo" className="underline underline-offset-2">Salir de la demo</a>
+            </>
+          ) : !ES_FICTICIA ? (
+            <>
+              Demo personalizada con el nombre de {ARTISTA.nombre}, solo en este navegador. La obra, su registro y sus dueños son inventados.
+              Para probar, el código público de la demo es <span className="font-mono font-medium text-tinta">{CODIGO_DEMO}</span>.
             </>
           ) : (
             <>
-              Obra de ejemplo. {ARTISTA.nombre} todavía no registra obras en Brai. Para probar, el código de dueño es{' '}
-              <span className="font-mono font-medium text-tinta">{CODIGO_DEMO}</span>.
+              {ARTISTA.nombre} es una artista ficticia: esta obra, su registro y sus dueños son inventados. Para probar, el código público de la
+              demo es <span className="font-mono font-medium text-tinta">{CODIGO_DEMO}</span>, con un correo inventado que termine en @example.com.
             </>
           )}
         </p>
@@ -31,6 +37,7 @@ export function PaginaArtista({ children }: { children: ReactNode }) {
         <div className="mx-auto flex max-w-5xl items-baseline justify-between gap-4 px-4 py-4 sm:px-6">
           <Link to={`/a/${ARTISTA.slug}`} className="font-display text-xl font-semibold tracking-tight hover:text-[var(--acento-texto)]">
             {ARTISTA.nombre}
+            {ES_FICTICIA && <Ficticio>Ficticia</Ficticio>}
           </Link>
           <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-verde">{ARTISTA.disciplina}</span>
         </div>
@@ -46,6 +53,38 @@ export function Etiqueta({ children }: { children: ReactNode }) {
 
 /** Retraso de la entrada escalonada (clase .entra en index.css). */
 const paso = (n: number): CSSProperties => ({ animationDelay: `${n * 90}ms` })
+
+const ESTADO: Record<EstadoCapa, { texto: string; clase: string }> = {
+  cumplida: { texto: 'Cumplida', clase: 'bg-dorado-suave text-tinta' },
+  demo: { texto: 'Ejemplo', clase: 'border border-tinta/30 text-tinta/80' },
+  pendiente: { texto: 'Pendiente', clase: 'bg-arena text-tinta/80' },
+}
+
+/** DECISIONES #34: la confianza se explica, no se presume. */
+function CapasConfianza({ obra, mia }: { obra: TObra; mia: boolean }) {
+  return (
+    <section className="revela mt-12" aria-labelledby="capas">
+      <h2 id="capas" className="font-mono text-[11px] uppercase tracking-[0.16em] text-verde">
+        Capas de confianza
+      </h2>
+      <p className="mt-3 leading-relaxed text-tinta/80">Lo que respalda esta obra, y lo que todavía no. En esta demo ninguna capa está cumplida de verdad.</p>
+      <ul className="mt-5 divide-y divide-linea border-y border-linea">
+        {capasDeConfianza(obra, mia).map((c) => (
+          <li key={c.id} className="grid gap-1 py-3.5 sm:grid-cols-[1fr_auto] sm:gap-4">
+            <div>
+              <p className="font-semibold">{c.nombre}</p>
+              <p className="text-sm text-tinta/80">{c.hoy}</p>
+              <p className="mt-0.5 text-[13px] text-tinta/70">En la versión real: {c.real.charAt(0).toLowerCase() + c.real.slice(1)}</p>
+            </div>
+            <span className={`h-fit w-fit rounded-full px-2.5 py-0.5 font-mono text-[11px] uppercase tracking-[0.08em] ${ESTADO[c.estado].clase}`}>
+              {ESTADO[c.estado].texto}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}
 
 function Video({ obra }: { obra: TObra }) {
   const [aviso, setAviso] = useState(false)
@@ -64,7 +103,7 @@ function Video({ obra }: { obra: TObra }) {
         </span>
         <span className="absolute inset-x-4 bottom-3 flex items-baseline justify-between text-lienzo">
           <span className="text-sm font-semibold">{ARTISTA.nombre.split(' ')[0]} cuenta esta obra</span>
-          <span className="font-mono text-xs">{obra.video.duracion}</span>
+          <span className="font-mono text-xs">{obra.video.disponible ? obra.video.duracion : 'Video pendiente'}</span>
         </span>
       </button>
       {aviso && !obra.video.disponible && (
@@ -102,7 +141,7 @@ export default function Obra() {
       {mia && (
         <div className="entra border-b border-linea bg-dorado-suave">
           <p className="mx-auto flex max-w-5xl items-center gap-2.5 px-4 py-3 text-sm font-semibold sm:px-6">
-            <span className="size-2.5 rounded-full bg-dorado" /> Esta obra es tuya. En su página pública apareces como {obra.dueno}
+            <span className="size-2.5 rounded-full bg-dorado" /> Simulación: la reclamaste en este navegador. En público aparecerías como {obra.dueno}
           </p>
         </div>
       )}
@@ -143,7 +182,7 @@ export default function Obra() {
                   <span className="absolute size-3.5 rounded-full bg-dorado/40" />
                   <span className="size-2 rounded-full bg-dorado" />
                 </span>
-                {MODO_JOSE_LUIS ? 'Así se verá: registrada por el artista' : 'Registrada por el artista'}
+                {MODO_JOSE_LUIS ? 'Así se verá: registrada por el artista' : ARTISTA.ejemplo ? 'Ejemplo: registrada por el artista' : 'Registrada por el artista'}
                 {!MODO_JOSE_LUIS && <span className="font-mono text-[11px] font-normal text-tinta/70">{fecha(registro.fecha)}</span>}
               </p>
             )}
@@ -167,9 +206,9 @@ export default function Obra() {
                 to={`/o/${obra.codigo}/reclamar`}
                 className="flex w-full items-center justify-center rounded-[10px] bg-[var(--acento-texto)] px-6 py-3.5 font-semibold text-lienzo transition-[opacity,transform] hover:opacity-90 active:scale-[.98] lg:inline-flex lg:w-auto"
               >
-                Reclamar mi obra
+                Reclamar mi obra <span className="ml-1.5 font-mono text-[11px] font-normal opacity-80">DEMO</span>
               </Link>
-              <p className="mt-2 hidden text-sm text-tinta/70 lg:block">¿La acabas de comprar? Raspa tu tarjeta y queda a tu nombre.</p>
+              <p className="mt-2 hidden text-sm text-tinta/70 lg:block">Demo: el reclamo es simulado y se guarda solo en este navegador.</p>
             </div>
           ) : (
             !mia && (
@@ -178,6 +217,8 @@ export default function Obra() {
               </p>
             )
           )}
+
+          <CapasConfianza obra={obra} mia={mia} />
 
           <section className="revela mt-12">
             <Etiqueta>El artista te cuenta</Etiqueta>
@@ -245,11 +286,14 @@ export default function Obra() {
                 </li>
               ))}
             </ol>
-            <p className="mt-4 text-xs text-tinta/60">Por privacidad, los dueños aparecen solo con sus iniciales.</p>
-            <p className="mt-3 flex flex-wrap items-baseline gap-x-2 text-xs text-tinta/60">
+            <p className="mt-4 text-xs text-tinta/70">Por privacidad, los dueños aparecen solo con sus iniciales.</p>
+            <p className="mt-3 flex flex-wrap items-baseline gap-x-2 text-xs text-tinta/70">
               Huella del registro
               <span className="font-mono text-[11px] text-tinta">{huellaRegistro(obra).replace(/(.{4})/, '$1·')}</span>
-              <span>Cada evento lleva la huella del anterior. Si alguien cambia uno, deja de cuadrar.</span>
+              <span>
+                Cada evento lleva la huella del anterior. Si alguien cambia uno, deja de cuadrar. En esta demo es una huella de muestra calculada en
+                tu navegador: no prueba autenticidad ni quién es el dueño legal.
+              </span>
             </p>
           </section>
         </div>
@@ -282,9 +326,14 @@ export default function Obra() {
 
       <footer className="mx-auto flex max-w-5xl flex-col items-start gap-5 px-4 pb-32 pt-10 sm:px-6 lg:pb-12">
         <SelloRegistroBrai registro={obra.registro} />
-        <Link to="/panel" className="text-sm text-terracota-btn hover:underline">
-          ¿Eres el artista? Entra a tu panel
-        </Link>
+        <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+          <Link to="/recorrido" className="text-terracota-btn hover:underline">
+            Volver al recorrido de la demo
+          </Link>
+          <Link to="/panel" className="text-terracota-btn hover:underline">
+            Ver el panel de ejemplo del artista
+          </Link>
+        </div>
       </footer>
 
       <Capa abierta={verObra} alCerrar={cerrarObra} titulo={obra.titulo}>

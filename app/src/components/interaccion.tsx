@@ -13,7 +13,7 @@ function sinMovimiento() {
 const PASOS_ESCENA = [
   { titulo: 'Acerca tu celular', texto: 'Detrás del cuadro hay un sello. No hace falta abrir ninguna app.' },
   { titulo: 'Se abre su historia', texto: 'La obra te cuenta quién la pintó, cuándo y cómo nació.' },
-  { titulo: 'Sabes que es de verdad', texto: 'Ves que la registró el propio artista, y quién es su dueño hoy.' },
+  { titulo: 'Sabes quién la registró', texto: 'Ves que la registró el propio artista y, si su dueño la reclamó, sus iniciales.' },
 ]
 
 export function EscenaSello({ titulo, artista, registro, imagen }: { titulo: string; artista: string; registro: string; imagen: string }) {
@@ -67,7 +67,7 @@ export function EscenaSello({ titulo, artista, registro, imagen }: { titulo: str
               {/* travesaños del bastidor */}
               <div className="absolute inset-x-[10px] top-1/2 h-4 -translate-y-1/2 bg-[#C9AE8A]" />
               <div className="absolute inset-y-[10px] left-1/2 w-4 -translate-x-1/2 bg-[#C9AE8A]" />
-              <p className="absolute bottom-5 left-5 font-mono text-[10px] text-tinta/50">Reverso de la obra</p>
+              <p className="absolute bottom-5 left-5 font-mono text-[10px] text-tinta/70">Reverso de la obra</p>
             </div>
             {/* el sello, con ondas cuando el celular lo toca */}
             <div className="absolute left-1/2 top-[30%] -translate-x-1/2 -translate-y-1/2">
@@ -197,18 +197,31 @@ export function Raspadita({ codigo, alRevelar }: { codigo: string; alRevelar?: (
       total++
       if (datos[i] === 0) vacios++
     }
-    if (vacios / total > 0.5) {
-      setRevelado(true)
-      alRevelar?.()
-    }
+    if (vacios / total > 0.5) revelar()
+  }
+
+  const revelar = () => {
+    if (revelado) return
+    setRevelado(true)
+    alRevelar?.()
   }
 
   return (
     <div className="relative overflow-hidden rounded-md">
-      <div className="bg-white/70 px-2.5 py-2 text-center font-mono text-[15px] font-medium tracking-[0.2em]">{codigo}</div>
+      <div aria-live="polite" className="bg-white/70 px-2.5 py-2 text-center font-mono text-[15px] font-medium tracking-[0.2em]">
+        {revelado ? codigo : <span aria-hidden="true">{codigo}</span>}
+      </div>
       <canvas
         ref={lienzo}
-        aria-label="Raspadita: arrastra el dedo para ver el código"
+        role="button"
+        tabIndex={revelado ? -1 : 0}
+        aria-label="Raspadita: arrastra el dedo para ver el código, o pulsa Enter"
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault()
+            revelar()
+          }
+        }}
         onPointerDown={(e) => {
           raspando.current = true
           e.currentTarget.setPointerCapture(e.pointerId)
@@ -216,7 +229,7 @@ export function Raspadita({ codigo, alRevelar }: { codigo: string; alRevelar?: (
         }}
         onPointerMove={(e) => raspando.current && raspar(e.clientX, e.clientY)}
         onPointerUp={() => (raspando.current = false)}
-        className={`absolute inset-0 size-full cursor-pointer touch-none transition-opacity duration-500 ${revelado ? 'pointer-events-none opacity-0' : ''}`}
+        className={`absolute inset-0 size-full cursor-pointer touch-none rounded-md transition-opacity duration-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tinta ${revelado ? 'pointer-events-none opacity-0' : ''}`}
       />
     </div>
   )

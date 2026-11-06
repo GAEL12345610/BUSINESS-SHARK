@@ -9,6 +9,11 @@ Varias vienen de errores reales en otros proyectos con el mismo stack (React + V
 - [verificar-el-artefacto](verificar-el-artefacto.md): Compilar o que un script termine sin error NO es verificar: abre lo que produjo y pregunta si tu prueba vería el fallo
 - [null-no-es-distinto](null-no-es-distinto.md): En pruebas SQL compara con IS DISTINCT FROM, nunca con <>; NULL <> 'x' da NULL y la prueba pasa aunque la función esté rota
 - [scroll-suave-engana-pruebas](scroll-suave-engana-pruebas.md): Con scroll-behavior smooth, un script que hace scrollTo no llega a donde crees; en pruebas usa behavior instant antes de concluir que algo no aparece
+- [color-css-se-convierte-con-canvas](color-css-se-convierte-con-canvas.md): Para medir contraste en el navegador, convierte el color con un canvas, nunca con una regex sobre getComputedStyle: Tailwind 4 devuelve color(srgb ...) y la regex da falsos
+- [derivados-se-quedan-viejos](derivados-se-quedan-viejos.md): Cuando cambies un texto de la app, regenera TODO lo derivado con visuales/regenerar-todo.sh; un video o GIF viejo sigue mostrando la promesa que ya quitaste
+- [guion-de-lista-no-es-conector](guion-de-lista-no-es-conector.md): Al revisar la regla de puntuación con una regex, quita antes las viñetas de lista; ese guion no es un conector y la prueba falla en falso
+- [lint-de-frases-no-ve-el-contexto](lint-de-frases-no-ve-el-contexto.md): Una prueba que busca frases prohibidas no ve contradicciones de contexto: además, toma capturas de cada estado (antes y después de reclamar) y léelas
+- [localstorage-no-se-borra-al-cerrar](localstorage-no-se-borra-al-cerrar.md): localStorage sigue ahí al cerrar la pestaña (sessionStorage no): documenta la persistencia según la API que usa el código, nunca de memoria
 
 ## Seguridad (Supabase y API)
 
@@ -22,6 +27,7 @@ Varias vienen de errores reales en otros proyectos con el mismo stack (React + V
 
 ## NFC y demo
 
+- [texto-fijo-choca-con-personalizacion](texto-fijo-choca-con-personalizacion.md): Un texto que afirma algo de la persona en pantalla (por ejemplo, que es ficticia) se rompe cuando la demo se personaliza con un nombre real: condiciónalo por el modo
 - [silueta-propia](silueta-propia.md): Antes de aprobar una mascota, mírala en silueta y chiquita: si se parece a un personaje famoso (Pac-Man), no sirve
 - [tag-nfc-bloqueado-es-para-siempre](tag-nfc-bloqueado-es-para-siempre.md): Un tag NFC bloqueado no se puede reescribir nunca: la URL siempre es de brai.art, se prueba en 1 tag antes y nunca va sobre metal
 - [supabase-free-se-pausa](supabase-free-se-pausa.md): El plan Free de Supabase pausa el proyecto tras 7 días sin uso; antes de una demo ábrelo el día anterior o pasa a Pro

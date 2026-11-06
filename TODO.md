@@ -7,17 +7,44 @@ Cómo leer esto: **Para quién** dice si lo hace Ricardo, el equipo o un adulto.
 
 ---
 
+## 0. Revisar el trabajo del 5 nov (publicado el 6 nov)
+
+Claude dejó la demo diciendo la verdad sobre sí misma, el paquete de la reunión y los materiales del 26 nov. **Se unió a `main` y se publicó en `braiart.vercel.app` el 6 nov 2026, a pedido de Gael.** Falta que el equipo lo revise: si algo no les gusta, se cambia y se vuelve a publicar.
+
+| | Tarea | Para quién | Dónde |
+|---|---|---|---|
+| [ ] | Leer las propuestas P1 a P11 (ya publicadas) y quedarse con ellas, cambiarlas o revertirlas | Equipo | `docs/DECISIONES.md`, sección 5 nov |
+| [ ] | Decidir con un adulto si `/jose-luis` sigue publicado antes de que él lo vea, o se apaga con `VITE_DEMO_JOSE_LUIS=0` | Equipo con adulto | `docs/DEMO_JOSE_LUIS.md`, propuesta P8 |
+| [ ] | Recorrer la demo publicada en el celular | Ricardo | `braiart.vercel.app`, `pitch/reunion-jose-luis/checklist-demo.md` |
+| [ ] | Probarla en un iPhone y un Android de verdad (Claude solo la probó emulada) | Ricardo | `braiart.vercel.app` |
+| [x] | ~~Volver a generar `visuales/`~~: regenerados el 5 nov. La próxima vez, `bash visuales/regenerar-todo.sh` | Ricardo | `visuales/README.md` |
+| [ ] | Definir el precio de fundador del mes 4 con la Opción B | Equipo | `docs/OFERTA.md` |
+| [ ] | Leer `PERSPECTIVAS.md` y `MERCADO.md`: el certificado digital ya es gratis en markmy.art; decidir qué se vende entonces | Equipo | `docs/PERSPECTIVAS.md`, `docs/MERCADO.md` |
+| [ ] | Conseguir una obra real de alguien cercano, con permiso por escrito revisado por un adulto, para la demo del 26 nov (`CONCURSO.md` la pide) | Equipo con adulto | `docs/PERSPECTIVAS.md`, sección 3 |
+| [ ] | Llenar las láminas 12 y 14 del deck del jurado con entrevistas reales y el equipo | Equipo | `pitch/jurado-26nov/` |
+
+## Calendario propuesto hasta el 26 nov (lo ajusta el equipo)
+
+Lo que más sube la calificación no es código: son las entrevistas y una obra real con permiso (`docs/PERSPECTIVAS.md`).
+
+| Semana | Qué | Listo cuando |
+|---|---|---|
+| **5 a 11 nov** | Revisar y unir la rama del 5 nov. Un adulto agenda las 8 entrevistas. Conseguir una obra real con permiso por escrito. Definir roles con nombres. Llenar los `?` de `COSTOS.md` | Hay 8 fechas en el calendario y roles en `CONCURSO.md` |
+| **12 a 18 nov** | Hacer las entrevistas con las hojas impresas (`visuales/documentos/hojas-de-entrevista.pdf`). Confirmar con el profe la fecha del infomercial y grabarlo | Fichas llenas en `CLIENTES.md`. Video grabado |
+| **19 a 25 nov** | Decidir A o B si 2 de 3 coinciden (DECISIONES #26). Llenar las láminas 12 y 14 del deck. Probar la demo en un iPhone y un Android. Ensayar la presentación 2 veces con reloj | Deck final en PDF. Ensayo sin pasarse de tiempo |
+| **26 nov** | Propuesta final | |
+
 ## 1. Antes de la reunión con José Luis (urgente)
 
 | | Tarea | Para quién | Dónde |
 |---|---|---|---|
 | [ ] | Crear un correo normal del proyecto (Gmail, por ejemplo). **Nunca el correo personal de un integrante.** | Equipo con un adulto | |
-| [ ] | Poner ese correo en el aviso de privacidad y, si quieren, volver a hacer correo el botón de fundadores de la landing (hoy lleva al recorrido) | Ricardo | `app/public/privacidad.html`, `app/src/pages/Landing.tsx` |
-| [ ] | Pedirle a José Luis permiso y fotos de sus obras para la demo | Equipo con adulto | `docs/DEMO_JOSE_LUIS.md` |
+| [ ] | Poner ese correo en el aviso de privacidad (hoy es un borrador no vigente) y en `/demo`, sección Contacto. Quitar de `app/pruebas/claims.test.ts` la regla del correo solo si el correo ya existe | Ricardo | `app/public/privacidad.html`, `app/src/pages/Demo.tsx` |
+| [ ] | Pedirle a José Luis permiso y fotos de sus obras para la demo, **por escrito y después de la plática**, nunca antes | Equipo con adulto | `docs/DEMO_JOSE_LUIS.md` |
 | [ ] | Que un adulto lea el aviso de privacidad antes de que alguien real deje su correo | Adulto | `app/public/privacidad.html` |
-| [ ] | Agendar la reunión con José Luis, con un adulto presente | Adulto y equipo | `docs/REUNION_JOSE_LUIS.md` |
+| [ ] | Agendar la reunión con José Luis, con un adulto presente. El mensaje de contacto ya está en borrador | Adulto y equipo | `docs/REUNION_JOSE_LUIS.md`, `pitch/reunion-jose-luis/borradores-adulto.md` |
 | [ ] | Probar el link de la demo en un iPhone y un Android | Ricardo | `braiart.vercel.app/jose-luis` |
-| [ ] | Imprimir las piezas de *Toricleto* y pegarlas en un cartón (el QR abre la demo) | Equipo | `braiart.vercel.app/imprimir/TQ4RC` |
+| [ ] | Imprimir el one-pager y, si quieren, las piezas de la obra de ejemplo (dicen DEMO). ~~Piezas de *Toricleto*~~: es una obra real a la venta; la demo genérica va primero | Equipo | `pitch/reunion-jose-luis/one-pager.pdf`, `braiart.vercel.app/imprimir/7KQ2X` |
 
 ## 2. Antes del 26 de noviembre (propuesta final)
 
@@ -26,7 +53,7 @@ Cómo leer esto: **Para quién** dice si lo hace Ricardo, el equipo o un adulto.
 | [ ] | Entrevistar a José Luis + 2 artistas más + 5 compradores | Equipo con adulto | `docs/ENTREVISTAS.md`, `docs/CLIENTES.md` |
 | [ ] | Decidir Oferta A o B con lo que digan los artistas | Equipo | `docs/OFERTA.md`, `docs/DECISIONES.md` #26 |
 | [ ] | Hacer el deck del 26 nov | Equipo | skill `brai-slides`; las imágenes ya están en `visuales/` |
-| [ ] | Grabar el infomercial (obligatorio para pasar) y confirmar la fecha con el profe | Equipo | `pitch/infomercial_guion.md`, `pitch/clips/` |
+| [ ] | Grabar el infomercial (obligatorio para pasar) y confirmar la fecha con el profe. Hay un animatic de guía con tiempos y textos | Equipo | `pitch/infomercial_guion.md`, `pitch/clips/animatic-infomercial.mp4` |
 | [ ] | Comprar `brai.art` **antes de bloquear cualquier sello** | Adulto | ~49 MXN el primer año, `docs/COSTOS.md` |
 | [ ] | Llenar los `?` de costos con capturas de MercadoLibre (etiquetas VOID, tarjetas) | Equipo | `docs/COSTOS.md` |
 | [ ] | Revisar con NFC Tools de qué tipo son los 50 stickers que ya tenemos | Equipo | `docs/SEGURIDAD_OBRA.md` |
@@ -57,7 +84,9 @@ Cómo leer esto: **Para quién** dice si lo hace Ricardo, el equipo o un adulto.
 No se gastó dinero en ninguna herramienta.
 
 ## 4. Deuda conocida (no es urgente, pero que no se olvide)
-- La demo usa el mismo código de dueño (`4K7P-9QX2`) para todas las obras y cuenta los intentos en memoria. Es a propósito para la demo; la versión real ya está en Supabase.
+- La demo usa el mismo código de dueño (`4K7P-9QX2`) para todas las obras y cuenta los intentos en memoria. Es a propósito para la demo y la app lo dice; la versión real está escrita en las migraciones, no conectada.
+- Accesibilidad sin auditar: contraste formal, lector de pantalla y celulares reales. La raspadita ya se usa con teclado (5 nov).
+- El video del artista y las fotos huella siguen siendo de ejemplo.
 - No hay `Content-Security-Policy` en `app/vercel.json` porque `app/index.html` tiene un script en línea. Para ponerla, mover ese script a un archivo.
 - El video del artista en la página de la obra es una portada sin video.
 - La huella de la demo usa FNV (rápida, para enseñar); la de Supabase usa SHA-256.

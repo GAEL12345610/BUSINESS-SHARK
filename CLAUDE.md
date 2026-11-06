@@ -38,12 +38,17 @@ Eres **socio y consultor de negocio** del equipo (estilo Alex Hormozi + Euge Oll
 | Precio, cliente ideal, oferta de fundador, club | `docs/OFERTA.md` |
 | Costos, escenarios, tamaño de mercado | `docs/COSTOS.md` |
 | Competencia y qué copiamos de cada uno | `docs/COMPETENCIA.md` |
+| Estudio de mercado: comprador, Guadalajara, sustitutos | `docs/MERCADO.md` |
+| Brai visto por artista, comprador, jurado, Mate, legal y operación | `docs/PERSPECTIVAS.md` |
+| Deck del jurado del 26 nov (base, con láminas por llenar) | `pitch/jurado-26nov/` |
 | Cómo se protege una obra, cómo se graba un NFC | `docs/SEGURIDAD_OBRA.md` |
 | Alcance del prototipo, stack, modelo de datos | `docs/PROTOTIPO.md` |
 | Reglas, rúbrica, calendario y roles del concurso | `docs/CONCURSO.md` |
 | Artistas prospecto y su etapa | `docs/CLIENTES.md` |
 | Guiones de entrevista | `docs/ENTREVISTAS.md` |
-| Guion de la reunión con José Luis | `docs/REUNION_JOSE_LUIS.md` |
+| Guion de la reunión con José Luis (25 min) | `docs/REUNION_JOSE_LUIS.md` |
+| Materiales de la reunión (checklist, objeciones, onboarding, piloto, one-pager, deck) | `pitch/reunion-jose-luis/` |
+| Qué dice la demo de sí misma y qué prueba que no mienta | `docs/DEMO_HONESTA.md` (lo que ve el visitante: `/demo`) |
 | Demo de José Luis: qué dato es real y su fuente | `docs/DEMO_JOSE_LUIS.md` |
 | Mascota Punto (por qué es así y dónde sale) | `docs/MASCOTA.md` |
 | Análisis inicial con datos y fuentes | `docs/ANALISIS.md` |
@@ -78,7 +83,7 @@ Agentes: `app-security-auditor` (antes de publicar) y `app-perf-auditor` (si la 
 ## 5. Código
 
 - La app vive en `C:\dev\brai\app`, **fuera de OneDrive**. React + Vite + Tailwind + Supabase + Vercel. Hoy corre con los datos de `app/src/data/demo.ts`: artista de ejemplo por default y la demo de José Luis en `/jose-luis` (DECISIONES #42, `docs/DEMO_JOSE_LUIS.md`).
-- Pruebas: `pnpm test` (lógica y 424 DNA) y `pnpm test:db` (migraciones y RLS en un Postgres desechable). Toda migración nueva lleva su prueba en `app/supabase/pruebas/10_pruebas.sql`.
+- Pruebas: `pnpm test` (424 DNA, lógica de la demo y frases prohibidas en `app/pruebas/`) y `pnpm test:db` (migraciones y RLS en un Postgres desechable). `pnpm build` falla si el HTML pierde el aviso de DEMO (`docs/DEMO_HONESTA.md`). Toda migración nueva lleva su prueba en `app/supabase/pruebas/10_pruebas.sql`.
 - **pnpm siempre, nunca npm.** `"packageManager"` y `"pnpm": { "onlyBuiltDependencies": ["esbuild"] }` en `package.json`.
 - **Mobile first:** cada escaneo pasa en un celular.
 - **El RLS de Supabase es la única protección real.** Los guards de React solo esconden pantallas. Ver `memoria/rls-es-la-unica-puerta.md`.
@@ -95,4 +100,8 @@ Agentes: `app-security-auditor` (antes de publicar) y `app-perf-auditor` (si la 
 - **31 oct 2026, cierre:** prototipo listo para José Luis: panel del artista de ejemplo, recorrido `/recorrido?para=Nombre` con calculadora A y B, mascota Punto, kit vivo en `/marca`, imagen para compartir, clip vertical. Todo en el link de Vercel. Desde el 1 nov el repo lo lleva **Ricardo**: su lista está en `TODO.md`.
 - **31 oct 2026, último ajuste:** demo pública de José Luis en `braiart.vercel.app/jose-luis` con sus obras reales y fuentes, sin dueños ni fotos inventadas. Punto v2 con principios de Clawd. El botón de fundadores lleva al recorrido.
 - **31 oct 2026, cierre de sesión:** arreglado el teléfono del hero que no cargaba (X-Frame-Options), verificado en producción en iPhone y Android. Credenciales revisadas: ninguna sirve para Supabase ni para Vercel (`TODO.md`, Herramientas). No se gastó dinero.
+- **5 nov 2026 (Claude, rama `claude/demo-honesta-jose-luis`):** la demo dice que es demo en todas las rutas, personas ficticias rotuladas, reclamar solo con correos `@example.com`, sin promesas de retorno, precio con estado, `/demo` y `/entrar` honestos. Paquete de la reunión en `pitch/reunion-jose-luis/`. Propuestas P1 a P11 en `DECISIONES.md`. Pruebas: `pnpm test` 34, `tsc`, `build` con verificación del HTML, `pnpm test:db` 21.
+- **5 nov 2026, segunda parte:** estudio de mercado (`MERCADO.md`: markmy.art es gratis, Verisart subió su NFC a 4 USD), revisión desde 7 perspectivas (`PERSPECTIVAS.md`: faltan 8 entrevistas y una obra real con permiso para el 26 nov), deck del jurado de 14 láminas en `pitch/jurado-26nov/`, gráficas en `visuales/viabilidad/` y PDFs de los documentos en `visuales/documentos/`.
+- **5 nov 2026, tercera parte:** costos cotizados (~9.60 MXN por obra), Lean Canvas, capas de confianza en la página de la obra (P11), borradores de contacto y permiso para el adulto, animatic del infomercial, clip del sello regrabado y `visuales/regenerar-todo.sh` para regenerar todo lo derivado. `pnpm test` 36.
+- **6 nov 2026:** todo lo del 5 nov se unió a `main` por Pull Request y se publicó en `braiart.vercel.app`, a pedido de Gael. Falta que el equipo lo revise y lo pruebe en celulares reales (`TODO.md`, sección 0).
 - **Primer hito: propuesta final, 26 nov 2026.**
